@@ -5,61 +5,636 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Case Review · Bella Li</title>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css?v=09081324" />
 <style>
-  html, body { height: 100%; margin: 0; background: #08080c; color: #fff; font-family: "Jost", system-ui, sans-serif; }
-  .gate { height: 100%; display: flex; align-items: center; justify-content: center; }
-  form { display: flex; flex-direction: column; align-items: center; gap: 14px; opacity: 0; animation: in .5s ease-out .15s forwards; }
-  @keyframes in { to { opacity: 1; } }
-  .k { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: rgba(255,255,255,.35); }
-  input { font: inherit; font-size: 16px; letter-spacing: .12em; text-align: center; width: 260px; padding: 12px 16px; color: #fff; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; outline: none; transition: border-color .2s; }
-  input:focus { border-color: rgba(139,124,255,.7); }
-  .go { font: inherit; font-size: 14px; letter-spacing: .12em; width: 260px; padding: 11px 16px; color: #fff; background: #8b7cff; border: 0; border-radius: 999px; }
-  form.bad input { border-color: #ff5c7a; animation: shake .3s; }
-  @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
-  .m { font-size: 12px; color: rgba(255,255,255,.35); letter-spacing: .06em; min-height: 16px; }
+  body { overflow: auto; }
+  .hub {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: min(1040px, calc(100% - 128px));
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 80px 0;
+  }
+  .agenda { display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: 16px; margin-top: 56px; }
+  .agenda a {
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 30px 28px 26px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  }
+  .agenda a:is(:hover, .hov) { transform: translateY(-4px); background: rgba(255,255,255,0.05); }
+  .agenda a:nth-child(1):is(:hover, .hov) { border-color: rgba(139,124,255,0.5); }
+  .agenda a:nth-child(2):is(:hover, .hov) { border-color: rgba(163,230,74,0.5); }
+  .agenda a:nth-child(3):is(:hover, .hov) { border-color: rgba(255,0,80,0.5); }
+  .agenda .no {
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    color: var(--faint);
+  }
+  .agenda h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 26px;
+    margin: auto 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .agenda .sub { font-size: 13px; color: var(--dim); }
+  .agenda .time {
+    margin-top: 18px;
+    font-family: var(--serif);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--faint);
+    text-transform: uppercase;
+  }
+  .a1 h3 span { color: var(--core); }
+  .a2 h3 span { color: var(--wanaka); }
+  .a3 h3 span { color: var(--eh-red); }
+  .hint {
+    margin-top: 40px;
+    font-family: var(--serif);
+    font-size: 12.5px;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+  }
+  .hero-row { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+  .hero-avatar {
+    width: 250px;
+    margin-right: 24px;
+    -webkit-mask-image: radial-gradient(closest-side, #000 58%, transparent 96%);
+    mask-image: radial-gradient(closest-side, #000 58%, transparent 96%);
+    animation: bob 5.5s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  h1 .sub-line { display: block; font-size: 0.76em; color: rgba(255,255,255,0.88); }
+
+  /* ---- expandable "more about me" ---- */
+  .more-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 26px;
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: border-color 0.25s, color 0.25s, transform 0.25s;
+    user-select: none;
+  }
+  .more-toggle:is(:hover, .hov) { color: var(--ink); border-color: rgba(255,255,255,0.28); transform: translateY(-2px); }
+  .more-toggle .chev { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); font-size: 11px; }
+  .open .more-toggle .chev { transform: rotate(180deg); }
+
+  .morewrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .open .morewrap { grid-template-rows: 1fr; }
+  .morein { overflow: hidden; min-height: 0; }
+  .morein > .sec { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s; }
+  .open .morein > .sec { opacity: 1; transform: none; }
+
+  .sec-label {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 44px 0 20px;
+  }
+
+  /* life photos */
+  .life { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 8px; }
+  .lp { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--card); aspect-ratio: 4 / 3; transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s; }
+  .lp img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+  .lp:is(:hover, .hov) { transform: translateY(-4px); border-color: rgba(255,255,255,.26); }
+  .lp:is(:hover, .hov) img { transform: scale(1.04); }
+  .lp .lcap { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; background: linear-gradient(180deg, transparent, rgba(0,0,0,.72)); font-family: var(--serif); font-size: 13px; color: var(--ink); letter-spacing: .02em; }
+  .lp .lcap span { display: block; font-family: var(--sans); font-size: 11px; color: rgba(255,255,255,.7); margin-top: 3px; }
+  /* journey strip */
+  .journey {
+    display: grid;
+    grid-template-columns: 1.15fr 0.95fr 1.15fr 1.05fr;
+    grid-template-rows: 292px 92px;
+    gap: 12px;
+  }
+  .jstep {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 16px 14px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+    cursor: default;
+    overflow: hidden;
+  }
+  .jstep:is(:hover, .hov) {
+    background: rgba(255,255,255,0.055);
+    border-color: rgba(255,255,255,0.24);
+    transform: translateY(-3px);
+  }
+  .jstep .jn {
+    font-family: var(--serif);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--faint);
+    font-variant-numeric: tabular-nums;
+  }
+  .jstep h4 { font-family: var(--serif); font-size: 17px; font-weight: 500; margin: 7px 0 0; }
+  .jstep .role { font-size: 11px; color: var(--faint); margin-top: 4px; font-style: italic; }
+
+  /* keyword chips */
+  .kws { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+  .kw {
+    font-family: var(--serif);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--dim);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 2.5px 7px;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+  .kw.key {
+    color: #cfc4ff;
+    border-color: rgba(139,124,255,0.5);
+    background: rgba(139,124,255,0.12);
+  }
+  .kw.ai {
+    color: #bff0d4;
+    border-color: rgba(75,255,201,0.38);
+    background: rgba(75,255,201,0.09);
+  }
+
+  /* hover-revealed description */
+  .jdesc {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease;
+  }
+  .jstep:is(:hover, .hov) .jdesc { grid-template-rows: 1fr; opacity: 1; }
+  .jdesc > div { overflow: hidden; min-height: 0; }
+  .jdesc p { font-size: 11.5px; color: var(--dim); line-height: 1.55; padding-top: 10px; }
+
+  .jlogos {
+    display: flex; align-items: center; flex-wrap: wrap;
+    gap: 12px 16px; margin-top: auto; padding-top: 14px;
+  }
+  .jlogos img {
+    height: 28px; width: auto; display: block; opacity: 0.95;
+    transition: height 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease;
+  }
+  .jlogos img.big { height: 34px; }
+  .jlogos img.round { height: 44px; border-radius: 10px; }
+  .jstep:is(:hover, .hov) .jlogos img { height: 17px; opacity: 0.85; }
+  .jstep:is(:hover, .hov) .jlogos img.big { height: 22px; }
+  .jstep:is(:hover, .hov) .jlogos img.round { height: 26px; border-radius: 7px; }
+  .parsons-mark {
+    font-family: "Jost", sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.015em;
+    color: #ee3124;
+    line-height: 1;
+    transition: font-size 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .jstep:is(:hover, .hov) .parsons-mark { font-size: 15px; }
+
+  /* col 1/3/4 span both rows; col 2 holds the stacked pair */
+  .j-span { grid-row: 1 / span 2; }
+  .j-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 12px; grid-row: 1 / span 2; }
+  .j-mini { padding: 13px 15px 12px; }
+  .j-mini h4 { font-size: 15px; margin: 5px 0 0; }
+  .j-mini .jdesc p { font-size: 10.8px; line-height: 1.5; padding-top: 7px; }
+  .j-mini .jlogos { padding-top: 8px; }
+  .j-mini .jlogos img.round { height: 40px; }
+  .j-mini:is(:hover, .hov) .jlogos img.round { height: 22px; }
+  .j-mini .parsons-mark { font-size: 23px; }
+  .j-mini:is(:hover, .hov) .parsons-mark { font-size: 14px; }
+
+  /* AI-native band under cards 3 & 4 */
+  .j-band {
+    grid-column: 3 / span 2;
+    grid-row: 2;
+    border-radius: 14px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background:
+      linear-gradient(100deg,
+        rgba(139,124,255,0.20) 0%,
+        rgba(105,226,255,0.16) 34%,
+        rgba(163,230,74,0.16) 66%,
+        rgba(255,206,33,0.18) 100%);
+    border: 1px solid rgba(255,255,255,0.16);
+    position: relative;
+    overflow: hidden;
+  }
+  .j-band::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(120% 180% at 20% 0%, rgba(255,255,255,0.10), transparent 60%);
+    pointer-events: none;
+  }
+  .j-band img { height: 30px; width: 30px; border-radius: 50%; object-fit: cover; flex: none; }
+  .j-band .bt { font-family: var(--serif); font-size: 15px; font-weight: 500; letter-spacing: 0.01em; }
+  .j-band .bp { font-size: 11.5px; color: rgba(255,255,255,0.72); line-height: 1.5; }
+
+  /* JD match flip cards */
+  .match { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .fcard { perspective: 1100px; height: 276px; cursor: pointer; }
+  .finner {
+    position: relative; width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .fcard.flip .finner { transform: rotateY(180deg); }
+  .fface {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex; flex-direction: column;
+  }
+  .fface .flab {
+    font-family: var(--serif); font-size: 10.5px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 10px;
+  }
+  .ffront { background: rgba(255,255,255,0.02); border: 1px solid var(--line); }
+  .ffront p { font-size: 12.5px; color: var(--dim); font-style: italic; line-height: 1.6; }
+  .fback {
+    transform: rotateY(180deg);
+    background: rgba(139,124,255,0.06);
+    border: 1px solid rgba(139,124,255,0.35);
+  }
+  .fback p { font-size: 12.5px; color: var(--ink); line-height: 1.6; }
+  .fback ul { list-style: none; margin: 0; padding: 0; }
+  .fback li {
+    font-size: 11.8px;
+    line-height: 1.5;
+    color: var(--dim);
+    padding-left: 11px;
+    position: relative;
+    margin-bottom: 7px;
+  }
+  .fback li::before {
+    content: "";
+    position: absolute; left: 0; top: 7px;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(139,124,255,0.85);
+  }
+  .fback li b { color: var(--ink); font-weight: 600; }
+  .fback li .n { color: #cfc4ff; font-weight: 600; }
+  .fback .tail { font-size: 11.5px; color: var(--faint); font-style: italic; margin-top: 2px; }
+  .fback .where {
+    margin-top: auto; align-self: flex-start;
+    font-family: var(--serif); font-size: 10.5px; letter-spacing: 0.2em;
+    text-transform: uppercase; border-radius: 999px; padding: 3px 10px;
+    border: 1px solid var(--line); color: var(--dim);
+  }
+  .fback .where.c1 { color: var(--core); border-color: rgba(138,133,255,0.45); }
+  .fback .where.c2 { color: var(--wanaka); border-color: rgba(163,230,74,0.45); }
+  .fback .where.c3 { color: var(--eh-red); border-color: rgba(255,0,80,0.45); }
+  .match-hint { margin-top: 14px; font-size: 11.5px; color: rgba(255,255,255,0.25); font-family: var(--serif); letter-spacing: 0.14em; text-transform: uppercase; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .hero-actions .more-toggle { margin-top: 26px; }
+  a.more-toggle.take-home { text-decoration: none; }
+  a.more-toggle.take-home .arrow { font-size: 12px; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+  a.more-toggle.take-home:hover .arrow { transform: translate(2px, -2px); }
+  .open a.more-toggle.take-home .chev { transform: none; }
+  /* phone: one column, nothing wider than the screen */
+  @media (max-width: 900px) {
+    html, body { overflow-x: clip; }
+    .hub { width: calc(100% - 40px); padding: 56px 0 48px; min-height: 0; justify-content: flex-start; }
+    .hero-row { grid-template-columns: 1fr; gap: 22px; }
+    .hero-avatar { width: 150px; margin: 0 auto; }
+    h1 { font-size: clamp(30px, 8.6vw, 40px); }
+    h1 .sub-line { white-space: normal !important; display: block; }
+    .journey { grid-template-columns: 1fr; grid-template-rows: auto; gap: 10px; }
+    .journey > * { grid-column: auto !important; grid-row: auto !important; }
+    .life { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .match { grid-template-columns: 1fr; gap: 12px; }
+    .fcard { height: 250px; }
+    .agenda { grid-template-columns: 1fr; gap: 12px; margin-top: 34px; }
+    .agenda a { min-height: 0; padding: 22px 20px 20px; }
+    .agenda h3 { font-size: 22px; margin: 14px 0 8px; }
+    .hint { font-size: 11px; line-height: 1.7; }
+    .glow { width: 300px; height: 240px; filter: blur(60px); left: 0 !important; right: auto !important; }
+    .kws { max-width: 100%; }
+    .kw { max-width: 100%; white-space: normal; }
+    .hero-actions { gap: 10px; }
+    .sec { margin-top: 34px; }
+    img, video { max-width: 100%; }
+  }
 </style>
 </head>
 <body>
-<div class="gate"><form id="f" autocomplete="off" onsubmit="return false"><div class="k">Case review</div><input id="p" type="password" placeholder="password" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" /><button class="go" type="submit">Enter</button><div class="m" id="m"></div></form></div>
+  <div class="glow purple tc" style="position:fixed"></div>
+  <div class="hub">
+    <div class="hero-row">
+      <div>
+        <div class="eyebrow" style="opacity:1;transform:none">Case review · 45 min</div>
+        <h1 style="max-width:920px">Hi, I'm Bella.<span class="sub-line" style="white-space:nowrap">Here's what we'll walk through.</span></h1>
+        <p class="lede" style="margin-top:24px">
+          Product designer, New York. Three stories: breaking a product's growth
+          plateau, building 0&nbsp;→&nbsp;1, and a small social product I designed and built myself.
+        </p>
+        <div class="hero-actions">
+          <div class="more-toggle" id="moreToggle">
+            A bit more about me <span class="chev">▼</span>
+          </div>
+        </div>
+      </div>
+      <img class="hero-avatar" src="assets/hero-avatar.webp" alt="Bella" id="avatarToggle" style="cursor:pointer" />
+    </div>
+
+    <div class="morewrap">
+      <div class="morein">
+        <div class="sec">
+          <div class="sec-label">The journey so far</div>
+          <div class="journey">
+            <div class="jstep j-span" data-k="tencent">
+              <span class="jn">2020</span>
+              <h4>Tencent</h4>
+              <div class="role">Started as an interaction design intern</div>
+              <div class="kws">
+                <span class="kw key">Gamification</span>
+                <span class="kw">Design strategy</span>
+              </div>
+              <div class="jdesc"><div><p>Game-based courses for ages 3–8: completion 72% → 98%. "Take a Break": 1M DAU in month one.</p></div></div>
+              <div class="jlogos">
+                <img src="assets/logo-tencent.png" alt="Tencent" />
+                <img src="assets/logo-abcmouse.png" alt="ABCmouse" />
+                <img src="assets/logo-tmeeting.png" alt="Tencent Meeting" />
+              </div>
+            </div>
+
+            <div class="j-stack">
+              <div class="jstep j-mini" data-k="parsons">
+                <span class="jn">2022</span>
+                <h4>Parsons</h4>
+                <div class="kws"><span class="kw">Strategic design</span></div>
+                <div class="jdesc"><div><p>MS, Strategic Design &amp; Management.</p></div></div>
+                <div class="jlogos"><span class="parsons-mark">PARSONS</span></div>
+              </div>
+              <div class="jstep j-mini" data-k="lego">
+                <span class="jn">2023</span>
+                <h4>LEGO</h4>
+                <div class="kws"><span class="kw key">Creative campaign</span></div>
+                <div class="jdesc"><div><p>A video campaign that doubled daily sales.</p></div></div>
+                <div class="jlogos"><img class="round" src="assets/logo-lego.webp" alt="LEGO" /></div>
+              </div>
+            </div>
+
+            <div class="jstep j-span" style="grid-row:1" data-k="answer">
+              <span class="jn">2024 — now</span>
+              <h4>Answer.AI</h4>
+              <div class="role">Product Designer · 7M users</div>
+              <div class="kws">
+                <span class="kw key">Gamification</span>
+                <span class="kw">Design strategy</span>
+                <span class="kw ai">Designing with AI</span>
+              </div>
+              <div class="jdesc"><div><p>Led the redesign past the growth plateau. Its students are TikTok's audience.</p></div></div>
+              <div class="jlogos"><img class="big" src="assets/logo-answer.png" alt="Answer.AI" /></div>
+            </div>
+
+            <div class="jstep j-span" style="grid-row:1" data-k="wanaka">
+              <span class="jn">2024 — now</span>
+              <h4>Wanaka</h4>
+              <div class="role">A creator tool, 0 → 1</div>
+              <div class="kws">
+                <span class="kw key">Creator tool</span>
+                <span class="kw ai">AI skills</span>
+                <span class="kw ai">Designing with AI</span>
+              </div>
+              <div class="jdesc"><div><p>Players build and publish their own games, then share them with friends.</p></div></div>
+              <div class="jlogos"><img class="big" src="assets/logo-wanaka.png" alt="Wanaka" /></div>
+            </div>
+
+            <div class="j-band">
+              <img src="assets/hero-avatar.webp" alt="Bella" />
+              <div>
+                <div class="bt">And through both — working as an AI-native designer</div>
+                <div class="bp">Designing with AI in the loop, and shipping interactive demos and playable prototypes every week.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-label">Beyond work</div>
+          <div class="life">
+            <div class="lp" data-k="twin"><img src="assets/life-1.jpg" alt="Bella and her twin sister as kids" style="object-position:center 30%" /><div class="lcap">Born with a best friend<span>My twin sister Manman — 源源 + 满满. Both designers.</span></div></div>
+            <div class="lp" data-k="house"><img src="assets/life-2.jpg" alt="The toy house our dad built" /><div class="lcap">The toy house Dad built<span>Where we grew up playing role-play games.</span></div></div>
+            <div class="lp" data-k="draw"><img src="assets/life-3.jpg" alt="Bella drawing on a wall" style="object-position:center 40%" /><div class="lcap">Give me a pen<span>Drawing, always. Sports and LEGO sets to unwind.</span></div></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-label">The brief, decoded — what the role asks × what I bring</div>
+          <div class="match">
+            <div class="fcard"><div class="finner">
+              <div class="fface ffront"><span class="flab">The role asks</span><p>"Own design across core social scenarios (friend interactions and sharing, Story, DMs) and explore new ways to spark authentic connection and interaction between users."</p></div>
+              <div class="fface fback"><span class="flab">What I bring</span>
+                <ul>
+                  <li><b>To fill in</b> — the clearest social work you have done</li>
+                  <li><b>To fill in</b> — what you learned about how friends actually talk</li>
+                  <li><b>Side project</b> — the social demo in chapter 03</li>
+                </ul>
+                <span class="where c2">Side project</span>
+              </div>
+            </div></div>
+            <div class="fcard"><div class="finner">
+              <div class="fface ffront"><span class="flab">The role asks</span><p>"Use product thinking and data to surface real user needs, propose product directions and design ideas, and drive them through to launch and validation."</p></div>
+              <div class="fface fback"><span class="flab">What I bring</span>
+                <ul>
+                  <li><b>Answer.AI</b> — led the redesign past the growth plateau, for <span class="n">7M</span> students</li>
+                  <li><span class="n">+13%</span> DAU · <span class="n">+23%</span> daily revenue · <span class="n">~8%</span> 30-day retention</li>
+                  <li><b>Tencent</b> — "Take a Break": <span class="n">1M DAU</span> in month one</li>
+                </ul>
+                <span class="where c1">Answer.AI · Tencent</span>
+              </div>
+            </div></div>
+            <div class="fcard"><div class="finner">
+              <div class="fface ffront"><span class="flab">The role asks</span><p>"Use AI coding tools fluently to surface optimization opportunities and rapidly turn ideas into interactive demos, shortening the path from idea to validation."</p></div>
+              <div class="fface fback"><span class="flab">What I bring</span>
+                <ul>
+                  <li><b>Four playable game effects in seven days</b> — the TikTok take-home, built with Claude Code</li>
+                  <li><b>Wanaka</b> — hi-fi demos we ship and review the same day, AI wired into Figma</li>
+                  <li>This deck included</li>
+                </ul>
+                <span class="where c3">Take home · Wanaka · side projects</span>
+              </div>
+            </div></div>
+            <div class="fcard"><div class="finner">
+              <div class="fface ffront"><span class="flab">The role asks</span><p>"Maintain a high aesthetic bar. Actively use a range of social products across markets and stay current on social interaction patterns and cultural trends."</p></div>
+              <div class="fface fback"><span class="flab">What I bring</span>
+                <ul>
+                  <li><b>ABCmouse</b> — illustrated learning worlds for ages 3–8</li>
+                  <li><b>Answer.AI</b> — a full IP set: three tutors, character and motion design</li>
+                  <li><b>Wanaka</b> — 0 → 1 UI, IP and motion, end to end</li>
+                  <li><b>To fill in</b> — the social apps you actually live in, and what you take from them</li>
+                </ul>
+                <span class="where c1">Four design systems</span>
+              </div>
+            </div></div>
+            <div class="fcard"><div class="finner">
+              <div class="fface ffront"><span class="flab">The role asks</span><p>"Curate and elevate from large volumes of AI-generated output, turning the 'ordinary' into the 'extraordinary'."</p></div>
+              <div class="fface fback"><span class="flab">What I bring</span>
+                <ul>
+                  <li><b>35 versions</b> of one game demo, judged down to the one that ships</li>
+                  <li>A <b>library of skills, written by designers</b> — my taste, written down so AI can reuse it</li>
+                  <li>Three are public: <b>game cover</b>, <b>agent voice</b>, <b>design QA</b></li>
+                </ul>
+                <span class="where c2">Wanaka · take home</span>
+              </div>
+            </div></div>
+            <div class="fcard"><div class="finner">
+              <div class="fface ffront"><span class="flab">The role asks</span><p>"In complex business contexts, use the simplest design approach to solve the core problem. Partner closely with product managers and engineers to ship."</p></div>
+              <div class="fface fback"><span class="flab">What I bring</span>
+                <ul>
+                  <li><b>To fill in</b> — the messiest project, and the simple idea that carried it</li>
+                  <li><b>Answer.AI</b> — one personalized school, built across PM, engineering and content</li>
+                  <li><b>Wanaka</b> — shipping 0 → 1 as a small team, every week</li>
+                </ul>
+                <span class="where c1">Answer.AI · Wanaka</span>
+              </div>
+            </div></div>
+          </div>
+          <div class="match-hint">Click a card to flip · F flips them all</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agenda">
+      <a class="a1" href="answer.html" onclick="this.href='answer.html?t='+Date.now()">
+        <span class="no">01</span>
+        <h3>Answer.AI<br /><span>The growth story</span></h3>
+        <div class="sub">From a shared answer machine to a personalized school — retention, differentiation, results.</div>
+        <div class="time">~18 min</div>
+      </a>
+      <a class="a2" href="wanaka.html" onclick="this.href='wanaka.html?t='+Date.now()">
+        <span class="no">02</span>
+        <h3>Wanaka<br /><span>0 → 1 with AI</span></h3>
+        <div class="sub">How my team and I work with AI at every step of building a new product.</div>
+        <div class="time">~6 min</div>
+      </a>
+      <a class="a3" href="social.html" onclick="this.href='social.html?t='+Date.now()">
+        <span class="no">03</span>
+        <h3>Side project<br /><span>Social + AI</span></h3>
+        <div class="sub">A small social product, designed and built end to end — the thing itself is the demo.</div>
+        <div class="time">~5 min</div>
+      </a>
+    </div>
+
+    <div class="hint">Press 1 / 2 / 3 to jump · E about me · F the brief · S script · Space next script line</div>
+  </div>
 <script>
-(async () => {
-  const page = "index";
-  const f = document.getElementById("f"), inp = document.getElementById("p"), msg = document.getElementById("m");
-  const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
-  let data = null;
-  async function load() { if (!data) data = await (await fetch("enc/" + page + ".json?t=" + Date.now(), { cache: "no-store" })).json(); return data; }
-  // listen before any await so an early Enter never reloads the page
-  f.addEventListener("submit", async (e) => {
-    e.preventDefault(); inp.blur(); msg.textContent = "…";
-    if (!window.crypto || !crypto.subtle) { msg.textContent = "open this link in Safari or Chrome"; return; }
-    try { await load(); } catch (e2) { msg.textContent = "loading failed, refresh the page"; return; }
-    // phones autocapitalise and add spaces: try what was typed, then trimmed and lowercased
-    const typed = inp.value, tries = [...new Set([typed, typed.trim(), typed.trim().toLowerCase()])];
-    for (const pw of tries) {
-      let key, pt;
-      try { key = await keyFrom(pw); pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(data.iv) }, key, b64(data.ct)); } catch (err) { continue; }
-      try { const raw = new Uint8Array(await crypto.subtle.exportKey("raw", key)); localStorage.setItem("deck-k", btoa(String.fromCharCode(...raw))); } catch (err) {}
-      const html = new TextDecoder().decode(pt);
-      document.open(); document.write(html); document.close();
-      return;
+  const hub = document.querySelector(".hub");
+  const toggle = () => hub.classList.toggle("open");
+  document.getElementById("moreToggle").addEventListener("click", toggle);
+  document.getElementById("avatarToggle").addEventListener("click", toggle);
+
+  document.querySelectorAll(".fcard").forEach((c) =>
+    c.addEventListener("click", () => c.classList.toggle("flip"))
+  );
+
+  addEventListener("keydown", (e) => {
+    if (e.key === "1") location.href = "answer.html?t=" + Date.now();
+    if (e.key === "2") location.href = "wanaka.html?t=" + Date.now();
+    if (e.key === "3") location.href = "social.html?t=" + Date.now();
+    if (e.key.toLowerCase() === "e") toggle();
+    if (e.key.toLowerCase() === "f") {
+      const cards = [...document.querySelectorAll(".fcard")];
+      const anyUnflipped = cards.some((c) => !c.classList.contains("flip"));
+      cards.forEach((c, i) =>
+        setTimeout(() => c.classList.toggle("flip", anyUnflipped), i * 120)
+      );
     }
-    f.classList.remove("bad"); void f.offsetWidth; f.classList.add("bad"); msg.textContent = "try again"; inp.select();
   });
-  try { await load(); } catch (e) { msg.textContent = "loading failed, refresh the page"; }
-  async function keyFrom(pw) {
-    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
-    return crypto.subtle.deriveKey({ name: "PBKDF2", salt: b64(data.salt), iterations: 150000, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, true, ["decrypt"]);
-  }
-  async function open(key) {
-    const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(data.iv) }, key, b64(data.ct));
-    const html = new TextDecoder().decode(pt);
-    document.open(); document.write(html); document.close();
-  }
-  if (location.search.includes("logout")) localStorage.removeItem("deck-k");
-  const saved = localStorage.getItem("deck-k");
-  if (saved) { try { const key = await crypto.subtle.importKey("raw", b64(saved), { name: "AES-GCM" }, true, ["decrypt"]); await open(key); return; } catch (e) { localStorage.removeItem("deck-k"); } }
-})();
 </script>
+<div class="notes" hidden>Hi, it's really nice to meet you. I'm Bella, a product designer based in New York, with about five years of experience. My background's all in the résumé, so rather than read it to you, I made a quick visual — it'll only take a minute. <i>[E · open]</i></div>
+<div class="notes" hidden><span data-hov="[data-k=tencent]">I started at Tencent on ABCmouse, a gamified EdTech product — making interactive games for kids — and then moved to Tencent Meeting, where I helped build the design system and core features.</span> <span data-hov="[data-k=parsons]">Then I came to New York for my master's in Strategic Design and Management,</span> <span data-hov="[data-k=lego]">and worked at LEGO as a creative strategist along the way.</span> <span data-hov="[data-k=answer]">Since graduating in 2024, I've been the product designer at Answer.AI, which is an AI education company with seven million students,</span> <span data-hov="[data-k=wanaka]">and at the same time building Wanaka, an AI game creation tool, from zero to one.</span> So for the past two years, AI has been part of every step of my process. <i>[scroll to photos]</i> And beyond work — <span data-hov="[data-k=twin]">I have a twin sister, Manman. Our names together are 源源满满 — it means "full and flowing" in Chinese — and we're both designers.</span> <span data-hov="[data-k=house]">We grew up in a wooden toy house our dad built, playing every kind of role-play game — and I think that's a big part of why we both became designers who care about empathy.</span> <span data-hov="[data-k=draw]">I've loved drawing for as long as I can remember — give me a pen and I'll just keep going. And outside of work, I do sports and build LEGO sets.</span> <i>[E · close]</i></div>
+<div class="notes" hidden>I also went through the JD carefully, and I think my background is a strong match — we can come back to this at the end if it's useful. <i>[F again]</i></div>
+<div class="notes" hidden>So here's the plan for today. First, Answer.AI — that's a growth story, and I'll spend most of the time there, about eighteen minutes. Then Wanaka, a zero-to-one creator tool, and how my team builds with AI. And last, a social side project I designed and built myself. Whatever time is left, we'll use for Q&amp;A. Alright, let's start with Answer.AI — and please feel free to jump in at any point. <i>[1]</i></div>
+<script>
+  (function(){
+    const st=document.createElement("div");st.className="stage page";
+    [...document.body.children].forEach(el=>{if(el.tagName!=="SCRIPT"&&!el.classList.contains("notes"))st.appendChild(el);});
+    document.body.insertBefore(st,document.body.firstChild);
+    const notes=[...document.querySelectorAll(".notes")];
+    const p=document.createElement("div");p.className="script";
+    p.innerHTML="<div class=\"script-in\"><i class=\"script-k\"></i><div class=\"script-t\"></div></div>";
+    document.body.appendChild(p);
+    const k=p.querySelector(".script-k"),t=p.querySelector(".script-t");
+    let seg=0;
+    const labels=["Script · Intro","Script · Journey","Script · JD","Script · Plan"];
+    const bc=("BroadcastChannel" in window)?new BroadcastChannel("deck-presenter"):null;
+    function render(){seg=Math.max(0,Math.min(notes.length-1,seg));k.textContent=labels[seg]||("Script · "+(seg+1));t.innerHTML=notes[seg].innerHTML;p.scrollTop=0;
+      if(bc)bc.postMessage({type:"state",embedded:window!==window.top,page:"index.html",chapter:"Agenda",index:seg,total:notes.length,title:(labels[seg]||"").replace("Script · ",""),next:(labels[seg+1]||"").replace("Script · ",""),html:t.innerHTML});}
+    if(bc)bc.onmessage=(e)=>{const m=e.data||{};if(m.type==="cmd"){if(m.key==="home")return;document.dispatchEvent(new KeyboardEvent("keydown",{key:m.key,bubbles:true,cancelable:true}));}if(m.type==="hello")render();};
+    render();
+    let wasOpen=false, visited=false;
+    function sync(){
+      const hub=document.querySelector(".hub");
+      const open=hub.classList.contains("open");
+      const flipped=[...document.querySelectorAll(".fcard")].some(c=>c.classList.contains("flip"));
+      const matchHov=!!hub.querySelector(".match.hov"), agendaHov=!!hub.querySelector(".agenda.hov");
+      if(open&&!wasOpen){visited=true;}
+      let want=seg;
+      if(matchHov) want=2;
+      else if(flipped&&!agendaHov) want=2;
+      else if(open) want=(agendaHov&&visited)?3:1;
+      else if(visited&&wasOpen) want=3;
+      else if(seg===2) want=3;
+      wasOpen=open;
+      if(want!==seg){seg=want;render();}
+    }
+    const mo=new MutationObserver(sync);
+    mo.observe(document.querySelector(".hub"),{attributes:true,attributeFilter:["class"],subtree:true});
+    addEventListener("keydown",(e)=>{
+      if(e.metaKey||e.ctrlKey||e.altKey)return;
+      const key=e.key.toLowerCase();
+      if(key==="s"){document.body.classList.toggle("script-on");}
+      if(e.key==="ArrowRight"||e.key==="]"||e.key===" "){e.preventDefault();seg++;render();}
+      if(e.key==="ArrowLeft"||e.key==="["){seg--;render();}
+      if(key==="e"){setTimeout(()=>{const open=document.querySelector(".hub").classList.contains("open");seg=open?1:3;render();},0);}
+    });
+  })();
+</script>
+<script src="mirror.js?v=09081324"></script>
+<script src="editor.js?v=09081324"></script>
 </body>
 </html>
