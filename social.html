@@ -4,54 +4,175 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Social side project · In progress</title>
+<title>LiveStatus · A screen you keep open</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css?v=09081324" />
 <style>
   :root { --accent: var(--eh-red); }
-  .todo { max-width: 720px; margin: 34px auto 0; text-align: left; }
-  .todo li { font-size: 15.5px; line-height: 1.7; color: var(--dim); margin-bottom: 6px; }
-  .todo li b { color: var(--ink); font-weight: 500; }
+  .todo { display: inline-block; font-family: var(--serif); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--eh-red); border: 1px solid rgba(255,0,80,.45); border-radius: 999px; padding: 3px 10px; }
+  .fill { color: var(--faint); font-style: italic; }
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; text-align: left; }
+  .three .c { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .three .c .k { font-family: var(--serif); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+  .three .c h3 { margin: 8px 0 0; font-family: var(--serif); font-weight: 500; font-size: 20px; color: var(--ink); }
+  .three .c p { margin: 10px 0 0; font-size: 13.8px; line-height: 1.5; color: var(--dim); }
+  .funnel { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; text-align: left; }
+  .funnel .s { flex: 1 1 150px; border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px; background: var(--card); }
+  .funnel .s b { display: block; font-size: 14px; color: var(--ink); }
+  .funnel .s span { display: block; font-size: 12.4px; color: var(--dim); margin-top: 4px; line-height: 1.45; }
+  .funnel .s.leak { border-color: rgba(255,0,80,.45); }
+  .funnel .s.dead { border-style: dashed; }
+  .funnel .s.dead b { color: var(--eh-red); }
+  .shot { margin-top: 26px; border: 1px dashed var(--line); border-radius: 18px; min-height: 220px; display: grid; place-items: center; color: var(--faint); font-size: 13px; }
+  @media (max-width: 900px) { .three { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
   <div class="bar" style="background:var(--eh-red)"></div>
   <div class="chrome tl"><a href="index.html" onclick="this.href='index.html?t='+Date.now()">← Agenda</a></div>
-  <div class="chrome bl">Side project · Social + AI</div>
-  <div class="chrome br">01 / 02</div>
+  <div class="chrome bl">LiveStatus · Social + AI</div>
+  <div class="chrome br">01 / 10</div>
   <nav class="rail" aria-label="Sections">
-    <a data-from="0" data-to="0">The project</a>
-    <a data-from="1" data-to="1">Wrap up</a>
+    <a data-from="0" data-to="3">The product</a>
+    <a data-from="4" data-to="6">What it taught me</a>
+    <span class="gap"></span>
+    <a data-from="7" data-to="8">The read on TikTok</a>
+    <a data-from="9" data-to="9">Wrap up</a>
   </nav>
 
   <div class="deck">
+    <!-- 0 · cover -->
     <section class="slide">
       <div class="glow red tc"></div>
       <div class="slide-inner" style="text-align:center">
         <div class="eyebrow rv">Chapter 03 · <b style="color:var(--eh-red)">Side project</b></div>
-        <h1 class="rv">Social + AI</h1>
-        <p class="lede rv" style="margin:26px auto 0">
-          A small social product, designed and built end to end — the thing itself is the demo.
+        <h1 class="rv">LiveStatus</h1>
+        <p class="lede rv" style="margin:26px auto 0;max-width:720px">
+          A split screen you keep open with one person — built for couples and close friends.
+          I own it, and I'm rebuilding it right now.
         </p>
-        <ul class="todo rv d2">
-          <li><b>To fill in:</b> what it is, and who it is for</li>
-          <li><b>To fill in:</b> the insight about how people actually talk to their friends</li>
-          <li><b>To fill in:</b> the build — idea to playable, and what it took</li>
-          <li><b>To fill in:</b> what people did with it once it was in their hands</li>
-        </ul>
       </div>
-      <div class="notes" hidden>Placeholder. This chapter is the new social side project.</div>
+      <div class="notes" hidden>Last chapter is a product I own myself. It's called LiveStatus — a split screen you keep open with one person. Couples, best friends. I'll show you what it is, what building it taught me about social design, and then what I'd do with that at TikTok.</div>
     </section>
 
+    <!-- 1 · what it is -->
     <section class="slide">
-      <div class="glow red tc"></div>
+      <div class="slide-inner">
+        <div class="eyebrow rv">What it is</div>
+        <h2 class="rv">One screen, two people, always on.</h2>
+        <p class="lede rv"><span class="todo">to fill</span> <span class="fill">一句话说清它是什么：上面是谁、下面是谁、什么时候更新、看到的是什么。</span></p>
+        <div class="shot rv d2">产品截图 / 录屏位</div>
+      </div>
+      <div class="notes" hidden>占位：LiveStatus 是什么。</div>
+    </section>
+
+    <!-- 2 · the insight -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow rv">Why it exists</div>
+        <h2 class="rv">The gap it came from.</h2>
+        <p class="lede rv"><span class="todo">to fill</span> <span class="fill">你看到的那个缺口：两个很近的人之间，现有的产品哪里不够——聊天太重、朋友圈太公开、还是"没事找事说"太尴尬。</span></p>
+      </div>
+      <div class="notes" hidden>占位：为什么做这个。</div>
+    </section>
+
+    <!-- 3 · the core interaction -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow rv">The core move</div>
+        <h2 class="rv">Share a moment without writing a message.</h2>
+        <p class="lede rv"><span class="todo">to fill</span> <span class="fill">上下分屏具体怎么用：一直开着还是按需？谁能看？多久消失？回应的成本是什么？</span></p>
+        <div class="shot rv d2">核心交互动图位</div>
+      </div>
+      <div class="notes" hidden>占位：核心交互。</div>
+    </section>
+
+    <!-- 4 · what I changed -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow rv">What I'm changing</div>
+        <h2 class="rv">Diagnosis, then rebuild.</h2>
+        <p class="lede rv"><span class="todo">to fill</span> <span class="fill">接手之后你诊断出什么问题、改了什么、为什么这么改。这一段对这个岗位最重要——TikTok 的社交也是在改一个已经存在但没跑通的东西。</span></p>
+      </div>
+      <div class="notes" hidden>占位：诊断与改造。</div>
+    </section>
+
+    <!-- 5 · where it is now -->
+    <section class="slide">
+      <div class="slide-inner" style="text-align:center">
+        <div class="eyebrow rv">Where it is now</div>
+        <h2 class="rv">In people's hands.</h2>
+        <p class="lede rv" style="margin:20px auto 0"><span class="todo">to fill</span> <span class="fill">阶段与数字：多少人在用、留存、每天用几次、有没有一条你最在意的指标。</span></p>
+      </div>
+      <div class="notes" hidden>占位：现状与数据。</div>
+    </section>
+
+    <!-- 6 · what it taught me -->
+    <section class="slide">
+      <div class="slide-inner" style="text-align:center">
+        <div class="eyebrow rv">What building it taught me</div>
+        <h2 class="rv">Three rules I now design by.</h2>
+        <div class="three">
+          <div class="c rv d2">
+            <div class="k">Presence</div>
+            <h3>Being there beats saying something</h3>
+            <p><span class="todo">to fill</span> <span class="fill">你在 LiveStatus 上看到的证据。</span></p>
+          </div>
+          <div class="c rv d3">
+            <div class="k">Pressure</div>
+            <h3>Every signal is also a demand</h3>
+            <p><span class="todo">to fill</span> <span class="fill">哪个信号你加了又拿掉，或者默认关掉了。</span></p>
+          </div>
+          <div class="c rv d4">
+            <div class="k">Defaults</div>
+            <h3>The default is the product</h3>
+            <p><span class="todo">to fill</span> <span class="fill">哪个默认值改变了人的行为。</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="notes" hidden>占位：三条规则。</div>
+    </section>
+
+    <!-- 7 · TikTok read: the break -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow rv">The read on TikTok</div>
+        <h2 class="rv">A share every day, and no one is served after it.</h2>
+        <p class="lede rv">TikTok already creates the urge to send something to one person. The chain breaks halfway — and the half that breaks is the social half.</p>
+        <div class="funnel rv d2">
+          <div class="s"><b>Sees it</b><span>The strongest recommendation engine in the world.</span></div>
+          <div class="s"><b>Thinks of someone</b><span>The motive already exists.</span></div>
+          <div class="s leak"><b>Sends it</b><span>A large share of it leaves for iMessage or WeChat.</span></div>
+          <div class="s dead"><b>The conversation</b><span>Happens in another app.</span></div>
+          <div class="s dead"><b>Comes back to reply</b><span>The hardest reason to open, and TikTok doesn't own it.</span></div>
+        </div>
+        <p class="kicker rv d4" style="margin-top:22px">Streaks, stickers, group chats — every piece TikTok has built serves two people who are already talking.</p>
+      </div>
+      <div class="notes" hidden>说：TikTok 每天制造上亿次"想发给某个人"的冲动，但这条链路在第三步出了 app。它已经做了 streak、贴纸、群聊、语音通话——但这些服务的都是已经在聊天的两个人，没有一个服务刚刚分享完的那个人。</div>
+    </section>
+
+    <!-- 8 · what I'd do -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow rv">If I were on the team</div>
+        <h2 class="rv">Start where the behaviour already is.</h2>
+        <p class="lede rv"><span class="todo">to fill</span> <span class="fill">一个具体的提案：改哪一处、为什么是这一处、以及一个能证伪它的指标（对方回复率、分享者 24 小时回访率）。</span></p>
+      </div>
+      <div class="notes" hidden>占位：提案 + 验证方式。</div>
+    </section>
+
+    <!-- 9 · wrap -->
+    <section class="slide">
       <div class="slide-inner" style="text-align:center">
         <div class="eyebrow rv">Wrap up</div>
-        <h2 class="rv">Thank you</h2>
-        <p class="kicker rv d5" style="margin-top:44px"><a href="index.html" onclick="this.href='index.html?t='+Date.now()" style="color:var(--faint);text-decoration:none">Back to agenda →</a></p>
+        <h2 class="rv">Thank you.</h2>
+        <p class="lede rv" style="margin:22px auto 0;max-width:720px">
+          AI makes content infinite. What stays scarce is someone on the other side.
+        </p>
+        <p class="kicker rv d5" style="margin-top:40px"><a href="index.html" onclick="this.href='index.html?t='+Date.now()" style="color:var(--faint);text-decoration:none">Back to agenda →</a></p>
       </div>
-      <div class="notes" hidden>Placeholder wrap up.</div>
+      <div class="notes" hidden>收尾：AI 让内容变得无限，稀缺的是另一端有个人。</div>
     </section>
   </div>
 <script src="deck.js?v=09081324"></script>
