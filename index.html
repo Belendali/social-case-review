@@ -328,6 +328,15 @@
   .fback .where.c1 { color: var(--core); border-color: rgba(138,133,255,0.45); }
   .fback .where.c2 { color: var(--wanaka); border-color: rgba(163,230,74,0.45); }
   .fback .where.c3 { color: var(--eh-red); border-color: rgba(255,0,80,0.45); }
+  .fcard .sticker {
+    position: absolute; right: 14px; bottom: 12px; width: 108px; height: auto;
+    opacity: 0; transform: translateY(10px) rotate(-4deg) scale(.94);
+    transition: opacity .32s ease-out, transform .38s cubic-bezier(.22,1,.36,1);
+    pointer-events: none; filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
+  }
+  .fcard:hover .ffront .sticker { opacity: 1; transform: translateY(0) rotate(-2deg) scale(1); }
+  .fcard.flip .ffront .sticker { opacity: 0; }
+  @media (max-width: 900px) { .fcard .sticker { width: 76px; right: 10px; bottom: 8px; } }
   .match-hint { margin-top: 14px; font-size: 11.5px; color: rgba(255,255,255,0.25); font-family: var(--serif); letter-spacing: 0.14em; text-transform: uppercase; }
   .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
   .hero-actions .more-toggle { margin-top: 26px; }
@@ -468,7 +477,7 @@
           <div class="sec-label">The brief, decoded — what the role asks × what I bring</div>
           <div class="match">
             <div class="fcard"><div class="finner">
-              <div class="fface ffront"><span class="flab">The role asks</span><p>"Deep hands-on practice with <b>AI coding tools</b> — independently turning ideas into <b>high-fidelity, interactive demos</b> that validate experience and feasibility."</p></div>
+              <div class="fface ffront"><span class="flab">The role asks</span><p>"Deep hands-on practice with <b>AI coding tools</b> — independently turning ideas into <b>high-fidelity, interactive demos</b> that validate experience and feasibility."</p><img class="sticker" src="assets/sticker-01.webp" alt="AI collaboration sticker" loading="lazy" /></div>
               <div class="fface fback"><span class="flab">What I bring</span>
                 <ul>
                   <li><b>Answer.AI</b> — an AI agent found the trend behind study rooms. <span class="n">+28%</span> time in app</li>
@@ -479,7 +488,7 @@
               </div>
             </div></div>
             <div class="fcard"><div class="finner">
-              <div class="fface ffront"><span class="flab">The role asks</span><p>"Own design across <b>core social scenarios</b> — friend interactions and sharing, Story, DMs — and explore new ways to spark <b>authentic connection</b>."</p></div>
+              <div class="fface ffront"><span class="flab">The role asks</span><p>"Own design across <b>core social scenarios</b> — friend interactions and sharing, Story, DMs — and explore new ways to spark <b>authentic connection</b>."</p><img class="sticker" src="assets/sticker-02.webp" alt="Social connection sticker" loading="lazy" /></div>
               <div class="fface fback"><span class="flab">What I bring</span>
                 <ul>
                   <li><b>LiveStatus</b> — the social product I own right now: a split screen you and your person keep open, for couples and close friends</li>
@@ -489,7 +498,7 @@
               </div>
             </div></div>
             <div class="fcard"><div class="finner">
-              <div class="fface ffront"><span class="flab">The role asks</span><p>"Use product thinking and data to surface <b>real</b> user needs, propose directions, and drive them through to <b>launch and validation</b>."</p></div>
+              <div class="fface ffront"><span class="flab">The role asks</span><p>"Use product thinking and data to surface <b>real</b> user needs, propose directions, and drive them through to <b>launch and validation</b>."</p><img class="sticker" src="assets/sticker-03.webp" alt="Product thinking sticker" loading="lazy" /></div>
               <div class="fface fback"><span class="flab">What I bring</span>
                 <ul>
                   <li><b>Answer.AI</b> — led the redesign past the growth plateau: <span class="n">+13%</span> DAU · <span class="n">+23%</span> daily revenue · <span class="n">~8%</span> 30-day retention</li>
@@ -499,7 +508,7 @@
               </div>
             </div></div>
             <div class="fcard"><div class="finner">
-              <div class="fface ffront"><span class="flab">The role asks</span><p>"A <b>high aesthetic bar</b>, curating and elevating from large volumes of AI output — and the <b>simplest</b> approach to the core problem."</p></div>
+              <div class="fface ffront"><span class="flab">The role asks</span><p>"A <b>high aesthetic bar</b>, curating and elevating from large volumes of AI output — and the <b>simplest</b> approach to the core problem."</p><img class="sticker" src="assets/sticker-04.webp" alt="Character and animation sticker" loading="lazy" /></div>
               <div class="fface fback"><span class="flab">What I bring</span>
                 <ul>
                   <li><b>Solo designer, launch quality</b> — IP, UI, illustration and motion, shipped without a team behind me</li>
