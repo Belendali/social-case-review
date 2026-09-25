@@ -582,20 +582,22 @@
     mask-composite: intersect;
   }
   .tkshot.gone { display: none; }
-  .ar { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; min-height: 250px; }
+  .ar { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px 22px; background: var(--card); }
+  .ar::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; }
+  .ar::after { content: attr(data-mark); position: absolute; right: 14px; bottom: -22px; font-family: var(--serif); font-size: 108px; line-height: 1; opacity: .07; pointer-events: none; }
+  .ar-ask::before { background: linear-gradient(90deg, var(--core), transparent 75%); }
+  .ar-read::before { background: linear-gradient(90deg, var(--stay), transparent 75%); }
+  .ar-ask { background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.08), transparent 60%), var(--card); }
+  .ar-read { background: radial-gradient(120% 90% at 0% 0%, rgba(255,214,102,.07), transparent 60%), var(--card); }
+  .ar-ask::after { color: var(--core); }
+  .ar-read::after { color: var(--stay); }
   .ar .ark { font-family: var(--serif); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin-bottom: 14px; }
-  .ar ul { list-style: none; margin: 0; padding: 0; }
-  .ar li { position: relative; padding-left: 15px; margin-bottom: 11px; }
+  .ar ul { list-style: none; margin: 0; padding: 0; position: relative; z-index: 1; }
+  .ar li { position: relative; padding-left: 16px; margin-bottom: 10px; font-size: 14.4px; line-height: 1.45; color: var(--dim); }
   .ar li:last-child { margin-bottom: 0; }
-  .ar li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--core); opacity: .8; transition: opacity .25s ease-out; }
-  .ar:last-child li::before { background: var(--stay); }
-  .ar li b { font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.4; transition: color .25s ease-out; }
-  .ar li i { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .32s cubic-bezier(.22,1,.36,1); }
-  .ar li i > span { overflow: hidden; display: block; font-style: normal; font-size: 13.6px; line-height: 1.5; color: var(--dim); }
-  .ar li:hover i { grid-template-rows: 1fr; }
-  .ar li:hover i > span { padding-top: 4px; }
-  .ar ul:hover li:not(:hover) b { color: var(--dim); }
-  .ar ul:hover li:not(:hover)::before { opacity: .35; }
+  .ar li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 1px; transform: rotate(45deg); background: var(--core); opacity: .85; }
+  .ar-read li::before { background: var(--stay); }
+  .ar li b { color: var(--ink); font-weight: 600; }
   .asknote { margin-top: 16px; font-size: 15.5px; color: var(--ink); font-style: italic; }
   @media (max-width: 900px) { .askread { grid-template-columns: 1fr; } }
 </style>
@@ -1208,24 +1210,24 @@
           Interviews answer <b>why</b>. Data answers <b>whether</b>.
         </p>
         <div class="askread frag" data-frag="1">
-          <div class="ar">
+          <div class="ar ar-ask" data-mark="?">
             <div class="ark">Ask in an interview</div>
             <ul>
-              <li><b>Context</b><i><span>What their day actually looks like</span></i></li>
-              <li><b>Workarounds</b><i><span>What they built to get around us — an unmet need, already proven</span></i></li>
-              <li><b>Language</b><i><span>The words they use, and what they call things</span></i></li>
-              <li><b>Emotion</b><i><span>What they're proud of, what embarrasses them</span></i></li>
-              <li><b>The why behind a number</b><i><span>Why the funnel drops at step three</span></i></li>
+              <li><b>Context</b> — what their day actually looks like</li>
+              <li><b>Workarounds</b> — what they built to get around us</li>
+              <li><b>Language</b> — the words they use for it</li>
+              <li><b>Emotion</b> — what they're proud of, what embarrasses them</li>
+              <li><b>The why behind a number</b> — why the funnel drops</li>
             </ul>
           </div>
-          <div class="ar">
+          <div class="ar ar-read" data-mark="%">
             <div class="ark">Read in the data</div>
             <ul>
-              <li><b>Demand</b><i><span>Whether anyone wants it — a fake door beats ten interviews</span></i></li>
-              <li><b>Scale</b><i><span>How many, and how often</span></i></li>
-              <li><b>Winner</b><i><span>Which version actually wins</span></i></li>
-              <li><b>Willingness</b><i><span>What they pay for</span></i></li>
-              <li><b>Impact</b><i><span>Whether the change moved anything at all</span></i></li>
+              <li><b>Demand</b> — a fake door beats ten interviews</li>
+              <li><b>Scale</b> — how many, how often</li>
+              <li><b>Winner</b> — which version actually wins</li>
+              <li><b>Willingness</b> — what they pay for</li>
+              <li><b>Impact</b> — whether the change moved anything</li>
             </ul>
           </div>
         </div>
