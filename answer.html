@@ -566,22 +566,14 @@
   .ipcard img { height: 92px; width: auto; }
   .ipcard h3 { font-family: var(--serif); font-size: 18px; font-weight: 500; margin: 14px 0 6px; }
   .ipcard p { font-size: 12.5px; color: var(--dim); }
-  /* ===== Looking back · the social read ===== */
-  .lookback { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
-  .lb { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 20px 18px; text-align: left; }
-  .lb .lbk { font-family: var(--serif); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
-  .lb h3 { margin: 8px 0 0; font-family: var(--serif); font-weight: 500; font-size: 20px; line-height: 1.15; color: var(--ink); }
-  .lb p { margin: 10px 0 0; font-size: 13.8px; line-height: 1.5; color: var(--dim); }
-  .lb .lbn { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
-  .lb .lbn div { min-width: 92px; }
-  .lb .lbn b { display: block; font-family: var(--serif); font-size: 20px; color: var(--ink); line-height: 1.1; }
-  .lb .lbn span { display: block; font-size: 11.5px; color: var(--faint); line-height: 1.35; margin-top: 3px; }
-  .lb.p1 { border-top: 3px solid var(--stay); }
-  .lb.p2 { border-top: 3px solid var(--personal); }
-  .lb.p3 { border-top: 3px solid var(--core); }
-  .lb-note { margin: 30px auto 0; max-width: 780px; font-size: 16px; line-height: 1.55; color: var(--ink); }
-  .lb-note em { font-style: normal; color: var(--accent); }
-  @media (max-width: 900px) { .lookback { grid-template-columns: 1fr; } }
+  /* ===== Honest notes ===== */
+  .missrow { display: grid; grid-template-columns: 210px 1fr; gap: 34px; margin-top: 34px; text-align: left; align-items: start; }
+  .misslab { font-family: var(--serif); font-size: 17px; color: var(--ink); font-weight: 500; padding-top: 3px; }
+  .misstext p { margin: 0 0 16px; font-size: 17px; line-height: 1.65; color: var(--dim); max-width: 62ch; }
+  .misstext p:last-child { margin-bottom: 0; }
+  .misspull { color: var(--ink) !important; border-left: 2px solid var(--core); padding-left: 16px; }
+  .misspull b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 900px) { .missrow { grid-template-columns: 1fr; gap: 14px; } }
 </style>
 </head>
 <body>
@@ -600,7 +592,7 @@
     <a data-from="12" data-to="12">03 Reach</a>
     <a data-from="13" data-to="13">04 Personal</a>
     <span class="gap"></span>
-    <a data-from="14" data-to="14">Looking back</a>
+    <a data-from="14" data-to="14">Honest notes</a>
     <span class="gap"></span>
     <a data-from="15" data-to="15">Results</a>
     <a data-from="16" data-to="16">Closing</a>
@@ -1177,50 +1169,23 @@
       <div class="notes" data-frag="1" hidden>And on top of that, we added a small incentive system — badges and an avatar — just to help students feel like this is their own personal school, not a tool they use.</div>
     </section>
 
-    <!-- 13.5 · Looking back: the social read -->
+    <!-- 13.5 · Honest notes: learning from a miss -->
     <section class="slide">
-      <div class="slide-inner" style="text-align:center">
-        <div class="eyebrow rv">Looking back</div>
-        <h2 class="rv">Three of these were social problems.</h2>
-        <p class="lede rv" style="margin:20px auto 0;max-width:760px">
-          Nobody on the team called this social work. But the three things that moved the numbers most
-          were answers to three questions every social product has to answer.
-        </p>
-        <div class="lookback">
-          <div class="lb p1 rv d2">
-            <div class="lbk">Is anyone here?</div>
-            <h3>Presence</h3>
-            <p>Study rooms: strangers working alongside you, no feed, no performance. The draw was company, not content.</p>
-            <div class="lbn">
-              <div><b>+28%</b><span>time in app for students who join a room</span></div>
-              <div><b>5.5 hrs</b><span>longest single focus session</span></div>
-            </div>
-          </div>
-          <div class="lb p2 rv d3">
-            <div class="lbk">Who am I here?</div>
-            <h3>Identity</h3>
-            <p>Badges and outfit drops for an avatar — worn in the study room, where other students can see it.</p>
-            <div class="lbn">
-              <div><b>2.3×</b><span>tasks per week for students who dress their avatar</span></div>
-              <div><b>36%</b><span>of daily actives claimed a drop in month one</span></div>
-            </div>
-          </div>
-          <div class="lb p3 rv d4">
-            <div class="lbk">Why would I come back?</div>
-            <h3>A reason to open</h3>
-            <p>Tutors reaching out first, with something only they would know — instead of a generic reminder.</p>
-            <div class="lbn">
-              <div><b>3% → 12%</b><span>tap-through, generic vs. personal</span></div>
-              <div><b>+22%</b><span>next-day return after a proactive note</span></div>
-            </div>
+      <div class="slide-inner">
+        <div class="eyebrow rv" style="font-style:italic;color:var(--core)">Honest notes</div>
+        <h2 class="rv">Learning from a miss.</h2>
+        <div class="missrow">
+          <div class="misslab rv d2">What went wrong</div>
+          <div class="misstext rv d2">
+            <p>Not every bet landed. In interviews, students spoke warmly about a counselor, a scholarship
+            advisor and AP prep — we heard a bigger need than everyday behavior ever showed. Alma, Grant
+            and AP History quietly moved down the roadmap.</p>
+            <p class="misspull">And a lesson moved up: <b>interviews are polite, behavior is honest.</b></p>
+            <p>Now the loudest voice in every decision is what students actually do.</p>
           </div>
         </div>
-        <p class="lb-note rv d5">
-          The lesson I took: the strongest retention didn't come from a better answer.
-          It came from <em>someone being there</em>.
-        </p>
       </div>
-      <div class="notes" hidden>Before the results, one thing I want to call out, because it's why I'm sitting here. Nobody on this team called any of this social work — we called it retention. But look at what actually moved: study rooms, where the draw was company rather than content. Avatars and drops, which only mattered because other students could see them. And tutors reaching out first, with something only they would know. Those are the same three questions a social product has to answer: is anyone here, who am I here, and why would I come back. The strongest retention we found didn't come from a better answer. It came from someone being there.</div>
+      <div class="notes" hidden>One more thing before the results, because it changed how I work. Not every bet landed. In interviews, students talked warmly about a counselor, a scholarship advisor, AP prep — and we heard a bigger need than their everyday behavior ever showed. Those three moved down the roadmap. The lesson that moved up: interviews are polite, behavior is honest. Since then the loudest voice in any decision I make is what people actually do, not what they say they want.</div>
     </section>
 
     <!-- 13 · Results → Grateful -->
