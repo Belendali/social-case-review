@@ -566,13 +566,29 @@
   .ipcard img { height: 92px; width: auto; }
   .ipcard h3 { font-family: var(--serif); font-size: 18px; font-weight: 500; margin: 14px 0 6px; }
   .ipcard p { font-size: 12.5px; color: var(--dim); }
+  /* ===== Looking back · the social read ===== */
+  .lookback { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
+  .lb { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 20px 18px; text-align: left; }
+  .lb .lbk { font-family: var(--serif); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+  .lb h3 { margin: 8px 0 0; font-family: var(--serif); font-weight: 500; font-size: 20px; line-height: 1.15; color: var(--ink); }
+  .lb p { margin: 10px 0 0; font-size: 13.8px; line-height: 1.5; color: var(--dim); }
+  .lb .lbn { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+  .lb .lbn div { min-width: 92px; }
+  .lb .lbn b { display: block; font-family: var(--serif); font-size: 20px; color: var(--ink); line-height: 1.1; }
+  .lb .lbn span { display: block; font-size: 11.5px; color: var(--faint); line-height: 1.35; margin-top: 3px; }
+  .lb.p1 { border-top: 3px solid var(--stay); }
+  .lb.p2 { border-top: 3px solid var(--personal); }
+  .lb.p3 { border-top: 3px solid var(--core); }
+  .lb-note { margin: 30px auto 0; max-width: 780px; font-size: 16px; line-height: 1.55; color: var(--ink); }
+  .lb-note em { font-style: normal; color: var(--accent); }
+  @media (max-width: 900px) { .lookback { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
   <div class="bar"></div>
   <div class="chrome tl"><a href="index.html" onclick="this.href='index.html?t='+Date.now()">← Agenda</a></div>
   <div class="chrome bl">Answer.AI · The growth story</div>
-  <div class="chrome br">01 / 16</div>
+  <div class="chrome br">01 / 17</div>
   <nav class="rail" aria-label="Sections">
     <a data-from="0" data-to="2">Context</a>
     <a data-from="3" data-to="5">Turning point</a>
@@ -584,8 +600,10 @@
     <a data-from="12" data-to="12">03 Reach</a>
     <a data-from="13" data-to="13">04 Personal</a>
     <span class="gap"></span>
-    <a data-from="14" data-to="14">Results</a>
-    <a data-from="15" data-to="15">Closing</a>
+    <a data-from="14" data-to="14">Looking back</a>
+    <span class="gap"></span>
+    <a data-from="15" data-to="15">Results</a>
+    <a data-from="16" data-to="16">Closing</a>
   </nav>
 
   <div class="deck">
@@ -599,11 +617,11 @@
         <h1 class="rv">Answer.AI</h1>
         <p class="lede rv" style="margin:26px auto 0">
           From a shared <em>answer machine</em> to a <em>personalized school</em> —
-          how we found growth after hitting the wall.
+          and from a tool students used alone to a place where someone else is there.
         </p>
         <p class="kicker rv" style="margin-top:44px">Bella (Yuanyuan) Li · Product Designer · Aug 2024 – present</p>
       </div>
-      <div class="notes" hidden>Okay, Answer.AI. First of all, it's an AI learning app with about seven million students. I joined in 2024 as the product designer, and this is the story of how we found growth again after hitting a wall.</div>
+      <div class="notes" hidden>Okay, Answer.AI. First of all, it's an AI learning app with about seven million students. I joined in 2024 as the product designer, and this is the story of how we found growth again after hitting a wall. And looking back, the part that worked best wasn't a better answer — it was the moment the app stopped being something you used alone.</div>
     </section>
 
     <!-- 2 · What is Answer.AI -->
@@ -1007,29 +1025,29 @@
         <div class="eyebrow rv" style="color:var(--stay)">Layer 02 · Stay</div>
         <h2 class="rv" style="font-size:var(--t-h2,44px)">Give students a reason to come back tomorrow.</h2>
         <p class="lede rv">
-          We kept only the methods with proven demand: daily memory, exam
-          crunch, and company while you study.
+          We kept only the methods with proven demand — and the one that surprised us
+          had nothing to do with studying better. It was company.
         </p>
         <div class="trio">
-          <figure class="rv d2" data-k="flash">
+          <figure class="rv d2 roomfig" data-k="room" tabindex="0" role="button" aria-label="Why study rooms">
+            <div class="ph media"><img src="assets/stay-studyroom.jpg" alt="Study rooms" /><img class="alt" src="assets/stay-studyroom-hover.jpg" alt="" /><span class="tapme">Why this? ↗</span></div>
+            <figcaption>Study rooms<div class="sub">Company while you work, not another feed</div>
+              <div class="fproof"><div class="fproof-in"><div class="fwhen">Launched Jul 2026 · 8 weeks in</div>
+              <div class="fstats"><div><b>+28%</b><span>avg. time in app for students who join rooms</span></div><div><b>5.5 hrs</b><span>longest focus streak — one student, one sitting</span></div></div></div></div>
+            </figcaption>
+          </figure>
+          <figure class="rv d3" data-k="flash">
             <div class="ph media"><img src="assets/stay-flashcards.jpg" alt="Flashcards" /><img class="alt" src="assets/stay-flashcards-hover.jpg" alt="" /></div>
             <figcaption>Flashcards<div class="sub">Daily memory, built from what you studied</div>
               <div class="fproof"><div class="fproof-in"><div class="fwhen">Launched Nov 2024 · v2 May 2026</div>
               <div class="fstats"><div><b>+11%</b><span>D7 retention for students who build a deck in week one</span></div><div><b>2.1×</b><span>decks created after v2 auto-built them from solved problems</span></div></div></div></div>
             </figcaption>
           </figure>
-          <figure class="rv d3" data-k="mock">
+          <figure class="rv d4" data-k="mock">
             <div class="ph media"><img src="assets/stay-mock.jpg" alt="Mock tests" /><img class="alt" src="assets/stay-mock-hover.jpg" alt="" /></div>
             <figcaption>Mock tests<div class="sub">The hard-demand moment before every exam</div>
               <div class="fproof"><div class="fproof-in"><div class="fwhen">Launched Feb 2025</div>
               <div class="fstats"><div><b>+38%</b><span>sessions per student in exam weeks</span></div><div><b>2.4×</b><span>Pro conversion among students who take a mock test</span></div></div></div></div>
-            </figcaption>
-          </figure>
-          <figure class="rv d4 roomfig" data-k="room" tabindex="0" role="button" aria-label="Why study rooms">
-            <div class="ph media"><img src="assets/stay-studyroom.jpg" alt="Study rooms" /><img class="alt" src="assets/stay-studyroom-hover.jpg" alt="" /><span class="tapme">Why this? ↗</span></div>
-            <figcaption>Study rooms<div class="sub">Company while you work, not another feed</div>
-              <div class="fproof"><div class="fproof-in"><div class="fwhen">Launched Jul 2026 · 8 weeks in</div>
-              <div class="fstats"><div><b>+28%</b><span>avg. time in app for students who join rooms</span></div><div><b>5.5 hrs</b><span>longest focus streak — one student, one sitting</span></div></div></div></div>
             </figcaption>
           </figure>
         </div>
@@ -1050,7 +1068,7 @@
           </div>
         </div>
       </div>
-      <div class="notes" hidden>Layer two is about staying. Here we only built study methods students actually use: flashcards for daily memory, mock tests for exams, and study rooms for company while working. <i>[hover a card]</i> And each of them is performing really well. <span data-hov="[data-k=flash]">Flashcards, for example — students who build a deck in their first week retain eleven percent better.</span> <span data-hov="[data-k=mock]">Mock tests: sessions go up thirty-eight percent in exam weeks, and those users convert to Pro at twice the rate.</span> <span data-hov="[data-k=room]">And study rooms are the latest one.</span> <i>[click Study rooms]</i></div>
+      <div class="notes" hidden>Layer two is about staying. Three things: study rooms for company while you work, flashcards for daily memory, and mock tests for exams. <i>[hover a card]</i> Each of them is performing well, but the first one is the one I want to spend time on. <span data-hov="[data-k=flash]">Flashcards, for example — students who build a deck in their first week retain eleven percent better.</span> <span data-hov="[data-k=mock]">Mock tests: sessions go up thirty-eight percent in exam weeks, and those users convert to Pro at twice the rate.</span> <span data-hov="[data-k=room]">And study rooms — students who join one spend twenty-eight percent longer in the app, and our most focused student sat in a room for five and a half hours straight.</span> <i>[click Study rooms]</i></div>
       <div class="notes" data-when=".staywrap.roommode" hidden>You might be wondering — why would we build this feature? It started as a signal from our marketing AI agent: "study with me" was already a huge trend. It's over forty billion views on TikTok, and Lofi Girl's study stream has something like forty thousand people in it at any given moment. And it's commercial too — there's a new study-with-friends app called Focustown, and it's already making around thirty K a month. So we built that feeling into the app, and students have really taken to it — average time in the app went up noticeably for students who join rooms, and our most active student sat in a room and focused for five and a half hours straight.</div>
     </section>
 
@@ -1139,7 +1157,7 @@
           </div>
           <div class="ppanel p2">
             <div>
-              <p class="ptext">A light reward system keeps it going: scanning problems, mastering topics and finishing Ace’s exercises earn <em>badges</em> — plus random outfit drops for an <em>avatar</em> that shows up in the online study room.</p>
+              <p class="ptext">A light reward system keeps it going: scanning problems, mastering topics and finishing Ace’s exercises earn <em>badges</em> — plus random outfit drops for an <em>avatar</em>. The avatar matters because of where it shows up: the study room, where other students can see it. Rewards you wear in front of someone work differently from rewards you collect alone.</p>
               <div class="pdata on">
                 <div><b>+19%</b><span>7-day streak rate after badges launched</span></div>
                 <div><b>2.3×</b><span>tasks finished per week by students who dress their avatar</span></div>
@@ -1157,6 +1175,52 @@
       </div>
       <div class="notes" hidden>And layer four is personal. <span data-hov="[data-k=step1]">To make anything personal, we first had to actually know the student — so step one is collecting their data. Before, we asked students to fill in a Me page themselves, and almost nobody did. Now the tutors pick it up naturally from conversation: what they're studying, what they're struggling with, what they're aiming for.</span> <i>[hover step 1]</i> <span data-hov="[data-k=step2]">And once we know them, step two is acting on it — a check-in after a hard question, a preview the night before class, or a call with Alma when it's time to plan for college.</span> <i>[hover step 2]</i> And personal messages get tapped about four times more than generic reminders. <i>[space → tab 2]</i></div>
       <div class="notes" data-frag="1" hidden>And on top of that, we added a small incentive system — badges and an avatar — just to help students feel like this is their own personal school, not a tool they use.</div>
+    </section>
+
+    <!-- 13.5 · Looking back: the social read -->
+    <section class="slide">
+      <div class="slide-inner" style="text-align:center">
+        <div class="eyebrow rv">Looking back</div>
+        <h2 class="rv">Three of these were social problems.</h2>
+        <p class="lede rv" style="margin:20px auto 0;max-width:760px">
+          Nobody on the team called this social work. But the three things that moved the numbers most
+          were answers to three questions every social product has to answer.
+        </p>
+        <div class="lookback">
+          <div class="lb p1 rv d2">
+            <div class="lbk">Is anyone here?</div>
+            <h3>Presence</h3>
+            <p>Study rooms: strangers working alongside you, no feed, no performance. The draw was company, not content.</p>
+            <div class="lbn">
+              <div><b>+28%</b><span>time in app for students who join a room</span></div>
+              <div><b>5.5 hrs</b><span>longest single focus session</span></div>
+            </div>
+          </div>
+          <div class="lb p2 rv d3">
+            <div class="lbk">Who am I here?</div>
+            <h3>Identity</h3>
+            <p>Badges and outfit drops for an avatar — worn in the study room, where other students can see it.</p>
+            <div class="lbn">
+              <div><b>2.3×</b><span>tasks per week for students who dress their avatar</span></div>
+              <div><b>36%</b><span>of daily actives claimed a drop in month one</span></div>
+            </div>
+          </div>
+          <div class="lb p3 rv d4">
+            <div class="lbk">Why would I come back?</div>
+            <h3>A reason to open</h3>
+            <p>Tutors reaching out first, with something only they would know — instead of a generic reminder.</p>
+            <div class="lbn">
+              <div><b>3% → 12%</b><span>tap-through, generic vs. personal</span></div>
+              <div><b>+22%</b><span>next-day return after a proactive note</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="lb-note rv d5">
+          The lesson I took: the strongest retention didn't come from a better answer.
+          It came from <em>someone being there</em>.
+        </p>
+      </div>
+      <div class="notes" hidden>Before the results, one thing I want to call out, because it's why I'm sitting here. Nobody on this team called any of this social work — we called it retention. But look at what actually moved: study rooms, where the draw was company rather than content. Avatars and drops, which only mattered because other students could see them. And tutors reaching out first, with something only they would know. Those are the same three questions a social product has to answer: is anyone here, who am I here, and why would I come back. The strongest retention we found didn't come from a better answer. It came from someone being there.</div>
     </section>
 
     <!-- 13 · Results → Grateful -->
