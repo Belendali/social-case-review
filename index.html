@@ -272,7 +272,7 @@
 
   /* JD match flip cards */
   .match { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .fcard { perspective: 1100px; height: 232px; cursor: pointer; }
+  .fcard { perspective: 1100px; height: 244px; cursor: pointer; }
   .finner {
     position: relative; width: 100%; height: 100%;
     transform-style: preserve-3d;
@@ -284,9 +284,9 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     border-radius: 14px;
-    padding: 22px 24px;
+    padding: 46px 24px 20px;
     display: flex; flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .fface .flab {
     font-family: var(--serif); font-size: 10.5px; letter-spacing: 0.24em;
@@ -329,14 +329,14 @@
   .fback .where.c2 { color: var(--wanaka); border-color: rgba(163,230,74,0.45); }
   .fback .where.c3 { color: var(--eh-red); border-color: rgba(255,0,80,0.45); }
   .fcard .sticker {
-    position: absolute; right: 14px; bottom: 12px; width: 108px; height: auto;
+    position: absolute; right: 12px; bottom: 8px; width: 94px; height: auto;
     opacity: 0; transform: translateY(10px) rotate(-4deg) scale(.94);
     transition: opacity .32s ease-out, transform .38s cubic-bezier(.22,1,.36,1);
     pointer-events: none; filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
   }
   .fcard:hover .ffront .sticker { opacity: 1; transform: translateY(0) rotate(-2deg) scale(1); }
   .fcard.flip .ffront .sticker { opacity: 0; }
-  @media (max-width: 900px) { .fcard .sticker { width: 76px; right: 10px; bottom: 8px; } }
+  @media (max-width: 900px) { .fcard .sticker { width: 68px; right: 8px; bottom: 6px; } }
   .match-hint { margin-top: 14px; font-size: 11.5px; color: rgba(255,255,255,0.25); font-family: var(--serif); letter-spacing: 0.14em; text-transform: uppercase; }
   .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
   .hero-actions .more-toggle { margin-top: 26px; }
