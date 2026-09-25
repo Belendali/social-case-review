@@ -599,6 +599,15 @@
   .ar li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 1px; transform: rotate(45deg); background: var(--core); opacity: .85; }
   .ar-read li::before { background: var(--stay); }
   .ar li b { color: var(--ink); font-weight: 600; }
+  .ar { transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, box-shadow .3s ease-out; }
+  .ar::after { transition: opacity .35s ease-out, transform .45s cubic-bezier(.22,1,.36,1); }
+  .askread:hover .ar:not(:hover) { opacity: .55; }
+  .askread .ar { transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, box-shadow .3s ease-out, opacity .3s ease-out; }
+  .ar:hover { transform: translateY(-5px); }
+  .ar:hover::after { opacity: .13; transform: translateY(-8px); }
+  .ar-ask:hover { border-color: rgba(138,133,255,.5); box-shadow: 0 0 0 1px rgba(138,133,255,.18), 0 20px 44px rgba(0,0,0,.5); }
+  .ar-read:hover { border-color: rgba(255,214,102,.45); box-shadow: 0 0 0 1px rgba(255,214,102,.16), 0 20px 44px rgba(0,0,0,.5); }
+  .ar:hover li::before { opacity: 1; }
   .asknote { margin-top: 16px; font-size: 15.5px; color: var(--ink); font-style: italic; }
   @media (max-width: 900px) { .askread { grid-template-columns: 1fr; } }
 </style>
