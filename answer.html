@@ -574,14 +574,20 @@
   .tkshot { margin-top: 26px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
   .tkshot img { display: block; width: 100%; height: clamp(200px, 34vh, 330px); object-fit: cover; object-position: center 42%; }
   .tkshot.gone { display: none; }
-  .ar { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
-  .ar .ark { font-family: var(--serif); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin-bottom: 12px; }
+  .ar { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; min-height: 250px; }
+  .ar .ark { font-family: var(--serif); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin-bottom: 14px; }
   .ar ul { list-style: none; margin: 0; padding: 0; }
-  .ar li { position: relative; padding-left: 15px; font-size: 14.6px; line-height: 1.5; color: var(--dim); margin-bottom: 9px; }
+  .ar li { position: relative; padding-left: 15px; margin-bottom: 11px; }
   .ar li:last-child { margin-bottom: 0; }
-  .ar li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--core); opacity: .8; }
-  .ar li b { color: var(--ink); font-weight: 600; }
+  .ar li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--core); opacity: .8; transition: opacity .25s ease-out; }
   .ar:last-child li::before { background: var(--stay); }
+  .ar li b { font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.4; transition: color .25s ease-out; }
+  .ar li i { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .32s cubic-bezier(.22,1,.36,1); }
+  .ar li i > span { overflow: hidden; display: block; font-style: normal; font-size: 13.6px; line-height: 1.5; color: var(--dim); }
+  .ar li:hover i { grid-template-rows: 1fr; }
+  .ar li:hover i > span { padding-top: 4px; }
+  .ar ul:hover li:not(:hover) b { color: var(--dim); }
+  .ar ul:hover li:not(:hover)::before { opacity: .35; }
   .asknote { margin-top: 16px; font-size: 15.5px; color: var(--ink); font-style: italic; }
   @media (max-width: 900px) { .askread { grid-template-columns: 1fr; } }
 </style>
@@ -1197,21 +1203,21 @@
           <div class="ar">
             <div class="ark">Ask in an interview</div>
             <ul>
-              <li>What their day actually looks like</li>
-              <li><b>The workarounds they invented</b></li>
-              <li>The words they use</li>
-              <li>Where the emotion sits</li>
-              <li>Why the funnel drops</li>
+              <li><b>Context</b><i><span>What their day actually looks like</span></i></li>
+              <li><b>Workarounds</b><i><span>What they built to get around us — an unmet need, already proven</span></i></li>
+              <li><b>Language</b><i><span>The words they use, and what they call things</span></i></li>
+              <li><b>Emotion</b><i><span>What they're proud of, what embarrasses them</span></i></li>
+              <li><b>The why behind a number</b><i><span>Why the funnel drops at step three</span></i></li>
             </ul>
           </div>
           <div class="ar">
             <div class="ark">Read in the data</div>
             <ul>
-              <li><b>Whether anyone wants it</b> — a fake door beats ten interviews</li>
-              <li>How many, how often</li>
-              <li>Which version wins</li>
-              <li>What they pay for</li>
-              <li>Whether the change moved anything</li>
+              <li><b>Demand</b><i><span>Whether anyone wants it — a fake door beats ten interviews</span></i></li>
+              <li><b>Scale</b><i><span>How many, and how often</span></i></li>
+              <li><b>Winner</b><i><span>Which version actually wins</span></i></li>
+              <li><b>Willingness</b><i><span>What they pay for</span></i></li>
+              <li><b>Impact</b><i><span>Whether the change moved anything at all</span></i></li>
             </ul>
           </div>
         </div>
