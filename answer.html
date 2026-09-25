@@ -636,6 +636,31 @@
   .br:hover { transform: translateY(-4px); border-color: rgba(255,214,102,.45); }
   .chainnote { margin-top: 26px; font-size: 17px; color: var(--ink); }
   @media (max-width: 900px) { .branches { grid-template-columns: 1fr 1fr; } }
+  /* ===== Core · two plans side by side ===== */
+  .corestage.two .ph.planA { transform: translate(-50%, -50%) translateX(-160px) scale(.86); filter: brightness(.7) saturate(.7); }
+  .corestage.two .ph.planB { opacity: 1; transform: translate(-50%, -50%) translateX(120px) scale(1); pointer-events: auto; border-color: rgba(139,124,255,.5); box-shadow: 0 0 0 1px rgba(139,124,255,.25), 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000; }
+  .corestage.two:has(.stagetrig.shown) .ph.planA { filter: brightness(.45) saturate(.5); }
+  .corestage .phlab.win { color: #cfc4ff; }
+  .phslot { position: absolute; inset: 4px; border-radius: 22px; border: 1px dashed rgba(255,255,255,.22); display: grid; place-items: center; text-align: center; font-family: var(--serif); font-size: 12px; letter-spacing: .1em; color: var(--faint); line-height: 1.7; }
+  .phslot span { font-size: 11px; opacity: .7; }
+  /* ===== Stay strategy: hub vs ask ===== */
+  .staystratwrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--split-gap,40px); align-items: center; }
+  .ssrule { margin-top: 18px; font-size: 17px; line-height: 1.5; color: var(--dim); border-left: 2px solid var(--stay); padding-left: 16px; }
+  .ssrule b { color: var(--ink); font-weight: 600; }
+  .sshint { margin-top: 20px; font-family: var(--serif); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+  .ssstage { position: relative; height: var(--media-h, 520px); }
+  .ssstage .fr { position: absolute; top: 50%; left: 50%; height: 100%; aspect-ratio: 1206 / 2622; border-radius: 26px; overflow: hidden; border: 1px solid rgba(255,255,255,.16); background: #000; box-shadow: 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000; padding: 0; transform: translate(-50%, -50%); transition: transform .7s cubic-bezier(.22,1,.36,1), opacity .5s ease-out, filter .5s ease-out; }
+  .ssstage .fr.hub { transform: translate(-50%, -50%) translateX(-160px) scale(.86); filter: brightness(.6) saturate(.6); }
+  .ssstage .fr.ask { transform: translate(-50%, -50%) translateX(120px) scale(1); cursor: pointer; border-color: rgba(255,214,102,.5); box-shadow: 0 0 0 1px rgba(255,214,102,.22), 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000; }
+  .ssstage .fr.ask:hover { transform: translate(-50%, -50%) translateX(120px) scale(1.02); }
+  .ssstage .phlab { position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%); font-family: var(--serif); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); white-space: nowrap; }
+  .ssstage .phlab.win { color: #ffe6a3; }
+  .ssstage .fr3 { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; opacity: 0; pointer-events: none; transition: opacity .5s ease-out, transform .6s cubic-bezier(.22,1,.36,1); transform: translateY(14px); }
+  .ssstage .f3 { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,214,102,.3); background: #000; box-shadow: inset 0 0 0 3px #000, 0 20px 44px rgba(0,0,0,.5); }
+  .ssstage.swapped .fr { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.9); }
+  .ssstage.swapped .fr3 { opacity: 1; pointer-events: auto; transform: none; }
+  .staystratwrap:has(.ssstage.swapped) .sshint { opacity: 0; }
+  .sshint { transition: opacity .3s ease-out; }
 </style>
 </head>
 <body>
@@ -1049,8 +1074,7 @@
             <em>calm enough to think in</em>.
           </p>
           <div class="corelegend">
-            <p class="cl before"><b>Before</b> One long block. Easy to copy, hard to learn from. A toolbar of features inside the chat.</p>
-            <p class="cl after frag" data-frag="1"><b>After</b> Clear steps, answer set apart. One clean chat, tools moved into a sidebar.</p>
+            <p class="cl after"><b>What changed</b> The approach leads, the answer sits right below it, each step opens on tap. One clean chat, tools moved into a sidebar.</p>
           </div>
           <div class="tradeoff frag" data-frag="2">
             <div class="tolab">The trade-off</div>
@@ -1062,57 +1086,25 @@
             <p class="abres">A/B tested — no drop. The approach block is short, so the answer stays one glance away.</p>
           </div>
         </div>
-        <div class="corestage">
+        <div class="corestage two">
           <span class="stagetrig frag" data-frag="1" aria-hidden="true"></span>
           <div class="hstip" aria-hidden="true"></div>
-          <div class="ph before">
-            <video src="assets/core-before.mp4" muted loop playsinline autoplay preload="metadata"></video>
-            <div class="phlab">Before</div>
+          <div class="ph planA">
+            <div class="phslot">Plan A 稿子位<br /><span>answer on top</span></div>
+            <div class="phlab">Plan A · answer on top</div>
           </div>
-          <div class="ph after">
+          <div class="ph planB">
             <video src="assets/core-after.mp4" muted loop playsinline autoplay preload="metadata"></video>
-            <div class="phlab">After</div>
+            <div class="phlab win">Plan B · approach first &nbsp;✓</div>
             <button class="hs" type="button" data-k="core1" style="left:8%;top:6%" data-t="Curated sidebar" data-d="Key tools and history tucked into a sidebar, in the student's control."></button>
-            <button class="hs" type="button" data-k="core2" style="left:60%;top:36%" data-t="Step-by-step explanation" data-d="Clear steps with the answer set apart — something to learn from, not copy."></button>
-            <button class="hs" type="button" data-k="core3" style="left:42%;top:63%" data-t="A path to keep learning" data-d="Every answer now opens a next step — similar questions, a video explanation, the concept behind it — so one problem turns into practice."></button>
+            <button class="hs" type="button" data-k="core2" style="left:60%;top:36%" data-t="Step-by-step explanation" data-d="The approach first, each step on tap — something to learn from, not copy."></button>
+            <button class="hs" type="button" data-k="core3" style="left:42%;top:63%" data-t="A path to keep learning" data-d="Every answer opens a next step — similar questions, a video explanation, the concept behind it."></button>
             <button class="hs" type="button" data-k="core4" style="left:50%;top:80%" data-t="One clean chat" data-d="Every extra tool moved out of the way until it's needed."></button>
           </div>
         </div>
       </div>
       <div class="notes" hidden>Layer one is the core, and this is the front door. This is the old Ask AI, where students landed after scanning a problem — one long block of text, easy to copy, but hard to learn from. <i>[space]</i></div>
       <div class="notes" data-frag="1" hidden>So I made some changes. <i>[hover the dots]</i> <span data-hov="[data-k=core2]">First, I made the explanations something students can actually learn from: they see the steps first, and the copy-paste-able worked solution is tucked behind an expand arrow. That's how a teacher would teach it — by the time they get to the answer, they've already picked up how to solve it, almost without noticing.</span> <span data-hov="[data-k=core3]">And second, every answer now opens a next step — similar questions, a video explanation, the concept behind it — so one problem turns into real understanding and practice of that concept.</span> Because if the knowledge behind the answer isn't clear, nothing else on top of it matters.</div>
-    </section>
-
-    <!-- 9a · Stay strategy: hang it off the main flow -->
-    <section class="slide">
-      <div class="slide-inner">
-        <div class="eyebrow rv" style="color:var(--stay)">Layer 02 · Stay</div>
-        <h2 class="rv">Nobody opens an app to study.</h2>
-        <p class="lede rv d2" style="max-width:none">
-          So the reasons to stay hang off the one thing they already do every day.
-        </p>
-
-        <div class="chain frag" data-frag="1">
-          <div class="stem">
-            <span class="node">Scan a problem</span>
-            <span class="arrow">→</span>
-            <span class="node">Get the answer</span>
-            <span class="arrow">→</span>
-            <span class="node lead">Explained — then what fits</span>
-          </div>
-          <div class="branches">
-            <div class="br"><span class="brif">A concept worth keeping</span><b>Flashcards</b></div>
-            <div class="br"><span class="brif">An exam coming up</span><b>Mock exercise</b></div>
-            <div class="br"><span class="brif">Staying to work</span><b>Study room</b></div>
-            <div class="br"><span class="brif">Wants one more</span><b>Similar question</b></div>
-          </div>
-        </div>
-
-        <p class="chainnote frag" data-frag="2">Not a hub they have to remember. A next step that arrives.</p>
-      </div>
-      <div class="notes" hidden>Layer two is about staying. And at first we were asking "which study features should we build" — until I realised that was the wrong question. The real one is: why would anyone ever start using them. Our students don't open the app to study. They open it because they're stuck on one problem. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>So we didn't build a destination. We hung everything off the main flow — scan, answer, explanation. That moment happens millions of times a day. And once a problem is explained, we look at what the student actually needs: if the concept is worth keeping, it becomes flashcards; if they've just covered this material or they mention an exam tomorrow, we offer a mock exercise; if they say they're staying to work, we open a study room; and if they want one more rep, a similar question. <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>The point is this: it isn't a hub they have to remember to visit. It's a next step that arrives while they're already here. You'll see it in the flashcard numbers on the next slide — the same feature, moved to a different moment.</div>
     </section>
 
     <!-- 9 · Stay -->
@@ -1166,6 +1158,39 @@
       </div>
       <div class="notes" hidden>Layer two is about staying. Three things: study rooms for company while you work, flashcards for daily memory, and mock tests for exams. <i>[hover a card]</i> Each of them is performing well, but the first one is the one I want to spend time on. <span data-hov="[data-k=flash]">Flashcards, for example — students who build a deck in their first week retain eleven percent better.</span> <span data-hov="[data-k=mock]">Mock tests: sessions go up thirty-eight percent in exam weeks, and those users convert to Pro at twice the rate.</span> <span data-hov="[data-k=room]">And study rooms — students who join one spend twenty-eight percent longer in the app, and our most focused student sat in a room for five and a half hours straight.</span> <i>[click Study rooms]</i></div>
       <div class="notes" data-when=".staywrap.roommode" hidden>You might be wondering — why would we build this feature? It started as a signal from our marketing AI agent: "study with me" was already a huge trend. It's over forty billion views on TikTok, and Lofi Girl's study stream has something like forty thousand people in it at any given moment. And it's commercial too — there's a new study-with-friends app called Focustown, and it's already making around thirty K a month. So we built that feeling into the app, and students have really taken to it — average time in the app went up noticeably for students who join rooms, and our most active student sat in a room and focused for five and a half hours straight.</div>
+    </section>
+
+    <!-- 9b · Stay strategy: where the entries live -->
+    <section class="slide">
+      <div class="slide-inner staystratwrap">
+        <div class="ssleft">
+          <div class="eyebrow rv" style="color:var(--stay)">Layer 02 · Stay · The strategy</div>
+          <h2 class="rv" style="font-size:var(--t-h2,40px)">Nobody opens an app to study.</h2>
+          <p class="lede rv d2" style="font-size:16px">
+            We had built a Study Hub before. The clicks never came — asking students to go somewhere
+            to study asks for motivation they don't have at that moment.
+          </p>
+          <p class="ssrule rv d3">So the entries moved to where the traffic already is: <b>right after the answer.</b></p>
+          <div class="sshint rv d4">Tap the Ask AI screen →</div>
+        </div>
+
+        <div class="ssstage">
+          <div class="fr hub">
+            <div class="phslot">Study Hub 截图位<br /><span>the hub nobody opened</span></div>
+            <div class="phlab">Study Hub · clicks stayed flat</div>
+          </div>
+          <button class="fr ask" type="button" aria-label="Show the hand-off after an answer">
+            <div class="phslot">Ask AI 截图位<br /><span>tap me</span></div>
+            <div class="phlab win">Ask AI · where everyone already is</div>
+          </button>
+          <div class="fr3">
+            <div class="f3"><div class="phslot">Frame 1<br /><span>concept → flashcards</span></div></div>
+            <div class="f3"><div class="phslot">Frame 2<br /><span>exam → mock exercise</span></div></div>
+            <div class="f3"><div class="phslot">Frame 3<br /><span>staying → study room</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="notes" hidden>So layer two really came down to one question: not which study features to build, but why anyone would ever start using them. We had built a Study Hub before — a place to go and study. The clicks never came, because opening it asks for motivation a student doesn't have when they're stuck on one problem at eleven at night. <i>[tap the Ask AI screen]</i> So instead of a destination, the entries moved to where the traffic already is — right after the answer. Once a problem is explained, we read what they need: if the concept is worth keeping, it becomes flashcards; if they've just covered this material or mention an exam, we offer a mock exercise; if they say they're staying to work, we open a study room. Same features. Different moment.</div>
     </section>
 
     <!-- 11 · Reach: old IP → new IP + the three tutors -->
@@ -1512,6 +1537,14 @@
   })();
   // page 3: stagger index for the learner-model dots
   document.querySelectorAll(".dots i").forEach((d, k) => d.style.setProperty("--k", k + 1));
+</script>
+<script>
+  document.querySelectorAll(".ssstage .fr.ask").forEach(function (btn) {
+    btn.addEventListener("click", function () { btn.closest(".ssstage").classList.toggle("swapped"); });
+  });
+  document.addEventListener("deck:change", function () {
+    document.querySelectorAll(".ssstage.swapped").forEach(function (st) { st.classList.remove("swapped"); });
+  });
 </script>
 <script src="deck.js?v=09081324"></script>
 <script src="mirror.js?v=09081324"></script>
