@@ -571,7 +571,8 @@
   @media (max-width: 900px) { .missrow { grid-template-columns: 1fr; gap: 14px; } }
   /* ===== Takeaway: ask vs read ===== */
   .askread { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; text-align: left; }
-  .tkshot { margin-top: 26px; border: 1px dashed var(--line); border-radius: 16px; min-height: 230px; display: grid; place-items: center; color: var(--faint); font-size: 13px; }
+  .tkshot { margin-top: 26px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
+  .tkshot img { display: block; width: 100%; height: clamp(200px, 34vh, 330px); object-fit: cover; object-position: center 42%; }
   .tkshot.gone { display: none; }
   .ar { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
   .ar .ark { font-family: var(--serif); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin-bottom: 12px; }
@@ -1187,7 +1188,7 @@
           We tested AP prep and a set of specialist agents. Every interview was glowing — useful, they'd
           use it weekly. Behaviour said otherwise, and those bets moved down the roadmap.
         </p>
-        <div class="tkshot rv d3">图位 · 一会儿换成你给的图</div>
+        <div class="tkshot rv d3"><img src="assets/takeaway-interview.webp" alt="Student interviews on campus" /></div>
 
         <p class="misspull frag" data-frag="1">
           Interviews answer <b>why</b>. Data answers <b>whether</b>.
