@@ -610,13 +610,39 @@
   .ar:hover li::before { opacity: 1; }
   .asknote { margin-top: 16px; font-size: 15.5px; color: var(--ink); font-style: italic; }
   @media (max-width: 900px) { .askread { grid-template-columns: 1fr; } }
+  /* ===== Core trade-off ===== */
+  .tradeoff { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .tolab { font-family: var(--serif); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--core); margin-bottom: 8px; }
+  .toline { font-size: 15.5px; line-height: 1.5; color: var(--dim); margin: 0 0 12px; }
+  .toline b { color: var(--ink); font-weight: 600; }
+  .abrow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .ab { position: relative; border: 1px solid var(--line); border-radius: 12px; padding: 11px 13px; font-size: 13.4px; line-height: 1.4; color: var(--dim); background: var(--card); }
+  .ab .abk { display: block; font-family: var(--serif); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
+  .ab.win { border-color: rgba(138,133,255,.45); background: radial-gradient(120% 100% at 0% 0%, rgba(138,133,255,.1), transparent 65%), var(--card); color: var(--ink); }
+  .ab.win i { display: block; font-style: normal; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--core); margin-top: 6px; }
+  .abres { margin: 10px 0 0; font-size: 13px; color: var(--faint); line-height: 1.45; }
+  /* ===== Stay strategy chain ===== */
+  .chain { margin-top: 30px; }
+  .stem { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .stem .node { border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; font-size: 14.5px; color: var(--dim); background: var(--card); }
+  .stem .node.lead { color: var(--ink); border-color: rgba(255,214,102,.45); background: radial-gradient(120% 100% at 0% 0%, rgba(255,214,102,.1), transparent 65%), var(--card); }
+  .stem .arrow { color: var(--faint); font-size: 16px; }
+  .branches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
+  .br { position: relative; border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 14px; background: var(--card); transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, opacity .3s ease-out; }
+  .br::before { content: ""; position: absolute; left: 22px; top: -18px; width: 1px; height: 18px; background: var(--line); }
+  .br .brif { display: block; font-family: var(--serif); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-bottom: 8px; }
+  .br b { font-size: 17px; font-weight: 500; color: var(--ink); font-family: var(--serif); }
+  .branches:hover .br:not(:hover) { opacity: .5; }
+  .br:hover { transform: translateY(-4px); border-color: rgba(255,214,102,.45); }
+  .chainnote { margin-top: 26px; font-size: 17px; color: var(--ink); }
+  @media (max-width: 900px) { .branches { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
   <div class="bar"></div>
   <div class="chrome tl"><a href="index.html" onclick="this.href='index.html?t='+Date.now()">← Agenda</a></div>
   <div class="chrome bl">Answer.AI · The growth story</div>
-  <div class="chrome br">01 / 17</div>
+  <div class="chrome br">01 / 18</div>
   <nav class="rail" aria-label="Sections">
     <a data-from="0" data-to="2">Context</a>
     <a data-from="3" data-to="5">Turning point</a>
@@ -650,7 +676,8 @@
         <p class="kicker rv" style="margin-top:44px">Bella (Yuanyuan) Li · Product Designer · Aug 2024 – present</p>
       </div>
       <div class="notes" hidden>Okay, Answer.AI. First of all, it's an AI learning app with about seven million students. I joined in 2024 as the product designer, and this is the story of how we found growth again after hitting a wall. And looking back, the part that worked best wasn't a better answer — it was the moment the app stopped being something you used alone.</div>
-    </section>
+    <div class="notes" data-frag="2" hidden>Now, the honest part of this decision. Speed was our moat — a student at eleven at night wants the answer, right now. So putting anything above the answer is a risk. We built both: Plan A kept the answer on top with the working underneath; Plan B leads with the approach and puts the answer just below it. We wanted Plan B, because we wanted students to actually learn something. So we A/B tested it — and there was no drop. The approach block is short, so the answer is still one glance away. That's the trade we made: a second of attention, for a reason to read.</div>
+      </section>
 
     <!-- 2 · What is Answer.AI -->
     <section class="slide">
@@ -1025,6 +1052,15 @@
             <p class="cl before"><b>Before</b> One long block. Easy to copy, hard to learn from. A toolbar of features inside the chat.</p>
             <p class="cl after frag" data-frag="1"><b>After</b> Clear steps, answer set apart. One clean chat, tools moved into a sidebar.</p>
           </div>
+          <div class="tradeoff frag" data-frag="2">
+            <div class="tolab">The trade-off</div>
+            <p class="toline"><b>Speed was the moat.</b> We put the thinking above the answer anyway.</p>
+            <div class="abrow">
+              <div class="ab"><span class="abk">Plan A</span>Answer on top, working below</div>
+              <div class="ab win"><span class="abk">Plan B</span>Approach first, answer just below<i>✓ shipped</i></div>
+            </div>
+            <p class="abres">A/B tested — no drop. The approach block is short, so the answer stays one glance away.</p>
+          </div>
         </div>
         <div class="corestage">
           <span class="stagetrig frag" data-frag="1" aria-hidden="true"></span>
@@ -1045,6 +1081,38 @@
       </div>
       <div class="notes" hidden>Layer one is the core, and this is the front door. This is the old Ask AI, where students landed after scanning a problem — one long block of text, easy to copy, but hard to learn from. <i>[space]</i></div>
       <div class="notes" data-frag="1" hidden>So I made some changes. <i>[hover the dots]</i> <span data-hov="[data-k=core2]">First, I made the explanations something students can actually learn from: they see the steps first, and the copy-paste-able worked solution is tucked behind an expand arrow. That's how a teacher would teach it — by the time they get to the answer, they've already picked up how to solve it, almost without noticing.</span> <span data-hov="[data-k=core3]">And second, every answer now opens a next step — similar questions, a video explanation, the concept behind it — so one problem turns into real understanding and practice of that concept.</span> Because if the knowledge behind the answer isn't clear, nothing else on top of it matters.</div>
+    </section>
+
+    <!-- 9a · Stay strategy: hang it off the main flow -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow rv" style="color:var(--stay)">Layer 02 · Stay</div>
+        <h2 class="rv">Nobody opens an app to study.</h2>
+        <p class="lede rv d2" style="max-width:none">
+          So the reasons to stay hang off the one thing they already do every day.
+        </p>
+
+        <div class="chain frag" data-frag="1">
+          <div class="stem">
+            <span class="node">Scan a problem</span>
+            <span class="arrow">→</span>
+            <span class="node">Get the answer</span>
+            <span class="arrow">→</span>
+            <span class="node lead">Explained — then what fits</span>
+          </div>
+          <div class="branches">
+            <div class="br"><span class="brif">A concept worth keeping</span><b>Flashcards</b></div>
+            <div class="br"><span class="brif">An exam coming up</span><b>Mock exercise</b></div>
+            <div class="br"><span class="brif">Staying to work</span><b>Study room</b></div>
+            <div class="br"><span class="brif">Wants one more</span><b>Similar question</b></div>
+          </div>
+        </div>
+
+        <p class="chainnote frag" data-frag="2">Not a hub they have to remember. A next step that arrives.</p>
+      </div>
+      <div class="notes" hidden>Layer two is about staying. And at first we were asking "which study features should we build" — until I realised that was the wrong question. The real one is: why would anyone ever start using them. Our students don't open the app to study. They open it because they're stuck on one problem. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>So we didn't build a destination. We hung everything off the main flow — scan, answer, explanation. That moment happens millions of times a day. And once a problem is explained, we look at what the student actually needs: if the concept is worth keeping, it becomes flashcards; if they've just covered this material or they mention an exam tomorrow, we offer a mock exercise; if they say they're staying to work, we open a study room; and if they want one more rep, a similar question. <i>[space]</i></div>
+      <div class="notes" data-frag="2" hidden>The point is this: it isn't a hub they have to remember to visit. It's a next step that arrives while they're already here. You'll see it in the flashcard numbers on the next slide — the same feature, moved to a different moment.</div>
     </section>
 
     <!-- 9 · Stay -->
