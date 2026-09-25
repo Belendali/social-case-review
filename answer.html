@@ -566,14 +566,21 @@
   .ipcard img { height: 92px; width: auto; }
   .ipcard h3 { font-family: var(--serif); font-size: 18px; font-weight: 500; margin: 14px 0 6px; }
   .ipcard p { font-size: 12.5px; color: var(--dim); }
-  /* ===== Honest notes ===== */
-  .missrow { display: grid; grid-template-columns: 210px 1fr; gap: 34px; margin-top: 34px; text-align: left; align-items: start; }
-  .misslab { font-family: var(--serif); font-size: 17px; color: var(--ink); font-weight: 500; padding-top: 3px; }
-  .misstext p { margin: 0 0 16px; font-size: 17px; line-height: 1.65; color: var(--dim); max-width: 62ch; }
-  .misstext p:last-child { margin-bottom: 0; }
-  .misspull { color: var(--ink) !important; border-left: 2px solid var(--core); padding-left: 16px; }
+  .misspull { margin-top: 20px; font-size: 19px; line-height: 1.5; color: var(--ink); border-left: 2px solid var(--core); padding-left: 18px; }
   .misspull b { color: var(--ink); font-weight: 600; }
   @media (max-width: 900px) { .missrow { grid-template-columns: 1fr; gap: 14px; } }
+  /* ===== Takeaway: ask vs read ===== */
+  .askread { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 26px; text-align: left; }
+  .ar { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
+  .ar .ark { font-family: var(--serif); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin-bottom: 12px; }
+  .ar ul { list-style: none; margin: 0; padding: 0; }
+  .ar li { position: relative; padding-left: 15px; font-size: 14.6px; line-height: 1.5; color: var(--dim); margin-bottom: 9px; }
+  .ar li:last-child { margin-bottom: 0; }
+  .ar li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--core); opacity: .8; }
+  .ar li b { color: var(--ink); font-weight: 600; }
+  .ar:last-child li::before { background: var(--stay); }
+  .asknote { margin-top: 20px; font-size: 15.5px; color: var(--ink); font-style: italic; }
+  @media (max-width: 900px) { .askread { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -592,7 +599,7 @@
     <a data-from="12" data-to="12">03 Reach</a>
     <a data-from="13" data-to="13">04 Personal</a>
     <span class="gap"></span>
-    <a data-from="14" data-to="14">Honest notes</a>
+    <a data-from="14" data-to="14">Takeaway</a>
     <span class="gap"></span>
     <a data-from="15" data-to="15">Results</a>
     <a data-from="16" data-to="16">Closing</a>
@@ -1169,23 +1176,44 @@
       <div class="notes" data-frag="1" hidden>And on top of that, we added a small incentive system — badges and an avatar — just to help students feel like this is their own personal school, not a tool they use.</div>
     </section>
 
-    <!-- 13.5 · Honest notes: learning from a miss -->
+    <!-- 13.5 · Takeaway: what to ask, what to trust -->
     <section class="slide">
       <div class="slide-inner">
-        <div class="eyebrow rv" style="font-style:italic;color:var(--core)">Honest notes</div>
-        <h2 class="rv">Learning from a miss.</h2>
-        <div class="missrow">
-          <div class="misslab rv d2">What went wrong</div>
-          <div class="misstext rv d2">
-            <p>Not every bet landed. In interviews, students spoke warmly about a counselor, a scholarship
-            advisor and AP prep — we heard a bigger need than everyday behavior ever showed. Alma, Grant
-            and AP History quietly moved down the roadmap.</p>
-            <p class="misspull">And a lesson moved up: <b>interviews are polite, behavior is honest.</b></p>
-            <p>Now the loudest voice in every decision is what students actually do.</p>
+        <div class="eyebrow rv" style="font-style:italic;color:var(--core)">A takeaway</div>
+        <h2 class="rv">Interviews are polite. Behaviour is honest.</h2>
+        <p class="lede rv d2" style="max-width:none">
+          We tested AP prep and a set of specialist agents. The interviews were glowing — students said it was
+          useful, said they'd use it every week. Then we shipped, and behaviour said something else.
+          Those bets moved down the roadmap.
+        </p>
+        <p class="misspull rv d3">
+          Interviews answer <b>why</b>, and <b>how it happens</b>. Data answers <b>whether</b>, and <b>how much</b>.
+        </p>
+        <div class="askread">
+          <div class="ar rv d4">
+            <div class="ark">Ask in an interview</div>
+            <ul>
+              <li>What a day actually looks like — the constraints around the screen</li>
+              <li><b>The workarounds they invented</b> — every one is an unmet need already proven by behaviour</li>
+              <li>The words they use, and what they call things</li>
+              <li>Where the emotion sits — what they're proud of, what embarrasses them</li>
+              <li>Why the funnel drops at step three</li>
+            </ul>
+          </div>
+          <div class="ar rv d5">
+            <div class="ark">Read in the data</div>
+            <ul>
+              <li><b>Whether anyone wants it</b> — a fake door for a day beats ten interviews</li>
+              <li>How many, and how often</li>
+              <li>Which version wins</li>
+              <li>What they'll actually pay for</li>
+              <li>Whether the change moved anything at all</li>
+            </ul>
           </div>
         </div>
+        <p class="asknote rv d5">Ask what they did last week, not what they'd do next month.</p>
       </div>
-      <div class="notes" hidden>One more thing before the results, because it changed how I work. Not every bet landed. In interviews, students talked warmly about a counselor, a scholarship advisor, AP prep — and we heard a bigger need than their everyday behavior ever showed. Those three moved down the roadmap. The lesson that moved up: interviews are polite, behavior is honest. Since then the loudest voice in any decision I make is what people actually do, not what they say they want.</div>
+      <div class="notes" hidden>One takeaway I carry from this project. We tested AP prep and a set of specialist agents, and the interviews were glowing — students said it was useful, said they'd use it every week. Then we shipped, and their behaviour said something else, so those bets moved down the roadmap. What I took from it isn't "don't do research" — it's that the two methods answer different questions. Interviews answer why, and how something happens. Data answers whether, and how much. So now I use interviews for context, for the workarounds people invent, for the words they use, for where the emotion is. And when the question is "should we build this at all", I'd rather spend a day on a fake door than a week on interviews. In short: ask what they did last week, not what they'd do next month.</div>
     </section>
 
     <!-- 13 · Results → Grateful -->
