@@ -570,7 +570,9 @@
   .misspull b { color: var(--ink); font-weight: 600; }
   @media (max-width: 900px) { .missrow { grid-template-columns: 1fr; gap: 14px; } }
   /* ===== Takeaway: ask vs read ===== */
-  .askread { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 26px; text-align: left; }
+  .askread { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; text-align: left; }
+  .tkshot { margin-top: 26px; border: 1px dashed var(--line); border-radius: 16px; min-height: 230px; display: grid; place-items: center; color: var(--faint); font-size: 13px; }
+  .tkshot.gone { display: none; }
   .ar { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
   .ar .ark { font-family: var(--serif); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin-bottom: 12px; }
   .ar ul { list-style: none; margin: 0; padding: 0; }
@@ -579,7 +581,7 @@
   .ar li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--core); opacity: .8; }
   .ar li b { color: var(--ink); font-weight: 600; }
   .ar:last-child li::before { background: var(--stay); }
-  .asknote { margin-top: 20px; font-size: 15.5px; color: var(--ink); font-style: italic; }
+  .asknote { margin-top: 16px; font-size: 15.5px; color: var(--ink); font-style: italic; }
   @media (max-width: 900px) { .askread { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -1182,38 +1184,50 @@
         <div class="eyebrow rv" style="font-style:italic;color:var(--core)">A takeaway</div>
         <h2 class="rv">Interviews are polite. Behaviour is honest.</h2>
         <p class="lede rv d2" style="max-width:none">
-          We tested AP prep and a set of specialist agents. The interviews were glowing — students said it was
-          useful, said they'd use it every week. Then we shipped, and behaviour said something else.
-          Those bets moved down the roadmap.
+          We tested AP prep and a set of specialist agents. Every interview was glowing — useful, they'd
+          use it weekly. Behaviour said otherwise, and those bets moved down the roadmap.
         </p>
-        <p class="misspull rv d3">
-          Interviews answer <b>why</b>, and <b>how it happens</b>. Data answers <b>whether</b>, and <b>how much</b>.
+        <div class="tkshot rv d3">图位 · 一会儿换成你给的图</div>
+
+        <p class="misspull frag" data-frag="1">
+          Interviews answer <b>why</b>. Data answers <b>whether</b>.
         </p>
-        <div class="askread">
-          <div class="ar rv d4">
+        <div class="askread frag" data-frag="1">
+          <div class="ar">
             <div class="ark">Ask in an interview</div>
             <ul>
-              <li>What a day actually looks like — the constraints around the screen</li>
-              <li><b>The workarounds they invented</b> — every one is an unmet need already proven by behaviour</li>
-              <li>The words they use, and what they call things</li>
-              <li>Where the emotion sits — what they're proud of, what embarrasses them</li>
-              <li>Why the funnel drops at step three</li>
+              <li>What their day actually looks like</li>
+              <li><b>The workarounds they invented</b></li>
+              <li>The words they use</li>
+              <li>Where the emotion sits</li>
+              <li>Why the funnel drops</li>
             </ul>
           </div>
-          <div class="ar rv d5">
+          <div class="ar">
             <div class="ark">Read in the data</div>
             <ul>
-              <li><b>Whether anyone wants it</b> — a fake door for a day beats ten interviews</li>
-              <li>How many, and how often</li>
+              <li><b>Whether anyone wants it</b> — a fake door beats ten interviews</li>
+              <li>How many, how often</li>
               <li>Which version wins</li>
-              <li>What they'll actually pay for</li>
-              <li>Whether the change moved anything at all</li>
+              <li>What they pay for</li>
+              <li>Whether the change moved anything</li>
             </ul>
           </div>
         </div>
-        <p class="asknote rv d5">Ask what they did last week, not what they'd do next month.</p>
+        <p class="asknote frag" data-frag="1">Ask what they did last week, not what they'd do next month.</p>
       </div>
-      <div class="notes" hidden>One takeaway I carry from this project. We tested AP prep and a set of specialist agents, and the interviews were glowing — students said it was useful, said they'd use it every week. Then we shipped, and their behaviour said something else, so those bets moved down the roadmap. What I took from it isn't "don't do research" — it's that the two methods answer different questions. Interviews answer why, and how something happens. Data answers whether, and how much. So now I use interviews for context, for the workarounds people invent, for the words they use, for where the emotion is. And when the question is "should we build this at all", I'd rather spend a day on a fake door than a week on interviews. In short: ask what they did last week, not what they'd do next month.</div>
+      <script>
+        (function () {
+          var sl = document.currentScript.closest("section");
+          var shot = sl.querySelector(".tkshot"), step = sl.querySelector(".misspull.frag");
+          if (!shot || !step) return;
+          var sync = function () { shot.classList.toggle("gone", step.classList.contains("shown")); };
+          new MutationObserver(sync).observe(step, { attributes: true, attributeFilter: ["class"] });
+          sync();
+        })();
+      </script>
+      <div class="notes" hidden>One takeaway from this project. We tested AP prep and a set of specialist agents, and every interview was glowing — useful, they'd use it weekly. Behaviour said otherwise, and those bets moved down the roadmap. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>What I took from it isn't "don't do research" — it's that the two answer different questions. Interviews answer why. Data answers whether. So I use interviews for context, for the workarounds people invent, for the words they use, for where the emotion is. And when the question is "should we build this at all", I'd rather spend a day on a fake door than a week on interviews. Ask what they did last week, not what they'd do next month.</div>
     </section>
 
     <!-- 13 · Results → Grateful -->
