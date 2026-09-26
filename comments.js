@@ -25,7 +25,7 @@
   function add(text) {
     const page = store.data[PAGE] || (store.data[PAGE] = {});
     const arr = page[idx] || (page[idx] = []);
-    arr.push({ text: text, at: Date.now() });
+    arr.push({ who: store.author || "Guest", text: text, at: Date.now() });
     save();
   }
   function total() {
@@ -63,6 +63,9 @@
   .cmt-form input { font-size: 13px; }
   .cmt-form textarea { min-height: 84px; resize: vertical; line-height: 1.5; }
   .cmt-form :is(input, textarea):focus { border-color: rgba(139,124,255,.7); }
+  .cmt-as { display: none; font-size: 12px; color: #8b8b9c; }
+  .cmt-as b { color: #cfc4ff; font-weight: 600; }
+  .cmt-as button { background: none; border: 0; color: #8b8b9c; font: inherit; text-decoration: underline; cursor: pointer; padding: 0; }
   .cmt-row { display: flex; gap: 8px; }
   .cmt-btn { flex: 1; font: inherit; font-size: 13.5px; font-weight: 600; border: 0; border-radius: 10px; padding: 11px 14px;
     background: #8b7cff; color: #0b0b10; cursor: pointer; }
@@ -93,6 +96,8 @@
     </div>
     <div class="cmt-list"></div>
     <div class="cmt-form">
+      <input class="cmt-name" type="text" placeholder="Your name — asked once" />
+      <div class="cmt-as">Commenting as <b></b> · <button type="button" class="cmt-rename">change</button></div>
       <textarea class="cmt-text" placeholder="Comment on this slide…"></textarea>
       <button class="cmt-btn cmt-submit" type="button">Submit</button>
     </div>
@@ -108,8 +113,21 @@
   document.body.appendChild(panel);
 
   const $ = (s) => panel.querySelector(s);
-  const listEl = $(".cmt-list"), whereEl = $(".cmt-where"),
-        textEl = $(".cmt-text"), codeEl = $(".cmt-code"), hintEl = $(".cmt-hint");
+  const listEl = $(".cmt-list"), whereEl = $(".cmt-where"), nameEl = $(".cmt-name"),
+        asEl = $(".cmt-as"), textEl = $(".cmt-text"), codeEl = $(".cmt-code"), hintEl = $(".cmt-hint");
+
+  function syncWho() {
+    const has = !!(store.author || "").trim();
+    nameEl.style.display = has ? "none" : "block";
+    asEl.style.display = has ? "block" : "none";
+    if (has) asEl.querySelector("b").textContent = store.author;
+    else nameEl.value = "";
+  }
+  $(".cmt-rename").addEventListener("click", () => {
+    nameEl.value = store.author || "";
+    store.author = "";
+    save(); syncWho(); nameEl.focus();
+  });
 
   function render() {
     const items = listFor(PAGE, idx);
@@ -126,7 +144,7 @@
         el.className = "cmt-item";
         const who = document.createElement("div");
         who.className = "who";
-        who.textContent = new Date(c.at).toLocaleDateString();
+        who.textContent = (c.who ? c.who + " · " : "") + new Date(c.at).toLocaleDateString();
         const tx = document.createElement("div");
         tx.className = "txt";
         tx.textContent = c.text;
@@ -167,7 +185,11 @@
   $(".cmt-submit").addEventListener("click", () => {
     const text = textEl.value.trim();
     if (!text) { textEl.focus(); return; }
+    const typed = (nameEl.value || "").trim();
+    if (typed) store.author = typed;
+    if (!(store.author || "").trim()) { nameEl.focus(); hintEl.textContent = "Add a name once, then it's remembered."; return; }
     add(text);
+    syncWho();
     textEl.value = "";
     render();
     hintEl.textContent = "Saved. " + total() + " comments in this browser — copy the code to send them.";
@@ -232,5 +254,6 @@
     hintEl.textContent = "All comments cleared.";
   });
 
+  syncWho();
   render();
 })();
