@@ -168,6 +168,14 @@
   document.addEventListener("deck:change", (e) => { idx = e.detail.index; render(); });
   window.addEventListener("hashchange", () => { idx = fromHash(); render(); });
 
+  // keys typed inside the panel belong to the panel, never to the deck
+  window.addEventListener("keydown", (e) => {
+    if (!panel.contains(e.target)) return;
+    e.stopImmediatePropagation();
+    if (e.key === "Escape") { e.target.blur(); toggle(false); }
+    else if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); $(".cmt-submit").click(); }
+  }, true);
+
   document.addEventListener("keydown", (e) => {
     const t = e.target;
     const typing = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
