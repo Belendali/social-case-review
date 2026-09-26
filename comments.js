@@ -5,9 +5,13 @@
   const TITLES = { "index.html": "Agenda", "answer.html": "Answer.AI", "wanaka.html": "Wanaka", "social.html": "LiveStatus" };
 
   let store = load();
-  let idx = 0;
+  let idx = fromHash();
   let open = false;
 
+  function fromHash() {
+    const n = parseInt((location.hash || "").replace("#", ""), 10);
+    return isFinite(n) && n > 0 ? n - 1 : 0;
+  }
   function load() {
     try { return JSON.parse(localStorage.getItem(KEY)) || { author: "", data: {} }; }
     catch (e) { return { author: "", data: {} }; }
@@ -145,6 +149,7 @@
 
   /* ---------- events ---------- */
   document.addEventListener("deck:change", (e) => { idx = e.detail.index; render(); });
+  window.addEventListener("hashchange", () => { idx = fromHash(); render(); });
 
   document.addEventListener("keydown", (e) => {
     const t = e.target;
