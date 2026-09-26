@@ -25,7 +25,7 @@
   function add(text) {
     const page = store.data[PAGE] || (store.data[PAGE] = {});
     const arr = page[idx] || (page[idx] = []);
-    arr.push({ who: store.author || "Guest", text: text, at: Date.now() });
+    arr.push({ text: text, at: Date.now() });
     save();
   }
   function total() {
@@ -93,7 +93,6 @@
     </div>
     <div class="cmt-list"></div>
     <div class="cmt-form">
-      <input class="cmt-name" type="text" placeholder="Your name" />
       <textarea class="cmt-text" placeholder="Comment on this slide…"></textarea>
       <button class="cmt-btn cmt-submit" type="button">Submit</button>
     </div>
@@ -101,6 +100,7 @@
       <div class="cmt-row">
         <button class="cmt-btn ghost cmt-export" type="button">Copy all as code</button>
         <button class="cmt-btn ghost cmt-import" type="button">Paste code</button>
+        <button class="cmt-btn ghost cmt-clear" type="button">Clear all</button>
       </div>
       <textarea class="cmt-code" placeholder="Paste the code here, then press Paste code again"></textarea>
       <div class="hint cmt-hint">Comments live in this browser. Send the code to share them.</div>
@@ -108,9 +108,8 @@
   document.body.appendChild(panel);
 
   const $ = (s) => panel.querySelector(s);
-  const listEl = $(".cmt-list"), whereEl = $(".cmt-where"), nameEl = $(".cmt-name"),
+  const listEl = $(".cmt-list"), whereEl = $(".cmt-where"),
         textEl = $(".cmt-text"), codeEl = $(".cmt-code"), hintEl = $(".cmt-hint");
-  nameEl.value = store.author || "";
 
   function render() {
     const items = listFor(PAGE, idx);
@@ -127,7 +126,7 @@
         el.className = "cmt-item";
         const who = document.createElement("div");
         who.className = "who";
-        who.textContent = c.who + " · " + new Date(c.at).toLocaleDateString();
+        who.textContent = new Date(c.at).toLocaleDateString();
         const tx = document.createElement("div");
         tx.className = "txt";
         tx.textContent = c.text;
@@ -168,7 +167,6 @@
   $(".cmt-submit").addEventListener("click", () => {
     const text = textEl.value.trim();
     if (!text) { textEl.focus(); return; }
-    store.author = nameEl.value.trim() || store.author || "Guest";
     add(text);
     textEl.value = "";
     render();
@@ -217,6 +215,21 @@
     codeEl.value = "";
     render();
     hintEl.textContent = added + " comments added. Slides with comments show a marker.";
+  });
+
+  $(".cmt-clear").addEventListener("click", () => {
+    if (!total()) { hintEl.textContent = "Nothing to clear."; return; }
+    if (hintEl.dataset.armed !== "1") {
+      hintEl.dataset.armed = "1";
+      hintEl.textContent = "Press Clear all again to delete every comment in this browser.";
+      setTimeout(() => { hintEl.dataset.armed = "0"; }, 5000);
+      return;
+    }
+    store = { author: "", data: {} };
+    save();
+    hintEl.dataset.armed = "0";
+    render();
+    hintEl.textContent = "All comments cleared.";
   });
 
   render();
