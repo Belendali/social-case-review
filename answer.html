@@ -636,13 +636,15 @@
   .br:hover { transform: translateY(-4px); border-color: rgba(255,214,102,.45); }
   .chainnote { margin-top: 26px; font-size: 17px; color: var(--ink); }
   @media (max-width: 900px) { .branches { grid-template-columns: 1fr 1fr; } }
-  /* ===== Core · step three: Plan A next to Plan B ===== */
-  .corestage .ph.planA { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) translateX(-140px) scale(.74); filter: brightness(.7) saturate(.7); }
-  .corestage:has(.stagetrig2.shown) .ph.before { opacity: 0; pointer-events: none; }
-  .corestage:has(.stagetrig2.shown) .ph.planA { opacity: 1; transform: translate(-50%, -50%) translateX(-165px) scale(.86); }
-  .corestage:has(.stagetrig2.shown) .ph.after { transform: translate(-50%, -50%) translateX(115px) scale(1); border-color: rgba(139,124,255,.5); box-shadow: 0 0 0 1px rgba(139,124,255,.25), 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000; }
-  .corestage:has(.stagetrig2.shown) .ph.after .phlab::after { content: " · Plan B ✓"; color: #cfc4ff; }
+  /* ===== Core · the two plans ===== */
+  .corestage .ph.planA, .corestage .ph.after { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.9); }
+  .corestage:has(.stagetrig.shown) .ph.before { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.94); }
+  .corestage:has(.stagetrig.shown) .ph.planA { opacity: 1; transform: translate(-50%, -50%) translateX(-138px) scale(.93); }
+  .corestage:has(.stagetrig.shown) .ph.after { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) translateX(138px) scale(.93); }
+  .corestage:has(.stagetrig2.shown) .ph.planA { transform: translate(-50%, -50%) translateX(-158px) scale(.84); filter: brightness(.5) saturate(.55); }
+  .corestage:has(.stagetrig2.shown) .ph.after { transform: translate(-50%, -50%) translateX(120px) scale(1.02); border-color: rgba(139,124,255,.55); box-shadow: 0 0 0 1px rgba(139,124,255,.28), 0 36px 70px rgba(0,0,0,.55), inset 0 0 0 4px #000; }
   .corestage:has(.stagetrig2.shown) .ph.after .phlab { color: #cfc4ff; }
+  .corestage:has(.stagetrig2.shown) .ph.after .phlab::after { content: " ✓ shipped"; }
   .phslot { position: absolute; inset: 4px; border-radius: 22px; border: 1px dashed rgba(255,255,255,.22); display: grid; place-items: center; text-align: center; font-family: var(--serif); font-size: 12px; letter-spacing: .1em; color: var(--faint); line-height: 1.7; }
   .phslot span { font-size: 11px; opacity: .7; }
   /* ===== Stay strategy: hub vs ask ===== */
@@ -702,9 +704,10 @@
         </p>
         <p class="kicker rv" style="margin-top:44px">Bella (Yuanyuan) Li · Product Designer · Aug 2024 – present</p>
       </div>
-      <div class="notes" hidden>Okay, Answer.AI. First of all, it's an AI learning app with about seven million students. I joined in 2024 as the product designer, and this is the story of how we found growth again after hitting a wall. And looking back, the part that worked best wasn't a better answer — it was the moment the app stopped being something you used alone.</div>
-    <div class="notes" data-frag="2" hidden>Now, the honest part of this decision. Speed was our moat — a student at eleven at night wants the answer, right now. So putting anything above the answer is a risk. We built both: Plan A kept the answer on top with the working underneath; Plan B leads with the approach and puts the answer just below it. We wanted Plan B, because we wanted students to actually learn something. So we A/B tested it — and there was no drop. The approach block is short, so the answer is still one glance away. That's the trade we made: a second of attention, for a reason to read.</div>
-      </section>
+      <div class="notes" hidden>Layer one is the core — photo-solving, where every student starts. This is what it looked like: one long block of text. Easy to copy, hard to learn anything from, and a toolbar of features sitting inside the chat. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>We built two versions. Plan A keeps the answer on top with the working underneath. Plan B leads with the approach and puts the answer right below it, with each step opening on tap. <i>[space]</i></div>
+      <div class="notes" data-frag="2" hidden>We wanted Plan B, because we wanted students to actually learn something. But speed was our moat — a student at eleven at night wants the answer now, and putting anything above it is a risk. So we A/B tested, and there was no drop: the approach block is short, so the answer is still one glance away. That's the trade we made — a second of attention, for a reason to read. And on the right you can see what else changed: one clean chat, the tools moved into a sidebar, and every answer now opening a next step.</div>
+    </section>
 
     <!-- 2 · What is Answer.AI -->
     <section class="slide">
@@ -1077,16 +1080,12 @@
           </p>
           <div class="corelegend">
             <p class="cl before"><b>Before</b> One long block. Easy to copy, hard to learn from. A toolbar of features inside the chat.</p>
-            <p class="cl after frag" data-frag="1"><b>After</b> The approach leads, the answer sits right below it, each step opens on tap. One clean chat, tools in a sidebar.</p>
+            <p class="cl after frag" data-frag="1"><b>Two ways to show it</b> Plan A keeps the answer on top, working below. Plan B leads with the approach and puts the answer right under it, each step on tap.</p>
           </div>
           <div class="tradeoff frag" data-frag="2">
             <div class="tolab">The trade-off</div>
-            <p class="toline"><b>Speed was the moat.</b> We put the thinking above the answer anyway.</p>
-            <div class="abrow">
-              <div class="ab"><span class="abk">Plan A</span>Answer on top, working below</div>
-              <div class="ab win"><span class="abk">Plan B</span>Approach first, answer just below<i>✓ shipped</i></div>
-            </div>
-            <p class="abres">A/B tested — no drop. The approach block is short, so the answer stays one glance away.</p>
+            <p class="toline"><b>Speed was the moat.</b> We put the thinking above the answer anyway — and A/B tested it.</p>
+            <p class="abres">No drop. The approach block is short, so the answer stays one glance away. Plan B shipped.</p>
           </div>
         </div>
         <div class="corestage">
@@ -1103,7 +1102,7 @@
           </div>
           <div class="ph after">
             <video src="assets/core-after.mp4" muted loop playsinline autoplay preload="metadata"></video>
-            <div class="phlab">After</div>
+            <div class="phlab">Plan B · approach first</div>
             <button class="hs" type="button" data-k="core1" style="left:8%;top:6%" data-t="Curated sidebar" data-d="Key tools and history tucked into a sidebar, in the student's control."></button>
             <button class="hs" type="button" data-k="core2" style="left:60%;top:36%" data-t="Step-by-step explanation" data-d="The approach first, each step on tap — something to learn from, not copy."></button>
             <button class="hs" type="button" data-k="core3" style="left:42%;top:63%" data-t="A path to keep learning" data-d="Every answer opens a next step — similar questions, a video explanation, the concept behind it."></button>
