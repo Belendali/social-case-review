@@ -647,8 +647,8 @@
   .corewrap:has(.cs3.shown) .tradeoff { display: block; }
   .wgk { font-family: var(--serif); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--core); }
   .wgsrc { margin: 5px 0 0; font-size: 12.5px; color: var(--faint); }
-  .corewrap:has(.cs1.shown) { grid-template-columns: 1fr; }
-  .corewrap:has(.cs1.shown) .corestage { display: none; }
+  .corewrap:has(.cs1.shown):not(:has(.cs2.shown)) { grid-template-columns: 1fr; }
+  .corewrap:has(.cs1.shown):not(:has(.cs2.shown)) .corestage { display: none; }
   .wgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; margin-top: 16px; }
   .wg { border: 1px solid var(--line); border-radius: 16px; padding: 13px 15px 15px; background: var(--card);
     transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, opacity .3s ease-out; }
