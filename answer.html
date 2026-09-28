@@ -674,6 +674,7 @@
   .fline b { font-weight: 500; }
   .fline.sub { font-size: 22px; color: var(--dim); }
   .fline.sub b { color: var(--ink); }
+  .fline b.hl { color: var(--core); }
   .fcost { font-size: 15px; color: var(--faint); padding-left: 2px; }
   .moneynote { margin-top: 26px; font-size: 17px; line-height: 1.55; color: var(--dim); border-left: 2px solid var(--core); padding-left: 16px; max-width: 60ch; }
   .moneynote b { color: var(--ink); font-weight: 600; }
@@ -895,7 +896,7 @@
 
           <div class="formula rv d2">
             <div class="fline"><b>Revenue</b><span>=</span><b>Subscribers</b><span>×</span><b>Price</b></div>
-            <div class="fline sub frag" data-frag="1"><b>Subscribers</b><span>=</span>New<span>×</span>Conversion<span>×</span>How long they stay</div>
+            <div class="fline sub frag" data-frag="1"><b>Subscribers</b><span>=</span>New<span>×</span>Conversion<span>×</span><b class="hl">Retention</b></div>
             <div class="fcost frag" data-frag="1">− cost to serve · every answer burns inference</div>
           </div>
 
