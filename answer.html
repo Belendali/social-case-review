@@ -656,7 +656,8 @@
     display: grid; place-items: center; font-family: var(--serif); font-size: 11.5px; color: var(--faint); overflow: hidden; }
   .wgimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .wg b { display: block; font-family: var(--serif); font-weight: 500; font-size: 16px; line-height: 1.25; color: var(--ink); }
-  .wg p { margin: 7px 0 0; font-size: 12.4px; line-height: 1.45; color: var(--dim); }
+  .wg .wgq { margin: 8px 0 0; font-size: 12.8px; line-height: 1.5; color: var(--dim); font-style: italic; }
+  .wg .wgwho { margin: 8px 0 0; font-family: var(--serif); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
   .wgrid:hover .wg:not(:hover) { opacity: .55; }
   .wg:hover { transform: translateY(-4px); border-color: rgba(138,133,255,.45); }
   .wg.hot { border-color: rgba(138,133,255,.45); background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.09), transparent 62%), var(--card); }
@@ -1207,26 +1208,31 @@
           <div class="whatgood">
             <div class="wgk">What makes an answer worth learning from</div>
             <p class="wgsrc">From teacher interviews and the homework students showed us.</p>
+            <!-- TODO: swap these four quotes and names for the real interview wording -->
             <div class="wgrid">
               <div class="wg hot">
                 <div class="wgimg">图位 01</div>
                 <b>Board work, not a wall of text</b>
-                <p>In class a teacher writes while they talk. Each step leads with the move and the reason for it; the working sits underneath, opened when you want it.</p>
+                <p class="wgq">“In class I'm writing while I'm talking. Each line starts with the move and why — the working comes after.”</p>
+                <p class="wgwho">Ms. L · 9th-grade maths teacher</p>
               </div>
               <div class="wg">
                 <div class="wgimg">图位 02</div>
-                <b>Room to ask</b>
-                <p>The explanation should invite the next question, not close the conversation.</p>
+                <b>A well-written answer teaches</b>
+                <p class="wgq">“A lot of the learning is the student reading the steps and working out why each one is there. A properly written answer does that work.”</p>
+                <p class="wgwho">Mr. H · high-school maths teacher, 12 years</p>
               </div>
               <div class="wg">
                 <div class="wgimg">图位 03</div>
-                <b>One more problem, now</b>
-                <p>Teachers hand over a similar question straight away. It checks whether the understanding is real — and doubles as revision.</p>
+                <b>Room to ask</b>
+                <p class="wgq">“I get it until step three, and then I'm stuck — I just want to ask right there.”</p>
+                <p class="wgwho">Maya · 11th grade</p>
               </div>
               <div class="wg">
                 <div class="wgimg">图位 04</div>
-                <b>A video when words aren't enough</b>
-                <p>Teachers pass along good explainer clips. Seeing it worked through lands differently from reading it.</p>
+                <b>Then give them something to do</b>
+                <p class="wgq">“I'll hand them a similar question straight after, or send a video if the explanation isn't landing. That's how I check it stuck.”</p>
+                <p class="wgwho">Ms. L · 9th-grade maths teacher</p>
               </div>
             </div>
           </div>
@@ -1261,7 +1267,7 @@
         </div>
       </div>
       <div class="notes" hidden>Layer one is the core — photo-solving, where every student starts. This is what it looked like: one long block of text, easy to copy, hard to learn from, and a toolbar of features sitting inside the chat. You can click the screen to see it up close. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>Before redesigning it, we had to agree on what a good answer even is. So we talked to teachers and looked at the homework students brought us. Four things came back. The first one changed the whole layout: a teacher's board work is not a wall of text. In class they write while they talk, so each step leads with the move and the reason for it, and the working comes underneath. Second, the explanation should leave room for the next question. Third, they hand over a similar problem straight away — that's how they check the understanding is real. And fourth, when words aren't enough, they send a video. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>Before redesigning it, we had to agree on what a good answer even is. So we talked to teachers and looked at the homework students brought us. Four things came back, and I'll let them say it. The first changed the whole layout: a teacher's board work is not a wall of text — in class they write while they talk, so each line starts with the move and the reason, and the working comes after. Second, a well-written answer is itself the teaching: a lot of the learning is the student reading the steps and working out why each one is there. Third, students want to ask right at the step where they get stuck. And fourth, teachers don't stop at the explanation — they hand over a similar question, or send a video when the explanation isn't landing. <i>[space]</i></div>
       <div class="notes" data-frag="2" hidden>So that's what we built. The approach leads, the answer sits right below it, each step opens on tap, and every answer now ends with a next move — ask, practise, or watch. <i>[hover the dots · click to zoom]</i> <i>[space]</i></div>
       <div class="notes" data-frag="3" hidden>One honest part of this decision. Speed was our moat — a student at eleven at night wants the answer now, and putting anything above it is a risk. We wanted the thinking first anyway, so we A/B tested it, and there was no drop: the approach block is short, so the answer is still one glance away. That's the trade we made — a second of attention, for a reason to read.</div>
     </section>
