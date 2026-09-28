@@ -33,12 +33,15 @@
     const t = e.target.closest(".zoomable");
     if (!t) return;
     e.preventDefault();
-    const fig = t.closest("figure");
-    if (!fig && t.closest(".ph")) { label = (t.closest(".ph").querySelector(".phlab") || {}).textContent || ""; }
     let label = t.alt || "";
+    const fig = t.closest("figure");
     const capEl = fig && fig.querySelector("figcaption");
     if (capEl) {
       label = [...capEl.childNodes].map((n) => (n.textContent || "").trim()).filter(Boolean).join(" · ");
+    } else {
+      const ph = t.closest(".ph, .fr, .f3");
+      const lab = ph && ph.querySelector(".phlab");
+      if (lab) label = lab.textContent.trim();
     }
     open(t.currentSrc || t.src, label, t.tagName === "VIDEO");
   });
