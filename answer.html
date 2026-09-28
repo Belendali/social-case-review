@@ -616,7 +616,13 @@
   .movedrow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
   .moved b { display: block; font-family: var(--serif); font-weight: 500; font-size: clamp(22px, 2.3vw, 30px); color: var(--core); line-height: 1.1; }
   .moved span { display: block; margin-top: 6px; font-size: 13px; line-height: 1.45; color: var(--dim); }
-  .abres.ab2 { margin-top: 8px; }
+  .movedlink { margin: 14px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--dim); }
+  .movedlink b { color: var(--ink); font-weight: 600; }
+  .abbox { margin-top: 16px; border: 1px solid rgba(138,133,255,.4); border-radius: 14px; padding: 13px 16px;
+    background: radial-gradient(90% 140% at 0% 0%, rgba(138,133,255,.1), transparent 62%), var(--card); }
+  .abbox .abk { font-family: var(--serif); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+  .abbox p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--dim); }
+  .abbox p b { color: var(--ink); font-weight: 600; }
   .tolab { font-family: var(--serif); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--core); margin-bottom: 8px; }
   .toline { font-size: 15.5px; line-height: 1.5; color: var(--dim); margin: 0 0 12px; }
   .toline b { color: var(--ink); font-weight: 600; }
@@ -641,6 +647,7 @@
   .corewrap:has(.cs2.shown) .corelede { display: block; }
   .corewrap:has(.cs2.shown) .coreafter { display: block; }
   .corewrap:has(.cs3.shown) .tradeoff { display: block; }
+  .corewrap:has(.cs3.shown) .corelede, .corewrap:has(.cs3.shown) .coreafter { display: none; }
   .wgk { font-family: var(--serif); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--core); }
   .wgsrc { margin: 5px 0 0; font-size: 12.5px; color: var(--faint); }
   @keyframes coreRise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
@@ -697,7 +704,13 @@
   .movedrow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
   .moved b { display: block; font-family: var(--serif); font-weight: 500; font-size: clamp(22px, 2.3vw, 30px); color: var(--core); line-height: 1.1; }
   .moved span { display: block; margin-top: 6px; font-size: 13px; line-height: 1.45; color: var(--dim); }
-  .abres.ab2 { margin-top: 8px; }
+  .movedlink { margin: 14px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--dim); }
+  .movedlink b { color: var(--ink); font-weight: 600; }
+  .abbox { margin-top: 16px; border: 1px solid rgba(138,133,255,.4); border-radius: 14px; padding: 13px 16px;
+    background: radial-gradient(90% 140% at 0% 0%, rgba(138,133,255,.1), transparent 62%), var(--card); }
+  .abbox .abk { font-family: var(--serif); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+  .abbox p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--dim); }
+  .abbox p b { color: var(--ink); font-weight: 600; }
   /* stage: before centred, then before-left + after-right */
   .corestage .ph.after { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) translateX(140px) scale(.9); }
   .corewrap:has(.cs1.shown) .corestage .ph { opacity: 0; pointer-events: none; }
@@ -1298,14 +1311,18 @@
             <div class="movedrow">
               <div class="moved">
                 <b>18% → 33%</b>
-                <span>of answers got a follow-up</span>
+                <span>of answers got a follow-up question</span>
               </div>
               <div class="moved">
                 <b>23%</b>
-                <span>saved a mistake — and they retain better</span>
+                <span>of students now keep a mistake book</span>
               </div>
             </div>
-            <p class="abres">A/B against the old version: just as fast to the answer, everything else up.</p>
+            <p class="movedlink">Both behaviours track retention: students who do either come back at <b>31% at 30 days</b>, against <b>14%</b> for those who don't.</p>
+            <div class="abbox">
+              <div class="abk">A/B against the old answer</div>
+              <p><b>Retention up.</b> Same time to an answer, and no extra credits burned per answer.</p>
+            </div>
           </div>
         </div>
 
@@ -1330,7 +1347,7 @@
       <div class="notes" hidden>Layer one is the core — photo-solving, where every student starts. This is what it looked like: one long block of text, easy to copy, hard to learn from, and a toolbar of features sitting inside the chat. You can click the screen to see it up close. <i>[space]</i></div>
       <div class="notes" data-frag="1" hidden>Before redesigning it, we had to agree on what a good answer even is. So we talked to teachers and looked at the homework students brought us. To figure that out we sat in on a maths class at a school here in New York — the teacher has been doing this for twenty-three years — and talked with her and a few of her students afterwards. Four things came back, and I'll let them say it. The first changed the whole layout: a teacher's board work is not a wall of text — in class they write while they talk, so each line starts with the move and the reason, and the working comes after. And the one I'd underline: a well-written answer is itself the teaching — the steps are the lesson, and on take-home sheets the teacher writes those steps out so students can follow them. Third, students want to ask right at the step where they get stuck. And fourth, teachers don't stop at the explanation — they hand over a similar question, or send a video when the explanation isn't landing. <i>[space]</i></div>
       <div class="notes" data-frag="2" hidden>So that's what we built. The approach leads, the answer sits right below it, each step opens on tap, and every answer now ends with a next move — ask, practise, or watch. <i>[hover the dots · click to zoom]</i> <i>[space]</i></div>
-      <div class="notes" data-frag="3" hidden>So what moved. The share of answers that got a follow-up question went from eighteen percent to thirty-three. And twenty-three percent of active students started saving mistakes — those students retain better than the ones who don't. Now, that second one is a correlation, not proof: students who ask follow-ups and keep mistakes are more invested to begin with. But it's exactly why follow-up rate was the number this layer had to move, and it moved. We also A/B'd the new answer against the old one: students got their answer just as fast, and everything else moved up.</div>
+      <div class="notes" data-frag="3" hidden>So what moved. The share of answers that got a follow-up went from eighteen percent to thirty-three, and twenty-three percent of students started keeping a mistake book. Both of those behaviours track retention: students who do either come back at about thirty-one percent at day thirty, against fourteen percent for students who don't. I'd flag that's a correlation — those students are more invested to begin with — which is why we also ran the A/B against the old answer. Retention came up, students got their answer just as fast, and we didn't burn extra credits per answer. So: better learning, same speed, same cost.</div>
     </section>
 
     <!-- 9 · Stay -->
