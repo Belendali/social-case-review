@@ -637,15 +637,30 @@
   .br:hover { transform: translateY(-4px); border-color: rgba(255,214,102,.45); }
   .chainnote { margin-top: 26px; font-size: 17px; color: var(--ink); }
   @media (max-width: 900px) { .branches { grid-template-columns: 1fr 1fr; } }
-  /* ===== Core · the two plans ===== */
-  .corestage .ph.planA, .corestage .ph.after { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.9); }
-  .corestage:has(.stagetrig.shown) .ph.before { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.94); }
-  .corestage:has(.stagetrig.shown) .ph.planA { opacity: 1; transform: translate(-50%, -50%) translateX(-138px) scale(.93); }
-  .corestage:has(.stagetrig.shown) .ph.after { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) translateX(138px) scale(.93); }
-  .corestage:has(.stagetrig2.shown) .ph.planA { transform: translate(-50%, -50%) translateX(-158px) scale(.84); filter: brightness(.5) saturate(.55); }
-  .corestage:has(.stagetrig2.shown) .ph.after { transform: translate(-50%, -50%) translateX(120px) scale(1.02); border-color: rgba(139,124,255,.55); box-shadow: 0 0 0 1px rgba(139,124,255,.28), 0 36px 70px rgba(0,0,0,.55), inset 0 0 0 4px #000; }
-  .corestage:has(.stagetrig2.shown) .ph.after .phlab { color: #cfc4ff; }
-  .corestage:has(.stagetrig2.shown) .ph.after .phlab::after { content: " ✓ shipped"; }
+  /* ===== Core · four states ===== */
+  .whatgood, .coreafter, .tradeoff { display: none; }
+  .corewrap:has(.cs1.shown) .corelede { display: none; }
+  .corewrap:has(.cs1.shown) .whatgood { display: block; }
+  .corewrap:has(.cs2.shown) .whatgood { display: none; }
+  .corewrap:has(.cs2.shown) .corelede { display: block; }
+  .corewrap:has(.cs2.shown) .coreafter { display: block; }
+  .corewrap:has(.cs3.shown) .tradeoff { display: block; }
+  .wgk { font-family: var(--serif); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--core); }
+  .wgsrc { margin: 6px 0 0; font-size: 13px; color: var(--faint); }
+  .wgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .wg { border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px 15px; background: var(--card); }
+  .wg b { display: block; font-family: var(--serif); font-weight: 500; font-size: 16.5px; color: var(--ink); }
+  .wg p { margin: 7px 0 0; font-size: 13px; line-height: 1.5; color: var(--dim); }
+  .wg.hot { border-color: rgba(138,133,255,.45); background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.09), transparent 62%), var(--card); }
+  .coreafter { margin-top: 18px; }
+  .tradeoff { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+  /* stage: before centred, then before-left + after-right */
+  .corestage .ph.after { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) translateX(140px) scale(.9); }
+  .corewrap:has(.cs1.shown) .corestage .ph { opacity: 0; pointer-events: none; }
+  .corewrap:has(.cs2.shown) .corestage .ph.before { opacity: 1; transform: translate(-50%, -50%) translateX(-150px) scale(.8); filter: brightness(.6); }
+  .corewrap:has(.cs2.shown) .corestage .ph.after { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) translateX(105px) scale(1); border-color: rgba(139,124,255,.5); box-shadow: 0 0 0 1px rgba(139,124,255,.25), 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000; }
+  .corewrap:has(.cs2.shown) .corestage .ph.after .phlab { color: #cfc4ff; }
+  .corestage:has(.cs2.shown) .ph.after:is(:hover, .hov) .hs, .corestage:has(.cs2.shown) .ph.after .hs.on { opacity: 1; transform: scale(1); }
   .phslot { position: absolute; inset: 4px; border-radius: 22px; border: 1px dashed rgba(255,255,255,.22); display: grid; place-items: center; text-align: center; font-family: var(--serif); font-size: 12px; letter-spacing: .1em; color: var(--faint); line-height: 1.7; }
   .phslot span { font-size: 11px; opacity: .7; }
   /* ===== Stay strategy: hub vs ask ===== */
@@ -1176,46 +1191,67 @@
         <div class="coretext">
           <div class="eyebrow rv" style="color:var(--core)">Layer 01 · Core <em style="font-style:normal;opacity:.6">· the reason they come</em></div>
           <h2 class="rv" style="font-size:var(--t-h2,40px)">Make the answer worth learning from.</h2>
-          <p class="lede rv" style="font-size:16px">
-            Two bets: explanations you can <em>learn from</em>, in a chat
-            <em>calm enough to think in</em>.
+          <p class="lede rv corelede" style="font-size:16px">
+            Every student starts here: photo in, answer out. This is what came back —
+            <em>one long block of text</em>, with a toolbar of features crowding the chat.
           </p>
-          <div class="corelegend">
-            <p class="cl before"><b>Before</b> One long block. Easy to copy, hard to learn from. A toolbar of features inside the chat.</p>
-            <p class="cl after frag" data-frag="1"><b>Two ways to show it</b> Plan A keeps the answer on top, working below. Plan B leads with the approach and puts the answer right under it, each step on tap.</p>
+
+          <div class="whatgood">
+            <div class="wgk">What makes an answer worth learning from</div>
+            <p class="wgsrc">From teacher interviews and the homework students showed us.</p>
+            <div class="wgrid">
+              <div class="wg">
+                <b>Key steps, laid out</b>
+                <p>Teachers write the steps under a new problem, so the method is visible — not just the result.</p>
+              </div>
+              <div class="wg">
+                <b>Room to ask</b>
+                <p>The explanation should invite the next question, not close the conversation.</p>
+              </div>
+              <div class="wg hot">
+                <b>One more problem, now</b>
+                <p>Teachers hand over a similar question straight away. It checks whether the understanding is real — and doubles as revision.</p>
+              </div>
+              <div class="wg">
+                <b>A video when words aren't enough</b>
+                <p>Teachers pass along good explainer clips. Seeing it worked through lands differently from reading it.</p>
+              </div>
+            </div>
           </div>
-          <div class="tradeoff frag" data-frag="2">
+
+          <div class="coreafter">
+            <p class="cl after"><b>After</b> The approach leads, the answer sits right below it, each step opens on tap. Every answer now ends with a next move — ask, practise, or watch.</p>
+          </div>
+
+          <div class="tradeoff">
             <div class="tolab">The trade-off</div>
             <p class="toline"><b>Speed was the moat.</b> We put the thinking above the answer anyway — and A/B tested it.</p>
             <p class="abres">No drop. The approach block is short, so the answer stays one glance away. Plan B shipped.</p>
           </div>
         </div>
+
         <div class="corestage">
-          <span class="stagetrig frag" data-frag="1" aria-hidden="true"></span>
-          <span class="stagetrig2 frag" data-frag="2" aria-hidden="true"></span>
+          <span class="cs1 frag" data-frag="1" aria-hidden="true"></span>
+          <span class="cs2 frag" data-frag="2" aria-hidden="true"></span>
+          <span class="cs3 frag" data-frag="3" aria-hidden="true"></span>
           <div class="hstip" aria-hidden="true"></div>
           <div class="ph before">
-            <video src="assets/core-before.mp4" muted loop playsinline autoplay preload="metadata"></video>
+            <video class="zoomable" src="assets/core-before.mp4" muted loop playsinline autoplay preload="metadata"></video>
             <div class="phlab">Before</div>
           </div>
-          <div class="ph planA">
-            <div class="phslot">Plan A 稿子位<br /><span>answer on top</span></div>
-            <div class="phlab">Plan A · answer on top</div>
-          </div>
           <div class="ph after">
-            <video src="assets/core-after.mp4" muted loop playsinline autoplay preload="metadata"></video>
-            <div class="phlab">Plan B · approach first</div>
-            <button class="hs" type="button" data-k="core1" style="left:8%;top:6%" data-t="Curated sidebar" data-d="Key tools and history tucked into a sidebar, in the student's control."></button>
+            <video class="zoomable" src="assets/core-after.mp4" muted loop playsinline autoplay preload="metadata"></video>
+            <div class="phlab">After</div>
             <button class="hs" type="button" data-k="core2" style="left:60%;top:36%" data-t="Step-by-step explanation" data-d="The approach first, each step on tap — something to learn from, not copy."></button>
-            <button class="hs" type="button" data-k="core3" style="left:42%;top:63%" data-t="A path to keep learning" data-d="Every answer opens a next step — similar questions, a video explanation, the concept behind it."></button>
+            <button class="hs" type="button" data-k="core3" style="left:42%;top:63%" data-t="A next move, every time" data-d="Ask a follow-up, practise a similar question, or watch it explained."></button>
             <button class="hs" type="button" data-k="core4" style="left:50%;top:80%" data-t="One clean chat" data-d="Every extra tool moved out of the way until it's needed."></button>
           </div>
         </div>
       </div>
-      <div class="notes" hidden>Layer one is the core, and this is the front door. This is the old Ask AI, where students landed after scanning a problem — one long block of text, easy to copy, but hard to learn from. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>So I made some changes. <i>[hover the dots]</i> <span data-hov="[data-k=core2]">First, I made the explanations something students can actually learn from: they see the steps first, and the copy-paste-able worked solution is tucked behind an expand arrow. That's how a teacher would teach it — by the time they get to the answer, they've already picked up how to solve it, almost without noticing.</span> <span data-hov="[data-k=core3]">And second, every answer now opens a next step — similar questions, a video explanation, the concept behind it — so one problem turns into real understanding and practice of that concept.</span> Because if the knowledge behind the answer isn't clear, nothing else on top of it matters.</div>
-      <div class="notes" data-frag="1" hidden>We built two versions. Plan A keeps the answer on top with the working underneath. Plan B leads with the approach and puts the answer right below it, with each step opening on tap. <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>We wanted Plan B, because we wanted students to actually learn something. But speed was our moat — a student at eleven at night wants the answer now, and putting anything above it is a risk. So we A/B tested, and there was no drop: the approach block is short, so the answer is still one glance away. That's the trade we made — a second of attention, for a reason to read. And on the right you can see what else changed: one clean chat, the tools moved into a sidebar, and every answer now opening a next step.</div>
+      <div class="notes" hidden>Layer one is the core — photo-solving, where every student starts. This is what it looked like: one long block of text, easy to copy, hard to learn from, and a toolbar of features sitting inside the chat. You can click the screen to see it up close. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>Before redesigning it, we had to agree on what a good answer even is. So we talked to teachers and looked at the homework students brought us. Four things came back. Teachers write the key steps under a new problem, so the method is visible. The explanation should leave room for the next question. They hand over a similar problem straight away — that's how they check the understanding is real. And when words aren't enough, they send a video. <i>[space]</i></div>
+      <div class="notes" data-frag="2" hidden>So that's what we built. The approach leads, the answer sits right below it, each step opens on tap, and every answer now ends with a next move — ask, practise, or watch. <i>[hover the dots · click to zoom]</i> <i>[space]</i></div>
+      <div class="notes" data-frag="3" hidden>One honest part of this decision. Speed was our moat — a student at eleven at night wants the answer now, and putting anything above it is a risk. We wanted the thinking first anyway, so we A/B tested it, and there was no drop: the approach block is short, so the answer is still one glance away. That's the trade we made — a second of attention, for a reason to read.</div>
     </section>
 
     <!-- 9 · Stay -->
@@ -1660,7 +1696,7 @@
 <script src="deck.js?v=09081324"></script>
 <script src="mirror.js?v=09081324"></script>
 <script src="editor.js?v=09081324"></script>
-<script src="lightbox.js?v=2"></script>
+<script src="lightbox.js?v=3"></script>
 <script src="comments.js?v=5"></script>
 </body>
 </html>
