@@ -694,26 +694,15 @@
   .moneynote { margin-top: 24px; font-size: 16.5px; line-height: 1.55; color: var(--dim); border-left: 2px solid var(--core); padding-left: 16px; max-width: 96ch; }
   .moneynote b { color: var(--ink); font-weight: 600; }
   @media (max-width: 900px) { .twocharts { grid-template-columns: 1fr; } }
-  /* ===== The goal, in three beats ===== */
-  .goalwrap .goaleye, .goalwrap .goalsub { transition: opacity .35s ease-out; }
-  .goalwrap .goalline { transition: transform .5s cubic-bezier(.22,1,.36,1); }
-  .goalvis { display: none; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 32px; text-align: left; }
-  .gv { border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px 24px; background: var(--card); }
-  .gv .gk { font-family: var(--serif); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--faint); }
-  .gv h3 { margin: 10px 0 0; font-family: var(--serif); font-weight: 500; font-size: 23px; color: var(--ink); }
-  .gv p { margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: var(--dim); }
-  .gv p b { color: var(--ink); font-weight: 600; }
-  .gv.now { border-top: 2px solid rgba(255,92,122,.6); }
-  .gv.next { border-top: 2px solid var(--core); background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.08), transparent 62%), var(--card); }
-  .goalfinal { display: none; margin-top: 30px; font-family: var(--serif); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.35; color: var(--ink); }
-  .goalwrap:has(.gt2.shown) .goaleye, .goalwrap:has(.gt2.shown) .goalsub { opacity: 0; }
-  .goalwrap:has(.gt2.shown) .goalsub { height: 0; margin: 0; overflow: hidden; }
-  .goalwrap:has(.gt2.shown) .goalline { transform: translateY(-14px); }
-  .goalwrap:has(.gt2.shown) .goalvis { display: grid; }
-  .goalwrap:has(.gt3.shown) .goalvis { display: none; }
-  .goalwrap:has(.gt3.shown) .goalline { transform: none; }
-  .goalwrap:has(.gt3.shown) .goalfinal { display: block; }
-  @media (max-width: 900px) { .goalvis { grid-template-columns: 1fr; } }
+  /* ===== The goal, then the question ===== */
+  .goalwrap .goaleye, .goalwrap .goalline, .goalwrap .goalsub { transition: transform .5s cubic-bezier(.22,1,.36,1); }
+  .goalnext { display: none; margin: 38px auto 0; max-width: 800px; }
+  .goalnext .gn1 { font-size: 16.5px; line-height: 1.6; color: var(--dim); }
+  .goalnext .gn2 { margin-top: 18px; font-family: var(--serif); font-size: clamp(22px, 2.4vw, 30px); color: var(--ink); }
+  .goalwrap:has(.gt2.shown) .goaleye,
+  .goalwrap:has(.gt2.shown) .goalline,
+  .goalwrap:has(.gt2.shown) .goalsub { transform: translateY(-46px); }
+  .goalwrap:has(.gt2.shown) .goalnext { display: block; transform: translateY(-46px); }
 </style>
 </head>
 <body>
@@ -963,30 +952,21 @@
       <div class="glow purple bc"></div>
       <div class="slide-inner goalwrap" style="text-align:center">
         <span class="gt2 frag" data-frag="1" aria-hidden="true"></span>
-        <span class="gt3 frag" data-frag="2" aria-hidden="true"></span>
-
         <div class="eyebrow rv goaleye">The goal</div>
-        <p class="quote rv goalline">Raise <span class="hl">retention</span> — that's what holds revenue.</p>
-        <p class="lede rv d2 goalsub">Do students open it today, tomorrow, next month — and keep paying for it.</p>
-
-        <div class="goalvis">
-          <div class="gv now">
-            <div class="gk">Where we stood</div>
-            <h3>We had become another chatbot.</h3>
-            <p>Same photo, same answer — free everywhere else. A student could fairly ask: <b>why you?</b></p>
-          </div>
-          <div class="gv next">
-            <div class="gk">So the work</div>
-            <h3>Be what a chatbot isn't.</h3>
-            <p>Not a faster answer. <b>A school</b> that knows this student and keeps their learning in one place.</p>
-          </div>
+        <p class="quote rv goalline" style="max-width:1000px;margin:0 auto">
+          Raise <span class="hl">retention</span> — that's what holds revenue.
+        </p>
+        <p class="lede rv d2 goalsub" style="margin:22px auto 0;max-width:820px">
+          Do students open it today, tomorrow, next month — and keep paying for it?
+        </p>
+        <div class="goalnext">
+          <p class="gn1">They're free, and they answer just as well. We charge — so retention has to come from
+          something a chatbot can't give.</p>
+          <p class="gn2">So: <span class="hl">where do we differentiate?</span></p>
         </div>
-
-        <p class="goalfinal">Raise retention by <span class="hl">differentiating from the big models</span> — a school, not an answer.</p>
       </div>
-      <div class="notes" hidden>So the goal was retention — raise it, and revenue holds. Concretely: do students open it today, tomorrow, next month, and keep paying for it. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>But why were they leaving? Honestly, because we had become another chatbot. Same photo, same answer, and free everywhere else — a student could fairly ask, why you? So the work wasn't to make the answer a bit better. It was to be something a chatbot isn't: a school that knows this student and keeps their learning in one place. <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>Which gives the goal its full shape: raise retention by differentiating from the big models. A school, not an answer. Everything after this is judged on that.</div>
+      <div class="notes" hidden>So the goal was retention — raise it, and revenue holds. Concretely: do students open it today, tomorrow, next month, and keep paying for it? <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>And here's the uncomfortable part. The models are free, and they answer about as well as we do. We charge. So retention can't come from a slightly better answer — it has to come from something a chatbot can't give. Which turned the goal into a search: where do we differentiate?</div>
     </section>
 
     <!-- 6 · Discovery: three credible paths -->
