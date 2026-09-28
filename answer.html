@@ -649,15 +649,15 @@
   .wgsrc { margin: 5px 0 0; font-size: 12.5px; color: var(--faint); }
   .corewrap:has(.cs1.shown):not(:has(.cs2.shown)) { grid-template-columns: 1fr; }
   .corewrap:has(.cs1.shown):not(:has(.cs2.shown)) .corestage { display: none; }
-  .wgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; margin-top: 16px; }
+  .wgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; margin-top: 14px; }
   .wg { border: 1px solid var(--line); border-radius: 16px; padding: 13px 15px 15px; background: var(--card);
     transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, opacity .3s ease-out; }
-  .wgimg { height: clamp(84px, 12vh, 124px); border-radius: 10px; border: 1px dashed var(--line); margin-bottom: 11px;
+  .wgimg { height: clamp(130px, 19vh, 190px); border-radius: 10px; border: 1px dashed var(--line); margin-bottom: 11px;
     display: grid; place-items: center; font-family: var(--serif); font-size: 11.5px; color: var(--faint); overflow: hidden; }
   .wgimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .wg b { display: block; font-family: var(--serif); font-weight: 500; font-size: 16px; line-height: 1.25; color: var(--ink); }
-  .wg .wgq { margin: 8px 0 0; font-size: 12.8px; line-height: 1.5; color: var(--dim); font-style: italic; }
-  .wgrot { position: relative; min-height: 104px; margin-top: 8px; }
+  .wg b { display: block; font-family: var(--serif); font-weight: 500; font-size: 15.5px; line-height: 1.25; color: var(--ink); }
+  .wg .wgq { margin: 8px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--dim); font-style: italic; }
+  .wgrot { position: relative; min-height: 96px; margin-top: 8px; }
   .wgqi { position: absolute; inset: 0; opacity: 0; transition: opacity .5s ease-out; pointer-events: none; }
   .wgqi.on { opacity: 1; pointer-events: auto; }
   .wgqi .wgq { margin: 0; }
