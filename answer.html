@@ -692,6 +692,17 @@
   .moneynote { margin-top: 24px; font-size: 17px; line-height: 1.55; color: var(--dim); border-left: 2px solid var(--core); padding-left: 16px; max-width: 92ch; }
   .moneynote b { color: var(--ink); font-weight: 600; }
   @media (max-width: 900px) { .tmove th { width: auto; } .tmove .say { width: auto; } }
+  /* ===== Why they left ===== */
+  .causes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; text-align: left; }
+  .cause { border: 1px solid var(--line); border-top: 2px solid rgba(255,92,122,.55); border-radius: 16px; padding: 18px 20px 20px; background: var(--card); transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, opacity .3s ease-out; }
+  .cause .ck { font-family: var(--serif); font-size: 11px; letter-spacing: .2em; color: var(--faint); }
+  .cause h3 { margin: 8px 0 0; font-family: var(--serif); font-weight: 500; font-size: 20px; color: var(--ink); }
+  .cause p { margin: 10px 0 0; font-size: 13.8px; line-height: 1.5; color: var(--dim); }
+  .causes:hover .cause:not(:hover) { opacity: .55; }
+  .cause:hover { transform: translateY(-4px); border-color: rgba(255,92,122,.5); }
+  .causeq { margin-top: 26px; font-size: 18px; color: var(--dim); }
+  .causeq b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 900px) { .causes { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -701,9 +712,9 @@
   <div class="chrome br">01 / 20</div>
   <nav class="rail" aria-label="Sections">
     <a data-from="0" data-to="2">Context</a>
-    <a data-from="3" data-to="5">Turning point</a>
-    <a data-from="6" data-to="7">Metrics &amp; goal</a>
-    <a data-from="8" data-to="10">Direction</a>
+    <a data-from="3" data-to="4">Turning point</a>
+    <a data-from="5" data-to="6">Metrics &amp; goal</a>
+    <a data-from="7" data-to="10">Direction</a>
     <a data-from="11" data-to="11">Strategy</a>
     <span class="gap"></span>
     <a data-from="12" data-to="12">01 Core</a>
@@ -878,22 +889,6 @@
       <div class="notes" hidden>And then, look at the tail — the curve bent. What happened is that free ChatGPT could read photos now, competitors like Gauth started giving away free credits, and on our side, our loop ended at the answer. So we had acquisition, but no habit, and retention slipped with it.</div>
     </section>
 
-    <!-- 5 · Diagnosis -->
-    <section class="slide">
-      <div class="slide-inner" style="text-align:center">
-        <div class="eyebrow rv">The diagnosis</div>
-        <p class="quote rv" style="margin:0 auto">
-          Fewer students chose us.<br />
-          <span class="hl">Most left after one answer.</span>
-        </p>
-        <p class="lede rv" style="margin:34px auto 0">
-          Scan &amp; Solve was no longer unique. Students got what they needed
-          quickly, but rarely stayed long enough to build a habit with Answer.AI.
-        </p>
-      </div>
-      <div class="notes" hidden>So that was our challenge, in one line: scan-and-solve alone wasn't enough anymore. We had to change something — and to figure out what, we went back to the students.</div>
-    </section>
-
     <!-- 5b · Which part of revenue moved -->
     <section class="slide">
       <div class="slide-inner">
@@ -964,6 +959,41 @@
         </p>
       </div>
       <div class="notes" hidden>So the goal came down to one number: retention. From here on, every direction and every layer I'll show you gets judged by the same question — do students still open this next month, and do they keep paying for it.</div>
+    </section>
+
+    <!-- 5d · Why they left -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow rv">Why they left</div>
+        <h2 class="rv">The loop ended at the answer.</h2>
+        <p class="lede rv d2" style="max-width:840px">
+          To move retention we had to know what students were leaving for — so we looked at what happened
+          right after the answer appeared. Nothing did.
+        </p>
+
+        <div class="causes frag" data-frag="1">
+          <div class="cause">
+            <div class="ck">01</div>
+            <h3>No longer ours</h3>
+            <p>The same camera-first loop was free in any chatbot. Nothing held a student here.</p>
+          </div>
+          <div class="cause">
+            <div class="ck">02</div>
+            <h3>Nothing waiting</h3>
+            <p>The session closed the moment the answer appeared. No next step, no reason to open it tomorrow.</p>
+          </div>
+          <div class="cause">
+            <div class="ck">03</div>
+            <h3>Nothing accumulated</h3>
+            <p>Every visit started from zero. After a hundred problems we still knew nothing about them.</p>
+          </div>
+        </div>
+
+        <p class="causeq frag" data-frag="2">So the question became: <b>what would make a student open it again tomorrow?</b></p>
+      </div>
+      <div class="notes" hidden>With retention as the goal, the next question was why students weren't coming back. So we looked at what happened right after the answer appeared — and the honest answer is, nothing did. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>Three things. First, the loop wasn't ours anymore — the same camera-first flow was free in any chatbot. Second, nothing was waiting: the session closed the moment the answer showed up, so there was no reason to open the app tomorrow. And third, nothing accumulated — after a hundred problems we still knew nothing about that student, and they had nothing of theirs living here. <i>[space]</i></div>
+      <div class="notes" data-frag="2" hidden>Which turned the problem into a question I could actually go and answer: what would make a student open this again tomorrow?</div>
     </section>
 
     <!-- 6 · Discovery: three credible paths -->
