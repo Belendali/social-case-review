@@ -646,15 +646,16 @@
   .corewrap:has(.cs2.shown) .coreafter { display: block; }
   .corewrap:has(.cs3.shown) .tradeoff { display: block; }
   .wgk { font-family: var(--serif); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--core); }
-  .wgsrc { margin: 6px 0 0; font-size: 13px; color: var(--faint); }
+  .wgsrc { margin: 5px 0 0; font-size: 12.5px; color: var(--faint); }
   .corewrap:has(.cs1.shown) { grid-template-columns: 1fr; }
-  .wgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
-  .wg { border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px 18px; background: var(--card);
+  .wgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; margin-top: 16px; }
+  .wg { border: 1px solid var(--line); border-radius: 16px; padding: 13px 15px 15px; background: var(--card);
     transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, opacity .3s ease-out; }
-  .wgimg { aspect-ratio: 4 / 3; border-radius: 10px; border: 1px dashed var(--line); margin-bottom: 12px;
-    display: grid; place-items: center; font-family: var(--serif); font-size: 11.5px; color: var(--faint); }
+  .wgimg { height: clamp(84px, 12vh, 124px); border-radius: 10px; border: 1px dashed var(--line); margin-bottom: 11px;
+    display: grid; place-items: center; font-family: var(--serif); font-size: 11.5px; color: var(--faint); overflow: hidden; }
+  .wgimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .wg b { display: block; font-family: var(--serif); font-weight: 500; font-size: 16px; line-height: 1.25; color: var(--ink); }
-  .wg p { margin: 8px 0 0; font-size: 12.8px; line-height: 1.5; color: var(--dim); }
+  .wg p { margin: 7px 0 0; font-size: 12.4px; line-height: 1.45; color: var(--dim); }
   .wgrid:hover .wg:not(:hover) { opacity: .55; }
   .wg:hover { transform: translateY(-4px); border-color: rgba(138,133,255,.45); }
   .wg.hot { border-color: rgba(138,133,255,.45); background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.09), transparent 62%), var(--card); }
