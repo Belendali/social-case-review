@@ -33,7 +33,11 @@
     if (!t) return;
     e.preventDefault();
     const fig = t.closest("figure");
-    const label = fig ? (fig.querySelector("figcaption")?.textContent || "").replace(/\s+/g, " ").trim() : t.alt;
+    let label = t.alt || "";
+    const capEl = fig && fig.querySelector("figcaption");
+    if (capEl) {
+      label = [...capEl.childNodes].map((n) => (n.textContent || "").trim()).filter(Boolean).join(" · ");
+    }
     open(t.currentSrc || t.src, label);
   });
   box.addEventListener("click", close);
