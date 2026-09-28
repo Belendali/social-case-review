@@ -639,6 +639,10 @@
   .corewrap:has(.cs3.shown) .tradeoff { display: block; }
   .wgk { font-family: var(--serif); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--core); }
   .wgsrc { margin: 5px 0 0; font-size: 12.5px; color: var(--faint); }
+  .corebg { opacity: 0; transition: opacity .6s ease-out; }
+  .corebg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: .5; filter: blur(3px) saturate(.85); }
+  .corebg::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 55% at 42% 45%, rgba(5,5,8,.78) 0%, rgba(5,5,8,.9) 60%, rgba(5,5,8,.96) 100%), linear-gradient(180deg, rgba(5,5,8,.7) 0%, rgba(5,5,8,.55) 45%, rgba(5,5,8,.92) 100%); }
+  .slide:has(.cs1.shown):not(:has(.cs2.shown)) .corebg { opacity: 1; }
   .corewrap:has(.cs1.shown):not(:has(.cs2.shown)) { grid-template-columns: 1fr; }
   .corewrap:has(.cs1.shown):not(:has(.cs2.shown)) .corestage { display: none; }
   .wgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; margin-top: 14px; }
@@ -1192,6 +1196,7 @@
 
     <!-- 8 · Core -->
     <section class="slide">
+      <div class="bleed hero-bg corebg"><img src="assets/core-interview-bg.webp" alt="" /></div>
       <div class="slide-inner corewrap">
         <div class="coretext">
           <div class="eyebrow rv" style="color:var(--core)">Layer 01 · Core <em style="font-style:normal;opacity:.6">· the reason they come</em></div>
