@@ -628,15 +628,7 @@
   .stem .node { border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; font-size: 14.5px; color: var(--dim); background: var(--card); }
   .stem .node.lead { color: var(--ink); border-color: rgba(255,214,102,.45); background: radial-gradient(120% 100% at 0% 0%, rgba(255,214,102,.1), transparent 65%), var(--card); }
   .stem .arrow { color: var(--faint); font-size: 16px; }
-  .branches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
-  .br { position: relative; border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 14px; background: var(--card); transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, opacity .3s ease-out; }
-  .br::before { content: ""; position: absolute; left: 22px; top: -18px; width: 1px; height: 18px; background: var(--line); }
-  .br .brif { display: block; font-family: var(--serif); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-bottom: 8px; }
-  .br b { font-size: 17px; font-weight: 500; color: var(--ink); font-family: var(--serif); }
-  .branches:hover .br:not(:hover) { opacity: .5; }
-  .br:hover { transform: translateY(-4px); border-color: rgba(255,214,102,.45); }
-  .chainnote { margin-top: 26px; font-size: 17px; color: var(--ink); }
-  @media (max-width: 900px) { .branches { grid-template-columns: 1fr 1fr; } }
+
   /* ===== Core · four states ===== */
   .whatgood, .coreafter, .tradeoff { display: none; }
   .corewrap:has(.cs1.shown) .corelede { display: none; }
