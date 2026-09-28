@@ -694,40 +694,49 @@
   .moneynote { margin-top: 24px; font-size: 16.5px; line-height: 1.55; color: var(--dim); border-left: 2px solid var(--core); padding-left: 16px; max-width: 96ch; }
   .moneynote b { color: var(--ink); font-weight: 600; }
   @media (max-width: 900px) { .twocharts { grid-template-columns: 1fr; } }
-  /* ===== Why they left ===== */
-  .causes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; text-align: left; }
-  .cause { border: 1px solid var(--line); border-top: 2px solid rgba(255,92,122,.55); border-radius: 16px; padding: 18px 20px 20px; background: var(--card); transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, opacity .3s ease-out; }
-  .cause .ck { font-family: var(--serif); font-size: 11px; letter-spacing: .2em; color: var(--faint); }
-  .cause h3 { margin: 8px 0 0; font-family: var(--serif); font-weight: 500; font-size: 20px; color: var(--ink); }
-  .cause p { margin: 10px 0 0; font-size: 13.8px; line-height: 1.5; color: var(--dim); }
-  .causes:hover .cause:not(:hover) { opacity: .55; }
-  .cause:hover { transform: translateY(-4px); border-color: rgba(255,92,122,.5); }
-  .causeq { margin-top: 26px; font-size: 18px; color: var(--dim); }
-  .causeq b { color: var(--ink); font-weight: 600; }
-  @media (max-width: 900px) { .causes { grid-template-columns: 1fr; } }
+  /* ===== The goal, in three beats ===== */
+  .goalwrap .goaleye, .goalwrap .goalsub { transition: opacity .35s ease-out; }
+  .goalwrap .goalline { transition: transform .5s cubic-bezier(.22,1,.36,1); }
+  .goalvis { display: none; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 32px; text-align: left; }
+  .gv { border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px 24px; background: var(--card); }
+  .gv .gk { font-family: var(--serif); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--faint); }
+  .gv h3 { margin: 10px 0 0; font-family: var(--serif); font-weight: 500; font-size: 23px; color: var(--ink); }
+  .gv p { margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: var(--dim); }
+  .gv p b { color: var(--ink); font-weight: 600; }
+  .gv.now { border-top: 2px solid rgba(255,92,122,.6); }
+  .gv.next { border-top: 2px solid var(--core); background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.08), transparent 62%), var(--card); }
+  .goalfinal { display: none; margin-top: 30px; font-family: var(--serif); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.35; color: var(--ink); }
+  .goalwrap:has(.gt2.shown) .goaleye, .goalwrap:has(.gt2.shown) .goalsub { opacity: 0; }
+  .goalwrap:has(.gt2.shown) .goalsub { height: 0; margin: 0; overflow: hidden; }
+  .goalwrap:has(.gt2.shown) .goalline { transform: translateY(-14px); }
+  .goalwrap:has(.gt2.shown) .goalvis { display: grid; }
+  .goalwrap:has(.gt3.shown) .goalvis { display: none; }
+  .goalwrap:has(.gt3.shown) .goalline { transform: none; }
+  .goalwrap:has(.gt3.shown) .goalfinal { display: block; }
+  @media (max-width: 900px) { .goalvis { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
   <div class="bar"></div>
   <div class="chrome tl"><a href="index.html" onclick="this.href='index.html?t='+Date.now()">← Agenda</a></div>
   <div class="chrome bl">Answer.AI · The growth story</div>
-  <div class="chrome br">01 / 20</div>
+  <div class="chrome br">01 / 19</div>
   <nav class="rail" aria-label="Sections">
     <a data-from="0" data-to="2">Context</a>
     <a data-from="3" data-to="4">Turning point</a>
     <a data-from="5" data-to="6">Metrics &amp; goal</a>
-    <a data-from="7" data-to="10">Direction</a>
-    <a data-from="11" data-to="11">Strategy</a>
+    <a data-from="7" data-to="9">Direction</a>
+    <a data-from="10" data-to="10">Strategy</a>
     <span class="gap"></span>
-    <a data-from="12" data-to="12">01 Core</a>
-    <a data-from="13" data-to="14">02 Stay</a>
-    <a data-from="15" data-to="15">03 Identity</a>
-    <a data-from="16" data-to="16">04 Personal</a>
+    <a data-from="11" data-to="11">01 Core</a>
+    <a data-from="12" data-to="13">02 Stay</a>
+    <a data-from="14" data-to="14">03 Identity</a>
+    <a data-from="15" data-to="15">04 Personal</a>
     <span class="gap"></span>
-    <a data-from="17" data-to="17">Takeaway</a>
+    <a data-from="16" data-to="16">Takeaway</a>
     <span class="gap"></span>
-    <a data-from="18" data-to="18">Results</a>
-    <a data-from="19" data-to="19">Closing</a>
+    <a data-from="17" data-to="17">Results</a>
+    <a data-from="18" data-to="18">Closing</a>
   </nav>
 
   <div class="deck">
@@ -952,51 +961,32 @@
     <!-- 5c · The goal -->
     <section class="slide">
       <div class="glow purple bc"></div>
-      <div class="slide-inner" style="text-align:center">
-        <div class="eyebrow rv">The goal</div>
-        <p class="quote rv" style="max-width:1000px;margin:0 auto">
-          Raise <span class="hl">retention</span> — that's what holds revenue.
-        </p>
-        <p class="lede rv d2" style="margin:24px auto 0;max-width:820px">
-          Do students open it today, tomorrow, next month — and keep paying for it.
-        </p>
-      </div>
-      <div class="notes" hidden>So the goal was retention — raise it, and revenue holds. Concretely: do students open it today, tomorrow, next month, and keep paying for it. That's the question I'll come back to on every layer.</div>
-    </section>
+      <div class="slide-inner goalwrap" style="text-align:center">
+        <span class="gt2 frag" data-frag="1" aria-hidden="true"></span>
+        <span class="gt3 frag" data-frag="2" aria-hidden="true"></span>
 
-    <!-- 5d · Why they left -->
-    <section class="slide">
-      <div class="slide-inner">
-        <div class="eyebrow rv">Why they left</div>
-        <h2 class="rv">The loop ended at the answer.</h2>
-        <p class="lede rv d2" style="max-width:840px">
-          To move retention we had to know what students were leaving for — so we looked at what happened
-          right after the answer appeared. Nothing did.
-        </p>
+        <div class="eyebrow rv goaleye">The goal</div>
+        <p class="quote rv goalline">Raise <span class="hl">retention</span> — that's what holds revenue.</p>
+        <p class="lede rv d2 goalsub">Do students open it today, tomorrow, next month — and keep paying for it.</p>
 
-        <div class="causes frag" data-frag="1">
-          <div class="cause">
-            <div class="ck">01</div>
-            <h3>No longer ours</h3>
-            <p>The same camera-first loop was free in any chatbot. Nothing held a student here.</p>
+        <div class="goalvis">
+          <div class="gv now">
+            <div class="gk">Where we stood</div>
+            <h3>We had become another chatbot.</h3>
+            <p>Same photo, same answer — free everywhere else. A student could fairly ask: <b>why you?</b></p>
           </div>
-          <div class="cause">
-            <div class="ck">02</div>
-            <h3>Nothing waiting</h3>
-            <p>The session closed the moment the answer appeared. No next step, no reason to open it tomorrow.</p>
-          </div>
-          <div class="cause">
-            <div class="ck">03</div>
-            <h3>Nothing accumulated</h3>
-            <p>Every visit started from zero. After a hundred problems we still knew nothing about them.</p>
+          <div class="gv next">
+            <div class="gk">So the work</div>
+            <h3>Be what a chatbot isn't.</h3>
+            <p>Not a faster answer. <b>A school</b> that knows this student and keeps their learning in one place.</p>
           </div>
         </div>
 
-        <p class="causeq frag" data-frag="2">So the question became: <b>what would make a student open it again tomorrow?</b></p>
+        <p class="goalfinal">Raise retention by <span class="hl">differentiating from the big models</span> — a school, not an answer.</p>
       </div>
-      <div class="notes" hidden>With retention as the goal, the next question was why students weren't coming back. So we looked at what happened right after the answer appeared — and the honest answer is, nothing did. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>Three things. First, the loop wasn't ours anymore — the same camera-first flow was free in any chatbot. Second, nothing was waiting: the session closed the moment the answer showed up, so there was no reason to open the app tomorrow. And third, nothing accumulated — after a hundred problems we still knew nothing about that student, and they had nothing of theirs living here. <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>Which turned the problem into a question I could actually go and answer: what would make a student open this again tomorrow?</div>
+      <div class="notes" hidden>So the goal was retention — raise it, and revenue holds. Concretely: do students open it today, tomorrow, next month, and keep paying for it. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>But why were they leaving? Honestly, because we had become another chatbot. Same photo, same answer, and free everywhere else — a student could fairly ask, why you? So the work wasn't to make the answer a bit better. It was to be something a chatbot isn't: a school that knows this student and keeps their learning in one place. <i>[space]</i></div>
+      <div class="notes" data-frag="2" hidden>Which gives the goal its full shape: raise retention by differentiating from the big models. A school, not an answer. Everything after this is judged on that.</div>
     </section>
 
     <!-- 6 · Discovery: three credible paths -->
