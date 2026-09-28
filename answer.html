@@ -666,32 +666,34 @@
   .ssstage.swapped .fr3 { opacity: 1; pointer-events: auto; transform: none; }
   .staystratwrap:has(.ssstage.swapped) .sshint { opacity: 0; }
   .sshint { transition: opacity .3s ease-out; }
-  /* ===== Success metrics: which term moved ===== */
-  .formula { margin-top: 22px; display: flex; flex-direction: column; gap: 8px; }
-  .fline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; font-family: var(--serif); font-size: 26px; color: var(--ink); line-height: 1.25; }
-  .fline span { color: var(--faint); font-size: 20px; }
-  .fline b { font-weight: 500; }
-  .fline b.hl { color: var(--core); }
-  .fcost { font-size: 14px; color: var(--faint); }
-  .tmove { width: 100%; border-collapse: collapse; margin-top: 26px; text-align: left; }
-  .tmove tr { border-top: 1px solid var(--line); }
-  .tmove tr:last-child { border-bottom: 1px solid var(--line); }
-  .tmove th, .tmove td { padding: 13px 10px; vertical-align: middle; }
-  .tmove th { font-family: var(--serif); font-weight: 500; font-size: 19px; color: var(--ink); width: 190px; }
-  .tmove .arrow { width: 44px; font-size: 22px; line-height: 1; color: var(--faint); }
-  .tmove .say { width: 170px; font-family: var(--serif); font-size: 17px; color: var(--dim); }
-  .tmove .why { font-size: 14.5px; color: var(--dim); }
-  .tmove tr.down .arrow, .tmove tr.down .say { color: #ff5c7a; }
-  .tmove tr.down th { color: #ff8da5; }
-  .tmove tr.up .arrow, .tmove tr.up .say { color: var(--ink); }
-  .tmove tr.up .arrow { font-size: 16px; }
-  .tmove tr.flat { color: var(--faint); }
-  .tmove tr.flat th, .tmove tr.flat .say, .tmove tr.flat .why { color: var(--faint); }
-  .tmove tr.big th { font-size: 22px; }
-  .tmove tr.big .arrow { font-size: 26px; }
-  .moneynote { margin-top: 24px; font-size: 17px; line-height: 1.55; color: var(--dim); border-left: 2px solid var(--core); padding-left: 16px; max-width: 92ch; }
+  /* ===== Success metrics: the formula, then the proof ===== */
+  .bigform { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-top: 26px;
+    font-family: var(--serif); font-size: clamp(26px, 3.1vw, 38px); color: var(--ink); line-height: 1.2; }
+  .bigform .op { color: var(--faint); font-size: .62em; }
+  .bigform .tm { position: relative; display: inline-flex; align-items: baseline; gap: 8px; }
+  .bigform .tm.ret { color: var(--core); }
+  .bigform .ar { font-style: normal; font-size: .72em; line-height: 1; }
+  .bigform .ar.dn { color: #ff5c7a; }
+  .bigform .ar.up { color: var(--ink); font-size: .58em; }
+  .bigform .ar.fl { color: var(--faint); font-size: .5em; }
+  .fcost { margin-top: 10px; font-size: 14px; color: var(--faint); }
+  .twocharts { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 26px; }
+  .twocharts figure { margin: 0; }
+  .chart.mini { width: 100%; height: auto; }
+  .chart.mini .ln { fill: none; stroke: var(--core); stroke-width: 2.2; }
+  .chart.mini .ln.warn { stroke: #ff5c7a; }
+  .chart.mini .ln.neutral { stroke: rgba(255,255,255,.65); stroke-dasharray: 0; }
+  .chart.mini .dot { fill: var(--core); }
+  .chart.mini .dot.warn { fill: #ff5c7a; }
+  .chart.mini .note { font-family: var(--serif); font-size: 11px; fill: var(--dim); }
+  .chart.mini .note.warn { fill: #ff8da5; }
+  .chart.mini .ax { font-family: var(--serif); font-size: 10.5px; fill: var(--faint); }
+  .chart.mini .grid line { stroke: rgba(255,255,255,.07); }
+  .twocharts figcaption { margin-top: 10px; font-size: 13.4px; line-height: 1.5; color: var(--dim); }
+  .twocharts figcaption b { color: var(--ink); font-weight: 600; }
+  .moneynote { margin-top: 24px; font-size: 16.5px; line-height: 1.55; color: var(--dim); border-left: 2px solid var(--core); padding-left: 16px; max-width: 96ch; }
   .moneynote b { color: var(--ink); font-weight: 600; }
-  @media (max-width: 900px) { .tmove th { width: auto; } .tmove .say { width: auto; } }
+  @media (max-width: 900px) { .twocharts { grid-template-columns: 1fr; } }
   /* ===== Why they left ===== */
   .causes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; text-align: left; }
   .cause { border: 1px solid var(--line); border-top: 2px solid rgba(255,92,122,.55); border-radius: 16px; padding: 18px 20px 20px; background: var(--card); transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, opacity .3s ease-out; }
@@ -895,54 +897,56 @@
         <div class="eyebrow rv">Success metrics</div>
         <h2 class="rv">Revenue was falling. Which part of it?</h2>
 
-        <div class="formula rv d2">
-          <div class="fline"><b>Revenue</b><span>=</span>New<span>×</span>Conversion<span>×</span><b class="hl">Retention</b><span>×</span>Price</div>
-          <div class="fcost">− cost to serve · every answer burns inference</div>
+        <div class="bigform rv d2">
+          <span class="tm rev">Revenue<i class="ar dn frag" data-frag="1">↓</i></span>
+          <span class="op">=</span>
+          <span class="tm">New users<i class="ar up frag" data-frag="1">↑</i></span>
+          <span class="op">×</span>
+          <span class="tm">Conversion<i class="ar fl frag" data-frag="1">—</i></span>
+          <span class="op">×</span>
+          <span class="tm ret">Retention<i class="ar dn frag" data-frag="1">↓</i></span>
+          <span class="op">×</span>
+          <span class="tm">Price<i class="ar fl frag" data-frag="1">—</i></span>
+        </div>
+        <div class="fcost">− cost to serve · every answer burns inference</div>
+
+        <div class="twocharts frag" data-frag="2">
+          <figure>
+            <svg class="chart mini" viewBox="0 0 448 196" xmlns="http://www.w3.org/2000/svg">
+  <g class="grid"><line x1="44" y1="158" x2="404" y2="158"/><line x1="44" y1="96" x2="404" y2="96"/><line x1="44" y1="34" x2="404" y2="34"/></g>
+  <text class="ax" x="44.0" y="180" text-anchor="middle">Sep</text><text class="ax" x="104.0" y="180" text-anchor="middle">Oct</text><text class="ax" x="164.0" y="180" text-anchor="middle">Nov</text><text class="ax" x="224.0" y="180" text-anchor="middle">Dec</text><text class="ax" x="284.0" y="180" text-anchor="middle">Jan</text><text class="ax" x="344.0" y="180" text-anchor="middle">Feb</text><text class="ax" x="404.0" y="180" text-anchor="middle">Mar</text>
+  <polyline class="ln" points="44.0,54.7 104.0,67.1 164.0,83.6 224.0,98.1 284.0,112.5 344.0,124.9 404.0,135.3" />
+  <polyline class="ln warn" points="44.0,51.7 104.0,60.6 164.0,78.3 224.0,91.6 284.0,104.9 344.0,113.7 404.0,122.6" />
+  <circle class="dot" cx="44.0" cy="54.7" r="4" />
+  <circle class="dot warn" cx="404.0" cy="122.6" r="4" />
+  <text class="note" x="52.0" y="44.7">$13.0k / day</text>
+  <text class="note" x="404.0" y="153.3" text-anchor="end">$9.1k</text>
+  <text class="note warn" x="52.0" y="67.7">30-day retention 26%</text>
+  <text class="note warn" x="404.0" y="140.6" text-anchor="end">18%</text>
+</svg>
+            <figcaption><b>Revenue fell with retention.</b> Daily revenue $13.0k → $9.1k as 30-day retention went 26% → 18%.</figcaption>
+          </figure>
+          <figure>
+            <svg class="chart mini" viewBox="0 0 448 196" xmlns="http://www.w3.org/2000/svg">
+  <g class="grid"><line x1="44" y1="158" x2="404" y2="158"/><line x1="44" y1="96" x2="404" y2="96"/><line x1="44" y1="34" x2="404" y2="34"/></g>
+  <text class="ax" x="44.0" y="180" text-anchor="middle">Sep</text><text class="ax" x="104.0" y="180" text-anchor="middle">Oct</text><text class="ax" x="164.0" y="180" text-anchor="middle">Nov</text><text class="ax" x="224.0" y="180" text-anchor="middle">Dec</text><text class="ax" x="284.0" y="180" text-anchor="middle">Jan</text><text class="ax" x="344.0" y="180" text-anchor="middle">Feb</text><text class="ax" x="404.0" y="180" text-anchor="middle">Mar</text>
+  <polyline class="ln neutral" points="44.0,75.3 104.0,69.8 164.0,64.3 224.0,58.8 284.0,56.0 344.0,50.5 404.0,45.0" />
+  <polyline class="ln warn" points="44.0,75.3 104.0,86.4 164.0,100.1 224.0,113.9 284.0,124.9 344.0,136.0 404.0,144.2" />
+  <circle class="dot" cx="404.0" cy="45.0" r="4" />
+  <circle class="dot warn" cx="404.0" cy="144.2" r="4" />
+  <text class="note" x="404.0" y="33.0" text-anchor="end">New users +11</text>
+  <text class="note warn" x="404.0" y="162.2" text-anchor="end">Paying subscribers −25</text>
+</svg>
+            <figcaption><b>New users kept coming.</b> Indexed to Sep 2024 = 100: acquisition up, paying subscribers down.</figcaption>
+          </figure>
         </div>
 
-        <table class="tmove frag" data-frag="1">
-          <tbody>
-            <tr class="down big">
-              <th scope="row">Revenue</th>
-              <td class="arrow">↓</td>
-              <td class="say">Falling</td>
-              <td class="why">The thing we had to explain.</td>
-            </tr>
-            <tr class="up">
-              <th scope="row">New users</th>
-              <td class="arrow">↑</td>
-              <td class="say">Still coming</td>
-              <td class="why">Paid acquisition kept running. Not the leak.</td>
-            </tr>
-            <tr class="flat">
-              <th scope="row">Conversion</th>
-              <td class="arrow">—</td>
-              <td class="say">Holding</td>
-              <td class="why">Free-to-paid stayed where it was. Not the leak.</td>
-            </tr>
-            <tr class="down">
-              <th scope="row">Retention</th>
-              <td class="arrow">↓</td>
-              <td class="say">Slipping</td>
-              <td class="why">Subscribers cancelled. Students solved one problem and left.</td>
-            </tr>
-            <tr class="flat">
-              <th scope="row">Price</th>
-              <td class="arrow">—</td>
-              <td class="say">Fixed</td>
-              <td class="why">Not a design lever.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="moneynote frag" data-frag="2">
-          <b>We were still filling the bucket. It was leaking faster.</b>
-          Retention is also the only term that compounds — new users and conversion are flows, retention is the stock.
-        </p>
+        <p class="moneynote frag" data-frag="3"><b>We were still filling the bucket. It was leaking faster.</b> Retention is also the only term that compounds — new and conversion are flows, retention is the stock.</p>
       </div>
-      <div class="notes" hidden>So the turning point had arrived — but slower user growth on its own doesn't tell you what to fix. What mattered was revenue, and revenue for a subscription app breaks into four things: how many new users arrive, how many convert, how long they stay, and price — minus what it costs to serve them, which for an AI product means every answer burns inference. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>So which one moved? New users were still coming — we were still spending on acquisition. Conversion was holding. Price was fixed, and not a design lever. What was slipping was retention: subscribers were cancelling, students solved one problem and left. <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>In other words, we were still filling the bucket, and it was leaking faster than we filled it. And retention is also the only term that compounds: new users and conversion are flows, retention is the stock. Keep a student one extra month and you don't earn once — you earn every month after, and every user you acquire becomes worth more.</div>
+      <div class="notes" hidden>Revenue for a subscription app breaks into four things: new users, how many convert, how long they stay, and price — minus what it costs to serve them, which for an AI product means every answer burns inference. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>So which one moved? Revenue was falling. New users were still coming — we kept spending on acquisition. Conversion was holding. Price was fixed, and not a design lever anyway. The one that was slipping was retention. <i>[space]</i></div>
+      <div class="notes" data-frag="2" hidden>And the two lines track each other. Daily revenue went from about thirteen thousand dollars a day down to nine, and over the same months thirty-day retention went from around twenty-six percent to eighteen. Meanwhile, on the right, new users were still rising while paying subscribers fell — subscribers were cancelling faster than we could replace them. <i>[space]</i></div>
+      <div class="notes" data-frag="3" hidden>In other words, we were still filling the bucket, and it was leaking faster than we filled it. And retention is the one worth fixing first, because it's the only term that compounds: new users and conversion are flows, retention is the stock.</div>
     </section>
 
     <!-- 5c · The goal -->
