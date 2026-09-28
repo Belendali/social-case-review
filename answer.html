@@ -654,7 +654,7 @@
   .corewrap:has(.cs1.shown) .wg:nth-child(2) { animation-delay: .24s; }
   .corewrap:has(.cs1.shown) .wg:nth-child(3) { animation-delay: .32s; }
   .corewrap:has(.cs1.shown) .wg:nth-child(4) { animation-delay: .40s; }
-  .corewrap:has(.cs1.shown) .wg:nth-child(5) { animation-delay: .48s; }
+  .corewrap:has(.cs1.shown) .wgwide { animation: coreRise .5s cubic-bezier(.22,1,.36,1) both .5s; }
   .corewrap:has(.cs2.shown) .corelede { animation: coreFade .45s ease-out both; }
   .corewrap:has(.cs2.shown) .coreafter { animation: coreRise .5s cubic-bezier(.22,1,.36,1) both .12s; }
   .corewrap:has(.cs3.shown) .tradeoff { animation: coreRise .5s cubic-bezier(.22,1,.36,1) both .06s; }
@@ -665,7 +665,7 @@
   .slide:has(.cs1.shown):not(:has(.cs2.shown)) .corebg { opacity: 1; }
   .corewrap:has(.cs1.shown):not(:has(.cs2.shown)) { grid-template-columns: 1fr; }
   .corewrap:has(.cs1.shown):not(:has(.cs2.shown)) .corestage { display: none; }
-  .wgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 11px; margin-top: 14px; }
+  .wgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; margin-top: 14px; }
   .wg { border: 1px solid var(--line); border-radius: 15px; padding: 12px 13px 14px; background: var(--card);
     transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, opacity .3s ease-out; }
   .wgimg { height: clamp(130px, 19vh, 190px); border-radius: 10px; border: 1px dashed var(--line); margin-bottom: 11px;
@@ -673,7 +673,18 @@
   .wgimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .wg b { display: block; font-family: var(--serif); font-weight: 500; font-size: 14.5px; line-height: 1.25; color: var(--ink); }
   .wg .wgq { margin: 7px 0 0; font-size: 11.8px; line-height: 1.5; color: var(--dim); font-style: italic; }
-  .wgrot { position: relative; min-height: 96px; margin-top: 8px; }
+  .wgrot { position: relative; min-height: 78px; margin-top: 8px; }
+  .wgwide { display: grid; grid-template-columns: 200px 1fr; gap: 20px; align-items: center; margin-top: 13px;
+    border: 1px solid rgba(138,133,255,.45); border-radius: 16px; padding: 16px 20px;
+    background: radial-gradient(90% 140% at 0% 0%, rgba(138,133,255,.12), transparent 62%), var(--card);
+    box-shadow: 0 0 0 1px rgba(138,133,255,.12), 0 20px 44px rgba(0,0,0,.4); }
+  .wwimg { height: 96px; border-radius: 10px; overflow: hidden; }
+  .wwimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .wwtext b { display: block; font-family: var(--serif); font-weight: 500; font-size: 20px; color: var(--ink); }
+  .wwtext .wgrot { min-height: 58px; }
+  .wwtext .wgq { font-size: 15.5px; line-height: 1.5; color: var(--ink); }
+  .wwtext .wgwho { font-size: 10.5px; }
+  @media (max-width: 900px) { .wgwide { grid-template-columns: 1fr; } }
   .wgqi { position: absolute; inset: 0; opacity: 0; transition: opacity .5s ease-out; pointer-events: none; }
   .wgqi.on { opacity: 1; pointer-events: auto; }
   .wgqi .wgq { margin: 0; }
@@ -1242,20 +1253,6 @@
                 <p class="wgwho">Ms. L · 9th-grade maths teacher</p>
               </div>
               <div class="wg">
-                <div class="wgimg"><img class="zoomable" src="assets/core-good-02.webp" alt="Key steps written under a problem" loading="lazy" /></div>
-                <b>A well-written answer teaches</b>
-                <div class="wgrot">
-                  <div class="wgqi on">
-                    <p class="wgq">“A well-written answer does half my job. The steps are the lesson.”</p>
-                    <p class="wgwho">Mr. H · maths teacher, 12 years</p>
-                  </div>
-                  <div class="wgqi">
-                    <p class="wgq">“On take-home sheets my teacher writes the key steps. I follow those to finish it.”</p>
-                    <p class="wgwho">Kai · 10th grade</p>
-                  </div>
-                </div>
-              </div>
-              <div class="wg">
                 <div class="wgimg"><img class="zoomable" src="assets/core-good-03.webp" alt="A student asking about a step" loading="lazy" /></div>
                 <b>Room to ask</b>
                 <p class="wgq">“I get it until step three, and then I'm stuck — I just want to ask right there.”</p>
@@ -1272,6 +1269,22 @@
                 <b>What they got wrong, kept</b>
                 <p class="wgq">“The kids who actually improve are the ones who keep their mistakes and go back to them.”</p>
                 <p class="wgwho">Ms. L · 9th-grade maths teacher</p>
+              </div>
+            </div>
+            <div class="wgwide">
+              <div class="wwimg"><img class="zoomable" src="assets/core-good-02.webp" alt="Key steps written under a problem" loading="lazy" /></div>
+              <div class="wwtext">
+                <b>A well-written answer teaches</b>
+                <div class="wgrot">
+                  <div class="wgqi on">
+                    <p class="wgq">“A well-written answer does half my job. The steps are the lesson.”</p>
+                    <p class="wgwho">Ms. L · 9th-grade maths teacher</p>
+                  </div>
+                  <div class="wgqi">
+                    <p class="wgq">“On take-home sheets my teacher writes the key steps. I follow those to finish it.”</p>
+                    <p class="wgwho">Kai · 10th grade</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1316,7 +1329,7 @@
         </div>
       </div>
       <div class="notes" hidden>Layer one is the core — photo-solving, where every student starts. This is what it looked like: one long block of text, easy to copy, hard to learn from, and a toolbar of features sitting inside the chat. You can click the screen to see it up close. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>Before redesigning it, we had to agree on what a good answer even is. So we talked to teachers and looked at the homework students brought us. To figure that out we sat in on a maths class at a school here in New York — the teacher has been doing this for twenty-three years — and talked with her and a few of her students afterwards. Four things came back, and I'll let them say it. The first changed the whole layout: a teacher's board work is not a wall of text — in class they write while they talk, so each line starts with the move and the reason, and the working comes after. Second, a well-written answer is itself the teaching: a lot of the learning is the student reading the steps and working out why each one is there. Third, students want to ask right at the step where they get stuck. And fourth, teachers don't stop at the explanation — they hand over a similar question, or send a video when the explanation isn't landing. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>Before redesigning it, we had to agree on what a good answer even is. So we talked to teachers and looked at the homework students brought us. To figure that out we sat in on a maths class at a school here in New York — the teacher has been doing this for twenty-three years — and talked with her and a few of her students afterwards. Four things came back, and I'll let them say it. The first changed the whole layout: a teacher's board work is not a wall of text — in class they write while they talk, so each line starts with the move and the reason, and the working comes after. And the one I'd underline: a well-written answer is itself the teaching — the steps are the lesson, and on take-home sheets the teacher writes those steps out so students can follow them. Third, students want to ask right at the step where they get stuck. And fourth, teachers don't stop at the explanation — they hand over a similar question, or send a video when the explanation isn't landing. <i>[space]</i></div>
       <div class="notes" data-frag="2" hidden>So that's what we built. The approach leads, the answer sits right below it, each step opens on tap, and every answer now ends with a next move — ask, practise, or watch. <i>[hover the dots · click to zoom]</i> <i>[space]</i></div>
       <div class="notes" data-frag="3" hidden>So what moved. The share of answers that got a follow-up question went from eighteen percent to thirty-three. And twenty-three percent of active students started saving mistakes — those students retain better than the ones who don't. Now, that second one is a correlation, not proof: students who ask follow-ups and keep mistakes are more invested to begin with. But it's exactly why follow-up rate was the number this layer had to move, and it moved. We also A/B'd the new answer against the old one: students got their answer just as fast, and everything else moved up.</div>
     </section>
