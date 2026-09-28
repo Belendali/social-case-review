@@ -666,23 +666,27 @@
   .ssstage.swapped .fr3 { opacity: 1; pointer-events: auto; transform: none; }
   .staystratwrap:has(.ssstage.swapped) .sshint { opacity: 0; }
   .sshint { transition: opacity .3s ease-out; }
-  /* ===== The business, plainly ===== */
-  .moneywrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--split-gap,44px); align-items: center; }
-  .formula { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+  /* ===== Success metrics: which term moved ===== */
+  .formula { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
   .fline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; font-family: var(--serif); font-size: 26px; color: var(--ink); line-height: 1.25; }
   .fline span { color: var(--faint); font-size: 20px; }
   .fline b { font-weight: 500; }
-  .fline.sub { font-size: 22px; color: var(--dim); }
-  .fline.sub b { color: var(--ink); }
   .fline b.hl { color: var(--core); }
-  .fcost { font-size: 15px; color: var(--faint); padding-left: 2px; }
-  .moneynote { margin-top: 26px; font-size: 17px; line-height: 1.55; color: var(--dim); border-left: 2px solid var(--core); padding-left: 16px; max-width: 60ch; }
+  .fcost { font-size: 14px; color: var(--faint); }
+  .terms { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; text-align: left; }
+  .term { border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px 18px; background: var(--card); }
+  .term .tk { font-family: var(--serif); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+  .term .tv { font-family: var(--serif); font-size: 21px; color: var(--ink); margin-top: 7px; }
+  .term p { margin: 9px 0 0; font-size: 13.2px; line-height: 1.5; color: var(--dim); }
+  .term p b { color: var(--ink); font-weight: 600; }
+  .term.ok .tv { color: #9fe0a8; }
+  .term.fixed { opacity: .6; }
+  .term.bad { border-color: rgba(138,133,255,.5); background: radial-gradient(120% 100% at 0% 0%, rgba(138,133,255,.1), transparent 62%), var(--card); }
+  .term.bad .tv { color: var(--core); }
+  .tshot { margin-top: 12px; border: 1px dashed var(--line); border-radius: 10px; min-height: 92px; display: grid; place-items: center; font-family: var(--serif); font-size: 11.5px; color: var(--faint); }
+  .moneynote { margin-top: 26px; font-size: 17px; line-height: 1.55; color: var(--dim); border-left: 2px solid var(--core); padding-left: 16px; max-width: 92ch; }
   .moneynote b { color: var(--ink); font-weight: 600; }
-  .moneytail { margin-top: 14px; font-size: 14.5px; color: var(--faint); line-height: 1.5; max-width: 60ch; }
-  .moneyright { display: flex; flex-direction: column; gap: 16px; }
-  .mshot { border: 1px dashed var(--line); border-radius: 16px; min-height: 180px; display: grid; place-items: center; align-content: center; gap: 6px; text-align: center; font-family: var(--serif); font-size: 13px; color: var(--faint); }
-  .mshot span { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; opacity: .7; }
-  @media (max-width: 900px) { .moneywrap { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .terms { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -887,32 +891,49 @@
       <div class="notes" hidden>So that was our challenge, in one line: scan-and-solve alone wasn't enough anymore. We had to change something — and to figure out what, we went back to the students.</div>
     </section>
 
-    <!-- 5b · Where design can move money -->
+    <!-- 5b · Which part of revenue moved -->
     <section class="slide">
-      <div class="slide-inner moneywrap">
-        <div class="moneyleft">
-          <div class="eyebrow rv">Success metrics</div>
-          <h2 class="rv" style="font-size:var(--t-h2,40px)">Where design can move money.</h2>
+      <div class="slide-inner">
+        <div class="eyebrow rv">Success metrics</div>
+        <h2 class="rv">Revenue was falling. Which part of it?</h2>
 
-          <div class="formula rv d2">
-            <div class="fline"><b>Revenue</b><span>=</span><b>Subscribers</b><span>×</span><b>Price</b></div>
-            <div class="fline sub frag" data-frag="1"><b>Subscribers</b><span>=</span>New<span>×</span>Conversion<span>×</span><b class="hl">Retention</b></div>
-            <div class="fcost frag" data-frag="1">− cost to serve · every answer burns inference</div>
+        <div class="formula rv d2">
+          <div class="fline"><b>Revenue</b><span>=</span>New<span>×</span>Conversion<span>×</span><b class="hl">Retention</b><span>×</span>Price</div>
+          <div class="fcost">− cost to serve · every answer burns inference</div>
+        </div>
+
+        <div class="terms frag" data-frag="1">
+          <div class="term ok">
+            <div class="tk">New users</div>
+            <div class="tv">Still arriving</div>
+            <p>The scan loop kept bringing students in. <b>Not the leak.</b></p>
           </div>
-
-          <p class="moneynote frag" data-frag="2">
-            Price was fixed. New users came from the loop we already had.
-            <b>Design could move conversion, retention and cost — and only retention compounds.</b>
-          </p>
-          <p class="moneytail frag" data-frag="2">New and conversion are flows. Retention is the stock: it keeps paying every month, and it makes the other two worth more.</p>
+          <div class="term ok">
+            <div class="tk">Conversion</div>
+            <div class="tv">Holding</div>
+            <p>Free-to-paid stayed where it was. <b>Not the leak.</b></p>
+          </div>
+          <div class="term bad">
+            <div class="tk">Retention</div>
+            <div class="tv">Slipping</div>
+            <p>Students solved one problem and left. Fewer came back the next month — and fewer renewed.</p>
+            <div class="tshot">留存曲线截图位</div>
+          </div>
+          <div class="term fixed">
+            <div class="tk">Price</div>
+            <div class="tv">Fixed</div>
+            <p>Not a design lever.</p>
+          </div>
         </div>
 
-        <div class="moneyright">
-          <div class="mshot rv d3">留存曲线截图位<span>30-day retention</span></div>
-          <div class="mshot rv d4">收入 / 订阅趋势截图位<span>subscription revenue</span></div>
-        </div>
+        <p class="moneynote frag" data-frag="2">
+          <b>So the leak was retention</b> — and it's the one that compounds. New users and conversion are flows;
+          retention is the stock. Keep someone an extra month and you don't earn once, you earn every month after.
+        </p>
       </div>
-      <div class="notes" hidden>Before I show you what we built, the business behind it, because it decides everything after. Revenue is subscribers times price. <i>[space]</i> And subscribers is how many come in, times how many convert, times how long they stay — minus what it costs to serve them, which for an AI product means every single answer burns inference. <i>[space]</i> Price was set, and new users already came from the scan loop. So the three things design could actually move were conversion, retention and cost. And retention is the one that compounds: new users and conversion are flows, retention is the stock. Keep someone an extra month and you don't earn once — you earn every month after, and every new user becomes worth more.</div>
+      <div class="notes" hidden>Before what we built, the business behind it. Revenue for a subscription app breaks down into four things: how many new users arrive, how many convert to paid, how long they stay, and the price — minus what it costs to serve them, which for an AI product means every answer burns inference. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>So when revenue started falling, the question was which term moved. New users were still arriving — the scan loop was doing its job. Conversion was holding. Price was fixed, and not a design lever anyway. What was slipping was retention: students solved one problem and left, fewer came back the next month, fewer renewed. <i>[space]</i></div>
+      <div class="notes" data-frag="2" hidden>So the leak was retention. And retention is also the one worth fixing first, because it's the only term that compounds — new users and conversion are flows, retention is the stock. Keep a student one extra month and you don't earn once; you earn every month after, and every new user you acquire becomes worth more.</div>
     </section>
 
     <!-- 5c · The goal -->
