@@ -47,6 +47,7 @@
   .prow2 em { display: block; font-style: italic; color: rgba(255,255,255,.5); font-size: 13px; margin-top: 2px; }
   .prow2.l1 .n { color: var(--core); } .prow2.l2 .n { color: var(--stay); } .prow2.l3 .n { color: var(--reach); } .prow2.l4 .n { color: var(--personal); }
   .pfoot { text-align: center; margin-top: 22px; font-size: 12.5px; color: var(--faint); font-family: var(--serif); letter-spacing: .04em; }
+  .pfoot span b { color: var(--ink); font-weight: 600; }
   .pfoot span { display: block; margin-top: 8px; font-size: 17px; color: var(--ink); letter-spacing: 0; }
   .layers { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 46px; }
   .layer {
@@ -665,28 +666,45 @@
   .ssstage.swapped .fr3 { opacity: 1; pointer-events: auto; transform: none; }
   .staystratwrap:has(.ssstage.swapped) .sshint { opacity: 0; }
   .sshint { transition: opacity .3s ease-out; }
+  /* ===== The business, plainly ===== */
+  .moneywrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--split-gap,44px); align-items: center; }
+  .formula { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .fline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; font-family: var(--serif); font-size: 26px; color: var(--ink); line-height: 1.25; }
+  .fline span { color: var(--faint); font-size: 20px; }
+  .fline b { font-weight: 500; }
+  .fline.sub { font-size: 22px; color: var(--dim); }
+  .fline.sub b { color: var(--ink); }
+  .fcost { font-size: 15px; color: var(--faint); padding-left: 2px; }
+  .moneynote { margin-top: 26px; font-size: 17px; line-height: 1.55; color: var(--dim); border-left: 2px solid var(--core); padding-left: 16px; max-width: 60ch; }
+  .moneynote b { color: var(--ink); font-weight: 600; }
+  .moneytail { margin-top: 14px; font-size: 14.5px; color: var(--faint); line-height: 1.5; max-width: 60ch; }
+  .moneyright { display: flex; flex-direction: column; gap: 16px; }
+  .mshot { border: 1px dashed var(--line); border-radius: 16px; min-height: 180px; display: grid; place-items: center; align-content: center; gap: 6px; text-align: center; font-family: var(--serif); font-size: 13px; color: var(--faint); }
+  .mshot span { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; opacity: .7; }
+  @media (max-width: 900px) { .moneywrap { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
   <div class="bar"></div>
   <div class="chrome tl"><a href="index.html" onclick="this.href='index.html?t='+Date.now()">← Agenda</a></div>
   <div class="chrome bl">Answer.AI · The growth story</div>
-  <div class="chrome br">01 / 18</div>
+  <div class="chrome br">01 / 19</div>
   <nav class="rail" aria-label="Sections">
     <a data-from="0" data-to="2">Context</a>
     <a data-from="3" data-to="5">Turning point</a>
-    <a data-from="6" data-to="8">Decision</a>
-    <a data-from="9" data-to="9">Strategy</a>
+    <a data-from="6" data-to="6">The business</a>
+    <a data-from="7" data-to="9">Decision</a>
+    <a data-from="10" data-to="10">Strategy</a>
     <span class="gap"></span>
-    <a data-from="10" data-to="10">01 Core</a>
-    <a data-from="11" data-to="12">02 Stay</a>
-    <a data-from="13" data-to="13">03 Reach</a>
-    <a data-from="14" data-to="14">04 Personal</a>
+    <a data-from="11" data-to="11">01 Core</a>
+    <a data-from="12" data-to="13">02 Stay</a>
+    <a data-from="14" data-to="14">03 Identity</a>
+    <a data-from="15" data-to="15">04 Personal</a>
     <span class="gap"></span>
-    <a data-from="15" data-to="15">Takeaway</a>
+    <a data-from="16" data-to="16">Takeaway</a>
     <span class="gap"></span>
-    <a data-from="16" data-to="16">Results</a>
-    <a data-from="17" data-to="17">Closing</a>
+    <a data-from="17" data-to="17">Results</a>
+    <a data-from="18" data-to="18">Closing</a>
   </nav>
 
   <div class="deck">
@@ -816,11 +834,11 @@
       <div class="slide-inner chartslide">
         <div class="head">
           <div class="eyebrow rv">The turn · late 2024</div>
-          <h2 class="rv">Growth began to slow.</h2>
+          <h2 class="rv">The frontier models caught up.</h2>
           <p class="lede rv" style="max-width:900px">
-            The capability that opened the market became table stakes — and our
-            one-and-done loop gave students little reason to return.
-            <em>Retention slipped with it.</em>
+            Snap a photo, get the answer — free, in any chatbot. What we charged for had become
+            table stakes, and a one-and-done loop gave students little reason to return.
+            <em>Growth slowed. Retention slipped with it.</em>
           </p>
         </div>
         <div class="chartwrap rv d2"><svg class="chart" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
@@ -870,6 +888,34 @@
         </p>
       </div>
       <div class="notes" hidden>So that was our challenge, in one line: scan-and-solve alone wasn't enough anymore. We had to change something — and to figure out what, we went back to the students.</div>
+    </section>
+
+    <!-- 5b · Where design can move money -->
+    <section class="slide">
+      <div class="slide-inner moneywrap">
+        <div class="moneyleft">
+          <div class="eyebrow rv">The business, plainly</div>
+          <h2 class="rv" style="font-size:var(--t-h2,40px)">Where design can move money.</h2>
+
+          <div class="formula rv d2">
+            <div class="fline"><b>Revenue</b><span>=</span><b>Subscribers</b><span>×</span><b>Price</b></div>
+            <div class="fline sub frag" data-frag="1"><b>Subscribers</b><span>=</span>New<span>×</span>Conversion<span>×</span>How long they stay</div>
+            <div class="fcost frag" data-frag="1">− cost to serve · every answer burns inference</div>
+          </div>
+
+          <p class="moneynote frag" data-frag="2">
+            Price was fixed. New users came from the loop we already had.
+            <b>Design could move conversion, retention and cost — and only retention compounds.</b>
+          </p>
+          <p class="moneytail frag" data-frag="2">New and conversion are flows. Retention is the stock: it keeps paying every month, and it makes the other two worth more.</p>
+        </div>
+
+        <div class="moneyright">
+          <div class="mshot rv d3">留存曲线截图位<span>30-day retention</span></div>
+          <div class="mshot rv d4">收入 / 订阅趋势截图位<span>subscription revenue</span></div>
+        </div>
+      </div>
+      <div class="notes" hidden>Before I show you what we built, the business behind it, because it decides everything after. Revenue is subscribers times price. <i>[space]</i> And subscribers is how many come in, times how many convert, times how long they stay — minus what it costs to serve them, which for an AI product means every single answer burns inference. <i>[space]</i> Price was set, and new users already came from the scan loop. So the three things design could actually move were conversion, retention and cost. And retention is the one that compounds: new users and conversion are flows, retention is the stock. Keep someone an extra month and you don't earn once — you earn every month after, and every new user becomes worth more.</div>
     </section>
 
     <!-- 6 · Discovery: three credible paths -->
@@ -1040,6 +1086,10 @@
         <p class="fbig frag" data-frag="1" style="margin-top:40px;max-width:900px">
           The goal was to move from solving one question to <span>supporting how students learn every day.</span>
         </p>
+        <p class="lede frag" data-frag="1" style="margin-top:18px;max-width:860px">
+          It was also the only direction that leaves something behind. An answer can be got anywhere;
+          a record of how you learn can't.
+        </p>
       </div>
       <div class="notes" hidden>That's how daily learning became our first priority. It was the most frequent need, it was closest to what students were already doing, and it was the strongest foundation for everything else we might build later. <i>[space]</i> So we wrote the goal down in one sentence: move from solving one question to supporting how students learn every day. And everything I'm about to show you serves that sentence.</div>
     </section>
@@ -1050,7 +1100,7 @@
       <div class="slide-inner">
         <div class="eyebrow rv" style="text-align:center">The strategy</div>
         <p class="quote rv" style="margin:0 auto;text-align:center;max-width:900px">
-          To make daily learning work,<br /><span class="hl">we built from the core outward.</span>
+          Daily learning only counts if students renew,<br /><span class="hl">so we built from the core outward.</span>
         </p>
         <p class="kicker rv d2" style="text-align:center;margin-top:14px;max-width:760px;margin-left:auto;margin-right:auto">From a shared answer machine to a school that knows each student.</p>
         <div class="promise rv d3">
@@ -1058,12 +1108,12 @@
           <div class="plink"></div>
           <div class="plist2">
             <div class="prow2 l4 rv d6"><span class="n">04</span><div><b>Personal</b><span class="desc"><i>·</i>Streaks plus proactive agents.</span><em>A school that remembers you and reaches out.</em></div></div>
-            <div class="prow2 l3 rv d5"><span class="n">03</span><div><b>Reach</b><span class="desc"><i>·</i>Rebuild the IP system.</span><em>Change what students think the product is.</em></div></div>
+            <div class="prow2 l3 rv d5"><span class="n">03</span><div><b>Identity</b><span class="desc"><i>·</i>Rebuild the IP system.</span><em>Change what students think the product is.</em></div></div>
             <div class="prow2 l2 rv d4"><span class="n">02</span><div><b>Stay</b><span class="desc"><i>·</i>Flashcards, study rooms, mock practice.</span><em>Turn a quick tool into a long-term study partner.</em></div></div>
             <div class="prow2 l1 rv d3"><span class="n">01</span><div><b>Core</b><span class="desc"><i>·</i>Redesign Ask AI: clearer explanations, more agents, voice.</span><em>The front door. If explanations are not clearly better, nothing else matters.</em></div></div>
           </div>
         </div>
-        <p class="pfoot rv d6">Each layer stands on the one below.<span>Sharpen the core, build reasons to stay, reach more students, and make it personal.</span></p>
+        <p class="pfoot rv d6">Four layers, four jobs.<span><b>Core</b> — the reason they come. <b>Stay</b> — the reason they renew. <b>Identity</b> — the reason they pick us over a chatbot. <b>Personal</b> — the reason they open it tomorrow.</span></p>
       </div>
       <div class="notes" hidden>To make daily learning actually work, I proposed this strategy to the team — basically going from a shared answer machine to a school that knows each student. There are four layers here, and each one stands on the one below it. <i>[hover the rows]</i> <span data-hov=".prow2.l1">The core is about making the answer worth learning from.</span> <span data-hov=".prow2.l2">Stay is about giving students reasons to come back.</span> <span data-hov=".prow2.l3">Reach is about telling people we're not just an answer tool anymore.</span> <span data-hov=".prow2.l4">And Personal is gradually building a school that remembers each student.</span> So next, I'll go through them one by one and show you what we designed at each layer.</div>
     </section>
@@ -1200,11 +1250,11 @@
       <div class="notes" hidden>So layer two really came down to one question: not which study features to build, but why anyone would ever start using them. We had built a Study Hub before — a place to go and study. The clicks never came, because opening it asks for motivation a student doesn't have when they're stuck on one problem at eleven at night. <i>[tap the Ask AI screen]</i> So instead of a destination, the entries moved to where the traffic already is — right after the answer. Once a problem is explained, we read what they need: if the concept is worth keeping, it becomes flashcards; if they've just covered this material or mention an exam, we offer a mock exercise; if they say they're staying to work, we open a study room. Same features. Different moment.</div>
     </section>
 
-    <!-- 11 · Reach: old IP → new IP + the three tutors -->
+    <!-- 11 · Identity: old IP → new IP + the three tutors -->
     <section class="slide">
       <div class="slide-inner reachwrap">
         <span class="stagetrig frag" data-frag="1" aria-hidden="true"></span>
-        <div class="eyebrow rv" style="color:var(--reach)">Layer 03 · Reach</div>
+        <div class="eyebrow rv" style="color:var(--reach)">Layer 03 · Identity</div>
         <div class="rtext">
           <div class="rt before">
             <h2 class="rv" style="font-size:var(--t-h2,40px)">Break the sameness.</h2>
