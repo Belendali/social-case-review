@@ -657,6 +657,10 @@
   .wgimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .wg b { display: block; font-family: var(--serif); font-weight: 500; font-size: 16px; line-height: 1.25; color: var(--ink); }
   .wg .wgq { margin: 8px 0 0; font-size: 12.8px; line-height: 1.5; color: var(--dim); font-style: italic; }
+  .wgrot { position: relative; min-height: 104px; margin-top: 8px; }
+  .wgqi { position: absolute; inset: 0; opacity: 0; transition: opacity .5s ease-out; pointer-events: none; }
+  .wgqi.on { opacity: 1; pointer-events: auto; }
+  .wgqi .wgq { margin: 0; }
   .wg .wgwho { margin: 8px 0 0; font-family: var(--serif); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
   .wgrid:hover .wg:not(:hover) { opacity: .55; }
   .wg:hover { transform: translateY(-4px); border-color: rgba(138,133,255,.45); }
@@ -1219,8 +1223,16 @@
               <div class="wg">
                 <div class="wgimg">图位 02</div>
                 <b>A well-written answer teaches</b>
-                <p class="wgq">“A lot of the learning is the student reading the steps and working out why each one is there. A properly written answer does that work.”</p>
-                <p class="wgwho">Mr. H · high-school maths teacher, 12 years</p>
+                <div class="wgrot">
+                  <div class="wgqi on">
+                    <p class="wgq">“A well-written answer does half my job. The steps are the lesson.”</p>
+                    <p class="wgwho">Mr. H · maths teacher, 12 years</p>
+                  </div>
+                  <div class="wgqi">
+                    <p class="wgq">“On take-home sheets my teacher writes the key steps. I follow those to finish it.”</p>
+                    <p class="wgwho">Kai · 10th grade</p>
+                  </div>
+                </div>
               </div>
               <div class="wg">
                 <div class="wgimg">图位 03</div>
@@ -1709,6 +1721,19 @@
   });
   document.addEventListener("deck:change", function () {
     document.querySelectorAll(".ssstage.swapped").forEach(function (st) { st.classList.remove("swapped"); });
+  });
+</script>
+<script>
+  // the second card alternates between two quotes
+  document.querySelectorAll(".wgrot").forEach(function (rot) {
+    var items = [...rot.querySelectorAll(".wgqi")];
+    if (items.length < 2) return;
+    var i = 0;
+    setInterval(function () {
+      items[i].classList.remove("on");
+      i = (i + 1) % items.length;
+      items[i].classList.add("on");
+    }, 5000);
   });
 </script>
 <script src="deck.js?v=09081324"></script>
