@@ -1871,6 +1871,14 @@
     new MutationObserver(() => { if (trig.classList.contains("shown")) play(); else gif.classList.remove("play"); })
       .observe(trig, { attributes: true, attributeFilter: ["class"] });
   })();
+  // videos that start inside a hidden fragment need a nudge once the slide is up
+  document.addEventListener("deck:change", function () {
+    setTimeout(function () {
+      document.querySelectorAll(".slide video[autoplay]").forEach(function (v) {
+        if (v.paused) v.play().catch(function () {});
+      });
+    }, 120);
+  });
   // page 3: stagger index for the learner-model dots
   document.querySelectorAll(".dots i").forEach((d, k) => d.style.setProperty("--k", k + 1));
 </script>
