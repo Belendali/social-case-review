@@ -730,7 +730,11 @@
   .sswhy { margin-top: 14px; font-size: 16.5px; line-height: 1.5; color: var(--ink); border-left: 2px solid var(--stay); padding-left: 14px; }
   .ssv2 { margin-top: 16px; }
   .ssv2 .sslab { color: #ffd66a; }
-  .ssmoved { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .ssmoved { margin-top: 18px; }
+  .staystratwrap:has(.ssmoved.shown) .ssv1,
+  .staystratwrap:has(.ssmoved.shown) .sswhy,
+  .staystratwrap:has(.ssmoved.shown) .ssv2 { display: none; }
+  .ssnums b { font-size: 26px; }
   .ssnums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
   .ssnums b { display: block; font-family: var(--serif); font-weight: 500; font-size: 22px; color: #ffd66a; line-height: 1.1; }
   .ssnums span { display: block; margin-top: 4px; font-size: 11.8px; line-height: 1.4; color: var(--dim); }
@@ -1367,8 +1371,9 @@
         <div class="eyebrow rv" style="color:var(--stay)">Layer 02 · Stay <em style="font-style:normal;opacity:.6">· the reason they renew</em></div>
         <h2 class="rv" style="font-size:var(--t-h2,44px)">Give students a reason to come back tomorrow.</h2>
         <p class="lede rv">
-          We kept only the methods with proven demand — and the one that surprised us
-          had nothing to do with studying better. It was company.
+          Two of these were picked for <em>proven demand</em>: flashcards and mock practice are what
+          students already do — in our interviews, and in the numbers of the tools they use, like Quizlet.
+          The third was a bet on a rising habit: <em>studying with company</em>.
         </p>
         <div class="trio">
           <figure class="rv d2 roomfig" data-k="room" tabindex="0" role="button" aria-label="Why study rooms">
@@ -1423,15 +1428,15 @@
 
           <div class="ssv1">
             <div class="sslab">Version 1 · a place to study</div>
-            <p>A better answer ends a visit well. It doesn't create the next one — so we built three things that carry over, and put them where study features go: <b>their own tab</b>.</p>
-            <p class="ssbad">Entry to the hub stayed flat. The features were fine; nobody was switching modes to go and study.</p>
+            <p>A better answer ends a visit well — it doesn't create the next one. So we built three things that carry over, and put them where study features go: <b>their own tab</b>.</p>
+            <p class="ssbad">Entry stayed flat. The features were fine; nobody switched modes to go and study.</p>
           </div>
 
           <p class="sswhy frag" data-frag="1">It asked for motivation a student doesn't have at 11pm, one problem from done.</p>
 
           <div class="ssv2 frag" data-frag="2">
             <div class="sslab">Version 2 · offered by what just happened</div>
-            <p>Same three features, moved into the flow. Once a problem is explained we read what the student needs:
+            <p>Same three features, moved into the flow — offered by what just happened:
             a concept worth keeping → <b>flashcards</b>; an exam coming → <b>a mock</b>; staying to work → <b>a room</b>.</p>
           </div>
 
@@ -1442,7 +1447,7 @@
               <div><b>+38%</b><span>sessions per student in exam weeks</span></div>
               <div><b>+28%</b><span>time in app for students who join a room</span></div>
             </div>
-            <p class="sstrade"><b>The trade:</b> every offer interrupts the fastest path in the product — so one at a time, only on a confident trigger, while we watched time-to-answer to be sure the core loop hadn't slowed. And the hub stayed, but as a library to come back to rather than the front door.</p>
+            <p class="sstrade"><b>The trade:</b> every offer interrupts the fastest path in the product — so one at a time, only on a confident trigger, with time-to-answer watched. The hub stayed, demoted to a library rather than the front door.</p>
           </div>
         </div>
 
