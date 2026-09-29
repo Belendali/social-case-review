@@ -1881,6 +1881,10 @@
     function burst() { [120, 500, 1200, 2400].forEach(function (t) { setTimeout(nudge, t); }); }
     document.addEventListener("deck:change", burst);
     window.addEventListener("load", burst);
+    // a fragment can reveal a video too, and the deck fires no event for that
+    document.addEventListener("keydown", function (e) {
+      if (e.key === " " || e.key === "ArrowRight" || e.key === "ArrowLeft") burst();
+    });
   })();
   // page 3: stagger index for the learner-model dots
   document.querySelectorAll(".dots i").forEach((d, k) => d.style.setProperty("--k", k + 1));
