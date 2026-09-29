@@ -304,6 +304,13 @@
   .pdata span { display: block; font-size: 11px; color: var(--dim); line-height: 1.35; margin-top: 4px; }
   .pdata i { font-style: normal; color: var(--personal); }
   .pdata.on { opacity: 1; transform: none; pointer-events: auto; max-width: 440px; margin-top: 18px; gap: 20px; }
+  .pbul { margin: 0; padding: 0; list-style: none; max-width: 520px; }
+  .pbul li { position: relative; padding-left: 16px; margin-top: 9px; font-size: 15px; line-height: 1.5; color: var(--dim); }
+  .pbul li:first-child { margin-top: 0; }
+  .pbul li::before { content: ""; position: absolute; left: 1px; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--personal); opacity: .8; }
+  .pbul b { color: var(--ink); font-weight: 600; }
+  .pbulnote { margin: 16px 0 0; max-width: 520px; font-size: 14px; line-height: 1.5; color: var(--faint);
+    border-left: 2px solid rgba(255,206,33,.4); padding-left: 14px; }
   .phint { font-family: var(--serif); font-size: 11px; letter-spacing: .08em; color: var(--faint); margin-top: 14px; }
   /* step 1 first, step 2 on the next space */
   .pstep, .ptiles.two figure { transition: opacity .45s ease-out, border-color .25s ease-out, filter .45s ease-out; }
@@ -1633,7 +1640,12 @@
           </div>
           <div class="ppanel p2">
             <div>
-              <p class="ptext">A light reward system keeps it going: scanning problems, mastering topics and finishing Ace’s exercises earn <em>badges</em> — plus random outfit drops for an <em>avatar</em>. The avatar matters because of where it shows up: the study room, where other students can see it. Rewards you wear in front of someone work differently from rewards you collect alone.</p>
+              <ul class="pbul">
+                <li>Scan a problem, master a topic, finish an exercise → <b>badges</b>.</li>
+                <li>Badges dress an <b>avatar</b>, plus random outfit drops.</li>
+                <li>The avatar lives in the <b>study room</b>, where other students see it.</li>
+              </ul>
+              <p class="pbulnote">Rewards you wear in front of someone work differently from rewards you collect alone.</p>
               <div class="pdata on">
                 <div><b>+19%</b><span>7-day streak rate after badges launched</span></div>
                 <div><b>2.3×</b><span>tasks finished per week by students who dress their avatar</span></div>
