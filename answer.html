@@ -741,17 +741,21 @@
   .sstrade { margin: 12px 0 0; font-size: 12.8px; line-height: 1.5; color: var(--faint); }
   .sstrade b { color: var(--dim); font-weight: 600; }
   .ssstage { position: relative; height: var(--media-h, 520px); }
-  .ssstage .fr { position: absolute; top: 50%; left: 50%; height: 100%; aspect-ratio: 1206 / 2622; border-radius: 26px; overflow: hidden; border: 1px solid rgba(255,255,255,.16); background: #000; box-shadow: 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000; padding: 0; transform: translate(-50%, -50%); transition: transform .75s cubic-bezier(.22,1,.36,1), opacity .55s ease-out, filter .6s ease-out, box-shadow .5s ease-out; }
-  .ssstage .fr.hub { transform: translate(-50%, -50%) translateX(-160px) scale(.86); filter: brightness(.6) saturate(.6); }
-  .ssstage .fr.ask { transform: translate(-50%, -50%) translateX(120px) scale(1); cursor: pointer; border-color: rgba(255,214,102,.5); box-shadow: 0 0 0 1px rgba(255,214,102,.22), 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000; }
-  .ssstage .fr.ask:hover { transform: translate(-50%, -50%) translateX(120px) scale(1.02); }
-  .ssstage .phlab { position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%); font-family: var(--serif); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); white-space: nowrap; }
+  .ssone { position: absolute; top: 50%; left: 50%; height: 100%; aspect-ratio: 1206 / 2622; border-radius: 26px;
+    border: 1px solid rgba(255,255,255,.16); background: #000; box-shadow: 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000;
+    transform: translate(-50%, -50%); transition: transform .7s cubic-bezier(.22,1,.36,1), opacity .5s ease-out; }
+  .sspair { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 22px;
+    opacity: 0; pointer-events: none; transform: translateY(14px);
+    transition: opacity .55s ease-out, transform .7s cubic-bezier(.22,1,.36,1); }
+  .sspair .ssp { position: relative; height: 90%; aspect-ratio: 1206 / 2622; border-radius: 24px;
+    border: 1px solid rgba(255,214,102,.34); background: #000;
+    box-shadow: inset 0 0 0 4px #000, 0 26px 54px rgba(0,0,0,.5); }
+  .ssstage .phlab { position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%); font-family: var(--serif);
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); white-space: nowrap; }
   .ssstage .phlab.win { color: #ffe6a3; }
-  .ssstage .fr3 { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; opacity: 0; pointer-events: none; transition: opacity .5s ease-out, transform .6s cubic-bezier(.22,1,.36,1); transform: translateY(14px); }
-  .ssstage .f3 { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,214,102,.3); background: #000; box-shadow: inset 0 0 0 3px #000, 0 20px 44px rgba(0,0,0,.5); }
-  .ssstage.swapped .fr { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.9); }
-  .ssstage.swapped .fr3 { opacity: 1; pointer-events: auto; transform: none; }
-  .staystratwrap:has(.ssstage.swapped) .sshint { opacity: 0; }
+  .staystratwrap:has(.ssv2.shown) .ssone { opacity: 0; transform: translate(-50%, -50%) scale(.94); }
+  .staystratwrap:has(.ssv2.shown) .sspair { opacity: 1; pointer-events: auto; transform: none; }
+  .staystratwrap:has(.ssv2.shown) .ssv1 { display: none; }
   .sshint { transition: opacity .3s ease-out; }
   /* ===== Success metrics: the formula, then the proof ===== */
   .bigform { display: flex; flex-wrap: nowrap; align-items: baseline; gap: 9px; margin-top: 26px;
@@ -1425,8 +1429,8 @@
 
           <div class="ssv1">
             <div class="sslab">Version 1 · a place to study</div>
-            <p>A better answer ends a visit well — it doesn't create the next one. So we built three things that carry over, and put them where study features go: <b>their own tab</b>.</p>
-            <p class="ssbad">Entry stayed flat. The features were fine; nobody switched modes to go and study.</p>
+            <p>We put all three where study features go: <b>their own tab</b>.</p>
+            <p class="ssbad">Entry stayed flat. Nobody switched modes to go and study.</p>
           </div>
 
           <p class="sswhy frag" data-frag="1">It asked for motivation a student doesn't have at 11pm, one problem from done.</p>
@@ -1449,23 +1453,24 @@
         </div>
 
         <div class="ssstage">
-          <div class="fr hub">
+          <div class="ssone">
             <div class="phslot">Study Hub 截图位<br /><span>version 1 · the tab</span></div>
             <div class="phlab">Study Hub · entry stayed flat</div>
           </div>
-          <button class="fr ask" type="button" aria-label="Show the hand-off after an answer">
-            <div class="phslot">Ask AI 截图位<br /><span>tap me</span></div>
-            <div class="phlab win">Ask AI · where everyone already is</div>
-          </button>
-          <div class="fr3">
-            <div class="f3"><div class="phslot">Frame 1<br /><span>concept → flashcards</span></div></div>
-            <div class="f3"><div class="phslot">Frame 2<br /><span>exam → mock</span></div></div>
-            <div class="f3"><div class="phslot">Frame 3<br /><span>staying → study room</span></div></div>
+          <div class="sspair">
+            <div class="ssp">
+              <div class="phslot">chat 内推荐 study room 卡片<br /><span>截图位</span></div>
+              <div class="phlab win">Staying to work → a room</div>
+            </div>
+            <div class="ssp">
+              <div class="phslot">chat 内推荐 mock 练习 卡片<br /><span>截图位</span></div>
+              <div class="phlab win">Exam coming → a mock</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="notes" hidden>Layer two is about staying, and it took us two goes. Here's the thinking: a better answer ends a visit well, but it doesn't create the next one. So we built three things that carry over — flashcards, mock practice, study rooms — and we put them where study features usually go, in their own tab. And entry to that hub stayed flat. The features were fine; nobody was switching modes to go and study. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>Because it asked for motivation a student doesn't have at eleven at night, one problem away from being done. <i>[tap the Ask AI screen · space]</i></div>
+      <div class="notes" hidden>Layer two is about staying, and it took us two goes. We built three things that carry over — flashcards, mock practice, study rooms — and we put them where study features usually go, in their own tab. And entry to that hub stayed flat. The features were fine; nobody was switching modes to go and study. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>Because it asked for motivation a student doesn't have at eleven at night, one problem away from being done. <i>[space]</i></div>
       <div class="notes" data-frag="2" hidden>So version two: same three features, moved into the flow, offered by what just happened. Concept worth keeping — flashcards. Exam coming up, or they just covered this material — a mock. They say they're staying to work — a room. <i>[space]</i></div>
       <div class="notes" data-frag="3" hidden>And the numbers moved. Deck creation went up two point one times once the cards were built from problems the student had just solved. Sessions in exam weeks up thirty-eight percent. Time in app up twenty-eight percent for students who join a room. The honest trade is this: every offer interrupts the fastest path in the product, which is our moat — so it's one offer at a time, only on a confident trigger, and we watched time-to-answer to be sure the core loop hadn't slowed. And we kept the hub, but demoted it: it's a library you come back to, not the front door.</div>
     </section>
@@ -1814,14 +1819,6 @@
   })();
   // page 3: stagger index for the learner-model dots
   document.querySelectorAll(".dots i").forEach((d, k) => d.style.setProperty("--k", k + 1));
-</script>
-<script>
-  document.querySelectorAll(".ssstage .fr.ask").forEach(function (btn) {
-    btn.addEventListener("click", function () { btn.closest(".ssstage").classList.toggle("swapped"); });
-  });
-  document.addEventListener("deck:change", function () {
-    document.querySelectorAll(".ssstage.swapped").forEach(function (st) { st.classList.remove("swapped"); });
-  });
 </script>
 <script>
   // the second card alternates between two quotes
