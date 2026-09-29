@@ -312,8 +312,16 @@
   .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"] { opacity: .32; border-left-color: rgba(255,255,255,.14); }
   .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"] .pswap { display: none; }
   .ptabs:has(.pstep2trig.shown) .pstep[data-k="step1"] { opacity: .4; border-left-color: rgba(255,255,255,.14); }
-  .ptabs:not(:has(.pstep2trig.shown)) .ptiles.two figure[data-s="2"],
-  .ptabs:has(.pstep2trig.shown) .ptiles.two figure[data-s="1"] { opacity: .3; filter: saturate(.5) brightness(.7); }
+  .ppanel.p1 { position: relative; }
+  .ppair { align-items: end; }
+  .ptabs:not(:has(.pstep2trig.shown)) .ppair[data-s="2"] { display: none; }
+  .ptabs:has(.pstep2trig.shown) .ppair[data-s="1"] { display: none; }
+  .ppair .pbefore .pt { height: min(calc(var(--tile-h, 400px) * .8), calc(100vh - 470px)); opacity: .6; filter: saturate(.55) brightness(.85); }
+  .ppair .pbefore figcaption { opacity: .6; }
+  .ptph { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; gap: 6px;
+    border: 1px dashed rgba(255,255,255,.2); border-radius: inherit; font-family: var(--serif); font-size: 12px;
+    letter-spacing: .1em; color: var(--faint); line-height: 1.7; }
+  .ptph span { display: block; font-size: 10.5px; opacity: .7; }
   .ptiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--img-gap, 22px); margin-top: 18px; }
   .ptiles.two { grid-template-columns: repeat(2, auto); justify-content: end; gap: var(--img-gap, 22px); margin-top: 0; }
   .ptiles.two .pt { height: min(var(--tile-h, 400px), calc(100vh - 420px)); aspect-ratio: 1212 / 1520; width: auto; }
@@ -1598,14 +1606,24 @@
                 <div class="pdata"><div><b>3% <i>→</i> 12%</b><span>tap-through on messages: generic reminders vs. personalized notes from a tutor</span></div><div><b>+22%</b><span>next-day return for students who received a proactive message</span></div></div></div></div>
               <div class="phint">Hover a step for the numbers</div>
             </div>
-            <div class="ptiles two">
-              <figure data-s="1">
-                <div class="pt"><img src="assets/personal-2.jpg" alt="A call with Alma" /><video class="alt" src="assets/personal-2.mp4" muted loop playsinline preload="metadata"></video></div>
-                <figcaption>A call with Alma<span>Strong in a subject? Ace books a college-planning call.</span></figcaption>
+            <div class="ptiles two ppair" data-s="1">
+              <figure class="pbefore">
+                <div class="pt"><div class="ptph">Me 页手动填写 截图位<span>step 1 · before</span></div></div>
+                <figcaption>Before · the Me page<span>Students had to open it and fill it in themselves.</span></figcaption>
               </figure>
-              <figure data-s="2">
+              <figure class="pafter">
+                <div class="pt"><img src="assets/personal-2.jpg" alt="Tutors collect it in conversation" /><video class="alt" src="assets/personal-2.mp4" muted loop playsinline preload="metadata"></video></div>
+                <figcaption>After · tutors collect it in conversation<span>Ace, Alma and Grant pick up goals and weak spots from chats and calls.</span></figcaption>
+              </figure>
+            </div>
+            <div class="ptiles two ppair" data-s="2">
+              <figure class="pbefore">
+                <div class="pt"><div class="ptph">旧的通用推送 截图位<span>step 2 · before</span></div></div>
+                <figcaption>Before · one reminder for everyone<span>Same nudge, same time, whoever you are.</span></figcaption>
+              </figure>
+              <figure class="pafter">
                 <div class="pt"><img src="assets/personal-1.jpg" alt="Proactive preview" /><img class="alt" src="assets/personal-1-hover.jpg" alt="" /></div>
-                <figcaption>Proactive preview<span>Tomorrow’s class, tonight’s heads-up from Ace.</span></figcaption>
+                <figcaption>After · a note from a tutor<span>Tomorrow’s class, tonight’s heads-up from Ace.</span></figcaption>
               </figure>
             </div>
           </div>
@@ -1627,8 +1645,8 @@
           </div>
         </div>
       </div>
-      <div class="notes" hidden>And layer four is personal. <span data-hov="[data-k=step1]">To make anything personal, we first had to actually know the student — so step one is collecting their data. Before, we asked students to fill in a Me page themselves, and almost nobody did. Now the tutors pick it up naturally from conversation: what they're studying, what they're struggling with, what they're aiming for.</span> <i>[hover step 1 for the numbers · space]</i></div>
-      <div class="notes" data-frag="1" hidden><span data-hov="[data-k=step2]">And once we know them, step two is acting on it — a check-in after a hard question, a preview the night before class, or a call with Alma when it's time to plan for college.</span> <i>[hover step 2]</i> Personal messages get tapped about four times more than generic reminders. <i>[space → tab 2]</i></div>
+      <div class="notes" hidden>And layer four is personal. <span data-hov="[data-k=step1]">To make anything personal, we first had to actually know the student — so step one is collecting their data. Before, we asked students to fill in a Me page themselves, and almost nobody did. Now the tutors pick it up naturally from conversation: what they're studying, what they're struggling with, what they're aiming for.</span> Before, that meant a Me page they had to fill in themselves — almost nobody did. Now it comes out of the conversation. <i>[hover step 1 for the numbers · space]</i></div>
+      <div class="notes" data-frag="1" hidden><span data-hov="[data-k=step2]">And once we know them, step two is acting on it — a check-in after a hard question, a preview the night before class, or a call with Alma when it's time to plan for college.</span> <i>[hover step 2]</i> Same slot, same student — the difference is whether the message knows anything about them. Personal messages get tapped about four times more than generic reminders. <i>[space → tab 2]</i></div>
       <div class="notes" data-frag="2" hidden>And on top of that, we added a small incentive system — badges and an avatar — just to help students feel like this is their own personal school, not a tool they use.</div>
     </section>
 
