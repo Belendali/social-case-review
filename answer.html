@@ -242,9 +242,6 @@
   .rtext .rt.after { opacity: 0; transform: translateY(8px); pointer-events: none; }
   .reachwrap:has(.stagetrig.shown) .rt.before { opacity: 0; transform: translateY(-8px); pointer-events: none; }
   .reachwrap:has(.stagetrig.shown) .rt.after { opacity: 1; transform: none; pointer-events: auto; }
-  .rbridge { margin: 20px 0 0; font-size: 14px; line-height: 1.5; color: var(--dim); max-width: 900px;
-    border-left: 2px solid var(--reach); padding-left: 14px; }
-  .reachwrap:not(:has(.casttrig.shown)) .rbridge { display: none; }
   .reachgrid { display: grid; grid-template-columns: auto 1fr; gap: var(--split-gap, 36px); align-items: center; margin-top: 24px; }
   /* the IP sits centre-stage until the cast arrives */
   .reachwrap:not(.reswrap):not(:has(.casttrig.shown)) .reachgrid { grid-template-columns: 1fr; justify-items: center; margin-top: 58px; }
@@ -1568,7 +1565,6 @@
             </div>
           </div>
         </div>
-        <p class="rbridge frag" data-frag="2">Why a cast and not a mascot: the next layer is personalization, and personal advice needs someone to give it — a tutor, a counselor, an advisor.</p>
       </div>
       <div class="notes" hidden>Layer three is reach. The problem here was that every competitor looked the same, and our own mascots were young — cute, childish, a bit tool-like. <i>[space]</i></div>
       <div class="notes" data-frag="1" hidden>So I rebuilt the IP myself — two weeks of design, and two rounds of feedback from students in our Discord community. A cast that makes the app feel like a school rather than a tool. <i>[drag the slider to compare]</i> <i>[space]</i></div>
