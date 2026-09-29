@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="style.css?v=09081324" />
 <style>
   body { overflow: auto; }
+  #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
   .hub {
     min-height: 100vh;
     display: flex;
@@ -371,6 +372,7 @@
 </style>
 </head>
 <body>
+  <canvas id="stars" aria-hidden="true"></canvas>
   <div class="glow purple tc" style="position:fixed"></div>
   <div class="hub">
     <div class="hero-row">
@@ -618,6 +620,73 @@
       if(e.key==="ArrowLeft"||e.key==="["){seg--;render();}
       if(key==="e"){setTimeout(()=>{const open=document.querySelector(".hub").classList.contains("open");seg=open?1:3;render();},0);}
     });
+  })();
+</script>
+<script>
+  // cover: a quiet starfield the cursor pushes around
+  (function () {
+    const cv = document.getElementById("stars"); if (!cv) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const ctx = cv.getContext("2d");
+    let w = 0, h = 0, dpr = 1, stars = [];
+    const mouse = { x: -9999, y: -9999, on: false };
+
+    function build() {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      w = innerWidth; h = innerHeight;
+      cv.width = w * dpr; cv.height = h * dpr;
+      cv.style.width = w + "px"; cv.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const n = Math.round(Math.min(150, (w * h) / 11000));
+      stars = Array.from({ length: n }, () => {
+        const r = Math.random() < .12 ? 1.8 + Math.random() * 1.1 : .6 + Math.random() * .9;
+        return {
+          hx: Math.random() * w, hy: Math.random() * h,     // home
+          x: 0, y: 0, vx: 0, vy: 0, r: r,
+          a: .18 + Math.random() * .5,
+          tw: Math.random() * Math.PI * 2,
+          tws: .006 + Math.random() * .012,
+          drift: .04 + Math.random() * .09,
+          purple: Math.random() < .3
+        };
+      });
+      stars.forEach(s => { s.x = s.hx; s.y = s.hy; });
+    }
+
+    function frame() {
+      ctx.clearRect(0, 0, w, h);
+      for (const s of stars) {
+        // slow drift around home
+        s.tw += s.tws;
+        const dxh = s.hx + Math.cos(s.tw) * (s.drift * 60) - s.x;
+        const dyh = s.hy + Math.sin(s.tw * .8) * (s.drift * 40) - s.y;
+        s.vx += dxh * .004; s.vy += dyh * .004;
+
+        // the cursor pushes them aside
+        if (mouse.on) {
+          const dx = s.x - mouse.x, dy = s.y - mouse.y;
+          const d2 = dx * dx + dy * dy, R = 150;
+          if (d2 < R * R) {
+            const d = Math.sqrt(d2) || 1, f = (1 - d / R) * 1.1;
+            s.vx += (dx / d) * f; s.vy += (dy / d) * f;
+          }
+        }
+        s.vx *= .92; s.vy *= .92;
+        s.x += s.vx; s.y += s.vy;
+
+        const a = s.a * (.7 + .3 * Math.sin(s.tw * 1.7));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, 6.2832);
+        ctx.fillStyle = s.purple ? "rgba(139,124,255," + a + ")" : "rgba(255,255,255," + a * .8 + ")";
+        ctx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+
+    addEventListener("pointermove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.on = true; }, { passive: true });
+    addEventListener("pointerleave", () => { mouse.on = false; });
+    addEventListener("resize", build);
+    build(); frame();
   })();
 </script>
 <script src="mirror.js?v=09081324"></script>
