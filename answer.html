@@ -327,7 +327,6 @@
   .ppair { align-items: end; }
   .ptabs:not(:has(.pstep2trig.shown)) .ppair[data-s="2"] { display: none; }
   .ptabs:has(.pstep2trig.shown) .ppair[data-s="1"] { display: none; }
-  .ppair .pbefore .pt { height: min(calc(var(--tile-h, 400px) * .7), calc(100vh - 510px)); opacity: .6; filter: saturate(.55) brightness(.85); }
   .ppair .pbefore figcaption { opacity: .6; }
   .ptph { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; gap: 6px;
     border: 1px dashed rgba(255,255,255,.2); border-radius: inherit; font-family: var(--serif); font-size: 12px;
@@ -336,6 +335,7 @@
   .ptiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--img-gap, 22px); margin-top: 18px; }
   .ptiles.two { grid-template-columns: repeat(2, auto); justify-content: end; gap: var(--img-gap, 22px); margin-top: 0; }
   .ptiles.two .pt { height: min(var(--tile-h, 400px), calc(100vh - 420px)); aspect-ratio: 1212 / 1520; width: auto; }
+  .ptiles.two.ppair .pbefore .pt { height: calc(min(var(--tile-h, 400px), 100vh - 420px) * .78); opacity: .6; filter: saturate(.55) brightness(.85); }
   .ptiles.two figure { width: max-content; }
   .ptiles figure { margin: 0; }
   .pt { position: relative; height: var(--tile-h, 300px); border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: rgba(255,255,255,.03); transition: transform .35s ease-out, border-color .35s ease-out; }
@@ -1619,7 +1619,7 @@
             </div>
             <div class="ptiles two ppair" data-s="1">
               <figure class="pbefore">
-                <div class="pt"><img class="zoomable" src="assets/personal-me-before.webp" alt="The old Me page students had to fill in" /></div>
+                <div class="pt"><img class="zoomable" src="assets/personal-me-before.webp?v=2" alt="The old Me page students had to fill in" /></div>
                 <figcaption>Before · the Me page<span>Students had to open it and fill it in themselves.</span></figcaption>
               </figure>
               <figure class="pafter">
