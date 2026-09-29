@@ -757,6 +757,10 @@
   .staystratwrap:has(.ssv2.shown) .sspair { opacity: 1; pointer-events: auto; transform: none; }
   .staystratwrap:has(.ssv2.shown) .ssv1 { display: none; }
   .ssleft .frag:not(.shown) { display: none; }
+  .ssone video { position: absolute; inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px);
+    object-fit: cover; display: block; border-radius: 22px; }
+  .ssp img { position: absolute; inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px);
+    object-fit: cover; display: block; border-radius: 20px; }
   .ssh2 { display: none; }
   .staystratwrap:has(.ssv2.shown) .ssh1 { display: none; }
   .staystratwrap:has(.ssv2.shown) .ssh2 { display: block; animation: rwIn .5s cubic-bezier(.22,1,.36,1) both; }
@@ -1443,7 +1447,7 @@
           <div class="ssv2 frag" data-frag="2">
             <div class="sslab">Version 2 · offered by what just happened</div>
             <p>Same three features, moved into the flow — offered by what just happened:
-            a concept worth keeping → <b>flashcards</b>; an exam coming → <b>a mock</b>; staying to work → <b>a room</b>.</p>
+            a concept worth keeping → <b>flashcards</b>; an exam tomorrow → <b>a mock</b>; staying to work → <b>a room</b>.</p>
           </div>
 
           <div class="ssmoved frag" data-frag="3">
@@ -1459,17 +1463,17 @@
 
         <div class="ssstage">
           <div class="ssone">
-            <div class="phslot">Study Hub 截图位<br /><span>version 1 · the tab</span></div>
+            <video class="zoomable" src="assets/stay-hub.mp4" muted loop playsinline autoplay preload="metadata"></video>
             <div class="phlab">Study Hub · entry stayed flat</div>
           </div>
           <div class="sspair">
             <div class="ssp">
-              <div class="phslot">chat 内推荐 study room 卡片<br /><span>截图位</span></div>
-              <div class="phlab win">Staying to work → a room</div>
+              <img class="zoomable" src="assets/stay-v2-flashcards.webp" alt="A concept worth keeping, offered as flashcards" />
+              <div class="phlab win">A concept worth keeping → flashcards</div>
             </div>
             <div class="ssp">
-              <div class="phslot">chat 内推荐 mock 练习 卡片<br /><span>截图位</span></div>
-              <div class="phlab win">Exam coming → a mock</div>
+              <img class="zoomable" src="assets/stay-v2-mock.webp" alt="An exam tomorrow, offered as a mock" />
+              <div class="phlab win">An exam tomorrow → a mock</div>
             </div>
           </div>
         </div>
@@ -1841,7 +1845,7 @@
 <script src="deck.js?v=09081324"></script>
 <script src="mirror.js?v=09081324"></script>
 <script src="editor.js?v=09081324"></script>
-<script src="lightbox.js?v=4"></script>
+<script src="lightbox.js?v=5"></script>
 <script src="comments.js?v=5"></script>
 </body>
 </html>

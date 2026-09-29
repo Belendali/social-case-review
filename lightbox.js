@@ -39,7 +39,7 @@
     if (capEl) {
       label = [...capEl.childNodes].map((n) => (n.textContent || "").trim()).filter(Boolean).join(" · ");
     } else {
-      const ph = t.closest(".ph, .fr, .f3");
+      const ph = t.closest(".ph, .fr, .f3, .ssone, .ssp");
       const lab = ph && ph.querySelector(".phlab");
       if (lab) label = lab.textContent.trim();
     }
