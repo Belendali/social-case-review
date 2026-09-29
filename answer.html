@@ -1872,13 +1872,16 @@
       .observe(trig, { attributes: true, attributeFilter: ["class"] });
   })();
   // videos that start inside a hidden fragment need a nudge once the slide is up
-  document.addEventListener("deck:change", function () {
-    setTimeout(function () {
+  (function () {
+    function nudge() {
       document.querySelectorAll(".slide video[autoplay]").forEach(function (v) {
         if (v.paused) v.play().catch(function () {});
       });
-    }, 120);
-  });
+    }
+    function burst() { [120, 500, 1200, 2400].forEach(function (t) { setTimeout(nudge, t); }); }
+    document.addEventListener("deck:change", burst);
+    window.addEventListener("load", burst);
+  })();
   // page 3: stagger index for the learner-model dots
   document.querySelectorAll(".dots i").forEach((d, k) => d.style.setProperty("--k", k + 1));
 </script>
