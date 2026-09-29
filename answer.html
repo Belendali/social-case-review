@@ -757,6 +757,9 @@
   .staystratwrap:has(.ssv2.shown) .sspair { opacity: 1; pointer-events: auto; transform: none; }
   .staystratwrap:has(.ssv2.shown) .ssv1 { display: none; }
   .ssleft .frag:not(.shown) { display: none; }
+  .ssh2 { display: none; }
+  .staystratwrap:has(.ssv2.shown) .ssh1 { display: none; }
+  .staystratwrap:has(.ssv2.shown) .ssh2 { display: block; animation: rwIn .5s cubic-bezier(.22,1,.36,1) both; }
   .sshint { transition: opacity .3s ease-out; }
   /* ===== Success metrics: the formula, then the proof ===== */
   .bigform { display: flex; flex-wrap: nowrap; align-items: baseline; gap: 9px; margin-top: 26px;
@@ -1426,7 +1429,8 @@
       <div class="slide-inner staystratwrap">
         <div class="ssleft">
           <div class="eyebrow rv" style="color:var(--stay)">Layer 02 · Stay <em style="font-style:normal;opacity:.6">· the reason they renew</em></div>
-          <h2 class="rv" style="font-size:var(--t-h2,38px)">Nobody opens an app to study.</h2>
+          <h2 class="rv ssh1" style="font-size:var(--t-h2,38px)">Students won’t switch modes to study.</h2>
+          <h2 class="ssh2" style="font-size:var(--t-h2,38px)">So the moment does the asking.</h2>
 
           <div class="ssv1">
             <div class="sslab">Version 1 · a place to study</div>
