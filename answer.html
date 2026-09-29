@@ -307,6 +307,13 @@
   .pstep:is(:hover, .hov) .pdata { opacity: 1; transform: none; }
   .pdata.on { opacity: 1; transform: none; pointer-events: auto; max-width: 440px; margin-top: 18px; gap: 20px; }
   .phint { font-family: var(--serif); font-size: 11px; letter-spacing: .08em; color: var(--faint); margin-top: 14px; }
+  /* step 1 first, step 2 on the next space */
+  .pstep, .ptiles.two figure { transition: opacity .45s ease-out, border-color .25s ease-out, filter .45s ease-out; }
+  .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"] { opacity: .32; border-left-color: rgba(255,255,255,.14); }
+  .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"] .pswap { display: none; }
+  .ptabs:has(.pstep2trig.shown) .pstep[data-k="step1"] { opacity: .4; border-left-color: rgba(255,255,255,.14); }
+  .ptabs:not(:has(.pstep2trig.shown)) .ptiles.two figure[data-s="2"],
+  .ptabs:has(.pstep2trig.shown) .ptiles.two figure[data-s="1"] { opacity: .3; filter: saturate(.5) brightness(.7); }
   .ptiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--img-gap, 22px); margin-top: 18px; }
   .ptiles.two { grid-template-columns: repeat(2, auto); justify-content: end; gap: var(--img-gap, 22px); margin-top: 0; }
   .ptiles.two .pt { height: min(var(--tile-h, 400px), calc(100vh - 420px)); aspect-ratio: 1212 / 1520; width: auto; }
@@ -1577,7 +1584,8 @@
         <div class="eyebrow rv" style="color:var(--personal)">Layer 04 · Personal <em style="font-style:normal;opacity:.6">· the reason they open it tomorrow</em></div>
         <h2 class="rv" style="font-size:var(--t-h2,40px)">Streaks, nudges, and a school that knows you.</h2>
         <div class="ptabs rv d2">
-          <span class="ptabtrig frag" data-frag="1" aria-hidden="true"></span>
+          <span class="pstep2trig frag" data-frag="1" aria-hidden="true"></span>
+          <span class="ptabtrig frag" data-frag="2" aria-hidden="true"></span>
           <div class="tabs">
             <button class="tab t1" type="button"><span>01</span>Make it proactive</button>
             <button class="tab t2" type="button"><span>02</span>The reward loop</button>
@@ -1585,19 +1593,19 @@
           <div class="ppanel p1">
             <div class="psteps">
               <div class="pstep" data-k="step1"><span class="pn">Step 1</span><b>Collect data</b><div class="pswap"><p>Ace, Alma and Grant learn each student’s goals, strengths and progress. Every conversation and scanned problem adds to a shared student profile.</p>
-                <div class="pdata"><div><b>14% <i>→</i> 71%</b><span>profile completion: self-filled Me page vs. auto-filled from tutor chats</span></div><div><b>4 <i>→</i> 12</b><span>facts we know per active student — goals, classes, weak topics, deadlines</span></div></div></div></div>
+                <div class="pdata"><div><b>14% <i>→</i> 71%</b><span>profile completion: self-filled Me page vs. auto-filled from tutor chats</span></div></div></div></div>
               <div class="pstep" data-k="step2"><span class="pn">Step 2</span><b>Act with the data</b><div class="pswap"><p>They use that context to act first — checking in after a tough question, previewing tomorrow’s class, or connecting students with the right support.</p>
                 <div class="pdata"><div><b>3% <i>→</i> 12%</b><span>tap-through on messages: generic reminders vs. personalized notes from a tutor</span></div><div><b>+22%</b><span>next-day return for students who received a proactive message</span></div></div></div></div>
               <div class="phint">Hover a step for the numbers</div>
             </div>
             <div class="ptiles two">
-              <figure>
-                <div class="pt"><img src="assets/personal-1.jpg" alt="Proactive preview" /><img class="alt" src="assets/personal-1-hover.jpg" alt="" /></div>
-                <figcaption>Proactive preview<span>Tomorrow’s class, tonight’s heads-up from Ace.</span></figcaption>
-              </figure>
-              <figure>
+              <figure data-s="1">
                 <div class="pt"><img src="assets/personal-2.jpg" alt="A call with Alma" /><video class="alt" src="assets/personal-2.mp4" muted loop playsinline preload="metadata"></video></div>
                 <figcaption>A call with Alma<span>Strong in a subject? Ace books a college-planning call.</span></figcaption>
+              </figure>
+              <figure data-s="2">
+                <div class="pt"><img src="assets/personal-1.jpg" alt="Proactive preview" /><img class="alt" src="assets/personal-1-hover.jpg" alt="" /></div>
+                <figcaption>Proactive preview<span>Tomorrow’s class, tonight’s heads-up from Ace.</span></figcaption>
               </figure>
             </div>
           </div>
@@ -1619,8 +1627,9 @@
           </div>
         </div>
       </div>
-      <div class="notes" hidden>And layer four is personal. <span data-hov="[data-k=step1]">To make anything personal, we first had to actually know the student — so step one is collecting their data. Before, we asked students to fill in a Me page themselves, and almost nobody did. Now the tutors pick it up naturally from conversation: what they're studying, what they're struggling with, what they're aiming for.</span> <i>[hover step 1]</i> <span data-hov="[data-k=step2]">And once we know them, step two is acting on it — a check-in after a hard question, a preview the night before class, or a call with Alma when it's time to plan for college.</span> <i>[hover step 2]</i> And personal messages get tapped about four times more than generic reminders. <i>[space → tab 2]</i></div>
-      <div class="notes" data-frag="1" hidden>And on top of that, we added a small incentive system — badges and an avatar — just to help students feel like this is their own personal school, not a tool they use.</div>
+      <div class="notes" hidden>And layer four is personal. <span data-hov="[data-k=step1]">To make anything personal, we first had to actually know the student — so step one is collecting their data. Before, we asked students to fill in a Me page themselves, and almost nobody did. Now the tutors pick it up naturally from conversation: what they're studying, what they're struggling with, what they're aiming for.</span> <i>[hover step 1 for the numbers · space]</i></div>
+      <div class="notes" data-frag="1" hidden><span data-hov="[data-k=step2]">And once we know them, step two is acting on it — a check-in after a hard question, a preview the night before class, or a call with Alma when it's time to plan for college.</span> <i>[hover step 2]</i> Personal messages get tapped about four times more than generic reminders. <i>[space → tab 2]</i></div>
+      <div class="notes" data-frag="2" hidden>And on top of that, we added a small incentive system — badges and an avatar — just to help students feel like this is their own personal school, not a tool they use.</div>
     </section>
 
     <!-- 13.5 · Takeaway: what to ask, what to trust -->
