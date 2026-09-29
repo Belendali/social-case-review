@@ -751,7 +751,7 @@
   .ssone { position: absolute; top: 50%; left: 50%; height: 100%; aspect-ratio: 1206 / 2622; border-radius: 26px;
     border: 1px solid rgba(255,255,255,.16); background: #000; box-shadow: 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000;
     transform: translate(-50%, -50%); transition: transform .7s cubic-bezier(.22,1,.36,1), opacity .5s ease-out; }
-  .sspair { position: absolute; inset: 0; display: flex; align-items: center; justify-content: flex-start; gap: 18px;
+  .sspair { position: absolute; inset: 0 0 0 -30px; display: flex; align-items: center; justify-content: flex-start; gap: 18px;
     opacity: 0; pointer-events: none; transform: translateY(14px);
     transition: opacity .55s ease-out, transform .7s cubic-bezier(.22,1,.36,1); }
   .sspair .ssp { position: relative; z-index: 1; height: 86%; aspect-ratio: 1206 / 2622; border-radius: 24px;
@@ -771,12 +771,12 @@
   .frbadge.before { color: #ff8da5; border-color: rgba(255,141,165,.38); }
   .frbadge.after { color: var(--stay); border-color: rgba(105,226,255,.4); }
   .ssone { height: 86%; }
-  .ssflow { position: absolute; top: 50%; right: 56px; transform: translate(50%, -50%); z-index: 3;
+  .ssflow { position: absolute; top: 50%; right: 74px; transform: translate(50%, -50%); z-index: 3;
     display: grid; place-items: center; color: var(--stay); background: rgba(8,10,14,.86);
     border: 1px solid rgba(105,226,255,.3); border-radius: 999px; padding: 7px 10px 5px; }
-  .sshub { position: absolute; right: -24px; top: 50%; transform: translateY(-50%); z-index: 0;
-    height: 60%; aspect-ratio: 1206 / 2622; border-radius: 20px; background: #000;
-    border: 1px solid rgba(255,255,255,.12); opacity: .4; }
+  .sshub { position: absolute; right: -22px; top: 50%; transform: translateY(-50%); z-index: 0;
+    height: 66%; aspect-ratio: 1206 / 2622; border-radius: 20px; background: #000;
+    border: 1px solid rgba(105,226,255,.18); opacity: .55; }
   .sshub video { position: absolute; inset: 3px; width: calc(100% - 6px); height: calc(100% - 6px);
     object-fit: cover; display: block; border-radius: 17px; }
   .sshub .phlab { white-space: normal; width: 150%; left: 50%; font-size: 9.5px; letter-spacing: .12em; bottom: -36px; }
