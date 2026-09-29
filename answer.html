@@ -756,7 +756,7 @@
   .ssone { position: absolute; top: 50%; left: 50%; height: 100%; aspect-ratio: 1206 / 2622; border-radius: 26px;
     border: 1px solid rgba(255,255,255,.16); background: #000; box-shadow: 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000;
     transform: translate(-50%, -50%); transition: transform .7s cubic-bezier(.22,1,.36,1), opacity .5s ease-out; }
-  .sspair { position: absolute; inset: 0 0 0 -34px; display: flex; align-items: center; justify-content: flex-start; gap: 16px;
+  .sspair { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 20px;
     opacity: 0; pointer-events: none; transform: translateY(14px);
     transition: opacity .55s ease-out, transform .7s cubic-bezier(.22,1,.36,1); }
   .sspair .ssp { position: relative; z-index: 1; height: 94%; aspect-ratio: 1206 / 2622; border-radius: 24px;
@@ -775,15 +775,8 @@
     border: 1px solid rgba(255,255,255,.18); color: var(--faint); white-space: nowrap; }
   .frbadge.before { color: #ff8da5; border-color: rgba(255,141,165,.38); }
   .frbadge.after { color: var(--stay); border-color: rgba(105,226,255,.4); }
-  .pairbadge { left: 233px; top: -16px; }
+  .pairbadge { top: -16px; }
   .ssone { height: 96%; }
-  .ssflow { position: absolute; top: 50%; right: 28px; transform: translate(50%, -50%); z-index: 3;
-    display: grid; place-items: center; color: rgba(255,255,255,.55); }
-  .sshub { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); z-index: 0;
-    height: 78%; aspect-ratio: 1206 / 2622; border-radius: 20px; background: #000;
-    border: 0; background: none; opacity: .38; filter: saturate(.7) brightness(.95); }
-  .sshub video { position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; display: block; border-radius: 18px; }
   .ssone video { position: absolute; inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px);
     object-fit: cover; display: block; border-radius: 22px; }
   .ssp img { position: absolute; inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px);
@@ -1515,14 +1508,6 @@
             <div class="ssp">
               <img class="zoomable" src="assets/stay-v2-mock.webp?v=2" alt="An exam tomorrow, offered as a mock" />
               <div class="phlab win">Exam tomorrow → a mock</div>
-            </div>
-            <div class="ssflow" aria-hidden="true">
-              <svg width="26" height="30" viewBox="0 0 26 30" fill="none">
-                <path d="M7 5 L19 15 L7 25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-            <div class="sshub">
-              <video src="assets/stay-hub.mp4" muted loop playsinline autoplay preload="metadata"></video>
             </div>
           </div>
         </div>
