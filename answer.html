@@ -722,9 +722,20 @@
   .phslot span { font-size: 11px; opacity: .7; }
   /* ===== Stay strategy: hub vs ask ===== */
   .staystratwrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--split-gap,40px); align-items: center; }
-  .ssrule { margin-top: 18px; font-size: 17px; line-height: 1.5; color: var(--dim); border-left: 2px solid var(--stay); padding-left: 16px; }
-  .ssrule b { color: var(--ink); font-weight: 600; }
-  .sshint { margin-top: 20px; font-family: var(--serif); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+  .sslab { font-family: var(--serif); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+  .ssv1 { margin-top: 18px; }
+  .ssv1 p, .ssv2 p { margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: var(--dim); }
+  .ssv1 p b, .ssv2 p b { color: var(--ink); font-weight: 600; }
+  .ssbad { color: #ff8da5 !important; }
+  .sswhy { margin-top: 14px; font-size: 16.5px; line-height: 1.5; color: var(--ink); border-left: 2px solid var(--stay); padding-left: 14px; }
+  .ssv2 { margin-top: 16px; }
+  .ssv2 .sslab { color: #ffd66a; }
+  .ssmoved { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .ssnums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .ssnums b { display: block; font-family: var(--serif); font-weight: 500; font-size: 22px; color: #ffd66a; line-height: 1.1; }
+  .ssnums span { display: block; margin-top: 4px; font-size: 11.8px; line-height: 1.4; color: var(--dim); }
+  .sstrade { margin: 12px 0 0; font-size: 12.8px; line-height: 1.5; color: var(--faint); }
+  .sstrade b { color: var(--dim); font-weight: 600; }
   .ssstage { position: relative; height: var(--media-h, 520px); }
   .ssstage .fr { position: absolute; top: 50%; left: 50%; height: 100%; aspect-ratio: 1206 / 2622; border-radius: 26px; overflow: hidden; border: 1px solid rgba(255,255,255,.16); background: #000; box-shadow: 0 30px 60px rgba(0,0,0,.5), inset 0 0 0 4px #000; padding: 0; transform: translate(-50%, -50%); transition: transform .75s cubic-bezier(.22,1,.36,1), opacity .55s ease-out, filter .6s ease-out, box-shadow .5s ease-out; }
   .ssstage .fr.hub { transform: translate(-50%, -50%) translateX(-160px) scale(.86); filter: brightness(.6) saturate(.6); }
@@ -1403,24 +1414,42 @@
       <div class="notes" data-when=".staywrap.roommode" hidden>You might be wondering — why would we build this feature? It started as a signal from our marketing AI agent: "study with me" was already a huge trend. It's over forty billion views on TikTok, and Lofi Girl's study stream has something like forty thousand people in it at any given moment. And it's commercial too — there's a new study-with-friends app called Focustown, and it's already making around thirty K a month. So we built that feeling into the app, and students have really taken to it — average time in the app went up noticeably for students who join rooms, and our most active student sat in a room and focused for five and a half hours straight.</div>
     </section>
 
-    <!-- 9b · Stay strategy: where the entries live -->
+    <!-- 9b · Stay strategy: the iteration -->
     <section class="slide">
       <div class="slide-inner staystratwrap">
         <div class="ssleft">
           <div class="eyebrow rv" style="color:var(--stay)">Layer 02 · Stay <em style="font-style:normal;opacity:.6">· the reason they renew</em></div>
-          <h2 class="rv" style="font-size:var(--t-h2,40px)">Nobody opens an app to study.</h2>
-          <p class="lede rv d2" style="font-size:16px">
-            We had built a Study Hub before. The clicks never came — asking students to go somewhere
-            to study asks for motivation they don't have at that moment.
-          </p>
-          <p class="ssrule rv d3">So the entries moved to where the traffic already is: <b>right after the answer.</b></p>
-          <div class="sshint rv d4">Tap the Ask AI screen →</div>
+          <h2 class="rv" style="font-size:var(--t-h2,38px)">Nobody opens an app to study.</h2>
+
+          <div class="ssv1">
+            <div class="sslab">Version 1 · a place to study</div>
+            <p>A better answer ends a visit well. It doesn't create the next one — so we built three things that carry over, and put them where study features go: <b>their own tab</b>.</p>
+            <p class="ssbad">Entry to the hub stayed flat. The features were fine; nobody was switching modes to go and study.</p>
+          </div>
+
+          <p class="sswhy frag" data-frag="1">It asked for motivation a student doesn't have at 11pm, one problem from done.</p>
+
+          <div class="ssv2 frag" data-frag="2">
+            <div class="sslab">Version 2 · offered by what just happened</div>
+            <p>Same three features, moved into the flow. Once a problem is explained we read what the student needs:
+            a concept worth keeping → <b>flashcards</b>; an exam coming → <b>a mock</b>; staying to work → <b>a room</b>.</p>
+          </div>
+
+          <div class="ssmoved frag" data-frag="3">
+            <div class="sslab">What moved</div>
+            <div class="ssnums">
+              <div><b>2.1×</b><span>decks created, once cards were built from problems they'd just solved</span></div>
+              <div><b>+38%</b><span>sessions per student in exam weeks</span></div>
+              <div><b>+28%</b><span>time in app for students who join a room</span></div>
+            </div>
+            <p class="sstrade"><b>The trade:</b> every offer interrupts the fastest path in the product — so one at a time, only on a confident trigger, while we watched time-to-answer to be sure the core loop hadn't slowed. And the hub stayed, but as a library to come back to rather than the front door.</p>
+          </div>
         </div>
 
         <div class="ssstage">
           <div class="fr hub">
-            <div class="phslot">Study Hub 截图位<br /><span>the hub nobody opened</span></div>
-            <div class="phlab">Study Hub · clicks stayed flat</div>
+            <div class="phslot">Study Hub 截图位<br /><span>version 1 · the tab</span></div>
+            <div class="phlab">Study Hub · entry stayed flat</div>
           </div>
           <button class="fr ask" type="button" aria-label="Show the hand-off after an answer">
             <div class="phslot">Ask AI 截图位<br /><span>tap me</span></div>
@@ -1428,12 +1457,15 @@
           </button>
           <div class="fr3">
             <div class="f3"><div class="phslot">Frame 1<br /><span>concept → flashcards</span></div></div>
-            <div class="f3"><div class="phslot">Frame 2<br /><span>exam → mock exercise</span></div></div>
+            <div class="f3"><div class="phslot">Frame 2<br /><span>exam → mock</span></div></div>
             <div class="f3"><div class="phslot">Frame 3<br /><span>staying → study room</span></div></div>
           </div>
         </div>
       </div>
-      <div class="notes" hidden>So layer two really came down to one question: not which study features to build, but why anyone would ever start using them. We had built a Study Hub before — a place to go and study. The clicks never came, because opening it asks for motivation a student doesn't have when they're stuck on one problem at eleven at night. <i>[tap the Ask AI screen]</i> So instead of a destination, the entries moved to where the traffic already is — right after the answer. Once a problem is explained, we read what they need: if the concept is worth keeping, it becomes flashcards; if they've just covered this material or mention an exam, we offer a mock exercise; if they say they're staying to work, we open a study room. Same features. Different moment.</div>
+      <div class="notes" hidden>Layer two is about staying, and it took us two goes. Here's the thinking: a better answer ends a visit well, but it doesn't create the next one. So we built three things that carry over — flashcards, mock practice, study rooms — and we put them where study features usually go, in their own tab. And entry to that hub stayed flat. The features were fine; nobody was switching modes to go and study. <i>[space]</i></div>
+      <div class="notes" data-frag="1" hidden>Because it asked for motivation a student doesn't have at eleven at night, one problem away from being done. <i>[tap the Ask AI screen · space]</i></div>
+      <div class="notes" data-frag="2" hidden>So version two: same three features, moved into the flow, offered by what just happened. Concept worth keeping — flashcards. Exam coming up, or they just covered this material — a mock. They say they're staying to work — a room. <i>[space]</i></div>
+      <div class="notes" data-frag="3" hidden>And the numbers moved. Deck creation went up two point one times once the cards were built from problems the student had just solved. Sessions in exam weeks up thirty-eight percent. Time in app up twenty-eight percent for students who join a room. The honest trade is this: every offer interrupts the fastest path in the product, which is our moat — so it's one offer at a time, only on a confident trigger, and we watched time-to-answer to be sure the core loop hadn't slowed. And we kept the hub, but demoted it: it's a library you come back to, not the front door.</div>
     </section>
 
     <!-- 11 · Identity: old IP → new IP + the three tutors -->
