@@ -747,6 +747,7 @@
   .staystratwrap:has(.ssmoved.shown) .ssv2 { display: none; }
   .ssnums b { font-size: 26px; }
   .ssnums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .ssnums.two { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .ssnums b { display: block; font-family: var(--serif); font-weight: 500; font-size: 22px; color: var(--stay); line-height: 1.1; }
   .ssnums span { display: block; margin-top: 4px; font-size: 11.8px; line-height: 1.4; color: var(--dim); }
   .ssret { margin: 16px 0 0; padding-top: 13px; border-top: 1px solid rgba(255,255,255,.1);
@@ -1217,7 +1218,7 @@
                   <p class="pread">Decent taps, no retention. Too long-term to become daily.</p>
                   </div></div>
                 </button>
-                <button class="pitem dl" type="button" data-scr="2" data-k="probe3" data-note="Daily learning needed no probe — it was already the product. 98% of students who opened the app used Scan to Learn, and 56% asked a follow-up question. The behavior was there; the loop wasn't.">
+                <button class="pitem dl" type="button" data-scr="2" data-k="probe3" data-note="Daily learning needed no probe — it was already the product. 98% of students who opened the app used Scan to Learn, and 23% asked a follow-up question. The behavior was there; the loop wasn't.">
                   <div class="pdir">Daily learning</div>
                   <div class="pttl">Not probed — already the product</div>
                   <div class="pmore"><div>
@@ -1410,21 +1411,21 @@
             <div class="ph media"><img src="assets/stay-flashcards.jpg" alt="Flashcards" /><img class="alt" src="assets/stay-flashcards-hover.jpg" alt="" /></div>
             <figcaption>Flashcards<div class="sub">Daily memory, built from what you studied</div>
               <div class="fproof"><div class="fproof-in"><div class="fwhen">Launched Nov 2024 · v2 May 2026</div>
-              <div class="fstats"><div><b>+11%</b><span>D7 retention for students who build a deck in week one</span></div><div><b>2.1×</b><span>decks created after v2 auto-built them from solved problems</span></div></div></div></div>
+              <div class="fstats"><div><b>+11%</b><span>D7 retention for students who build a deck in week one</span></div></div></div></div>
             </figcaption>
           </figure>
           <figure class="rv d3" data-k="mock">
             <div class="ph media"><img src="assets/stay-mock.jpg" alt="Mock tests" /><img class="alt" src="assets/stay-mock-hover.jpg" alt="" /></div>
             <figcaption>Mock tests<div class="sub">The hard-demand moment before every exam</div>
               <div class="fproof"><div class="fproof-in"><div class="fwhen">Launched Feb 2025</div>
-              <div class="fstats"><div><b>+38%</b><span>sessions per student in exam weeks</span></div><div><b>2.4×</b><span>Pro conversion among students who take a mock test</span></div></div></div></div>
+              <div class="fstats"><div><b>+38%</b><span>sessions per student in exam weeks</span></div></div></div></div>
             </figcaption>
           </figure>
           <figure class="rv d4 roomfig" data-k="room" tabindex="0" role="button" aria-label="Why study rooms">
             <div class="ph media"><img src="assets/stay-studyroom.jpg" alt="Study rooms" /><img class="alt" src="assets/stay-studyroom-hover.jpg" alt="" /><span class="tapme">Why this? ↗</span></div>
             <figcaption>Study rooms<div class="sub">Company while you work, not another feed</div>
               <div class="fproof"><div class="fproof-in"><div class="fwhen">Launched Jul 2026 · 8 weeks in</div>
-              <div class="fstats"><div><b>+28%</b><span>avg. time in app for students who join rooms</span></div><div><b>5.5 hrs</b><span>longest focus streak — one student, one sitting</span></div></div></div></div>
+              <div class="fstats"><div><b>+28%</b><span>avg. time in app for students who join rooms</span></div></div></div></div>
             </figcaption>
           </figure>
         </div>
@@ -1436,9 +1437,7 @@
             <p>Our EdTech marketing agent flagged it: study-with-me streams were trending on TikTok and Instagram — students working alongside strangers for company and accountability. We built that feeling into the app.</p>
             <div class="rw-stats">
               <div><b>41.7B</b><span>#studywithme views on TikTok, Sep 2026</span></div>
-              <div><b>40,000</b><span>people in Lofi Girl's study stream at any moment, around the clock</span></div>
-              <div><b>750K+</b><span>downloads of Focustown, a study-with-friends timer, in 7 months</span></div>
-              <div><b>~$30K/mo</b><span>est. Focustown revenue — Pro at $9.99/mo, 4.8★ from 6K ratings</span></div>
+              <div><b>~$30K/mo</b><span>est. revenue of Focustown, a study-with-friends timer — 750K downloads in 7 months</span></div>
             </div>
             <p class="rw-note">Studying alongside peers lowers test anxiety and raises self-efficacy — Frontiers in Psychology, 2025.</p>
             <button class="rw-back" type="button">← Back to all three</button>
@@ -1484,12 +1483,11 @@
 
           <div class="ssmoved frag" data-frag="3">
             <div class="sslab">What moved</div>
-            <div class="ssnums">
-              <div><b>24%</b><span>of students now build and review flashcards</span></div>
-              <div><b>38%</b><span>take a mock in exam season</span></div>
-              <div><b>+28%</b><span>average time in app, for students who join a room</span></div>
+            <div class="ssnums two">
+              <div><b>3.4×</b><span>entries per week, offered in the flow against the hub tab</span></div>
+              <div><b>2.1×</b><span>decks created, once cards came off a problem they'd just solved</span></div>
             </div>
-            <p class="ssret">Where it lands: <b>30-day retention went from 18% to 24%</b> after the three were offered in the flow — and students who use any of them come back at <b>31%</b>.</p>
+            <p class="ssret">Where it lands: students who take one of these offers come back the next week at <b>48%</b>, against <b>27%</b> for students who don't.</p>
           </div>
         </div>
 
@@ -1515,7 +1513,7 @@
       <div class="notes" hidden>Layer two is about staying, and it took us two goes. We put those features where study features usually go, in their own tab. And entry to that hub stayed flat. The features were fine; nobody was switching modes to go and study. <i>[space]</i></div>
       <div class="notes" data-frag="1" hidden>And the reason is a mismatch between what we built and why they come. They come to finish homework — photo in, answer out. Their peak is eight to eleven at night, a problem away from done. A tab waits to be chosen, and studying was never why they opened the app. <i>[space]</i></div>
       <div class="notes" data-frag="2" hidden>So version two: the same features, moved into the flow they already use, and offered by what just happened. Concept worth keeping — flashcards. Exam coming up, or they just covered this material — a mock. They say they're staying to work — a room. <i>[space]</i></div>
-      <div class="notes" data-frag="3" hidden>And the numbers moved. Twenty-four percent of students now build and review flashcards. Thirty-eight percent take a mock in exam season. And time in app is up twenty-eight percent for students who join a room. But the number I care about is retention: thirty-day retention went from eighteen to twenty-four percent once these were offered in the flow, and students who use any of them come back at thirty-one percent.</div>
+      <div class="notes" data-frag="3" hidden>And the move worked. Entries run three point four times higher offered in the flow than they did from the hub tab, and deck creation doubled once the cards came off a problem the student had just solved. But the number I care about is retention: students who take one of these offers come back the next week at forty-eight percent, against twenty-seven for students who don't.</div>
     </section>
 
     <!-- 11 · Identity: old IP → new IP + the three tutors -->
@@ -1609,7 +1607,7 @@
               <div class="pdata on">
                 <div><b>+19%</b><span>7-day streak rate after badges launched</span></div>
                 <div><b>2.3×</b><span>tasks finished per week by students who dress their avatar</span></div>
-                <div><b>36%</b><span>of daily actives claimed an outfit drop in month one</span></div>
+                
               </div>
             </div>
             <div class="ptiles two">
@@ -1700,7 +1698,7 @@
               <div class="cmp-bar"><span class="cmp-knob">&lt;&gt;</span></div>
             </div>
             <div class="stat-row resstats">
-              <div class="stat"><div class="num">~8%</div><div class="lab">Lift in 30-day retention</div></div>
+              <div class="stat"><div class="num">18% → 26%</div><div class="lab">30-day retention — back to where it was before the models caught up</div></div>
               <div class="stat"><div class="num">+13%</div><div class="lab">Daily active users</div></div>
               <div class="stat"><div class="num">+23%</div><div class="lab">Daily revenue</div></div>
               <div class="stat"><div class="num">~1M</div><div class="lab">New registered students</div></div>
@@ -1721,7 +1719,7 @@
       </div>
       <div class="notes" hidden>So after these four layers, we hit the goal. <i>[space / drag]</i></div>
       <div class="notes" data-frag="1" hidden>We went from one shared tutor that only answered questions, to a personalized school that grows with each student. <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>Thirty-day retention up about eight percent, daily actives up thirteen, daily revenue up twenty-three, and about a million new students. <i>[space]</i></div>
+      <div class="notes" data-frag="2" hidden>Thirty-day retention back from eighteen to twenty-six percent — where it was before the models caught up. Daily actives up thirteen, daily revenue up twenty-three, and about a million new students. <i>[space]</i></div>
       <div class="notes" data-frag="3" hidden>On this project, design was deeply involved from strategy all the way through shipping. I've moved on to other projects since, but I'm still really grateful for this experience with the Answer.AI app. And the thing that stays with me most is the students at campus events, pulling up their report cards to show us how their grades had improved with our product. So that's the story of how we got Answer.AI growing again.</div>
     </section>
 
