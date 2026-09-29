@@ -303,15 +303,19 @@
   .pdata b { display: block; font-family: var(--serif); font-weight: 500; font-size: 20px; letter-spacing: -.01em; color: var(--ink); line-height: 1.1; margin: 0; white-space: nowrap; }
   .pdata span { display: block; font-size: 11px; color: var(--dim); line-height: 1.35; margin-top: 4px; }
   .pdata i { font-style: normal; color: var(--personal); }
-  .pstep:is(:hover, .hov) .pswap p { opacity: 0; transform: translateY(-4px); }
-  .pstep:is(:hover, .hov) .pdata { opacity: 1; transform: none; }
   .pdata.on { opacity: 1; transform: none; pointer-events: auto; max-width: 440px; margin-top: 18px; gap: 20px; }
   .phint { font-family: var(--serif); font-size: 11px; letter-spacing: .08em; color: var(--faint); margin-top: 14px; }
   /* step 1 first, step 2 on the next space */
   .pstep, .ptiles.two figure { transition: opacity .45s ease-out, border-color .25s ease-out, filter .45s ease-out; }
-  .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"] { opacity: .32; border-left-color: rgba(255,255,255,.14); }
-  .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"] .pswap { display: none; }
-  .ptabs:has(.pstep2trig.shown) .pstep[data-k="step1"] { opacity: .4; border-left-color: rgba(255,255,255,.14); }
+  .pstep { cursor: pointer; }
+  .pstep .pswap { display: none; }
+  .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step1"] .pswap,
+  .ptabs:has(.pstep2trig.shown) .pstep[data-k="step2"] .pswap { display: block; }
+  .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"],
+  .ptabs:has(.pstep2trig.shown) .pstep[data-k="step1"] { opacity: .38; border-left-color: rgba(255,255,255,.14); }
+  .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"]:hover,
+  .ptabs:has(.pstep2trig.shown) .pstep[data-k="step1"]:hover { opacity: .62; }
+  .pstep .pdata { position: static; opacity: 1; transform: none; pointer-events: auto; margin-top: 12px; }
   .ppanel.p1 { position: relative; }
   .ppair { align-items: end; }
   .ptabs:not(:has(.pstep2trig.shown)) .ppair[data-s="2"] { display: none; }
@@ -1604,7 +1608,7 @@
                 <div class="pdata"><div><b>14% <i>→</i> 71%</b><span>profile completion: self-filled Me page vs. auto-filled from tutor chats</span></div></div></div></div>
               <div class="pstep" data-k="step2"><span class="pn">Step 2</span><b>Act with the data</b><div class="pswap"><p>They use that context to act first — checking in after a tough question, previewing tomorrow’s class, or connecting students with the right support.</p>
                 <div class="pdata"><div><b>3% <i>→</i> 12%</b><span>tap-through on messages: generic reminders vs. personalized notes from a tutor</span></div><div><b>+22%</b><span>next-day return for students who received a proactive message</span></div></div></div></div>
-              <div class="phint">Hover a step for the numbers</div>
+              <div class="phint">Click a step to switch</div>
             </div>
             <div class="ptiles two ppair" data-s="1">
               <figure class="pbefore">
@@ -1645,8 +1649,8 @@
           </div>
         </div>
       </div>
-      <div class="notes" hidden>And layer four is personal. <span data-hov="[data-k=step1]">To make anything personal, we first had to actually know the student — so step one is collecting their data. Before, we asked students to fill in a Me page themselves, and almost nobody did. Now the tutors pick it up naturally from conversation: what they're studying, what they're struggling with, what they're aiming for.</span> Before, that meant a Me page they had to fill in themselves — almost nobody did. Now it comes out of the conversation. <i>[hover step 1 for the numbers · space]</i></div>
-      <div class="notes" data-frag="1" hidden><span data-hov="[data-k=step2]">And once we know them, step two is acting on it — a check-in after a hard question, a preview the night before class, or a call with Alma when it's time to plan for college.</span> <i>[hover step 2]</i> Same slot, same student — the difference is whether the message knows anything about them. Personal messages get tapped about four times more than generic reminders. <i>[space → tab 2]</i></div>
+      <div class="notes" hidden>And layer four is personal. <span data-hov="[data-k=step1]">To make anything personal, we first had to actually know the student — so step one is collecting their data. Before, we asked students to fill in a Me page themselves, and almost nobody did. Now the tutors pick it up naturally from conversation: what they're studying, what they're struggling with, what they're aiming for.</span> Before, that meant a Me page they had to fill in themselves — almost nobody did. Now it comes out of the conversation. <i>[space or click step 2]</i></div>
+      <div class="notes" data-frag="1" hidden><span data-hov="[data-k=step2]">And once we know them, step two is acting on it — a check-in after a hard question, a preview the night before class, or a call with Alma when it's time to plan for college.</span> Same slot, same student — the difference is whether the message knows anything about them. Personal messages get tapped about four times more than generic reminders. <i>[space → tab 2]</i></div>
       <div class="notes" data-frag="2" hidden>And on top of that, we added a small incentive system — badges and an avatar — just to help students feel like this is their own personal school, not a tool they use.</div>
     </section>
 
@@ -1865,6 +1869,14 @@
     const trig = pt.querySelector(".ptabtrig");
     pt.querySelector(".tab.t1").addEventListener("click", () => trig.classList.remove("shown"));
     pt.querySelector(".tab.t2").addEventListener("click", () => trig.classList.add("shown"));
+    const strig = pt.querySelector(".pstep2trig");
+    if (strig) pt.querySelectorAll(".pstep").forEach((st) => {
+      st.setAttribute("tabindex", "0");
+      st.setAttribute("role", "button");
+      const go = () => strig.classList.toggle("shown", st.dataset.k === "step2");
+      st.addEventListener("click", go);
+      st.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); go(); } });
+    });
   });
   // Personal slide: hover plays the tile video
   document.querySelectorAll(".ptiles figure").forEach((f) => {
