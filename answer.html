@@ -243,6 +243,10 @@
   .reachwrap:has(.stagetrig.shown) .rt.before { opacity: 0; transform: translateY(-8px); pointer-events: none; }
   .reachwrap:has(.stagetrig.shown) .rt.after { opacity: 1; transform: none; pointer-events: auto; }
   .reachgrid { display: grid; grid-template-columns: auto 1fr; gap: var(--split-gap, 36px); align-items: center; margin-top: 24px; }
+  /* the IP sits centre-stage until the cast arrives */
+  .reachwrap:not(:has(.casttrig.shown)) .reachgrid { grid-template-columns: 1fr; justify-items: center; }
+  .reachwrap:not(:has(.casttrig.shown)) .tutors { display: none; }
+  .reachwrap:has(.stagetrig.shown):not(:has(.casttrig.shown)) .cmp { transform: scale(1.12); }
   .cmp { position: relative; height: min(var(--media-h, 410px), calc(100vh - 460px)); aspect-ratio: 1600 / 885; max-width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: #000; cursor: ew-resize; user-select: none; touch-action: none; transition: transform .35s ease-out, box-shadow .35s ease-out, border-color .35s ease-out; }
   .slide.on .cmp.revealed { transform: scale(1.02); border-color: rgba(75,255,201,.55); box-shadow: 0 0 0 1px rgba(75,255,201,.25), 0 0 50px rgba(75,255,201,.28), 0 24px 60px rgba(0,0,0,.5); }
   .cmp-after, .cmp-before { position: absolute; inset: 0; }
@@ -770,6 +774,7 @@
     border: 1px solid rgba(255,255,255,.18); color: var(--faint); white-space: nowrap; }
   .frbadge.before { color: #ff8da5; border-color: rgba(255,141,165,.38); }
   .frbadge.after { color: var(--stay); border-color: rgba(105,226,255,.4); }
+  .pairbadge { left: 215px; top: calc(50% - 256px); }
   .ssone { height: 86%; }
   .ssflow { position: absolute; top: 50%; right: 74px; transform: translate(50%, -50%); z-index: 3;
     display: grid; place-items: center; color: var(--stay); background: rgba(8,10,14,.86);
@@ -1108,6 +1113,7 @@
         </p>
         <div class="discstage">
           <span class="stagetrig frag" data-frag="1" aria-hidden="true"></span>
+        <span class="casttrig frag" data-frag="2" aria-hidden="true"></span>
           <div class="dphoto rv d3">
             <img src="assets/interview-photo.jpg" alt="Students at an in-person interview session" />
             <div class="dcap">In person · 5 of 13 interviews</div>
@@ -1505,13 +1511,12 @@
             <div class="phlab">Study Hub · entry stayed flat</div>
           </div>
           <div class="sspair">
+            <span class="frbadge after pairbadge">After</span>
             <div class="ssp">
-              <span class="frbadge after">After</span>
               <img class="zoomable" src="assets/stay-v2-flashcards.webp?v=2" alt="A concept worth keeping, offered as flashcards" />
               <div class="phlab win">Concept → flashcards</div>
             </div>
             <div class="ssp">
-              <span class="frbadge after">After</span>
               <img class="zoomable" src="assets/stay-v2-mock.webp?v=2" alt="An exam tomorrow, offered as a mock" />
               <div class="phlab win">Exam tomorrow → a mock</div>
             </div>
@@ -1538,6 +1543,7 @@
     <section class="slide">
       <div class="slide-inner reachwrap">
         <span class="stagetrig frag" data-frag="1" aria-hidden="true"></span>
+        <span class="casttrig frag" data-frag="2" aria-hidden="true"></span>
         <div class="eyebrow rv" style="color:var(--reach)">Layer 03 · Identity <em style="font-style:normal;opacity:.6">· the reason they pick us over a chatbot</em></div>
         <div class="rtext">
           <div class="rt before">
@@ -1556,7 +1562,7 @@
             <div class="cmp-bar"><span class="cmp-knob">&lt;&gt;</span></div>
           </div>
           <div class="tutors">
-            <div class="tut frag" data-frag="1" tabindex="0" data-k="ace">
+            <div class="tut frag" data-frag="2" tabindex="0" data-k="ace">
               <div class="tuthead"><img src="assets/reach-ace.png" alt="Ace" /><div><b>Ace <i>· AI Tutor</i></b><span>The playful genius you'd buy a snack for.</span></div></div>
               <div class="talk"><div>
                 <div class="tklab">Chat skill · how Ace talks</div>
@@ -1564,7 +1570,7 @@
                 <div class="bubble">Nice — you got the slope. One more: what's <em>b</em> when x = 0? 👀</div>
               </div></div>
             </div>
-            <div class="tut frag" data-frag="1" tabindex="0" data-k="alma">
+            <div class="tut frag" data-frag="2" tabindex="0" data-k="alma">
               <div class="tuthead"><img src="assets/reach-alma.png" alt="Alma" /><div><b>Alma <i>· AI Counselor</i></b><span>The warm counselor who asks how you're doing.</span></div></div>
               <div class="talk"><div>
                 <div class="tklab">Chat skill · how Alma talks</div>
@@ -1572,7 +1578,7 @@
                 <div class="bubble">How did the calc test feel? Whenever you're ready, we can look at UT Austin together.</div>
               </div></div>
             </div>
-            <div class="tut frag" data-frag="1" tabindex="0" data-k="grant">
+            <div class="tut frag" data-frag="2" tabindex="0" data-k="grant">
               <div class="tuthead"><img src="assets/reach-grant.png" alt="Grant" /><div><b>Grant <i>· Scholarship advisor</i></b><span>The quiet advisor who's great with numbers.</span></div></div>
               <div class="talk"><div>
                 <div class="tklab">Chat skill · how Grant talks</div>
@@ -1584,7 +1590,8 @@
         </div>
       </div>
       <div class="notes" hidden>Layer three is reach. The problem here was that every competitor looked the same, and our own mascots were young — cute, childish, a bit tool-like. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>So I rebuilt the IP as a set of characters that make the app feel like a school: <span data-hov="[data-k=ace]">Ace the tutor</span>, <span data-hov="[data-k=alma]">Alma the counselor</span>, and <span data-hov="[data-k=grant]">Grant the scholarship advisor</span>. <i>[drag the slider]</i> And their personalities aren't just visual — <i>[hover a card]</i> I wrote a chat skill for each of them that defines how they talk to students. That's when the app starts to feel like a place students belong, rather than a tool they use.</div>
+      <div class="notes" data-frag="1" hidden>So I rebuilt the IP — a cast that makes the app feel like a school rather than a tool. <i>[drag the slider to compare]</i> <i>[space]</i></div>
+      <div class="notes" data-frag="2" hidden>Three of them: <span data-hov="[data-k=ace]">Ace the tutor</span>, <span data-hov="[data-k=alma]">Alma the counselor</span>, and <span data-hov="[data-k=grant]">Grant the scholarship advisor</span>. And their personalities aren't just visual — <i>[hover a card]</i> I wrote a chat skill for each of them that defines how they talk to students. That's when the app starts to feel like a place students belong, rather than a tool they use.</div>
     </section>
 
     <!-- 12 · Personal -->
@@ -1699,6 +1706,7 @@
       <img class="confetti" src="assets/confetti.gif" alt="" aria-hidden="true" />
       <div class="slide-inner reswrap reachwrap">
         <span class="stagetrig frag" data-frag="1" aria-hidden="true"></span>
+        <span class="casttrig frag" data-frag="2" aria-hidden="true"></span>
         <span class="numtrig frag" data-frag="2" aria-hidden="true"></span>
         <span class="grattrig frag" data-frag="3" aria-hidden="true"></span>
         <div class="res">
@@ -1847,7 +1855,7 @@
       const step = (t) => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3); set(from + (target - from) * e); if (k < 1) raf = requestAnimationFrame(step); };
       raf = requestAnimationFrame(step);
     };
-    new MutationObserver(() => animateTo(trig.classList.contains("shown") ? 42 : 100)).observe(trig, { attributes: true, attributeFilter: ["class"] });
+    new MutationObserver(() => animateTo(trig.classList.contains("shown") ? 0 : 100)).observe(trig, { attributes: true, attributeFilter: ["class"] });
   });
   // Personal slide: tabs sync with the fragment
   document.querySelectorAll(".ptabs").forEach((pt) => {
