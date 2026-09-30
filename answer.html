@@ -741,12 +741,30 @@
   .wgl::after { content: ""; position: absolute; left: -3px; bottom: -3px; width: 7px; height: 7px; border-radius: 50%;
     background: var(--core); opacity: 0; transition: opacity .2s ease-out .28s; }
   .wgconnect.on .wgl::after { opacity: 1; }
-  .wgops { position: relative; min-height: 66px; margin-top: 4px; }
+  .wgops { position: relative; min-height: 136px; margin-top: 4px; }
+  .wgviz { display: flex; align-items: center; gap: 14px; }
+  .vz { width: 196px; border: 1px solid var(--line); border-radius: 11px; padding: 10px 12px 12px; background: rgba(255,255,255,.02); }
+  .vz.on { border-color: rgba(138,133,255,.45); background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.1), transparent 62%), rgba(255,255,255,.02); }
+  .vzlab { display: block; margin-bottom: 9px; font-family: var(--serif); font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+  .vz.on .vzlab { color: var(--core); }
+  .vzb { display: flex; flex-direction: column; gap: 6px; }
+  .vzb .ln { display: block; height: 6px; border-radius: 3px; background: rgba(255,255,255,.15); }
+  .vzb .ln.b { background: rgba(138,133,255,.7); }
+  .vzb .ln.d { background: rgba(255,255,255,.07); }
+  .vzb .stp { display: flex; flex-direction: column; gap: 4px; }
+  .vzr { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .vzb .chip { font-family: var(--serif); font-size: 9.5px; letter-spacing: .05em; padding: 4px 8px; border-radius: 999px;
+    border: 1px solid rgba(138,133,255,.45); color: #cfc4ff; white-space: nowrap; }
+  .vzb .chip.g { border-color: rgba(255,255,255,.16); color: var(--faint); }
+  .vztag { font-family: var(--serif); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .vzar { color: var(--faint); font-size: 15px; }
+  .vzar.sm { font-size: 11px; }
   .wgophint { position: absolute; inset: 0; margin: 0; font-family: var(--serif); font-size: 11px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--faint); transition: opacity .25s ease-out; }
   .whatgood:has(.wgop.on) .wgophint { opacity: 0; }
   .wgop { position: absolute; inset: 0; opacity: 0; transform: translateY(8px); pointer-events: none;
-    transition: opacity .3s ease-out, transform .36s cubic-bezier(.22,1,.36,1); max-width: 780px; }
+    transition: opacity .3s ease-out, transform .36s cubic-bezier(.22,1,.36,1);
+    display: grid; grid-template-columns: minmax(280px, 400px) 1fr; gap: 30px; align-items: center; }
   .wgop.on { opacity: 1; transform: none; pointer-events: auto; }
   .wgbk { display: block; font-family: var(--serif); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--core); }
   .wgop p { margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--dim); }
@@ -1388,10 +1406,10 @@
             <div class="wgconnect" aria-hidden="true"><span class="wgl"></span></div>
             <div class="wgops">
               <p class="wgophint">Click a card for the design opportunity it opened</p>
-              <div class="wgop" data-op="o1"><span class="wgbk">The opportunity</span><p>Rewrite the answer itself: every step leads with <b>the move and the reason</b>, and the working folds underneath until it's asked for.</p></div>
-              <div class="wgop" data-op="o2"><span class="wgbk">The opportunity</span><p>Treat the answer as <b>the lesson</b> — an approach line first, steps a student could follow on their own, not a wall of text with features around it.</p></div>
-              <div class="wgop" data-op="o3"><span class="wgbk">The opportunity</span><p>End every answer with a <b>next move</b>: a similar question to try, or a short video when the words aren't landing.</p></div>
-              <div class="wgop" data-op="o4"><span class="wgbk">The opportunity</span><p>Let a wrong answer save itself into a <b>Mistake Book</b>, and bring it back before the next test.</p></div>
+              <div class="wgop" data-op="o1"><div class="wgtxt"><span class="wgbk">The opportunity</span><p>Rewrite the answer itself: every step leads with <b>the move and the reason</b>, and the working folds underneath until it’s asked for.</p></div><div class="wgviz" aria-hidden="true"><div class="vz"><span class="vzlab">Before</span><div class="vzb"><span class="ln " style="width:96%"></span><span class="ln " style="width:88%"></span><span class="ln " style="width:94%"></span><span class="ln " style="width:82%"></span><span class="ln " style="width:90%"></span><span class="ln " style="width:70%"></span></div></div><span class="vzar">→</span><div class="vz on"><span class="vzlab">After</span><div class="vzb"><div class="stp"><span class="ln b" style="width:62%"></span><span class="ln d" style="width:46%"></span></div><div class="stp"><span class="ln b" style="width:70%"></span><span class="ln d" style="width:40%"></span></div><div class="vzr"><span class="vztag">▸ working</span></div></div></div></div></div>
+              <div class="wgop" data-op="o2"><div class="wgtxt"><span class="wgbk">The opportunity</span><p>Treat the answer as <b>the lesson</b> — approach first, then steps a student could follow alone, and the concept named at the end.</p></div><div class="wgviz" aria-hidden="true"><div class="vz"><span class="vzlab">Before</span><div class="vzb"><div class="vzr"><span class="chip g">Answer</span></div><span class="ln " style="width:90%"></span><span class="ln " style="width:60%"></span></div></div><span class="vzar">→</span><div class="vz on"><span class="vzlab">After</span><div class="vzb"><div class="vzr"><span class="chip">Approach</span></div><span class="ln b" style="width:88%"></span><span class="ln b" style="width:76%"></span><span class="ln b" style="width:64%"></span><div class="vzr"><span class="chip g">Answer</span><span class="chip">Concept</span></div></div></div></div></div>
+              <div class="wgop" data-op="o3"><div class="wgtxt"><span class="wgbk">The opportunity</span><p>End every answer with a <b>next move</b>: a similar question to try, or a short video when the words aren’t landing.</p></div><div class="wgviz" aria-hidden="true"><div class="vz"><span class="vzlab">Before</span><div class="vzb"><span class="ln " style="width:92%"></span><span class="ln " style="width:84%"></span><span class="ln " style="width:58%"></span><div class="vzr"><span class="vztag">— ends here</span></div></div></div><span class="vzar">→</span><div class="vz on"><span class="vzlab">After</span><div class="vzb"><span class="ln " style="width:92%"></span><span class="ln " style="width:84%"></span><span class="ln " style="width:58%"></span><div class="vzr"><span class="chip">Similar question</span><span class="chip">Video</span></div></div></div></div></div>
+              <div class="wgop" data-op="o4"><div class="wgtxt"><span class="wgbk">The opportunity</span><p>Let a wrong answer save itself into a <b>Mistake Book</b>, and bring it back before the next test.</p></div><div class="wgviz" aria-hidden="true"><div class="vz"><span class="vzlab">Before</span><div class="vzb"><div class="vzr"><span class="chip g">✗ wrong</span><span class="vztag">gone</span></div><span class="ln d" style="width:80%"></span><span class="ln d" style="width:52%"></span></div></div><span class="vzar">→</span><div class="vz on"><span class="vzlab">After</span><div class="vzb"><div class="vzr"><span class="chip">✗ wrong</span><span class="vzar sm">→</span><span class="chip g">Mistake Book</span></div><span class="ln b" style="width:80%"></span><div class="vzr"><span class="vztag">returns before the test</span></div></div></div></div></div>
             </div>
           </div>
 
