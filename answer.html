@@ -813,6 +813,8 @@
     transition: opacity .3s ease-out, transform .36s cubic-bezier(.22,1,.36,1);
     display: grid; grid-template-columns: minmax(280px, 400px) 1fr; gap: 30px; align-items: center; }
   .wgop.on { opacity: 1; transform: none; pointer-events: auto; }
+  .script-t p { margin: 0 0 11px; }
+  .script-t p:last-child { margin-bottom: 0; }
   .wgbk { display: block; font-family: var(--serif); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(138,133,255,.65); }
   .wgop .wgtxt p { margin: 5px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--ink); max-width: 640px; }
   .wgop .wgtxt p b { color: #cfc4ff; font-weight: 600; }
@@ -980,7 +982,7 @@
         </p>
         <p class="kicker rv" style="margin-top:44px">Bella (Yuanyuan) Li · Product Designer · Aug 2024 – present</p>
       </div>
-      <div class="notes" hidden>Okay, Answer.AI. It's an AI learning app with about seven million students. I joined in 2024 as the product designer, and this is the story of how we turned it around after the frontier models caught up with us.</div>
+      <div class="notes" hidden><p>Okay, Answer.AI. It's an AI learning app with about seven million students.</p><p>I joined in 2024 as the product designer, and this is the story of how we turned it around after the frontier models caught up with us.</p></div>
     </section>
 
     <!-- 2 · What is Answer.AI -->
@@ -1008,7 +1010,7 @@
           </figure>
         </div>
       </div>
-      <div class="notes" hidden>To start with the product itself: the core loop is really simple. You scan a problem, and you get a step-by-step answer. That's what students came to us for, and for a while, that was genuinely enough.</div>
+      <div class="notes" hidden><p>To start with the product itself: the core loop is really simple. You scan a problem, and you get a step-by-step answer.</p><p>That's what students came to us for, and for a while, that was genuinely enough.</p></div>
     </section>
 
     <!-- 3 · The users -->
@@ -1046,7 +1048,7 @@
           <span>“Didn't get it? Let me keep asking.”</span>
         </div>
       </div>
-      <div class="notes" hidden>Our users are seven million Gen Z students — about five million in high school and two million in college. Most of them are in mid-American towns, where instant help was either expensive or far away. And what they're facing is always the same: tonight's homework, Friday's test, and the GPA that decides where they get in. So their typical flow is simple: <b>I'm stuck on this one, I snap a photo, I get the answer — and if I still don't get it, I ask a follow-up.</b></div>
+      <div class="notes" hidden><p>Our users are seven million Gen Z students — about five million in high school and two million in college. Most of them are in mid-American towns, where instant help was either expensive or far away.</p><p>And what they're facing is always the same: tonight's homework, Friday's test, and the GPA that decides where they get in. So their typical flow is simple: <b>I'm stuck on this one, I snap a photo, I get the answer — and if I still don't get it, I ask a follow-up.</b></p></div>
     </section>
 
     <!-- 3 · The honeymoon -->
@@ -1080,7 +1082,7 @@
         </div>
         <div class="below"></div>
       </div>
-      <div class="notes" hidden>So here's how it started. You might be wondering — how does a photo-solving app get that many users? Well, it's because in 2023 we landed in a golden window. Back then, the free chatbots couldn't read a photo yet — GPT-4o only opened image upload to free users in May 2024. So if you could snap a problem and get the steps, you owned that moment. We did, and so did Question AI and Gauth, and all of us were sitting in the App Store top fifteen. By September we'd hit six million users.</div>
+      <div class="notes" hidden><p>So here's how it started. You might be wondering — how does a photo-solving app get that many users?</p><p>Well, it's because in 2023 we landed in a golden window. Back then, the free chatbots couldn't read a photo yet — GPT-4o only opened image upload to free users in May 2024.</p><p>So if you could snap a problem and get the steps, you owned that moment. We did, and so did Question AI and Gauth, and all of us were sitting in the App Store top fifteen.</p><p>By September we'd hit six million users.</p></div>
     </section>
 
     <!-- 4 · The turn -->
@@ -1123,7 +1125,7 @@
           </div>
         </div></div>
       </div>
-      <div class="notes" hidden>And then, look at the tail — the curve bent. What happened is that free ChatGPT could read photos now, competitors like Gauth started giving away free credits, and on our side, our loop ended at the answer. So we had acquisition, but no habit, and retention slipped with it.</div>
+      <div class="notes" hidden><p>And then, look at the tail — the curve bent. What happened is that free ChatGPT could read photos now, competitors like Gauth started giving away free credits, and on our side, our loop ended at the answer.</p><p>So we had acquisition, but no habit, and retention slipped with it.</p></div>
     </section>
 
     <!-- 5b · Which part of revenue moved -->
@@ -1179,9 +1181,11 @@
         <p class="moneynote frag" data-frag="3"><b>We were still filling the bucket. It was leaking faster than we filled it.</b> Acquisition buys you this month. <b>Retention buys you every month after.</b></p>
       </div>
       <div class="notes" hidden>Revenue for a subscription app breaks into four things: new users, how many convert, how long they stay, and price — minus what it costs to serve them, which for an AI product means every answer burns inference. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>So which one moved? Revenue was falling. New users were still coming — we kept spending on acquisition. Conversion was holding. Price was fixed, and not a design lever anyway. The one that was slipping was retention. <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>And look at the order of it: retention slipped first — twenty-six percent down to eighteen — and revenue followed a month or two behind, from about thirteen thousand dollars a day down to nine. Meanwhile, on the right: new users were still edging up — acquisition was doing its job. But paying subscribers dropped sharply over the same months. We were pouring people in and losing them faster than we filled. <i>[space]</i></div>
+
+      <div class="notes" data-frag="1" hidden><p>So which one moved? Revenue was falling.</p><p>New users were still coming — we kept spending on acquisition. Conversion was holding.</p><p>Price was fixed, and not a design lever anyway. The one that was slipping was retention.</p><p><i>[space]</i></p></div>
+      <div class="notes" data-frag="2" hidden><p>And look at the order of it: retention slipped first — twenty-six percent down to eighteen — and revenue followed a month or two behind, from about thirteen thousand dollars a day down to nine. Meanwhile, on the right: new users were still edging up — acquisition was doing its job.</p><p>But paying subscribers dropped sharply over the same months. We were pouring people in and losing them faster than we filled.</p><p><i>[space]</i></p></div>
       <div class="notes" data-frag="3" hidden>In other words, we were still filling the bucket and it was leaking faster than we filled it. And retention is the one worth fixing first, because acquisition only buys you this month — retention buys you every month after.</div>
+
     </section>
 
     <!-- 5c · The goal -->
@@ -1203,8 +1207,8 @@
           <p class="gn2">So: where do we <span class="hl">differentiate</span> from ChatGPT?</p>
         </div>
       </div>
-      <div class="notes" hidden>So the goal was retention — raise it, and revenue holds. Concretely: do students open it today, tomorrow, next month, and keep paying for it? <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>And here's the uncomfortable part. Snap a photo, get the answer — the big models do that for free now. So retention can't come from a slightly better answer; it has to come from something the answer alone doesn't give. Which turned the goal into a search: where do we differentiate from ChatGPT?</div>
+      <div class="notes" hidden><p>So the goal was retention — raise it, and revenue holds. Concretely: do students open it today, tomorrow, next month, and keep paying for it?</p><p><i>[space]</i></p></div>
+      <div class="notes" data-frag="1" hidden><p>And here's the uncomfortable part. Snap a photo, get the answer — the big models do that for free now.</p><p>So retention can't come from a slightly better answer; it has to come from something the answer alone doesn't give. Which turned the goal into a search: where do we differentiate from ChatGPT?</p></div>
     </section>
 
     <!-- 6 · Discovery: three credible paths -->
@@ -1272,7 +1276,7 @@
         </div>
         <p class="pathsfoot rv d4">Three credible paths. None of them obviously the one.</p>
       </div>
-      <div class="notes" hidden>So to answer that, we went back to the students — thirteen interviews, looking for what a chatbot wasn't giving them. <i>[space]</i> And out of those, we could see three directions. <span data-hov="[data-k=path1]">The first was SAT and ACT prep — the big tests.</span> <span data-hov="[data-k=path2]">The second was college admissions — a lot of our students are first-generation college applicants, the school counselor is basically never available, and their parents can't really help.</span> <span data-hov="[data-k=path3]">And the third was daily learning — the everyday need every student still has.</span> <i>[hover a card]</i> And each of these had real commercial proof behind it — Acely, Crimson, Quizlet. So all three were real opportunities, and now it was on me and the product team to decide the direction and the priority.</div>
+      <div class="notes" hidden><p>So to answer that, we went back to the students — thirteen interviews, looking for what a chatbot wasn't giving them. <i>[space]</i> And out of those, we could see three directions.</p><p><span data-hov="[data-k=path1]">The first was SAT and ACT prep — the big tests.</span> <span data-hov="[data-k=path2]">The second was college admissions — a lot of our students are first-generation college applicants, the school counselor is basically never available, and their parents can't really help.</span> <span data-hov="[data-k=path3]">And the third was daily learning — the everyday need every student still has.</span> <i>[hover a card]</i> And each of these had real commercial proof behind it — Acely, Crimson, Quizlet. So all three were real opportunities, and now it was on me and the product team to decide the direction and the priority.</p></div>
     </section>
 
     <!-- 7 · Prioritization: two lenses -->
@@ -1356,8 +1360,8 @@
           <div class="lensnote" id="lensnote">Hover a row for the reasoning.</div>
         </div>
       </div>
-      <div class="notes" hidden>I looked at it through two lenses. The first is strategic fit. I set up four questions and ran all three directions through them: does it fix our growth problem, does it reach the users we already have, does it build on our right to win, and does it keep all students in the picture. That last one is something I brought up myself — exam prep and admissions would read as "not for me" to two million college users, and I didn't want to lose them. And when you lay it all out, daily learning is the only one that clears every bar. <i>[space → tab 2]</i></div>
-      <div class="notes" data-frag="1" hidden>But I didn't want to decide on a matrix alone, so the second lens is behavior. I proposed two lightweight probes, to twenty percent of users, over two weeks. <i>[hover]</i> <span data-hov="[data-k=probe1]">The AP prep demo got some real interest, but only four percent of students finished it.</span> <span data-hov="[data-k=probe2]">The Counselor and Scholar tutors got decent taps, but almost nobody came back.</span> <span data-hov="[data-k=probe3]">And for daily learning, I could already see it in the data: ninety-eight percent of students were using Scan to Learn, and twenty-three percent were asking a follow-up.</span> So the way I read it: the behavior was already there. What was missing was the loop.</div>
+      <div class="notes" hidden><p>I looked at it through two lenses. The first is strategic fit.</p><p>I set up four questions and ran all three directions through them: does it fix our growth problem, does it reach the users we already have, does it build on our right to win, and does it keep all students in the picture. That last one is something I brought up myself — exam prep and admissions would read as "not for me" to two million college users, and I didn't want to lose them.</p><p>And when you lay it all out, daily learning is the only one that clears every bar. <i>[space → tab 2]</i></p></div>
+      <div class="notes" data-frag="1" hidden><p>But I didn't want to decide on a matrix alone, so the second lens is behavior. I proposed two lightweight probes, to twenty percent of users, over two weeks.</p><p><i>[hover]</i> <span data-hov="[data-k=probe1]">The AP prep demo got some real interest, but only four percent of students finished it.</span> <span data-hov="[data-k=probe2]">The Counselor and Scholar tutors got decent taps, but almost nobody came back.</span> <span data-hov="[data-k=probe3]">And for daily learning, I could already see it in the data: ninety-eight percent of students were using Scan to Learn, and twenty-three percent were asking a follow-up.</span> So the way I read it: the behavior was already there. What was missing was the loop.</p></div>
     </section>
 
     <!-- 8 · The direction -->
@@ -1376,7 +1380,7 @@
           The goal was to move from solving one question to <span>a personalized school that supports how students learn every day.</span>
         </p>
       </div>
-      <div class="notes" hidden>That's how daily learning became our first priority. It was the most frequent need, it was closest to what students were already doing, and it was the strongest foundation for everything else we might build later. <i>[space]</i> So we wrote the goal down in one sentence: move from solving one question to supporting how students learn every day. And everything I'm about to show you serves that sentence.</div>
+      <div class="notes" hidden><p>That's how daily learning became our first priority. It was the most frequent need, it was closest to what students were already doing, and it was the strongest foundation for everything else we might build later.</p><p><i>[space]</i> So we wrote the goal down in one sentence: move from solving one question to supporting how students learn every day. And everything I'm about to show you serves that sentence.</p></div>
     </section>
 
     <!-- 7 · The strategy: four layers -->
@@ -1399,7 +1403,7 @@
           </div>
         </div>
       </div>
-      <div class="notes" hidden>To make daily learning actually work, I proposed this strategy to the team — basically going from a shared answer machine to a school that knows each student. There are four layers here, and each one stands on the one below it. <i>[hover the rows]</i> <span data-hov=".prow2.l1">The core is about making the answer worth learning from.</span> <span data-hov=".prow2.l2">Stay is about giving students reasons to come back.</span> <span data-hov=".prow2.l3">Identity is about changing what students think this product is.</span> <span data-hov=".prow2.l4">And Personal is gradually building a school that remembers each student.</span> So next, I'll go through them one by one and show you what we designed at each layer.</div>
+      <div class="notes" hidden><p>To make daily learning actually work, I proposed this strategy to the team — basically going from a shared answer machine to a school that knows each student. There are four layers here, and each one stands on the one below it.</p><p><i>[hover the rows]</i> <span data-hov=".prow2.l1">The core is about making the answer worth learning from.</span> <span data-hov=".prow2.l2">Stay is about giving students reasons to come back.</span> <span data-hov=".prow2.l3">Identity is about changing what students think this product is.</span> <span data-hov=".prow2.l4">And Personal is gradually building a school that remembers each student.</span> So next, I'll go through them one by one and show you what we designed at each layer.</p></div>
     </section>
 
     <!-- 8 · Core -->
@@ -1505,10 +1509,10 @@
           </div>
         </div>
       </div>
-      <div class="notes" hidden>Layer one is the core — photo-solving, where every student starts. This is what it looked like: one long block of text, easy to copy, hard to learn from, and a toolbar of features sitting inside the chat. You can click the screen to see it up close. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>Before redesigning it, we had to agree on what a good answer even is. So we talked to teachers and looked at the homework students brought us. To figure that out we sat in on a maths class at a school here in New York — the teacher has been doing this for twenty-three years — and talked with her and a few of her students afterwards. Four things came back, and I'll let them say it. The first changed the whole layout: a teacher's board work is not a wall of text — in class they write while they talk, so each line starts with the move and the reason, and the working comes after. The second is the one I'd underline: a well-written answer is itself the teaching — the steps are the lesson, and on take-home sheets the teacher writes those steps out so students can follow them. Third, not everything fits in text — they hand over a similar question, or send a video when the explanation isn't landing. And fourth, the students who actually improve are the ones who keep their mistakes and go back to them. <i>[click a card — it opens the design opportunity, before and after]</i> <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>So that's what we built. The approach leads, the answer sits right below it, each step opens on tap, and every answer now ends with a next move — ask, practise, or watch. <i>[hover the dots · click to zoom]</i> <i>[space]</i></div>
-      <div class="notes" data-frag="3" hidden>So what moved. Before the redesign the only thing you could do after an answer was ask a follow-up, and twenty-three percent of answers got one. Now an answer ends with a next move — follow-up, a similar question, or a video — and sixty-two percent of answers lead to one of them. And one in four students now keeps a mistake book. Both of those behaviours track retention: students who do either come back at about thirty-one percent at day thirty, against fourteen percent for students who don't. I'd flag that's a correlation — those students are more invested to begin with — which is why we also ran the A/B against the old answer. Retention came up, students got their answer just as fast, and we didn't burn extra credits per answer. So: better learning, same speed, same cost.</div>
+      <div class="notes" hidden><p>Layer one is the core — photo-solving, where every student starts. This is what it looked like: one long block of text, easy to copy, hard to learn from, and a toolbar of features sitting inside the chat.</p><p>You can click the screen to see it up close. <i>[space]</i></p></div>
+      <div class="notes" data-frag="1" hidden><p>Before redesigning it, we had to agree on what a good answer even is. So we talked to teachers and looked at the homework students brought us.</p><p>To figure that out we sat in on a maths class at a school here in New York — the teacher has been doing this for twenty-three years — and talked with her and a few of her students afterwards. Four things came back, and I'll let them say it.</p><p>The first changed the whole layout: a teacher's board work is not a wall of text — in class they write while they talk, so each line starts with the move and the reason, and the working comes after. The second is the one I'd underline: a well-written answer is itself the teaching — the steps are the lesson, and on take-home sheets the teacher writes those steps out so students can follow them.</p><p>Third, not everything fits in text — they hand over a similar question, or send a video when the explanation isn't landing. And fourth, the students who actually improve are the ones who keep their mistakes and go back to them.</p><p><i>[click a card — it opens the design opportunity, before and after]</i> <i>[space]</i></p></div>
+      <div class="notes" data-frag="2" hidden><p>So that's what we built. The approach leads, the answer sits right below it, each step opens on tap, and every answer now ends with a next move — ask, practise, or watch.</p><p><i>[hover the dots · click to zoom]</i> <i>[space]</i></p></div>
+      <div class="notes" data-frag="3" hidden><p>So what moved. Before the redesign the only thing you could do after an answer was ask a follow-up, and twenty-three percent of answers got one.</p><p>Now an answer ends with a next move — follow-up, a similar question, or a video — and sixty-two percent of answers lead to one of them. And one in four students now keeps a mistake book.</p><p>Both of those behaviours track retention: students who do either come back at about thirty-one percent at day thirty, against fourteen percent for students who don't. I'd flag that's a correlation — those students are more invested to begin with — which is why we also ran the A/B against the old answer.</p><p>Retention came up, students got their answer just as fast, and we didn't burn extra credits per answer. So: better learning, same speed, same cost.</p></div>
     </section>
 
     <!-- 9 · Stay -->
@@ -1559,8 +1563,8 @@
           </div>
         </div>
       </div>
-      <div class="notes" hidden>Layer two is about staying. Three things: flashcards for daily memory, mock tests for exams, and study rooms for company while you work. <i>[hover a card]</i> Each of them is performing well, but the last one is the one I want to spend time on. <span data-hov="[data-k=flash]">Flashcards, for example — students who build a deck in their first week retain eleven percent better.</span> <span data-hov="[data-k=mock]">Mock tests: sessions go up thirty-eight percent in exam weeks, and those users convert to Pro at twice the rate.</span> <span data-hov="[data-k=room]">And study rooms — students who join one spend twenty-eight percent longer in the app, and our most focused student sat in a room for five and a half hours straight.</span> <i>[click Study rooms]</i></div>
-      <div class="notes" data-when=".staywrap.roommode" hidden>You might be wondering — why would we build this feature? It started as a signal from our marketing AI agent: "study with me" was already a huge trend. It's over forty billion views on TikTok, and Lofi Girl's study stream has something like forty thousand people in it at any given moment. And it's commercial too — there's a new study-with-friends app called Focustown, and it's already making around thirty K a month. So we built that feeling into the app, and students have really taken to it — average time in the app went up noticeably for students who join rooms, and our most active student sat in a room and focused for five and a half hours straight.</div>
+      <div class="notes" hidden><p>Layer two is about staying. Three things: flashcards for daily memory, mock tests for exams, and study rooms for company while you work.</p><p><i>[hover a card]</i> Each of them is performing well, but the last one is the one I want to spend time on. <span data-hov="[data-k=flash]">Flashcards, for example — students who build a deck in their first week retain eleven percent better.</span> <span data-hov="[data-k=mock]">Mock tests: sessions go up thirty-eight percent in exam weeks, and those users convert to Pro at twice the rate.</span> <span data-hov="[data-k=room]">And study rooms — students who join one spend twenty-eight percent longer in the app, and our most focused student sat in a room for five and a half hours straight.</span> <i>[click Study rooms]</i></p></div>
+      <div class="notes" data-when=".staywrap.roommode" hidden><p>You might be wondering — why would we build this feature? It started as a signal from our marketing AI agent: "study with me" was already a huge trend.</p><p>It's over forty billion views on TikTok, and Lofi Girl's study stream has something like forty thousand people in it at any given moment. And it's commercial too — there's a new study-with-friends app called Focustown, and it's already making around thirty K a month.</p><p>So we built that feeling into the app, and students have really taken to it — average time in the app went up noticeably for students who join rooms, and our most active student sat in a room and focused for five and a half hours straight.</p></div>
     </section>
 
     <!-- 9b · Stay strategy: the iteration -->
@@ -1625,10 +1629,10 @@
           </div>
         </div>
       </div>
-      <div class="notes" hidden>Getting students to use them took us two goes. We put those features where study features usually go, in their own tab. And entry to that hub stayed flat. The features were fine; nobody was switching modes to go and study. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>And the reason is a mismatch between what we built and why they come. They come to finish homework — photo in, answer out. Their peak is eight to eleven at night, a problem away from done. A tab waits to be chosen, and studying was never why they opened the app. <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>So version two: the same features, moved into the flow they already use, and offered by what just happened. Concept worth keeping — flashcards. Exam coming up, or they just covered this material — a mock. They say they're staying to work — a room. <i>[space]</i></div>
-      <div class="notes" data-frag="3" hidden>And the move worked. When the features lived in their own tab, six percent of weekly actives touched one; offered in the flow, it's twenty-one. And twenty-seven percent of answers now end with the student taking one of those offers. We ran it as an A/B, so this isn't just the keen students self-selecting: the group that got in-flow offers held twenty-two percent at thirty days against eighteen — four points, on exactly the metric this whole project was about.</div>
+      <div class="notes" hidden><p>Getting students to use them took us two goes. We put those features where study features usually go, in their own tab.</p><p>And entry to that hub stayed flat. The features were fine; nobody was switching modes to go and study.</p><p><i>[space]</i></p></div>
+      <div class="notes" data-frag="1" hidden><p>And the reason is a mismatch between what we built and why they come. They come to finish homework — photo in, answer out.</p><p>Their peak is eight to eleven at night, a problem away from done. A tab waits to be chosen, and studying was never why they opened the app.</p><p><i>[space]</i></p></div>
+      <div class="notes" data-frag="2" hidden><p>So version two: the same features, moved into the flow they already use, and offered by what just happened. Concept worth keeping — flashcards.</p><p>Exam coming up, or they just covered this material — a mock. They say they're staying to work — a room.</p><p><i>[space]</i></p></div>
+      <div class="notes" data-frag="3" hidden><p>And the move worked. When the features lived in their own tab, six percent of weekly actives touched one; offered in the flow, it's twenty-one.</p><p>And twenty-seven percent of answers now end with the student taking one of those offers. We ran it as an A/B, so this isn't just the keen students self-selecting: the group that got in-flow offers held twenty-two percent at thirty days against eighteen — four points, on exactly the metric this whole project was about.</p></div>
     </section>
 
     <!-- 11 · Identity: old IP → new IP + the three tutors -->
@@ -1681,9 +1685,9 @@
           </div>
         </div>
       </div>
-      <div class="notes" hidden>Layer three is identity. The problem here was that every competitor looked the same, and our own mascots were young — cute, childish, a bit tool-like. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>So I rebuilt the IP myself — two weeks of design, and two rounds of feedback from students in our Discord community. A cast that makes the app feel like a school rather than a tool. <i>[drag the slider to compare]</i> <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>Three of them: <span data-hov="[data-k=ace]">Ace the tutor</span>, <span data-hov="[data-k=alma]">Alma the counselor</span>, and <span data-hov="[data-k=grant]">Grant the scholarship advisor</span>. And their personalities aren't just visual — <i>[hover a card]</i> I wrote a chat skill for each of them that defines how they talk to students. That's when the app starts to feel like a place students belong, rather than a tool they use. And this is also what sets up the last layer: personalization needs someone to do the personalizing — you can't get a check-in from a logo.</div>
+      <div class="notes" hidden><p>Layer three is identity. The problem here was that every competitor looked the same, and our own mascots were young — cute, childish, a bit tool-like.</p><p><i>[space]</i></p></div>
+      <div class="notes" data-frag="1" hidden><p>So I rebuilt the IP myself — two weeks of design, and two rounds of feedback from students in our Discord community. A cast that makes the app feel like a school rather than a tool.</p><p><i>[drag the slider to compare]</i> <i>[space]</i></p></div>
+      <div class="notes" data-frag="2" hidden><p>Three of them: <span data-hov="[data-k=ace]">Ace the tutor</span>, <span data-hov="[data-k=alma]">Alma the counselor</span>, and <span data-hov="[data-k=grant]">Grant the scholarship advisor</span>. And their personalities aren't just visual — <i>[hover a card]</i> I wrote a chat skill for each of them that defines how they talk to students.</p><p>That's when the app starts to feel like a place students belong, rather than a tool they use. And this is also what sets up the last layer: personalization needs someone to do the personalizing — you can't get a check-in from a logo.</p></div>
     </section>
 
     <!-- 12 · Personal -->
@@ -1751,8 +1755,10 @@
         </div>
       </div>
       <div class="notes" hidden>And layer four is personal. <span data-hov="[data-k=step1]">To make anything personal, we first had to actually know the student — so step one is collecting their data. Before, we asked students to fill in a Me page themselves, and almost nobody did. Now the tutors pick it up naturally from conversation: what they're studying, what they're struggling with, what they're aiming for.</span> <i>[space or click step 2]</i></div>
-      <div class="notes" data-frag="1" hidden><span data-hov="[data-k=step2]">And once we know them, step two is acting on it — a check-in after a hard question, a preview the night before class, or a call with Alma when it's time to plan for college.</span> Same slot, same student — the difference is whether the message knows anything about them. Personal messages get tapped about four times more than generic reminders. <i>[space → tab 2]</i></div>
+
+      <div class="notes" data-frag="1" hidden><p><span data-hov="[data-k=step2]">And once we know them, step two is acting on it — a check-in after a hard question, a preview the night before class, or a call with Alma when it's time to plan for college.</span> Same slot, same student — the difference is whether the message knows anything about them. Personal messages get tapped about four times more than generic reminders.</p><p><i>[space → tab 2]</i></p></div>
       <div class="notes" data-frag="2" hidden>And on top of that, we added a small incentive system — badges and an avatar — just to help students feel like this is their own personal school, not a tool they use.</div>
+
     </section>
 
     <!-- 13 · Results → Grateful -->
@@ -1784,8 +1790,10 @@
         </div>
       </div>
       <div class="notes" hidden>So after these four layers, we hit the goal. <i>[space / drag]</i></div>
+
       <div class="notes" data-frag="1" hidden>We went from one shared tutor that only answered questions, to a personalized school that grows with each student. <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>Thirty-day retention back from eighteen to twenty-six percent — where it was before the models caught up. Daily actives up twenty-four percent, and daily revenue from nine point one thousand a day back to twelve point four. Not all the way to the thirteen we had at the peak, but the curve is pointing the right way again. <i>[space]</i></div>
+
+      <div class="notes" data-frag="2" hidden><p>Thirty-day retention back from eighteen to twenty-six percent — where it was before the models caught up. Daily actives up twenty-four percent, and daily revenue from nine point one thousand a day back to twelve point four.</p><p>Not all the way to the thirteen we had at the peak, but the curve is pointing the right way again. <i>[space]</i></p></div>
     </section>
 
     <!-- 13.5 · Takeaway: what to ask, what to trust -->
@@ -1836,8 +1844,8 @@
           sync();
         })();
       </script>
-      <div class="notes" hidden>One takeaway from this project. We tested AP prep and a set of specialist agents, and every interview was glowing — useful, they'd use it weekly. Behaviour said otherwise, and those bets moved down the roadmap. <i>[space]</i></div>
-      <div class="notes" data-frag="1" hidden>What I took from it isn't "don't do research" — it's that the two answer different questions. Interviews answer why. Data answers whether. So I use interviews for context, for the workarounds people invent, for the words they use, for where the emotion is. And when the question is "should we build this at all", I'd rather spend a day on a fake door than a week on interviews. Ask what they did last week, not what they'd do next month.</div>
+      <div class="notes" hidden><p>One takeaway from this project. We tested AP prep and a set of specialist agents, and every interview was glowing — useful, they'd use it weekly.</p><p>Behaviour said otherwise, and those bets moved down the roadmap. <i>[space]</i></p></div>
+      <div class="notes" data-frag="1" hidden><p>What I took from it isn't "don't do research" — it's that the two answer different questions. Interviews answer why.</p><p>Data answers whether. So I use interviews for context, for the workarounds people invent, for the words they use, for where the emotion is.</p><p>And when the question is "should we build this at all", I'd rather spend a day on a fake door than a week on interviews. Ask what they did last week, not what they'd do next month.</p></div>
     </section>
 
     <!-- 14 · The wrap -->
@@ -1858,7 +1866,7 @@
           <p class="gratline">That’s the part I’ll always carry with me. <em>❤️</em></p>
         </div>
       </div>
-      <div class="notes" hidden>On this project, design was deeply involved from strategy all the way through shipping. I've moved on to other projects since, but I'm still really grateful for this experience with the Answer.AI app. And the thing that stays with me most is the students at campus events, pulling up their report cards to show us how their grades had improved with our product. So that's the story of how we turned Answer.AI around.</div>
+      <div class="notes" hidden><p>On this project, design was deeply involved from strategy all the way through shipping. I've moved on to other projects since, but I'm still really grateful for this experience with the Answer.AI app.</p><p>And the thing that stays with me most is the students at campus events, pulling up their report cards to show us how their grades had improved with our product. So that's the story of how we turned Answer.AI around.</p></div>
     </section>
 
     <!-- 15 · Closing -->
@@ -1876,6 +1884,7 @@
         <p class="kicker rv" style="margin-top:44px"><a href="wanaka.html" onclick="this.href='wanaka.html?t='+Date.now()" style="color:var(--faint);text-decoration:none">Chapter 02 · Wanaka →</a></p>
       </div>
       <div class="notes" hidden>Next, I want to show you how I built a game creation tool from zero to one, with AI as a teammate.</div>
+
     </section>
 
   </div>
@@ -2057,7 +2066,7 @@
     }, 5000);
   });
 </script>
-<script src="deck.js?v=09081324"></script>
+<script src="deck.js?v=10011"></script>
 <script src="mirror.js?v=09081324"></script>
 <script src="editor.js?v=09081324"></script>
 <script src="lightbox.js?v=5"></script>

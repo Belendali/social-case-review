@@ -91,6 +91,7 @@
     "wheel",
     (e) => {
       if (document.designMode === "on") return;
+      if (e.target && e.target.closest && e.target.closest(".script")) return; // let the script panel scroll
       e.preventDefault();
       if (locked) return;
       acc += e.deltaY;
