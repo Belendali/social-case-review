@@ -364,7 +364,9 @@
   .rescmp { height: min(var(--media-h, 470px), calc(100vh - 400px)); margin: 0 auto; transform-origin: left center; transition: opacity .45s ease-out, transform .45s ease-out, box-shadow .35s ease-out, border-color .35s ease-out; }
   .resstats { position: absolute; right: 0; top: 50%; width: 380px; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; opacity: 0; transform: translate(16px, -50%); pointer-events: none; transition: opacity .5s ease-out .35s, transform .5s ease-out .35s; }
   .resstats .stat { padding: 18px 18px 16px; }
+  .resstats .stat.wide { grid-column: 1 / -1; }
   .resstats .num { font-size: 34px; }
+  .resstats .stat:not(.wide) .num { font-size: 26px; }
   .resstats .lab { font-size: 12px; }
   .reswrap:has(.numtrig.shown) .rescmp { transform: translateX(var(--cmp-shift, -95px)) scale(.72) !important; }
   .reswrap:has(.numtrig.shown) .resstats { opacity: 1; transform: translate(0, -50%); pointer-events: auto; }
@@ -1689,10 +1691,10 @@
               <div class="cmp-bar"><span class="cmp-knob">&lt;&gt;</span></div>
             </div>
             <div class="stat-row resstats">
-              <div class="stat"><div class="num">18% → 26%</div><div class="lab">30-day retention — back to where it was before the models caught up</div></div>
-              <div class="stat"><div class="num">+13%</div><div class="lab">Daily active users</div></div>
-              <div class="stat"><div class="num">+23%</div><div class="lab">Daily revenue</div></div>
-              <div class="stat"><div class="num">~1M</div><div class="lab">New registered students</div></div>
+              <div class="stat wide"><div class="num">18% → 26%</div><div class="lab">30-day retention — back to where it was before the models caught up</div></div>
+              <div class="stat"><div class="num">+24%</div><div class="lab">Daily active users</div></div>
+              <div class="stat"><div class="num">$9.1k → $12.4k</div><div class="lab">Daily revenue</div></div>
+              
             </div>
           </div>
         </div>
@@ -1710,7 +1712,7 @@
       </div>
       <div class="notes" hidden>So after these four layers, we hit the goal. <i>[space / drag]</i></div>
       <div class="notes" data-frag="1" hidden>We went from one shared tutor that only answered questions, to a personalized school that grows with each student. <i>[space]</i></div>
-      <div class="notes" data-frag="2" hidden>Thirty-day retention back from eighteen to twenty-six percent — where it was before the models caught up. Daily actives up thirteen, daily revenue up twenty-three, and about a million new students. <i>[space]</i></div>
+      <div class="notes" data-frag="2" hidden>Thirty-day retention back from eighteen to twenty-six percent — where it was before the models caught up. Daily actives up twenty-four percent, and daily revenue from nine point one thousand a day back to twelve point four. Not all the way to the thirteen we had at the peak, but the curve is pointing the right way again. <i>[space]</i></div>
       <div class="notes" data-frag="3" hidden>On this project, design was deeply involved from strategy all the way through shipping. I've moved on to other projects since, but I'm still really grateful for this experience with the Answer.AI app. And the thing that stays with me most is the students at campus events, pulling up their report cards to show us how their grades had improved with our product. So that's the story of how we got Answer.AI growing again.</div>
     </section>
 
