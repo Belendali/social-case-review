@@ -349,9 +349,9 @@
   .gratbg { opacity: 0; transition: opacity .8s ease-out; }
   .gratbg img { width: 100%; height: 100%; object-fit: cover; object-position: center var(--hero-posy, 40%); opacity: var(--hero-op, .5); filter: blur(var(--hero-blur, 0px)) saturate(.8); transform: scale(var(--hero-scale, 1)); }
   .gratgif { position: absolute; right: 56px; bottom: 64px; width: min(300px, 22vw); z-index: 3; opacity: 0; transform: translateY(12px); transition: opacity .6s ease-out .3s, transform .6s ease-out .3s; pointer-events: none; }
-  .slide:has(.grattrig.shown) .gratgif { opacity: 1; transform: none; }
+  .slide:has(.grattrig.shown) .gratgif, .gratgif.on { opacity: 1; transform: none; }
   .gratbg::after { background: linear-gradient(180deg, rgba(5,5,8,var(--scrim, .8)) 0%, rgba(5,5,8,calc(var(--scrim, .8) * .75)) 45%, rgba(5,5,8,calc(var(--scrim, .8) * .6)) 100%); }
-  .slide:has(.grattrig.shown) .gratbg { opacity: 1; }
+  .slide:has(.grattrig.shown) .gratbg, .gratbg.on { opacity: 1; }
   .confetti { position: absolute; left: 50%; top: -3%; width: min(62%, 820px); transform: translateX(-50%); pointer-events: none; z-index: 1; opacity: 0; transition: opacity .5s ease-out; }
   .slide.on .confetti.play { opacity: 1; }
   .slide:has(.grattrig.shown) .confetti { opacity: 0 !important; }
@@ -1095,7 +1095,6 @@
       <div class="notes" hidden>Revenue for a subscription app breaks into four things: new users, how many convert, how long they stay, and price — minus what it costs to serve them, which for an AI product means every answer burns inference. <i>[space]</i></div>
       <div class="notes" data-frag="1" hidden>So which one moved? Revenue was falling. New users were still coming — we kept spending on acquisition. Conversion was holding. Price was fixed, and not a design lever anyway. The one that was slipping was retention. <i>[space]</i></div>
       <div class="notes" data-frag="2" hidden>And look at the order of it: retention slipped first — twenty-six percent down to eighteen — and revenue followed a month or two behind, from about thirteen thousand dollars a day down to nine. Meanwhile, on the right: new users were still edging up — acquisition was doing its job. But paying subscribers dropped sharply over the same months. We were pouring people in and losing them faster than we filled. <i>[space]</i></div>
-      <div class="notes" data-frag="3" hidden>In other words, we were still filling the bucket and it was leaking faster than we filled it. And retention is the one worth fixing first, because acquisition only buys you this month — retention buys you every month after.</div>
     </section>
 
     <!-- 5c · The goal -->
@@ -1670,14 +1669,11 @@
 
     <!-- 13 · Results → Grateful -->
     <section class="slide">
-      <div class="bleed gratbg"><img src="assets/wrap-1.jpg" alt="" /></div>
-      <img class="gratgif" src="assets/tutors-lookup.webp" alt="" aria-hidden="true" />
       <div class="glow purple tc"></div>
       <img class="confetti" src="assets/confetti.gif" alt="" aria-hidden="true" />
       <div class="slide-inner reswrap reachwrap">
         <span class="stagetrig frag" data-frag="1" aria-hidden="true"></span>
         <span class="numtrig frag" data-frag="2" aria-hidden="true"></span>
-        <span class="grattrig frag" data-frag="3" aria-hidden="true"></span>
         <div class="res">
           <div class="eyebrow rv">Results</div>
           <h2 class="rv" style="font-size:var(--t-h2,40px)">Goal, met.</h2>
@@ -1697,17 +1693,6 @@
               
             </div>
           </div>
-        </div>
-        <div class="grat">
-          <div class="eyebrow" style="color:#cfc4ff">The wrap</div>
-          <h2>Grateful, and onward.</h2>
-          <p class="lede" style="max-width:820px">
-            Design had a seat at the table from strategy through shipping. That kind of trust is rare, and I’m deeply grateful to the team who made it possible.
-          </p>
-          <p class="lede" style="max-width:820px;margin-top:16px">
-            What will stay with me most are the students we met at campus events — pulling up their report cards and telling us that we had helped.
-          </p>
-          <p class="gratline">That’s the part I’ll always carry with me. <em>❤️</em></p>
         </div>
       </div>
       <div class="notes" hidden>So after these four layers, we hit the goal. <i>[space / drag]</i></div>
@@ -1766,6 +1751,27 @@
       </script>
       <div class="notes" hidden>One takeaway from this project. We tested AP prep and a set of specialist agents, and every interview was glowing — useful, they'd use it weekly. Behaviour said otherwise, and those bets moved down the roadmap. <i>[space]</i></div>
       <div class="notes" data-frag="1" hidden>What I took from it isn't "don't do research" — it's that the two answer different questions. Interviews answer why. Data answers whether. So I use interviews for context, for the workarounds people invent, for the words they use, for where the emotion is. And when the question is "should we build this at all", I'd rather spend a day on a fake door than a week on interviews. Ask what they did last week, not what they'd do next month.</div>
+    </section>
+
+    <!-- 14 · The wrap -->
+    <section class="slide">
+      <div class="bleed gratbg on"><img src="assets/wrap-1.jpg" alt="" /></div>
+      <img class="gratgif on" src="assets/tutors-lookup.webp" alt="" aria-hidden="true" />
+      <div class="glow purple tc"></div>
+      <div class="slide-inner">
+        <div class="grat rv">
+          <div class="eyebrow" style="color:#cfc4ff">The wrap</div>
+          <h2>Grateful, and onward.</h2>
+          <p class="lede" style="max-width:820px">
+            Design had a seat at the table from strategy through shipping. That kind of trust is rare, and I’m deeply grateful to the team who made it possible.
+          </p>
+          <p class="lede" style="max-width:820px;margin-top:16px">
+            What will stay with me most are the students we met at campus events — pulling up their report cards and telling us that we had helped.
+          </p>
+          <p class="gratline">That’s the part I’ll always carry with me. <em>❤️</em></p>
+        </div>
+      </div>
+      <div class="notes" hidden>In other words, we were still filling the bucket and it was leaking faster than we filled it. And retention is the one worth fixing first, because acquisition only buys you this month — retention buys you every month after.</div>
     </section>
 
     <!-- 15 · Closing -->
