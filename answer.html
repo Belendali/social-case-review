@@ -730,13 +730,14 @@
   .wg .wgwho { margin: 7px 0 0; font-family: var(--serif); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
   .wgrid:hover .wg:not(:hover) { opacity: .55; }
   /* the fact on the front, what we built on the back */
-  .wgrid { perspective: 1400px; }
-  .wg { transform-style: preserve-3d; transition: transform .6s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, opacity .3s ease-out; }
-  .wg:hover, .wg.flip, .wg:focus-visible { transform: rotateY(180deg); border-color: rgba(138,133,255,.45); }
-  .wgface { backface-visibility: hidden; }
-  .wgback { position: absolute; inset: 0; transform: rotateY(180deg); border-radius: 15px; padding: 15px 16px;
-    display: flex; flex-direction: column; justify-content: center; gap: 9px;
-    background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.14), transparent 62%), var(--card); }
+  .wg { position: relative; overflow: hidden; }
+  .wg:hover, .wg.flip, .wg:focus-visible { border-color: rgba(138,133,255,.45);
+    background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.1), transparent 62%), var(--card); }
+  .wgface { transition: opacity .32s ease-out, transform .38s cubic-bezier(.22,1,.36,1); }
+  .wgback { position: absolute; inset: 0; padding: 15px 16px; opacity: 0; transform: translateY(10px);
+    display: flex; flex-direction: column; justify-content: center; gap: 9px; pointer-events: none; }
+  .wg:hover .wgfront, .wg.flip .wgfront, .wg:focus-visible .wgfront { opacity: 0; transform: translateY(-8px); }
+  .wg:hover .wgback, .wg.flip .wgback, .wg:focus-visible .wgback { opacity: 1; transform: none; pointer-events: auto; }
   .wgbk { font-family: var(--serif); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--core); }
   .wgback p { margin: 0; font-size: 13px; line-height: 1.55; color: var(--dim); }
   .wgback p b { color: var(--ink); font-weight: 600; }
