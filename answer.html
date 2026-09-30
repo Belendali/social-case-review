@@ -733,15 +733,21 @@
   .wg { position: relative; cursor: pointer; }
   .wg:hover, .wg:focus-visible { border-color: rgba(138,133,255,.35); transform: translateY(-3px); }
   .wg.on { border-color: rgba(138,133,255,.6); background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.13), transparent 62%), var(--card); }
-  .wgconnect { position: relative; height: 26px; margin-top: 8px; }
-  .wgl { position: absolute; left: var(--lx, 50%); top: 0; width: 1px; height: 100%;
-    background: linear-gradient(180deg, rgba(138,133,255,.2), var(--core));
-    transform: scaleY(0); transform-origin: top; transition: transform .38s cubic-bezier(.22,1,.36,1), left .3s ease-out; }
-  .wgconnect.on .wgl { transform: scaleY(1); }
-  .wgl::after { content: ""; position: absolute; left: -3px; bottom: -3px; width: 7px; height: 7px; border-radius: 50%;
-    background: var(--core); opacity: 0; transition: opacity .2s ease-out .28s; }
+  .wgconnect { display: none; }
+  .whatgood.picked .wgpair { display: grid; grid-template-columns: 248px 38px minmax(0, 1fr); align-items: center; column-gap: 0; }
+  .whatgood.picked .wgrid { grid-template-columns: 1fr; margin-top: 14px; }
+  .whatgood.picked .wg:not(.on) { display: none; }
+  .whatgood.picked .wgconnect { display: block; position: relative; height: 1px; }
+  .wgl { position: absolute; left: 0; top: 0; width: 100%; height: 1px;
+    background: linear-gradient(90deg, rgba(138,133,255,.25), var(--core));
+    transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.22,1,.36,1); }
+  .wgconnect.on .wgl { transform: scaleX(1); }
+  .wgl::after { content: ""; position: absolute; right: -3px; top: -3px; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--core); opacity: 0; transition: opacity .2s ease-out .3s; }
   .wgconnect.on .wgl::after { opacity: 1; }
-  .wgops { position: relative; min-height: 136px; margin-top: 4px; }
+  .wgops { position: relative; min-height: 30px; margin-top: 10px; }
+  .whatgood.picked .wgops { min-height: 150px; margin-top: 0; }
+  .whatgood.picked .wgop { grid-template-columns: minmax(0, 1fr); gap: 14px; justify-items: start; }
   .wgviz { display: flex; align-items: center; gap: 14px; }
   .vz { width: 196px; border: 1px solid var(--line); border-radius: 11px; padding: 10px 12px 12px; background: rgba(255,255,255,.02); }
   .vz.on { border-color: rgba(138,133,255,.45); background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.1), transparent 62%), rgba(255,255,255,.02); }
@@ -1369,6 +1375,7 @@
           <div class="whatgood">
             <div class="wgk">What makes an answer worth learning from</div>
             <p class="wgsrc">We sat in on a maths class at a New York school — a teacher with 23 years in the room — and talked with her and her students afterwards.</p>
+            <div class="wgpair">
             <div class="wgrid">
               <div class="wg" data-op="o1" tabindex="0" role="button">
                 <div class="wgimg"><img class="zoomable" src="assets/core-good-01.webp" alt="Teacher working through a problem on the board" loading="lazy" /></div>
@@ -1410,6 +1417,7 @@
               <div class="wgop" data-op="o2"><div class="wgtxt"><span class="wgbk">The opportunity</span><p>Treat the answer as <b>the lesson</b> — approach first, then steps a student could follow alone, and the concept named at the end.</p></div><div class="wgviz" aria-hidden="true"><div class="vz"><span class="vzlab">Before</span><div class="vzb"><div class="vzr"><span class="chip g">Answer</span></div><span class="ln " style="width:90%"></span><span class="ln " style="width:60%"></span></div></div><span class="vzar">→</span><div class="vz on"><span class="vzlab">After</span><div class="vzb"><div class="vzr"><span class="chip">Approach</span></div><span class="ln b" style="width:88%"></span><span class="ln b" style="width:76%"></span><span class="ln b" style="width:64%"></span><div class="vzr"><span class="chip g">Answer</span><span class="chip">Concept</span></div></div></div></div></div>
               <div class="wgop" data-op="o3"><div class="wgtxt"><span class="wgbk">The opportunity</span><p>End every answer with a <b>next move</b>: a similar question to try, or a short video when the words aren’t landing.</p></div><div class="wgviz" aria-hidden="true"><div class="vz"><span class="vzlab">Before</span><div class="vzb"><span class="ln " style="width:92%"></span><span class="ln " style="width:84%"></span><span class="ln " style="width:58%"></span><div class="vzr"><span class="vztag">— ends here</span></div></div></div><span class="vzar">→</span><div class="vz on"><span class="vzlab">After</span><div class="vzb"><span class="ln " style="width:92%"></span><span class="ln " style="width:84%"></span><span class="ln " style="width:58%"></span><div class="vzr"><span class="chip">Similar question</span><span class="chip">Video</span></div></div></div></div></div>
               <div class="wgop" data-op="o4"><div class="wgtxt"><span class="wgbk">The opportunity</span><p>Let a wrong answer save itself into a <b>Mistake Book</b>, and bring it back before the next test.</p></div><div class="wgviz" aria-hidden="true"><div class="vz"><span class="vzlab">Before</span><div class="vzb"><div class="vzr"><span class="chip g">✗ wrong</span><span class="vztag">gone</span></div><span class="ln d" style="width:80%"></span><span class="ln d" style="width:52%"></span></div></div><span class="vzar">→</span><div class="vz on"><span class="vzlab">After</span><div class="vzb"><div class="vzr"><span class="chip">✗ wrong</span><span class="vzar sm">→</span><span class="chip g">Mistake Book</span></div><span class="ln b" style="width:80%"></span><div class="vzr"><span class="vztag">returns before the test</span></div></div></div></div></div>
+            </div>
             </div>
           </div>
 
@@ -1980,14 +1988,13 @@
   document.querySelectorAll(".whatgood").forEach(function (w) {
     var conn = w.querySelector(".wgconnect"), cards = w.querySelectorAll(".wg"), ops = w.querySelectorAll(".wgop");
     var timer = null;
-    function clear() { cards.forEach(function (c) { c.classList.remove("on"); }); ops.forEach(function (o) { o.classList.remove("on"); }); conn.classList.remove("on"); clearTimeout(timer); }
+    function clear() { cards.forEach(function (c) { c.classList.remove("on"); }); ops.forEach(function (o) { o.classList.remove("on"); }); conn.classList.remove("on"); w.classList.remove("picked"); clearTimeout(timer); }
     function open(card) {
       var was = card.classList.contains("on");
       clear();
       if (was) return;
       card.classList.add("on");
-      var r = card.getBoundingClientRect(), cr = conn.getBoundingClientRect();
-      conn.style.setProperty("--lx", Math.round(r.left + r.width / 2 - cr.left) + "px");
+      w.classList.add("picked");
       requestAnimationFrame(function () { conn.classList.add("on"); });
       var op = w.querySelector('.wgop[data-op="' + card.dataset.op + '"]');
       timer = setTimeout(function () { if (op) op.classList.add("on"); }, 300);
