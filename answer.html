@@ -729,19 +729,28 @@
   .wgqi .wgq { margin: 0; }
   .wg .wgwho { margin: 7px 0 0; font-family: var(--serif); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
   .wgrid:hover .wg:not(:hover) { opacity: .55; }
-  /* the fact on the front, what we built on the back */
-  .wg { position: relative; overflow: hidden; }
-  .wg:hover, .wg.flip, .wg:focus-visible { border-color: rgba(138,133,255,.45);
-    background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.1), transparent 62%), var(--card); }
-  .wgface { transition: opacity .32s ease-out, transform .38s cubic-bezier(.22,1,.36,1); }
-  .wgback { position: absolute; inset: 0; padding: 15px 16px; opacity: 0; transform: translateY(10px);
-    display: flex; flex-direction: column; justify-content: center; gap: 9px; pointer-events: none; }
-  .wg:hover .wgfront, .wg.flip .wgfront, .wg:focus-visible .wgfront { opacity: 0; transform: translateY(-8px); }
-  .wg:hover .wgback, .wg.flip .wgback, .wg:focus-visible .wgback { opacity: 1; transform: none; pointer-events: auto; }
-  .wgbk { font-family: var(--serif); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--core); }
-  .wgback p { margin: 0; font-size: 13px; line-height: 1.55; color: var(--dim); }
-  .wgback p b { color: var(--ink); font-weight: 600; }
-  .wgflip-hint { margin-top: 9px; font-family: var(--serif); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  /* click a card, a line drops to the opportunity it opened */
+  .wg { position: relative; cursor: pointer; }
+  .wg:hover, .wg:focus-visible { border-color: rgba(138,133,255,.35); transform: translateY(-3px); }
+  .wg.on { border-color: rgba(138,133,255,.6); background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.13), transparent 62%), var(--card); }
+  .wgconnect { position: relative; height: 26px; margin-top: 8px; }
+  .wgl { position: absolute; left: var(--lx, 50%); top: 0; width: 1px; height: 100%;
+    background: linear-gradient(180deg, rgba(138,133,255,.2), var(--core));
+    transform: scaleY(0); transform-origin: top; transition: transform .38s cubic-bezier(.22,1,.36,1), left .3s ease-out; }
+  .wgconnect.on .wgl { transform: scaleY(1); }
+  .wgl::after { content: ""; position: absolute; left: -3px; bottom: -3px; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--core); opacity: 0; transition: opacity .2s ease-out .28s; }
+  .wgconnect.on .wgl::after { opacity: 1; }
+  .wgops { position: relative; min-height: 66px; margin-top: 4px; }
+  .wgophint { position: absolute; inset: 0; margin: 0; font-family: var(--serif); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--faint); transition: opacity .25s ease-out; }
+  .whatgood:has(.wgop.on) .wgophint { opacity: 0; }
+  .wgop { position: absolute; inset: 0; opacity: 0; transform: translateY(8px); pointer-events: none;
+    transition: opacity .3s ease-out, transform .36s cubic-bezier(.22,1,.36,1); max-width: 780px; }
+  .wgop.on { opacity: 1; transform: none; pointer-events: auto; }
+  .wgbk { display: block; font-family: var(--serif); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--core); }
+  .wgop p { margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--dim); }
+  .wgop p b { color: var(--ink); font-weight: 600; }
   .wg.hot { border-color: rgba(138,133,255,.45); background: radial-gradient(120% 90% at 0% 0%, rgba(138,133,255,.09), transparent 62%), var(--card); }
   .coreafter { margin-top: 18px; }
   .tradeoff { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
@@ -1342,57 +1351,15 @@
           <div class="whatgood">
             <div class="wgk">What makes an answer worth learning from</div>
             <p class="wgsrc">We sat in on a maths class at a New York school — a teacher with 23 years in the room — and talked with her and her students afterwards.</p>
-            <!-- TODO: swap these four quotes and names for the real interview wording -->
             <div class="wgrid">
-              <div class="wg" tabindex="0">
-                <div class="wgface wgfront">                <div class="wgimg"><img class="zoomable" src="assets/core-good-01.webp" alt="Teacher working through a problem on the board" loading="lazy" /></div>
+              <div class="wg" data-op="o1" tabindex="0" role="button">
+                <div class="wgimg"><img class="zoomable" src="assets/core-good-01.webp" alt="Teacher working through a problem on the board" loading="lazy" /></div>
                 <b>Show the thinking, written properly</b>
                 <p class="wgq">“In class I'm writing while I'm talking. Each line starts with the move and why — the working comes after.”</p>
                 <p class="wgwho">Ms. L · 9th-grade maths teacher</p>
-                </div>
-                <div class="wgface wgback">
-                  <div class="wgbk">What we built</div>
-                  <p>The answer template was rewritten: every step opens with the move and the reason, and the working sits underneath — collapsed until you tap it.</p>
-                </div>
               </div>
-              <div class="wg" tabindex="0">
-                <div class="wgface wgfront">                <div class="wgimg"><img class="zoomable" src="assets/core-good-03.webp" alt="A student asking about a step" loading="lazy" /></div>
-                <b>Room to ask</b>
-                <p class="wgq">“I get it until step three, and then I'm stuck — I just want to ask right there.”</p>
-                <p class="wgwho">Maya · 11th grade</p>
-                </div>
-                <div class="wgface wgback">
-                  <div class="wgbk">What we built</div>
-                  <p>Every step carries its own <b>ask</b>. The question arrives with that step already attached, so nobody has to re-type where they got lost.</p>
-                </div>
-              </div>
-              <div class="wg" tabindex="0">
-                <div class="wgface wgfront">                <div class="wgimg"><img class="zoomable" src="assets/core-good-04.webp" alt="Teacher handing over a practice question" loading="lazy" /></div>
-                <b>Not everything fits in text</b>
-                <p class="wgq">“I'll hand them a similar question straight after, or send a video if the explanation isn't landing. That's how I check it stuck.”</p>
-                <p class="wgwho">Ms. L · 9th-grade maths teacher</p>
-                </div>
-                <div class="wgface wgback">
-                  <div class="wgbk">What we built</div>
-                  <p>Each answer now ends with a next move — a similar question to try, or a short video when the words aren’t landing.</p>
-                </div>
-              </div>
-              <div class="wg" tabindex="0">
-                <div class="wgface wgfront">                <div class="wgimg"><img class="zoomable" src="assets/core-good-05.webp" alt="A mistake book of saved questions" loading="lazy" /></div>
-                <b>Review mistakes, get better</b>
-                <p class="wgq">“The kids who actually improve are the ones who keep their mistakes and go back to them.”</p>
-                <p class="wgwho">Ms. L · 9th-grade maths teacher</p>
-                </div>
-                <div class="wgface wgback">
-                  <div class="wgbk">What we built</div>
-                  <p>A wrong answer saves itself to the <b>Mistake Book</b>, and comes back to the student before the next test.</p>
-                </div>
-              </div>
-            </div>
-            <p class="wgflip-hint">Hover a card for what we built</p>
-            <div class="wgwide">
-              <div class="wwimg"><img class="zoomable" src="assets/core-good-02.webp" alt="Key steps written under a problem" loading="lazy" /></div>
-              <div class="wwtext">
+              <div class="wg" data-op="o2" tabindex="0" role="button">
+                <div class="wgimg"><img class="zoomable" src="assets/core-good-02.webp" alt="Key steps written under a problem" loading="lazy" /></div>
                 <b>A well-written answer teaches</b>
                 <div class="wgrot">
                   <div class="wgqi on">
@@ -1405,6 +1372,26 @@
                   </div>
                 </div>
               </div>
+              <div class="wg" data-op="o3" tabindex="0" role="button">
+                <div class="wgimg"><img class="zoomable" src="assets/core-good-04.webp" alt="Teacher handing over a practice question" loading="lazy" /></div>
+                <b>Not everything fits in text</b>
+                <p class="wgq">“I'll hand them a similar question straight after, or send a video if the explanation isn't landing. That's how I check it stuck.”</p>
+                <p class="wgwho">Ms. L · 9th-grade maths teacher</p>
+              </div>
+              <div class="wg" data-op="o4" tabindex="0" role="button">
+                <div class="wgimg"><img class="zoomable" src="assets/core-good-05.webp" alt="A mistake book of saved questions" loading="lazy" /></div>
+                <b>Review mistakes, get better</b>
+                <p class="wgq">“The kids who actually improve are the ones who keep their mistakes and go back to them.”</p>
+                <p class="wgwho">Ms. L · 9th-grade maths teacher</p>
+              </div>
+            </div>
+            <div class="wgconnect" aria-hidden="true"><span class="wgl"></span></div>
+            <div class="wgops">
+              <p class="wgophint">Click a card for the design opportunity it opened</p>
+              <div class="wgop" data-op="o1"><span class="wgbk">The opportunity</span><p>Rewrite the answer itself: every step leads with <b>the move and the reason</b>, and the working folds underneath until it's asked for.</p></div>
+              <div class="wgop" data-op="o2"><span class="wgbk">The opportunity</span><p>Treat the answer as <b>the lesson</b> — an approach line first, steps a student could follow on their own, not a wall of text with features around it.</p></div>
+              <div class="wgop" data-op="o3"><span class="wgbk">The opportunity</span><p>End every answer with a <b>next move</b>: a similar question to try, or a short video when the words aren't landing.</p></div>
+              <div class="wgop" data-op="o4"><span class="wgbk">The opportunity</span><p>Let a wrong answer save itself into a <b>Mistake Book</b>, and bring it back before the next test.</p></div>
             </div>
           </div>
 
@@ -1972,11 +1959,26 @@
 </script>
 <script>
   // the second card alternates between two quotes
-  document.querySelectorAll(".wg").forEach(function (card) {
-    card.addEventListener("click", function (e) {
-      if (e.target.closest("img")) return;     // let the image zoom instead
-      card.classList.toggle("flip");
+  document.querySelectorAll(".whatgood").forEach(function (w) {
+    var conn = w.querySelector(".wgconnect"), cards = w.querySelectorAll(".wg"), ops = w.querySelectorAll(".wgop");
+    var timer = null;
+    function clear() { cards.forEach(function (c) { c.classList.remove("on"); }); ops.forEach(function (o) { o.classList.remove("on"); }); conn.classList.remove("on"); clearTimeout(timer); }
+    function open(card) {
+      var was = card.classList.contains("on");
+      clear();
+      if (was) return;
+      card.classList.add("on");
+      var r = card.getBoundingClientRect(), cr = conn.getBoundingClientRect();
+      conn.style.setProperty("--lx", Math.round(r.left + r.width / 2 - cr.left) + "px");
+      requestAnimationFrame(function () { conn.classList.add("on"); });
+      var op = w.querySelector('.wgop[data-op="' + card.dataset.op + '"]');
+      timer = setTimeout(function () { if (op) op.classList.add("on"); }, 300);
+    }
+    cards.forEach(function (card) {
+      card.addEventListener("click", function (e) { if (e.target.closest("img")) return; open(card); });
+      card.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); open(card); } });
     });
+    document.addEventListener("deck:change", clear);
   });
   document.querySelectorAll(".wgrot").forEach(function (rot) {
     var items = [...rot.querySelectorAll(".wgqi")];
