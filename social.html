@@ -47,6 +47,37 @@
   .funnel .s.dead { border-style: dashed; }
   .funnel .s.dead b { color: var(--eh-red); }
   /* livestatus */
+  .lshero { display: grid; grid-template-columns: minmax(0,1fr) 420px; gap: 54px; align-items: center; margin-top: 30px; text-align: left; }
+  .lshero .ph { height: min(var(--media-h, 440px), calc(100vh - 300px)); border-radius: 22px; border: 1px dashed var(--line);
+    background: rgba(255,255,255,.02); display: grid; place-items: center; overflow: hidden;
+    font-family: var(--serif); font-size: 11px; letter-spacing: .1em; color: var(--faint); }
+  .lshero .ph img, .lshero .ph video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .lshero p { margin: 0 0 14px; font-size: 14.6px; line-height: 1.6; color: var(--dim); }
+  .lshero p:last-child { margin-bottom: 0; }
+  .lshero p b { color: var(--ink); font-weight: 600; }
+  .lshero .sig { margin-top: 18px; font-family: var(--serif); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--faint); }
+  .fgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; text-align: left; }
+  .fgrid .f { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 14px 14px 15px; }
+  .fgrid .ph { height: min(220px, calc(100vh - 500px)); border-radius: 11px; border: 1px dashed var(--line);
+    background: rgba(255,255,255,.02); display: grid; place-items: center; overflow: hidden;
+    font-family: var(--serif); font-size: 10.5px; letter-spacing: .1em; color: var(--faint); }
+  .fgrid .ph img, .fgrid .ph video { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 10px; }
+  .fgrid h3 { margin: 12px 0 0; font-family: var(--serif); font-weight: 500; font-size: 17px; color: var(--ink); }
+  .fgrid .f > p { margin: 7px 0 0; font-size: 12.8px; line-height: 1.5; color: var(--dim); }
+  .fgrid .biz { margin-top: auto; padding-top: 11px; border-top: 1px solid var(--line); }
+  .fgrid .biz b { display: block; font-family: var(--serif); font-size: 10.5px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--eh-red); }
+  .fgrid .biz span { display: block; margin-top: 5px; font-size: 12.4px; line-height: 1.5; color: var(--dim); }
+  .fgrid .biz.soft b { color: var(--faint); }
+  .status { display: grid; gap: 12px; margin-top: 28px; max-width: 880px; text-align: left; }
+  .status .r { display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: baseline;
+    border-top: 1px solid var(--line); padding-top: 12px; }
+  .status .r:first-child { border-top: 0; padding-top: 0; }
+  .status .r b { font-family: var(--serif); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+  .status .r span { font-size: 14.4px; line-height: 1.55; color: var(--ink); }
+  @media (max-width: 1100px) { .lshero { grid-template-columns: 1fr; } .fgrid { grid-template-columns: repeat(2, 1fr); } }
   .lsgrid { display: grid; grid-template-columns: 300px 1fr; gap: 34px; align-items: center; margin-top: 26px; }
   .lsgrid .ph { height: min(var(--media-h, 420px), calc(100vh - 380px)); aspect-ratio: 1206 / 2622; border-radius: 26px;
     border: 1px dashed var(--line); background: rgba(255,255,255,.02); display: grid; place-items: center;
@@ -68,13 +99,13 @@
   <div class="bar" style="background:var(--eh-red)"></div>
   <div class="chrome tl"><a href="index.html" onclick="this.href='index.html?t='+Date.now()">← Agenda</a></div>
   <div class="chrome bl">Social · TikTok, and a product of my own</div>
-  <div class="chrome br">01 / 08</div>
+  <div class="chrome br">01 / 10</div>
   <nav class="rail" aria-label="Sections">
     <a data-from="1" data-to="2">The surfaces</a>
     <a data-from="3" data-to="4">My read</a>
     <span class="gap"></span>
-    <a data-from="5" data-to="6">LiveStatus</a>
-    <a data-from="7" data-to="7">Wrap up</a>
+    <a data-from="5" data-to="8">LiveStatus</a>
+    <a data-from="9" data-to="9">Wrap up</a>
   </nav>
 
   <div class="deck">
@@ -162,66 +193,110 @@
       <div class="notes" hidden><p>I don’t want to walk in with answers before I know the numbers — you have them and I don’t. So these are the five things I’d want to ask about first.</p><p>How much of a share ends up outside the app — that sizes the leak. How many DM threads get past three turns — that tells me if DMs are a conversation or a delivery pipe. Whether Friends-tab time is taken from For You or new. How many people who posted once posted again. And how many mutuals a normal user actually has.</p><p>Each answer changes what I’d design — which is the same thing I did at Answer.AI: find where it leaks first, then decide what to fix.</p></div>
     </section>
 
+    <!-- 5 · LiveStatus cover -->
+    <section class="slide">
+      <div class="glow red tc"></div>
+      <div class="slide-inner">
+        <div class="eyebrow rv" style="color:var(--eh-red)">A social product of my own</div>
+        <h2 class="rv">LiveStatus</h2>
+        <div class="lshero">
+          <div class="ph rv d2 zoomable">封面图位 · App Store hero</div>
+          <div>
+            <p class="rv d3">A light, always-on link between two people who live far apart.</p>
+            <p class="rv d4">You don’t start a conversation. You <b>share a moment</b> — and the two photos stack into one,
+              yours on top, theirs underneath. A day apart becomes a single frame.</p>
+            <p class="rv d5">I designed it, built the front end, shipped it to the App Store and ran the growth myself.</p>
+            <div class="sig rv d5">Live on the App Store · 2026</div>
+          </div>
+        </div>
+      </div>
+      <div class="notes" hidden><p>So the last thing I want to show you is a small app of my own, called LiveStatus.</p><p>It’s a light link between two people who live far apart. You don’t start a conversation — you share a moment, and the two photos stack into one, yours on top and theirs underneath.</p><p>I designed it, built the front end, put it on the App Store and ran the growth myself.</p></div>
+    </section>
+
     <!-- 6 · LiveStatus, what it is -->
     <section class="slide">
       <div class="slide-inner">
-        <div class="eyebrow rv" style="color:var(--eh-red)">A social product of my own</div>
-        <h2 class="rv">LiveStatus — a screen you keep open with one person.</h2>
+        <div class="eyebrow rv" style="color:var(--eh-red)">What it is</div>
+        <h2 class="rv">Staying close shouldn’t take a conversation.</h2>
         <div class="lsgrid">
-          <div class="ph rv d2">产品截图 / 录屏位</div>
+          <div class="ph rv d2 zoomable">产品截图 / 录屏位</div>
           <div class="lsl">
-            <div class="row rv d2"><b>The problem</b><p><span class="todo">to fill</span> <span class="fill">远距离的两个人之间：聊天太重、朋友圈太公开、没事找事说太尴尬。</span></p></div>
-            <div class="row rv d3"><b>The move</b><p>One screen split in two — you on top, them underneath. <em>Share a moment without writing a message.</em></p></div>
-            <div class="row rv d4"><b>Who it's for</b><p>Couples and close friends who are far apart.</p></div>
-            <div class="row rv d5"><b>How it was built</b><p><em>Solo</em> — design, front end, App Store release and growth, with AI in every step.</p></div>
+            <div class="row rv d2"><b>The problem</b><p>Chatting is heavy, and there are already ten places to do it.
+              For a couple or two best friends living apart, the hard part isn’t talking — <em>it’s having to think of something to say.</em></p></div>
+            <div class="row rv d3"><b>The move</b><p>Share a moment instead. Two photos stack into one, <em>top and bottom</em> —
+              a shared frame, and a way of showing a bit of yourself without writing a message.</p></div>
+            <div class="row rv d4"><b>Where it lives</b><p>On the home screen, as a <em>widget</em>: their moment, on your phone, with nothing to open.</p></div>
+            <div class="row rv d5"><b>Who it’s for</b><p>Couples and close friends who are far apart.</p></div>
+            <div class="row rv d5"><b>How it was built</b><p><em>Solo</em> — design, front end, App Store release and growth, with one developer on the back end and AI through every step.</p></div>
           </div>
         </div>
       </div>
-      <div class="notes" hidden><p>占位：LiveStatus 是什么、解决什么问题、一个人怎么做出来的。</p></div>
+      <div class="notes" hidden><p>The problem is pretty plain. Chatting is heavy, and there are already ten other places to do it. For a couple or two best friends living apart, the hard part isn’t talking — it’s having to think of something to say first.</p><p>So instead of a conversation, you just casually share a moment. Two photos stack into one, top and bottom, and that becomes a frame of the two of you. It’s company you can feel, and it’s a bit of personal expression at the same time — which is what keeps a long-distance relationship going.</p><p>It lives on the home screen too, as a widget, so their moment is just there without opening anything.</p><p>It’s for couples and close friends who are far apart. And I built it on my own — design, front end, the App Store release and the growth — with one developer helping me on the back end.</p></div>
     </section>
 
-    <!-- 7 · LiveStatus, what it proves -->
+    <!-- 7 · features and where each one pays -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow rv" style="color:var(--eh-red)">Features and the business behind them</div>
+        <h2 class="rv">Four features, and where each one earns.</h2>
+        <div class="fgrid">
+          <div class="f rv d2">
+            <div class="ph zoomable">Snap &amp; Share<br />截图位</div>
+            <h3>Snap &amp; Share Moments</h3>
+            <p>The core. Shoot from the camera, and your photo stacks with theirs into one split-screen moment that stays in the app as a memory.</p>
+            <div class="biz"><b>Business</b><span>Free, and the way people get in. Paying unlocks <b>sharing that moment out</b> or saving it to the camera roll.</span></div>
+          </div>
+          <div class="f rv d3">
+            <div class="ph zoomable">Widget<br />截图位</div>
+            <h3>Widget</h3>
+            <p>The lightest form of company: their moment sitting on your home screen, nothing to open, no reply owed.</p>
+            <div class="biz"><b>Business</b><span>Paid — a <b>two-up couple widget</b>, or their moment blown up large on your home screen.</span></div>
+          </div>
+          <div class="f rv d4">
+            <div class="ph zoomable">Map<br />截图位</div>
+            <h3>Map</h3>
+            <p>Where they are, how much battery is left, what they’re up to. Half reassurance, half an excuse to say something.</p>
+            <div class="biz"><b>Business</b><span>Paid — <b>pin your moments to the map</b>, so they settle into a place as well as a day.</span></div>
+          </div>
+          <div class="f rv d5">
+            <div class="ph zoomable">Triggers<br />截图位</div>
+            <h3>The nudges</h3>
+            <p>Notifications, DMs and a little heart. The small triggers that get the first move out of someone, so a quiet day doesn’t stay quiet.</p>
+            <div class="biz soft"><b>Retention, not revenue</b><span>This is what keeps the loop running — and what everything else depends on.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="notes" hidden><p>Here are the four features, and where each one is meant to earn.</p><p>First, Snap and Share Moments — the core of the product. You shoot from the camera, and your photo stacks with theirs into one split-screen moment that stays in the app as a memory. That part is free, because it’s how people get in. The paid part is taking that moment out — sharing it, or saving it to your camera roll.</p><p>Second, the widget. It’s the lightest version of company — their moment on your home screen, nothing to open. That one is paid: a two-up couple widget, or their moment blown up large on the home screen.</p><p>Third, the map. You can see where they are, their battery, what they’re doing — it’s reassurance, and it’s also an excuse to start talking. The paid part is pinning your moments onto the map, so a memory lives in a place and not just on a timeline.</p><p>And fourth, the nudges — notifications, DMs, a little heart. Those don’t make money; they’re what keeps the loop going, and everything else depends on them.</p></div>
+    </section>
+
+    <!-- 8 · where it is now -->
     <section class="slide">
       <div class="slide-inner">
         <div class="eyebrow rv" style="color:var(--eh-red)">Where it is now</div>
-        <h2 class="rv">Shipped, earning, and still being watched.</h2>
-        <div class="nums rv d2">
-          <div><b><span class="todo">to fill</span></b><span>月流水 / 累计收入</span></div>
-          <div><b><span class="todo">to fill</span></b><span>投放已打正 — ROAS</span></div>
-          <div><b><span class="todo">to fill</span></b><span>你最在意的那条留存指标</span></div>
+        <h2 class="rv">Just shipped, and the first numbers are honest.</h2>
+        <div class="status">
+          <div class="r rv d2"><b>Shipped</b><span>The first MVP is live on the App Store.</span></div>
+          <div class="r rv d3"><b>Revenue</b><span>It’s earning — small, but real.</span></div>
+          <div class="r rv d4"><b>Acquisition</b><span>Paid acquisition is breaking even, so we can keep buying users while we learn.</span></div>
+          <div class="r rv d5"><b>Still open</b><span>Which of the four features is the one worth betting on. We’re still exploring that.</span></div>
         </div>
-        <div class="three" style="margin-top:22px">
-          <div class="c rv d3">
-            <div class="k">Presence</div>
-            <h3>Being there beats saying something</h3>
-            <p><span class="todo">to fill</span> <span class="fill">一句证据。</span></p>
-          </div>
-          <div class="c rv d4">
-            <div class="k">Pressure</div>
-            <h3>Every signal is also a demand</h3>
-            <p><span class="todo">to fill</span> <span class="fill">哪个信号你加了又拿掉。</span></p>
-          </div>
-          <div class="c rv d5">
-            <div class="k">Defaults</div>
-            <h3>The default is the product</h3>
-            <p><span class="todo">to fill</span> <span class="fill">哪个默认值改变了行为。</span></p>
-          </div>
-        </div>
+        <p class="kicker rv d5" style="margin-top:28px">A small attempt of my own in social — and a coincidence that it’s what this role is about, which is why I wanted to show it.</p>
       </div>
-      <div class="notes" hidden><p>占位：数据 + 三条可迁移的原则。</p></div>
+      <div class="notes" hidden><p>Where it is now: it’s only just shipped, so the numbers are small. The first MVP is on the App Store, it’s making some money, and paid acquisition is breaking even — which means we can keep buying users while we figure things out. What’s still open is which of those four features is the one worth betting on.</p><p>This is really just a small attempt of my own in social. It’s a bit of a coincidence that it turned out to be what this role is about — so I thought I’d share it.</p></div>
     </section>
 
-    <!-- 8 · wrap -->
+    <!-- 9 · wrap -->
     <section class="slide">
       <div class="slide-inner" style="text-align:center">
         <div class="eyebrow rv">Wrap up</div>
         <h2 class="rv">Thank you.</h2>
-        <p class="lede rv" style="margin:22px auto 0;max-width:720px">
-          AI makes content infinite. What stays scarce is someone on the other side.
+        <p class="lede rv" style="margin:22px auto 0;max-width:740px">
+          Thank you for listening this far. I’m genuinely interested in this team and in the problems it’s working on —
+          and I’d love to be a colleague here, and keep building what social could still be.
         </p>
         <p class="kicker rv d5" style="margin-top:40px"><a href="index.html" onclick="this.href='index.html?t='+Date.now()" style="color:var(--faint);text-decoration:none">Back to agenda →</a></p>
       </div>
-      <div class="notes" hidden><p>收尾：AI 让内容变得无限，稀缺的是另一端有个人。</p></div>
+      <div class="notes" hidden><p>That’s everything — thank you for listening this far.</p><p>I’m genuinely interested in this team and in the problems you’re working on, and I’d really like to be a colleague here and keep exploring what social can still be. Happy to take any questions.</p></div>
     </section>
   </div>
 <script src="deck.js?v=10012"></script>
