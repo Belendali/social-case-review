@@ -12,6 +12,7 @@
   .zoomable:hover { transform: translateY(-4px) scale(1.012); }
   .lbx { position: fixed; inset: 0; z-index: 90; display: none; place-items: center; flex-direction: column; gap: 14px;
     background: rgba(6,6,10,.94); backdrop-filter: blur(10px); cursor: zoom-out; padding: 40px; }
+  body.script-on .lbx { bottom: var(--script-h, 36vh); }   /* keep the script readable while zoomed */
   .lbx.on { display: grid; }
   .lbx img, .lbx video { max-width: min(1100px, 92vw); max-height: 86vh; width: auto; height: auto; object-fit: contain;
     border-radius: 18px; border: 1px solid rgba(255,255,255,.16); box-shadow: 0 40px 90px rgba(0,0,0,.6);
