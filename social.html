@@ -14,6 +14,7 @@
   .fill { color: var(--faint); font-style: italic; }
   /* screenshot slots */
   .shots { display: grid; gap: 14px; margin-top: 24px; }
+  .shots.six { grid-template-columns: repeat(6, 1fr); }
   .shots.five { grid-template-columns: repeat(5, 1fr); }
   .shots.four { grid-template-columns: repeat(4, 1fr); }
   .shots figure { margin: 0; }
@@ -60,7 +61,7 @@
   .nums div { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; background: var(--card); }
   .nums b { display: block; font-family: var(--serif); font-weight: 500; font-size: 26px; color: var(--eh-red); line-height: 1.1; }
   .nums span { display: block; margin-top: 6px; font-size: 12.4px; line-height: 1.45; color: var(--dim); }
-  @media (max-width: 900px) { .three, .nums { grid-template-columns: 1fr; } .shots.five, .shots.four { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 900px) { .three, .nums { grid-template-columns: 1fr; } .shots.six, .shots.five, .shots.four { grid-template-columns: repeat(2, 1fr); } }
 </style>
 </head>
 <body>
@@ -84,11 +85,11 @@
         <div class="eyebrow rv">Chapter 03 · <b style="color:var(--eh-red)">Social</b></div>
         <h1 class="rv">Some homework on social</h1>
         <p class="lede rv" style="margin:26px auto 0;max-width:760px">
-          From the JD I understand the team sits in <b>local services</b>, with a lot of social in it. I don’t have your data,
-          so this is homework from the outside — what I can see, what I’d want to ask, and a small social product I shipped on my own.
+          The JD puts social at the centre — <b>friend interactions and sharing, Story, DMs</b>. I don’t have your data,
+          so this is homework from the outside: what I can see, what I’d want to ask, and a small social product I shipped on my own.
         </p>
       </div>
-      <div class="notes" hidden><p>Last part, and the shortest one. From the JD and from HR I understand the team sits in local services, and that social comes up a lot in it.</p><p>I’ve never worked inside TikTok, and you have — so I’m not here to tell you how social should work. I just did some homework from the outside: what I can see as a user, how a few other apps place friends, a few questions I’d want to ask, and then a small social product I built on my own.</p><p>So please take this as where my thinking got to, and tell me where it’s off.</p></div>
+      <div class="notes" hidden><p>Last part, and the shortest one. From the JD, this role sits in the social area — friend interactions and sharing, Story, and DMs.</p><p>I’ve never worked inside TikTok, and you have — so I’m not here to tell you how social should work. I just did some homework from the outside: what I can see as a user, how a few other apps place friends, a few questions I’d want to ask, and then a small social product I built on my own.</p><p>So please take this as where my thinking got to, and tell me where it’s off.</p></div>
     </section>
 
     <!-- 1 · TikTok social surfaces -->
@@ -96,9 +97,10 @@
       <div class="slide-inner">
         <div class="eyebrow rv">Where social shows up</div>
         <h2 class="rv">Where social shows up for me as a user.</h2>
-        <p class="lede rv" style="max-width:860px">Five surfaces carry it. <span class="todo">to fill</span> <span class="fill">五张截图：Friends tab / Inbox / DM 对话 / 群聊 / 分享面板</span></p>
-        <div class="shots five rv d2">
+        <p class="lede rv" style="max-width:860px">Six surfaces carry it. <span class="todo">to fill</span> <span class="fill">六张截图：Friends tab / Story / Inbox / DM 对话 / 群聊 / 分享面板</span></p>
+        <div class="shots six rv d2">
           <figure><div class="ph">Friends tab<br />截图位</div><figcaption>Friends tab<span>Posts from people you follow back.</span></figcaption></figure>
+          <figure><div class="ph">Story<br />截图位</div><figcaption>Story<span>A 24-hour post, lighter than a video — easy to miss on the way in.</span></figcaption></figure>
           <figure><div class="ph">Inbox<br />截图位</div><figcaption>Inbox<span>Activity and messages in one place.</span></figcaption></figure>
           <figure><div class="ph">DM thread<br />截图位</div><figcaption>A DM thread<span>Mostly videos, sent one to one.</span></figcaption></figure>
           <figure><div class="ph">Group chat<br />截图位</div><figcaption>Group chat<span>Up to 32 people around shared videos.</span></figcaption></figure>
@@ -106,7 +108,7 @@
         </div>
         <p class="kicker rv d4" style="margin-top:20px">From the outside, most of it seems to serve two people who are <b>already talking</b>.</p>
       </div>
-      <div class="notes" hidden><p>I spent time in the product, so this is just what I could see as a user. Five places social shows up for me: the Friends tab, the inbox, a DM thread, group chat, and the share sheet.</p><p>Most of it seems to serve two people who are already talking. You’re inside it, so please tell me where I’ve read this wrong.</p></div>
+      <div class="notes" hidden><p>I spent time in the product, so this is just what I could see as a user. Six places social shows up for me: the Friends tab, Story, the inbox, a DM thread, group chat, and the share sheet.</p><p>Most of it seems to serve two people who are already talking. You’re inside it, so please tell me where I’ve read this wrong.</p></div>
     </section>
 
     <!-- 2 · competitors -->
