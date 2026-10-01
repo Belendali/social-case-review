@@ -46,6 +46,15 @@
   .funnel .s.leak { border-color: rgba(255,0,80,.45); }
   .funnel .s.dead { border-style: dashed; }
   .funnel .s.dead b { color: var(--eh-red); }
+  /* chapter cover + wrap background */
+  .bgimg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .bgimg i { position: absolute; inset: -4%; display: block;
+    background: url(assets/social-bg.webp) center right / cover no-repeat;
+    opacity: .46; filter: blur(5px) saturate(1.08); }
+  .bgimg::after { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 64% 54% at 50% 50%, rgba(5,5,10,.74), rgba(5,5,10,.5) 72%, rgba(5,5,10,.86)); }
+  @media (prefers-reduced-motion: no-preference) { .slide.on .bgimg i { animation: bgdrift 26s ease-in-out infinite alternate; } }
+  @keyframes bgdrift { from { transform: scale(1.02) translateX(0); } to { transform: scale(1.07) translateX(-1.4%); } }
   /* livestatus */
   .lshero { display: grid; grid-template-columns: auto minmax(0, 420px); justify-content: start;
     gap: 48px; align-items: center; margin-top: 24px; text-align: left; }
@@ -159,6 +168,7 @@
   <div class="deck">
     <!-- 0 · cover -->
     <section class="slide">
+      <div class="bgimg" aria-hidden="true"><i></i></div>
       <div class="glow red tc"></div>
       <div class="slide-inner" style="text-align:center">
         <div class="eyebrow rv">Chapter 03 · <b style="color:var(--eh-red)">Social</b></div>
@@ -358,6 +368,7 @@
 
     <!-- 9 · wrap -->
     <section class="slide">
+      <div class="bgimg" aria-hidden="true"><i></i></div>
       <div class="slide-inner" style="text-align:center">
         <div class="eyebrow rv">Wrap up</div>
         <h2 class="rv">Thank you.</h2>
