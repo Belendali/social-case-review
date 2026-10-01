@@ -47,10 +47,35 @@
   .funnel .s.dead { border-style: dashed; }
   .funnel .s.dead b { color: var(--eh-red); }
   /* livestatus */
-  .lshero { display: grid; grid-template-columns: auto minmax(0, 360px); justify-content: start;
-    gap: 48px; align-items: center; margin-top: 28px; text-align: left; }
-  .ls3 { display: flex; gap: 9px; }
-  .ls3 .ph { aspect-ratio: 965 / 2099; height: min(530px, calc(100vh - 330px)); width: auto; flex: 0 0 auto;
+  .lshero { display: grid; grid-template-columns: auto minmax(0, 420px); justify-content: start;
+    gap: 48px; align-items: center; margin-top: 24px; text-align: left; }
+  .lstop { display: flex; align-items: baseline; gap: 30px; flex-wrap: wrap; }
+  .lstop h2 { margin: 0; }
+  .lstop p { margin: 0; max-width: 480px; font-size: 15.4px; line-height: 1.55; color: var(--dim); }
+  /* who it is for, and how it was built */
+  .lsl2 { display: grid; gap: 17px; }
+  .lsrow { display: grid; grid-template-columns: 112px 1fr; gap: 16px; align-items: start; }
+  .lsrow > b { font-family: var(--serif); font-weight: 500; font-size: 11px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--faint); padding-top: 3px; }
+  .lsrow p { margin: 0; font-size: 13.8px; line-height: 1.6; color: var(--dim); }
+  .lsrow p em { font-style: normal; color: var(--ink); }
+  .whofor { display: flex; gap: 10px; flex-wrap: wrap; }
+  .whofor .w { display: flex; align-items: center; gap: 9px; padding: 9px 14px; border-radius: 12px;
+    background: var(--card); border: 1px solid var(--line); }
+  .whofor .w svg { width: 17px; height: 17px; flex: 0 0 auto; fill: none; stroke: var(--eh-red); stroke-width: 1.4;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .whofor .w span { font-size: 13.2px; color: var(--ink); white-space: nowrap; }
+  .build { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; }
+  .build .s { position: relative; padding: 11px 12px 12px; border-radius: 12px;
+    background: var(--card); border: 1px solid var(--line); }
+  .build .s b { display: block; font-family: var(--serif); font-size: 10.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--eh-red); }
+  .build .s span { display: block; margin-top: 5px; font-size: 12.5px; line-height: 1.45; color: var(--dim); }
+  .build .s + .s::before { content: ""; position: absolute; left: -11px; top: 50%; width: 11px; height: 1px;
+    background: var(--line); }
+  .buildnote { margin: 11px 0 0; font-size: 13.4px; line-height: 1.5; color: var(--ink); }
+  .ls3 { display: flex; gap: 10px; margin-top: 30px; }
+  .ls3 .ph { aspect-ratio: 965 / 2099; height: min(560px, calc(100vh - 300px)); width: auto; flex: 0 0 auto;
     border: 0; border-radius: 16px; overflow: hidden; background: #0b0a16; }
   .ls3 .ph img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
   .tl { display: grid; gap: 11px; margin-top: 26px; }
@@ -221,31 +246,25 @@
       <div class="glow red tc"></div>
       <div class="slide-inner wide">
         <div class="eyebrow rv" style="color:var(--eh-red)">A social product of my own</div>
-        <h2 class="rv ls-h">LiveStatus</h2>
-        <div class="lshero">
-          <div class="ls3 rv d2">
-            <div class="ph"><img class="zoomable" src="assets/ls-store1.webp" alt="Stay closer. Every day." /></div>
-            <div class="ph"><img class="zoomable" src="assets/ls-store2.webp" alt="LiveStatus" /></div>
-            <div class="ph"><img class="zoomable" src="assets/ls-store3.webp" alt="LiveStatus" /></div>
-          </div>
-          <div>
-            <p class="rv d3" style="font-size:15.4px">A light, always-on link between two people who live far apart.</p>
-            <div class="tl">
-              <div class="t rv d4"><b>Week 1</b><span>Design, nothing to a finished product — working with AI.</span></div>
-              <div class="t rv d5"><b>Weeks 2–3</b><span>Back end built, App Store review, live.</span></div>
-            </div>
-            <p class="tlsum rv d5">Three weeks from nothing to shipped.</p>
-          </div>
+        <div class="lstop">
+          <h2 class="rv">LiveStatus</h2>
+          <p class="rv d2">A light, always-on link between two people who live far apart.</p>
+        </div>
+        <div class="ls3 rv d3">
+          <div class="ph"><img class="zoomable" src="assets/ls-store1.webp" alt="Stay closer. Every day." /></div>
+          <div class="ph"><img class="zoomable" src="assets/ls-store2.webp" alt="Update your status, stay in sync." /></div>
+          <div class="ph"><img class="zoomable" src="assets/ls-store3.webp" alt="Across miles, always together." /></div>
+          <div class="ph"><img class="zoomable" src="assets/ls-store4.webp" alt="LiveStatus" /></div>
         </div>
       </div>
-      <div class="notes" hidden><p>So the last thing I want to show you is a small app of my own, called LiveStatus. It’s a light, always-on link between two people who live far apart.</p><p>And the part I’m proud of is the speed. The design went from nothing to a finished product in about a week, working with AI. Then two more weeks waiting on the back end and on App Store review. So three weeks from nothing to shipped.</p></div>
+      <div class="notes" hidden><p>So the last thing I want to show you is a small app of my own, called LiveStatus.</p><p>It’s a light, always-on link between two people who live far apart. These are the App Store screens, and you can click any of them to see it up close.</p></div>
     </section>
 
     <!-- 6 · LiveStatus, what it is -->
     <section class="slide">
       <div class="slide-inner">
         <div class="eyebrow rv" style="color:var(--eh-red)">What it is</div>
-        <h2 class="rv">Staying close shouldn’t take a conversation.</h2>
+        <h2 class="rv">Sometimes a moment does more than a conversation.</h2>
         <div class="lsgrid">
           <div class="ph vswap rv d2" data-swap>
             <video src="assets/ls-filming.mp4" muted loop playsinline autoplay preload="auto" class="on"></video>
@@ -253,18 +272,31 @@
             <div class="vcap" data-vcap>Making a moment</div>
             <div class="vdots"><i class="on"></i><i></i></div>
           </div>
-          <div class="lsl">
-            <div class="row rv d2"><b>The problem</b><p>Chatting is heavy, and there are already ten places to do it.
-              For a couple or two best friends living apart, the hard part isn’t talking — <em>it’s having to think of something to say.</em></p></div>
-            <div class="row rv d3"><b>The move</b><p>Share a moment instead. Two photos stack into one, <em>top and bottom</em> —
-              a shared frame, and a way of showing a bit of yourself without writing a message.</p></div>
-            <div class="row rv d4"><b>Where it lives</b><p>On the home screen, as a <em>widget</em>: their moment, on your phone, with nothing to open.</p></div>
-            <div class="row rv d5"><b>Who it’s for</b><p>Couples and close friends who are far apart.</p></div>
-            <div class="row rv d5"><b>How it was built</b><p><em>Solo</em> — design, front end, App Store release and growth, with one developer on the back end and AI through every step.</p></div>
+          <div class="lsl2">
+            <div class="lsrow rv d2"><b>The problem</b><p>Chatting is heavy, and there are already ten places to do it.
+              For two people living apart, the hard part isn’t talking — <em>it’s having to think of something to say.</em></p></div>
+            <div class="lsrow rv d3"><b>The move</b><p>Share a moment instead. Two photos stack into one, <em>top and bottom</em> —
+              a shared frame, and a bit of yourself, without writing a message.</p></div>
+            <div class="lsrow rv d4"><b>Who it’s for</b>
+              <div class="whofor">
+                <div class="w"><svg viewBox="0 0 17 17"><path d="M8.5 14.4S2.2 11 2.2 6.7A3.4 3.4 0 0 1 8.5 4.6 3.4 3.4 0 0 1 14.8 6.7c0 4.3-6.3 7.7-6.3 7.7Z"/></svg><span>Couples, far apart</span></div>
+                <div class="w"><svg viewBox="0 0 17 17"><circle cx="6.2" cy="5.6" r="2.4"/><circle cx="11.6" cy="6.4" r="1.9"/><path d="M1.9 13.6c.4-2.3 2.1-3.6 4.3-3.6s3.9 1.3 4.3 3.6"/><path d="M11.4 10.1c2 .1 3.4 1.3 3.7 3.5"/></svg><span>Close friends, far apart</span></div>
+              </div>
+            </div>
+            <div class="lsrow rv d5"><b>How it was built</b>
+              <div>
+                <div class="build">
+                  <div class="s"><b>Week 1</b><span>Design — cutting the idea down to an MVP.</span></div>
+                  <div class="s"><b>Week 2</b><span>Back end built with one developer.</span></div>
+                  <div class="s"><b>Week 3</b><span>App Store review, and live.</span></div>
+                </div>
+                <p class="buildnote">All the design on my own, with Claude Code — <b>three weeks from nothing to shipped</b>.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="notes" hidden><p>The problem is pretty plain. Chatting is heavy, and there are already ten other places to do it. For a couple or two best friends living apart, the hard part isn’t talking — it’s having to think of something to say first.</p><p>So instead of a conversation, you just casually share a moment. Two photos stack into one, top and bottom, and that becomes a frame of the two of you. It’s company you can feel, and it’s a bit of personal expression at the same time — which is what keeps a long-distance relationship going.</p><p>On the left you can see it — making a moment, and then the log of everything the two of you have made. It lives on the home screen too, as a widget, so their moment is just there without opening anything.</p><p>It’s for couples and close friends who are far apart. And I built it on my own — design, front end, the App Store release and the growth — with one developer helping me on the back end.</p></div>
+      <div class="notes" hidden><p>The problem is pretty plain. Chatting is heavy, and there are already ten other places to do it. For two people living apart, the hard part isn’t talking — it’s having to think of something to say first.</p><p>So instead of a conversation, you just casually share a moment. Two photos stack into one, top and bottom, and that becomes a frame of the two of you. On the left you can see it — making a moment, and then the log of everything you’ve made together.</p><p>And I think that’s the real thing. You don’t need to find something to say every day. A small moment, shared, is enough to keep two people close — which is a little like what a share does on TikTok.</p><p>It’s for couples and close friends who are far apart. I did all the design on my own with Claude Code: week one, cut the idea down to an MVP; week two, built the back end with one developer; week three, App Store review and live. Three weeks from nothing to shipped.</p></div>
     </section>
 
     <!-- 7 · features and where each one pays -->
