@@ -32,6 +32,12 @@
   .three .c .k { font-family: var(--serif); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--eh-red); }
   .three .c h3 { margin: 8px 0 0; font-family: var(--serif); font-weight: 500; font-size: 19px; line-height: 1.25; color: var(--ink); }
   .three .c p { margin: 10px 0 0; font-size: 13.4px; line-height: 1.55; color: var(--dim); }
+  .qlist { display: grid; gap: 10px; margin-top: 24px; }
+  .qlist .q { display: grid; grid-template-columns: minmax(0, 360px) 1fr; gap: 22px; align-items: baseline;
+    border-top: 1px solid var(--line); padding-top: 11px; }
+  .qlist .q:first-child { border-top: 0; padding-top: 0; }
+  .qlist .q b { font-size: 15px; line-height: 1.4; color: var(--ink); font-weight: 600; }
+  .qlist .q span { font-size: 13.2px; line-height: 1.5; color: var(--dim); }
   .funnel { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; text-align: left; }
   .funnel .s { flex: 1 1 150px; border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px; background: var(--card); }
   .funnel .s b { display: block; font-size: 14px; color: var(--ink); }
@@ -61,14 +67,13 @@
   <div class="bar" style="background:var(--eh-red)"></div>
   <div class="chrome tl"><a href="index.html" onclick="this.href='index.html?t='+Date.now()">← Agenda</a></div>
   <div class="chrome bl">Social · TikTok, and a product of my own</div>
-  <div class="chrome br">01 / 09</div>
+  <div class="chrome br">01 / 08</div>
   <nav class="rail" aria-label="Sections">
     <a data-from="1" data-to="2">The surfaces</a>
     <a data-from="3" data-to="4">My read</a>
-    <a data-from="5" data-to="5">The bet</a>
     <span class="gap"></span>
-    <a data-from="6" data-to="7">LiveStatus</a>
-    <a data-from="8" data-to="8">Wrap up</a>
+    <a data-from="5" data-to="6">LiveStatus</a>
+    <a data-from="7" data-to="7">Wrap up</a>
   </nav>
 
   <div class="deck">
@@ -124,54 +129,35 @@
     <section class="slide">
       <div class="slide-inner">
         <div class="eyebrow rv">My read</div>
-        <h2 class="rv">Three things I believe about this.</h2>
-        <div class="three">
-          <div class="c rv d2">
-            <div class="k">01 · What it is for</div>
-            <h3>The friend graph is a retention layer, not a content layer</h3>
-            <p>TikTok already wins attention with strangers. Friends don't need to supply content — they need to supply a reason to come back.</p>
-          </div>
-          <div class="c rv d3">
-            <div class="k">02 · Where the energy is</div>
-            <h3>The share is the social act</h3>
-            <p>The product already creates the urge to send something to one person. That impulse is the strongest social asset it has.</p>
-          </div>
-          <div class="c rv d4">
-            <div class="k">03 · What's missing</div>
-            <h3>Nothing holds the space between shares</h3>
-            <p>Between two sends there is no lightweight way to be present with someone. Not another feed — a sense that they're there.</p>
-          </div>
-        </div>
-      </div>
-      <div class="notes" hidden><p>占位：三条判断，每条一句话讲透。</p></div>
-    </section>
-
-    <!-- 4 · where it breaks -->
-    <section class="slide">
-      <div class="slide-inner">
-        <div class="eyebrow rv">Where it breaks</div>
         <h2 class="rv">A share every day, and no one is served after it.</h2>
-        <p class="lede rv">The chain starts inside TikTok and finishes somewhere else — and the half that leaves is the social half.</p>
+        <p class="lede rv" style="max-width:900px">The friend graph here isn’t a content layer — TikTok already wins attention with strangers.
+          It’s a <b>retention layer</b>. And the strongest social thing the product does is make you want to send something to one person.</p>
         <div class="funnel rv d2">
           <div class="s"><b>Sees it</b><span>The strongest recommendation engine in the world.</span></div>
           <div class="s"><b>Thinks of someone</b><span>The motive already exists.</span></div>
           <div class="s leak"><b>Sends it</b><span>A large share of it leaves for iMessage or WeChat.</span></div>
           <div class="s dead"><b>The conversation</b><span>Happens in another app.</span></div>
-          <div class="s dead"><b>Comes back to reply</b><span>The hardest reason to open, and TikTok doesn't own it.</span></div>
+          <div class="s dead"><b>Comes back to reply</b><span>The hardest reason to open, and TikTok doesn’t own it.</span></div>
         </div>
-        <p class="kicker rv d4" style="margin-top:20px">Streaks, stickers, group chats — every piece built so far serves two people who are already talking.</p>
+        <p class="kicker rv d4" style="margin-top:20px">Streaks, stickers, group chats — every piece built so far serves two people who are <b>already talking</b>. Nothing holds the space between shares.</p>
       </div>
-      <div class="notes" hidden><p>TikTok 每天制造上亿次"想发给某个人"的冲动，但这条链路在第三步出了 app。</p><p>已经做的 streak、贴纸、群聊，服务的都是已经在聊天的两个人，没有一个服务刚刚分享完的那个人。</p></div>
+      <div class="notes" hidden><p>我的判断是：朋友关系在这里不是内容层——内容 TikTok 已经赢了；它是留存层。</p><p>而这个产品最强的社交资产，是它每天制造上亿次"想发给某个人"的冲动。但这条链路在第三步出了 app，后面两步发生在别处。</p><p>已经做的 streak、贴纸、群聊，服务的都是已经在聊天的两个人。两次分享之间，没有东西承接。</p></div>
     </section>
 
-    <!-- 5 · the bet -->
+    <!-- 4 · what I'd want to know -->
     <section class="slide">
       <div class="slide-inner">
-        <div class="eyebrow rv">If I were on the team</div>
-        <h2 class="rv">Start where the behaviour already is.</h2>
-        <p class="lede rv" style="max-width:900px"><span class="todo">to fill</span> <span class="fill">一个方向 + 改哪一处 + 一个能证伪它的指标（对方回复率、分享者 24 小时回访率）。</span></p>
+        <div class="eyebrow rv">What I’d want to know first</div>
+        <h2 class="rv">Five questions I’d ask on day one.</h2>
+        <div class="qlist rv d2">
+          <div class="q"><b>How much of a share ends up outside the app?</b><span>Sizes the leak. If most of it lands in iMessage, the work isn’t a new surface — it’s keeping the reply here.</span></div>
+          <div class="q"><b>How many DM threads get past three turns?</b><span>Tells me whether DMs are a conversation or a delivery pipe. Those are two different products.</span></div>
+          <div class="q"><b>Is Friends-tab time taken from FYP, or new?</b><span>If it cannibalises, friend content has to clear a higher bar. If it’s additive, it has earned its slot.</span></div>
+          <div class="q"><b>Of people who posted once, how many posted again?</b><span>First post to second post is the honest read on whether posting to friends has a reason to exist here.</span></div>
+          <div class="q"><b>How many mutuals does a normal user have?</b><span>Graph density decides what’s even possible. Presence needs a handful of mutuals, not thousands.</span></div>
+        </div>
       </div>
-      <div class="notes" hidden><p>占位：提案与验证方式。</p></div>
+      <div class="notes" hidden><p>这五个问题是我进去第一周想弄清楚的。每一个的答案都会改变我设计什么。</p><p>我不想在不知道这些数的情况下先给方案——这也是我在 Answer.AI 学到的：先搞清楚漏在哪一步，再决定改哪里。</p></div>
     </section>
 
     <!-- 6 · LiveStatus, what it is -->
