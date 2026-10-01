@@ -219,9 +219,25 @@
     k.textContent = "Script · " + String(i + 1).padStart(2, "0") + "  " + title.trim().replace(/\s+/g, " ").slice(0, 60);
     t.innerHTML = n ? n.innerHTML : "<em>No script for this slide.</em>";
     panel.scrollTop = 0;
+    if (typeof fitStage === "function") requestAnimationFrame(fitStage);
     broadcast(i, t.innerHTML);
   }
-  document.addEventListener("deck:change", (e) => render(e.detail.index));
+  // the panel is only as tall as its script, and the slide takes the rest
+  function fitStage() {
+    const on = document.body.classList.contains("script-on");
+    const h = on ? Math.round(panel.getBoundingClientRect().height) : 0;
+    document.documentElement.style.setProperty("--script-h", h + "px");
+    const slide = document.querySelector(".slide");
+    const nw = (slide && slide.clientWidth) || 1024, nh = (slide && slide.clientHeight) || 768;
+    const k = on ? Math.max(.4, Math.min(1, (innerHeight - h - 28) / nh, (innerWidth - 40) / nw)) : 1;
+    document.documentElement.style.setProperty("--stage-k", k.toFixed(3));
+  }
+  const refit = () => requestAnimationFrame(fitStage);
+  addEventListener("resize", refit);
+  new MutationObserver(refit).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  new ResizeObserver(refit).observe(panel);
+  refit();
+  document.addEventListener("deck:change", (e) => { render(e.detail.index); refit(); });
   let pend = null;
   new MutationObserver((muts) => {
     const sl = slides[cur]; if (!muts.some((m) => sl && sl.contains(m.target))) return;
