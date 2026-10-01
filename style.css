@@ -274,7 +274,7 @@ h2 {
 body.script-on .stage { transform: scale(var(--stage-k, .64)); }
 body.script-on .stage.page { transform: scale(var(--stage-k, .64)); transform-origin: 50% 0; }
 body.script-on .chrome.br, body.script-on .chrome.bl { bottom: calc(var(--script-h, 36vh) + 12px); }
-body.script-on .rail { top: 24vh; }
+body.script-on .rail { top: 32vh; }
 .script { position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; height: auto; max-height: 46vh; overflow: auto; background: rgba(6,6,10,.92); backdrop-filter: blur(14px); border-top: 1px solid rgba(255,255,255,.12); transform: translateY(100%); transition: transform .3s ease-out; }
 body.script-on .script { transform: none; }
 .script-in { max-width: 1180px; margin: 0 auto; padding: 20px 40px 28px; font-family: var(--body); font-size: 19px; line-height: 1.7; color: rgba(255,255,255,.92); }
