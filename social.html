@@ -47,7 +47,18 @@
   .funnel .s.dead { border-style: dashed; }
   .funnel .s.dead b { color: var(--eh-red); }
   /* livestatus */
-  .lshero { display: grid; grid-template-columns: minmax(0,1fr) 420px; gap: 54px; align-items: center; margin-top: 30px; text-align: left; }
+  .lshero { display: grid; grid-template-columns: minmax(0,1fr) 360px; gap: 48px; align-items: center; margin-top: 28px; text-align: left; }
+  .ls3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .ls3 .ph { aspect-ratio: 965 / 2099; height: min(530px, calc(100vh - 330px)); width: auto; max-width: 100%; margin: 0 auto;
+    border: 0; border-radius: 16px; overflow: hidden; background: #0b0a16; }
+  .ls3 .ph img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+  .tl { display: grid; gap: 11px; margin-top: 26px; }
+  .tl .t { display: grid; grid-template-columns: 86px 1fr; gap: 16px; align-items: baseline;
+    border-top: 1px solid var(--line); padding-top: 11px; }
+  .tl .t b { font-family: var(--serif); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--eh-red); }
+  .tl .t span { font-size: 13.6px; line-height: 1.5; color: var(--dim); }
+  .tlsum { margin: 24px 0 0; padding-top: 16px; border-top: 1px solid var(--line);
+    font-family: var(--serif); font-size: 19px; line-height: 1.35; color: var(--ink); }
   .lshero .ph { height: min(var(--media-h, 440px), calc(100vh - 300px)); border-radius: 22px; border: 1px dashed var(--line);
     background: rgba(255,255,255,.02); display: grid; place-items: center; overflow: hidden;
     font-family: var(--serif); font-size: 11px; letter-spacing: .1em; color: var(--faint); }
@@ -207,21 +218,26 @@
     <!-- 5 · LiveStatus cover -->
     <section class="slide">
       <div class="glow red tc"></div>
-      <div class="slide-inner">
+      <div class="slide-inner wide">
         <div class="eyebrow rv" style="color:var(--eh-red)">A social product of my own</div>
-        <h2 class="rv">LiveStatus</h2>
+        <h2 class="rv ls-h">LiveStatus</h2>
         <div class="lshero">
-          <div class="ph rv d2 zoomable">封面图位 · App Store hero</div>
+          <div class="ls3 rv d2">
+            <div class="ph"><img class="zoomable" src="assets/ls-store1.webp" alt="Stay closer. Every day." /></div>
+            <div class="ph"><img class="zoomable" src="assets/ls-store2.webp" alt="LiveStatus" /></div>
+            <div class="ph"><img class="zoomable" src="assets/ls-store3.webp" alt="LiveStatus" /></div>
+          </div>
           <div>
-            <p class="rv d3">A light, always-on link between two people who live far apart.</p>
-            <p class="rv d4">You don’t start a conversation. You <b>share a moment</b> — and the two photos stack into one,
-              yours on top, theirs underneath. A day apart becomes a single frame.</p>
-            <p class="rv d5">I designed it, built the front end, shipped it to the App Store and ran the growth myself.</p>
-            <div class="sig rv d5">Live on the App Store · 2026</div>
+            <p class="rv d3" style="font-size:15.4px">A light, always-on link between two people who live far apart.</p>
+            <div class="tl">
+              <div class="t rv d4"><b>Week 1</b><span>Design, nothing to a finished product — working with AI.</span></div>
+              <div class="t rv d5"><b>Weeks 2–3</b><span>Back end built, App Store review, live.</span></div>
+            </div>
+            <p class="tlsum rv d5">Three weeks from nothing to shipped.</p>
           </div>
         </div>
       </div>
-      <div class="notes" hidden><p>So the last thing I want to show you is a small app of my own, called LiveStatus.</p><p>It’s a light link between two people who live far apart. You don’t start a conversation — you share a moment, and the two photos stack into one, yours on top and theirs underneath.</p><p>I designed it, built the front end, put it on the App Store and ran the growth myself.</p></div>
+      <div class="notes" hidden><p>So the last thing I want to show you is a small app of my own, called LiveStatus. It’s a light, always-on link between two people who live far apart.</p><p>And the part I’m proud of is the speed. The design went from nothing to a finished product in about a week, working with AI. Then two more weeks waiting on the back end and on App Store review. So three weeks from nothing to shipped.</p></div>
     </section>
 
     <!-- 6 · LiveStatus, what it is -->
