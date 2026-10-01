@@ -864,6 +864,7 @@
   .ssnums b { font-size: 26px; }
   .ssnums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
   .ssnums.two { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .ssnums.one { grid-template-columns: 1fr; max-width: 430px; }
   .ssnums b { display: block; font-family: var(--serif); font-weight: 500; font-size: 22px; color: var(--stay); line-height: 1.1; }
   .ssnums span { display: block; margin-top: 4px; font-size: 11.8px; line-height: 1.4; color: var(--dim); }
   .ssret { margin: 16px 0 0; padding-top: 13px; border-top: 1px solid rgba(255,255,255,.1);
@@ -1612,11 +1613,11 @@
 
           <div class="ssmoved frag" data-frag="3">
             <div class="sslab">What moved</div>
-            <div class="ssnums two">
+            <div class="ssnums one">
               <div><b>6% → 21%</b><span>of weekly actives used a study feature — the hub tab, then offered in the flow</span></div>
-              <div><b>27%</b><span>of answers end with a student taking one of the offers</span></div>
+              
             </div>
-            <p class="ssret">Where it lands: in the A/B, the group that got in-flow offers held <b>22% at 30 days against 18%</b> — four points, on the metric the whole project was about.</p>
+            <p class="ssret">Where it lands: over the same period <b>30-day retention went from 18% to 22%</b> — four points, on the metric this whole project was about.</p>
           </div>
         </div>
 
@@ -1642,7 +1643,7 @@
             <div class="notes" hidden><p>But how do we get students to actually use them? Our first try didn’t work.</p><p>We put those features where study features usually go — in their own tab. And entry to that hub stayed flat. The features were fine; nobody was switching modes to go and study. <i>[space]</i></p></div>
             <div class="notes" data-frag="1" hidden><p>And the reason is a mismatch between what we built and why they come. They come to finish homework — photo in, answer out.</p><p>A tab waits to be chosen, and studying was never why they opened the app at that moment. <i>[space]</i></p></div>
                   <div class="notes" data-frag="2" hidden><p>So version two: I connected the new features to a habit they already have. I moved them into the flow they already use, and offered them by what just happened.</p><p>A new concept comes up — the app suggests building a set of flashcards. An exam is coming — it suggests a mock. They miss the same kind of question again — it brings back their mistake book. <i>[space]</i></p></div>
-      <div class="notes" data-frag="3" hidden><p>And the move worked. When the features lived in their own tab, six percent of weekly actives touched one; offered in the flow, it's twenty-one.</p><p>And twenty-seven percent of answers now end with the student taking one of those offers. We ran it as an A/B, so this isn't just the keen students self-selecting: the group that got in-flow offers held twenty-two percent at thirty days against eighteen — four points, on exactly the metric this whole project was about.</p></div>
+            <div class="notes" data-frag="3" hidden><p>And this iteration worked. Only six percent of weekly actives used to open that tab to use these tools. Once they sat inside the Ask AI flow students already use, it went to twenty-one.</p><p>And over the same period, thirty-day retention went from eighteen to twenty-two percent — four points, on exactly the metric this whole project was about.</p></div>
     </section>
 
     <!-- 11 · Identity: old IP → new IP + the three tutors -->
