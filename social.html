@@ -46,6 +46,27 @@
   .funnel .s.leak { border-color: rgba(255,0,80,.45); }
   .funnel .s.dead { border-style: dashed; }
   .funnel .s.dead b { color: var(--eh-red); }
+  /* three stages */
+  .stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 30px; text-align: left; }
+  .stages .st { position: relative; display: flex; flex-direction: column; padding: 20px 20px 22px;
+    border-radius: 18px; background: var(--card); border: 1px solid var(--line); }
+  .stages .st + .st::before { content: ""; position: absolute; left: -17px; top: 56px; width: 8px; height: 8px;
+    border-top: 1px solid rgba(255,255,255,.22); border-right: 1px solid rgba(255,255,255,.22);
+    transform: rotate(45deg); }
+  .stages .ic { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px;
+    background: rgba(255,255,255,.04); border: 1px solid var(--line); }
+  .stages .ic svg { width: 19px; height: 19px; fill: none; stroke: var(--eh-red); stroke-width: 1.4;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .stages .n { position: absolute; right: 18px; top: 16px; font-family: var(--serif); font-size: 12px;
+    letter-spacing: .14em; color: rgba(255,255,255,.16); }
+  .stages h3 { margin: 15px 0 0; font-family: var(--serif); font-weight: 500; font-size: 19px; line-height: 1.25; color: var(--ink); }
+  .stages p { margin: 9px 0 0; font-size: 13.4px; line-height: 1.55; color: var(--dim); }
+  .stages .hard { margin-top: auto; padding-top: 13px; }
+  .stages .hard b { display: block; font-family: var(--serif); font-size: 10.5px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--faint); }
+  .stages .hard span { display: block; margin-top: 5px; font-size: 12.6px; line-height: 1.5; color: var(--dim); }
+  .stages .st.focus { border-color: rgba(255,0,80,.4); }
+  .stages .st.focus .hard b { color: var(--eh-red); }
   /* chapter cover + wrap background */
   .bgimg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
   .bgimg i { position: absolute; inset: -4%; display: block;
@@ -156,13 +177,13 @@
   <div class="bar" style="background:var(--eh-red)"></div>
   <div class="chrome tl"><a href="index.html" onclick="this.href='index.html?t='+Date.now()">← Agenda</a></div>
   <div class="chrome bl">Social · TikTok, and a product of my own</div>
-  <div class="chrome br">01 / 10</div>
+  <div class="chrome br">01 / 11</div>
   <nav class="rail" aria-label="Sections">
     <a data-from="1" data-to="2">The surfaces</a>
-    <a data-from="3" data-to="4">My read</a>
+    <a data-from="3" data-to="5">My read</a>
     <span class="gap"></span>
-    <a data-from="5" data-to="8">LiveStatus</a>
-    <a data-from="9" data-to="9">Wrap up</a>
+    <a data-from="6" data-to="9">LiveStatus</a>
+    <a data-from="10" data-to="10">Wrap up</a>
   </nav>
 
   <div class="deck">
@@ -218,7 +239,41 @@
       <div class="notes" hidden><p>For comparison, four other ways to put friends in a content app.</p><p>小红书 keeps strangers you trust — the social layer is comments and saves. 抖音 built a friends tab out of mutuals and people nearby. Instagram moved the friendship into Stories and DMs and let the feed become discovery. And Snapchat starts from the person: the camera is the message, and presence is the product.</p><p>Only Snapchat starts from the person. The rest add friends to a content product, and from outside I’d put TikTok closer to that second group — though you’d know better than me.</p></div>
     </section>
 
-    <!-- 3 · my read -->
+    <!-- 3 · how I would break it down -->
+    <section class="slide">
+      <div class="slide-inner wide">
+        <div class="eyebrow rv">My read</div>
+        <h2 class="rv">It depends who’s in front of you.</h2>
+        <p class="lede rv d2" style="max-width:860px">Split it by the user and social stops being one job. The way I’d break it down:</p>
+        <div class="stages">
+          <div class="st rv d2">
+            <div class="n">01</div>
+            <div class="ic"><svg viewBox="0 0 20 20"><circle cx="8" cy="6.6" r="3"/><path d="M2.4 16.4c.4-3 2.8-4.8 5.6-4.8 1.2 0 2.3.3 3.2.9"/><path d="M14.4 12.6v4.6M12.1 14.9h4.6"/></svg></div>
+            <h3>No friends here yet</h3>
+            <p>Help them find the people they already know, and get them connected.</p>
+            <div class="hard"><b>What makes it hard</b><span>A lot of what people watch on TikTok is private. Not everyone wants friends to see it.</span></div>
+          </div>
+          <div class="st rv d3">
+            <div class="n">02</div>
+            <div class="ic"><svg viewBox="0 0 20 20"><path d="M2.6 5.6A1.6 1.6 0 0 1 4.2 4h7.2a1.6 1.6 0 0 1 1.6 1.6v4a1.6 1.6 0 0 1-1.6 1.6H6.6L3.6 13.6v-2.4h-.4a.6.6 0 0 1-.6-.6Z"/><path d="M15.4 7.6h.4A1.6 1.6 0 0 1 17.4 9.2v4a1.6 1.6 0 0 1-1.6 1.6h-.4v2.2l-2.6-2.2"/></svg></div>
+            <h3>Friends here, but no exchange</h3>
+            <p>The graph exists. Nobody sends the first thing.</p>
+            <div class="hard"><b>What makes it hard</b><span>Having friends in an app doesn’t make anyone open a conversation. The first move is the wall.</span></div>
+          </div>
+          <div class="st focus rv d4">
+            <div class="n">03</div>
+            <div class="ic"><svg viewBox="0 0 20 20"><path d="M11.2 3.4H4.6A1.6 1.6 0 0 0 3 5v10a1.6 1.6 0 0 0 1.6 1.6h6.6"/><path d="M13.4 10h5M15.8 7.2 18.6 10l-2.8 2.8"/></svg></div>
+            <h3>They send, but the reply lands elsewhere</h3>
+            <p>The share goes out. The conversation happens in another app.</p>
+            <div class="hard"><b>Where I’d look</b><span>This is the one I kept noticing as a user — the next page is about it.</span></div>
+          </div>
+        </div>
+        <p class="kicker rv d5" style="margin-top:22px">Story, the Friends tab, find friends — from outside, that all looks like work on <b>01 and 02</b>.</p>
+      </div>
+      <div class="notes" hidden><p>So here’s how I’d break it down — and this is just my own way of looking at it.</p><p>It really depends who’s in front of you. If you’re new, or none of your friends are here yet, the job is to help you find them and get connected. And I think that’s genuinely hard on TikTok, because a lot of what people watch here is private — they don’t necessarily want their friends to see it.</p><p>Once your friends are here, the job changes. Now you want them actually talking to each other. And the hardest step is the first one — having friends in an app doesn’t make anyone send the first thing.</p><p>And then the third one, which is the one I kept noticing myself: people do send things, but the conversation happens somewhere else.</p><p>So Story, the Friends tab, find friends — from the outside, that all looks like work on the first two. The next page is about the third one.</p></div>
+    </section>
+
+    <!-- 4 · what I noticed -->
     <section class="slide">
       <div class="slide-inner">
         <div class="eyebrow rv">What I noticed</div>
@@ -237,7 +292,7 @@
       <div class="notes" hidden><p>My guess, and it is a guess: the friend graph here isn’t there to supply content — TikTok already wins attention with strangers. It’s there to give people a reason to come back. And the strongest social thing the product does is make you want to send something to one person.</p><p>But look at that chain. You see it, you think of someone, you send it — and then the conversation happens in another app, and the reply comes back somewhere else. The half that leaves is the social half.</p><p>Streaks, stickers, group chats — the pieces I can see serve two people already talking. I didn’t find much that holds the space between shares, but I may well be missing it.</p></div>
     </section>
 
-    <!-- 4 · what I'd want to know -->
+    <!-- 5 · what I'd want to know -->
     <section class="slide">
       <div class="slide-inner">
         <div class="eyebrow rv">What I’d want to know first</div>
