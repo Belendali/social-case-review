@@ -231,8 +231,8 @@
         <h2 class="rv">Staying close shouldn’t take a conversation.</h2>
         <div class="lsgrid">
           <div class="ph vswap rv d2" data-swap>
-            <video src="assets/ls-filming.mp4" muted loop playsinline preload="auto" class="on"></video>
-            <video src="assets/ls-log.mp4" muted loop playsinline preload="auto"></video>
+            <video src="assets/ls-filming.mp4" muted loop playsinline autoplay preload="auto" class="on"></video>
+            <video src="assets/ls-log.mp4" muted loop playsinline autoplay preload="auto"></video>
             <div class="vcap" data-vcap>Making a moment</div>
             <div class="vdots"><i class="on"></i><i></i></div>
           </div>
@@ -257,19 +257,19 @@
         <h2 class="rv">Five features, and where each one earns.</h2>
         <div class="fgrid">
           <div class="f rv d2">
-            <div class="ph"><video class="zoomable" src="assets/ls-share.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
+            <div class="ph"><video class="zoomable" muted loop playsinline autoplay preload="auto" src="assets/ls-share.mp4"></video></div>
             <h3>Snap &amp; Share</h3>
             <p>The core. Shoot from the camera, and your photo stacks with theirs into one split-screen moment.</p>
             <div class="biz"><b>Business</b><span>Making one is free — that’s how people get in. Paying unlocks <b>sharing it out</b> or saving it to the camera roll.</span></div>
           </div>
           <div class="f rv d3">
-            <div class="ph"><video class="zoomable" src="assets/ls-log.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
+            <div class="ph"><video class="zoomable" muted loop playsinline autoplay preload="auto" src="assets/ls-log.mp4"></video></div>
             <h3>The log</h3>
             <p>Every moment the two of you made, kept in one place. Over a few months it quietly becomes the record of the relationship.</p>
             <div class="biz"><b>Business</b><span>Free, and the reason to come back — the fuller it gets, the more there is <b>worth taking out</b>.</span></div>
           </div>
           <div class="f rv d4">
-            <div class="ph"><video class="zoomable" src="assets/ls-widget.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
+            <div class="ph"><video class="zoomable" muted loop playsinline autoplay preload="auto" src="assets/ls-widget.mp4"></video></div>
             <h3>Widget</h3>
             <p>The lightest form of company: their moment on your home screen, nothing to open, no reply owed.</p>
             <div class="biz"><b>Business</b><span>Paid — a <b>two-up couple widget</b>, or their moment blown up large on the home screen.</span></div>
@@ -281,7 +281,7 @@
             <div class="biz"><b>Business</b><span>Paid — <b>pin moments to the map</b>, so they settle into a place as well as a day.</span></div>
           </div>
           <div class="f rv d5">
-            <div class="ph"><video class="zoomable" src="assets/ls-notif.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
+            <div class="ph"><video class="zoomable" muted loop playsinline autoplay preload="auto" src="assets/ls-notif.mp4"></video></div>
             <h3>The nudges</h3>
             <p>Notifications, DMs and a little heart — the triggers that get the first move out of someone, so a quiet day doesn’t stay quiet.</p>
             <div class="biz soft"><b>Retention, not revenue</b><span>This is what keeps the loop running, and everything else depends on it.</span></div>
@@ -336,7 +336,7 @@
         i = n % vids.length;
         vids.forEach(function (v, k) {
           v.classList.toggle("on", k === i);
-          if (k === i) { v.currentTime = 0; v.play().catch(function () {}); } else { v.pause(); }
+          if (k === i) { v.play().catch(function () {}); } else { v.pause(); }
         });
         dots.forEach(function (d, k) { d.classList.toggle("on", k === i); });
         if (cap) cap.textContent = labels[i] || "";
@@ -345,10 +345,28 @@
       box.addEventListener("click", function () { show(i + 1); cycle(); });
       document.addEventListener("deck:change", function () {
         var live = box.closest(".slide") && box.closest(".slide").classList.contains("on");
-        if (live) { show(0); cycle(); } else { clearInterval(timer); vids.forEach(function (v) { v.pause(); }); }
+        if (live) { cycle(); } else { clearInterval(timer); vids.forEach(function (v) { v.pause(); }); }
       });
       show(0); cycle();
     });
+
+    // only the slide you are on plays, and a clip that was not ready yet still starts
+    function play(v) {
+      v.play().catch(function () {
+        v.addEventListener("canplay", function () { v.play().catch(function () {}); }, { once: true });
+      });
+    }
+    function sync() {
+      document.querySelectorAll(".slide").forEach(function (sl) {
+        var live = sl.classList.contains("on");
+        sl.querySelectorAll("video").forEach(function (v) {
+          var swap = v.closest(".vswap");
+          if (live && (!swap || v.classList.contains("on"))) play(v); else v.pause();
+        });
+      });
+    }
+    document.addEventListener("deck:change", function () { setTimeout(sync, 60); });
+    sync();
   })();
 </script>
 </body>
