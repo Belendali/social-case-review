@@ -351,11 +351,7 @@
     });
 
     // only the slide you are on plays, and a clip that was not ready yet still starts
-    function play(v) {
-      v.play().catch(function () {
-        v.addEventListener("canplay", function () { v.play().catch(function () {}); }, { once: true });
-      });
-    }
+    function play(v) { if (v.paused) v.play().catch(function () {}); }
     function sync() {
       document.querySelectorAll(".slide").forEach(function (sl) {
         var live = sl.classList.contains("on");
@@ -367,6 +363,7 @@
     }
     document.addEventListener("deck:change", function () { setTimeout(sync, 60); });
     sync();
+    setInterval(sync, 900); // clips that were still loading get picked up on the next pass
   })();
 </script>
 </body>
