@@ -57,19 +57,19 @@
   .lshero p b { color: var(--ink); font-weight: 600; }
   .lshero .sig { margin-top: 18px; font-family: var(--serif); font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--faint); }
-  .fgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; text-align: left; }
+  .fgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 13px; margin-top: 24px; text-align: left; }
   .fgrid .f { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line);
-    border-radius: 16px; padding: 14px 14px 15px; }
+    border-radius: 16px; padding: 12px 12px 13px; }
   .fgrid .ph { height: min(220px, calc(100vh - 500px)); border-radius: 11px; border: 1px dashed var(--line);
     background: rgba(255,255,255,.02); display: grid; place-items: center; overflow: hidden;
     font-family: var(--serif); font-size: 10.5px; letter-spacing: .1em; color: var(--faint); }
   .fgrid .ph img, .fgrid .ph video { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 10px; }
-  .fgrid h3 { margin: 12px 0 0; font-family: var(--serif); font-weight: 500; font-size: 17px; color: var(--ink); }
-  .fgrid .f > p { margin: 7px 0 0; font-size: 12.8px; line-height: 1.5; color: var(--dim); }
+  .fgrid h3 { margin: 12px 0 0; font-family: var(--serif); font-weight: 500; font-size: 15.5px; color: var(--ink); }
+  .fgrid .f > p { margin: 7px 0 0; font-size: 12.1px; line-height: 1.5; color: var(--dim); }
   .fgrid .biz { margin-top: auto; padding-top: 11px; border-top: 1px solid var(--line); }
   .fgrid .biz b { display: block; font-family: var(--serif); font-size: 10.5px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--eh-red); }
-  .fgrid .biz span { display: block; margin-top: 5px; font-size: 12.4px; line-height: 1.5; color: var(--dim); }
+  .fgrid .biz span { display: block; margin-top: 5px; font-size: 11.9px; line-height: 1.5; color: var(--dim); }
   .fgrid .biz.soft b { color: var(--faint); }
   .status { display: grid; gap: 12px; margin-top: 28px; max-width: 880px; text-align: left; }
   .status .r { display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: baseline;
@@ -77,7 +77,18 @@
   .status .r:first-child { border-top: 0; padding-top: 0; }
   .status .r b { font-family: var(--serif); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
   .status .r span { font-size: 14.4px; line-height: 1.55; color: var(--ink); }
-  @media (max-width: 1100px) { .lshero { grid-template-columns: 1fr; } .fgrid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 1100px) { .lshero { grid-template-columns: 1fr; } .fgrid { grid-template-columns: repeat(3, 1fr); } }
+  /* two clips in one phone slot: auto-switching, click to switch */
+  .vswap { position: relative; cursor: pointer; }
+  .vswap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    opacity: 0; transition: opacity .5s ease; }
+  .vswap video.on { opacity: 1; }
+  .vdots { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; }
+  .vdots i { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.3); transition: background .3s; }
+  .vdots i.on { background: rgba(255,255,255,.85); }
+  .vcap { position: absolute; left: 0; right: 0; bottom: 26px; text-align: center; z-index: 2;
+    font-family: var(--serif); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(255,255,255,.55); pointer-events: none; }
   .lsgrid { display: grid; grid-template-columns: 300px 1fr; gap: 34px; align-items: center; margin-top: 26px; }
   .lsgrid .ph { height: min(var(--media-h, 420px), calc(100vh - 380px)); aspect-ratio: 1206 / 2622; border-radius: 26px;
     border: 1px dashed var(--line); background: rgba(255,255,255,.02); display: grid; place-items: center;
@@ -219,7 +230,12 @@
         <div class="eyebrow rv" style="color:var(--eh-red)">What it is</div>
         <h2 class="rv">Staying close shouldn’t take a conversation.</h2>
         <div class="lsgrid">
-          <div class="ph rv d2 zoomable">产品截图 / 录屏位</div>
+          <div class="ph vswap rv d2" data-swap>
+            <video src="assets/ls-filming.mp4" muted loop playsinline preload="auto" class="on"></video>
+            <video src="assets/ls-log.mp4" muted loop playsinline preload="auto"></video>
+            <div class="vcap" data-vcap>Making a moment</div>
+            <div class="vdots"><i class="on"></i><i></i></div>
+          </div>
           <div class="lsl">
             <div class="row rv d2"><b>The problem</b><p>Chatting is heavy, and there are already ten places to do it.
               For a couple or two best friends living apart, the hard part isn’t talking — <em>it’s having to think of something to say.</em></p></div>
@@ -231,42 +247,48 @@
           </div>
         </div>
       </div>
-      <div class="notes" hidden><p>The problem is pretty plain. Chatting is heavy, and there are already ten other places to do it. For a couple or two best friends living apart, the hard part isn’t talking — it’s having to think of something to say first.</p><p>So instead of a conversation, you just casually share a moment. Two photos stack into one, top and bottom, and that becomes a frame of the two of you. It’s company you can feel, and it’s a bit of personal expression at the same time — which is what keeps a long-distance relationship going.</p><p>It lives on the home screen too, as a widget, so their moment is just there without opening anything.</p><p>It’s for couples and close friends who are far apart. And I built it on my own — design, front end, the App Store release and the growth — with one developer helping me on the back end.</p></div>
+      <div class="notes" hidden><p>The problem is pretty plain. Chatting is heavy, and there are already ten other places to do it. For a couple or two best friends living apart, the hard part isn’t talking — it’s having to think of something to say first.</p><p>So instead of a conversation, you just casually share a moment. Two photos stack into one, top and bottom, and that becomes a frame of the two of you. It’s company you can feel, and it’s a bit of personal expression at the same time — which is what keeps a long-distance relationship going.</p><p>On the left you can see it — making a moment, and then the log of everything the two of you have made. It lives on the home screen too, as a widget, so their moment is just there without opening anything.</p><p>It’s for couples and close friends who are far apart. And I built it on my own — design, front end, the App Store release and the growth — with one developer helping me on the back end.</p></div>
     </section>
 
     <!-- 7 · features and where each one pays -->
     <section class="slide">
       <div class="slide-inner">
         <div class="eyebrow rv" style="color:var(--eh-red)">Features and the business behind them</div>
-        <h2 class="rv">Four features, and where each one earns.</h2>
+        <h2 class="rv">Five features, and where each one earns.</h2>
         <div class="fgrid">
           <div class="f rv d2">
-            <div class="ph zoomable">Snap &amp; Share<br />截图位</div>
-            <h3>Snap &amp; Share Moments</h3>
-            <p>The core. Shoot from the camera, and your photo stacks with theirs into one split-screen moment that stays in the app as a memory.</p>
-            <div class="biz"><b>Business</b><span>Free, and the way people get in. Paying unlocks <b>sharing that moment out</b> or saving it to the camera roll.</span></div>
+            <div class="ph"><video class="zoomable" src="assets/ls-share.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
+            <h3>Snap &amp; Share</h3>
+            <p>The core. Shoot from the camera, and your photo stacks with theirs into one split-screen moment.</p>
+            <div class="biz"><b>Business</b><span>Making one is free — that’s how people get in. Paying unlocks <b>sharing it out</b> or saving it to the camera roll.</span></div>
           </div>
           <div class="f rv d3">
-            <div class="ph zoomable">Widget<br />截图位</div>
-            <h3>Widget</h3>
-            <p>The lightest form of company: their moment sitting on your home screen, nothing to open, no reply owed.</p>
-            <div class="biz"><b>Business</b><span>Paid — a <b>two-up couple widget</b>, or their moment blown up large on your home screen.</span></div>
+            <div class="ph"><video class="zoomable" src="assets/ls-log.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
+            <h3>The log</h3>
+            <p>Every moment the two of you made, kept in one place. Over a few months it quietly becomes the record of the relationship.</p>
+            <div class="biz"><b>Business</b><span>Free, and the reason to come back — the fuller it gets, the more there is <b>worth taking out</b>.</span></div>
           </div>
           <div class="f rv d4">
-            <div class="ph zoomable">Map<br />截图位</div>
-            <h3>Map</h3>
-            <p>Where they are, how much battery is left, what they’re up to. Half reassurance, half an excuse to say something.</p>
-            <div class="biz"><b>Business</b><span>Paid — <b>pin your moments to the map</b>, so they settle into a place as well as a day.</span></div>
+            <div class="ph"><video class="zoomable" src="assets/ls-widget.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
+            <h3>Widget</h3>
+            <p>The lightest form of company: their moment on your home screen, nothing to open, no reply owed.</p>
+            <div class="biz"><b>Business</b><span>Paid — a <b>two-up couple widget</b>, or their moment blown up large on the home screen.</span></div>
           </div>
           <div class="f rv d5">
-            <div class="ph zoomable">Triggers<br />截图位</div>
+            <div class="ph"><img class="zoomable" src="assets/ls-map.webp" alt="Memory map" /></div>
+            <h3>Map</h3>
+            <p>Where they are, their battery, what they’re up to. Half reassurance, half an excuse to say something.</p>
+            <div class="biz"><b>Business</b><span>Paid — <b>pin moments to the map</b>, so they settle into a place as well as a day.</span></div>
+          </div>
+          <div class="f rv d5">
+            <div class="ph"><video class="zoomable" src="assets/ls-notif.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
             <h3>The nudges</h3>
-            <p>Notifications, DMs and a little heart. The small triggers that get the first move out of someone, so a quiet day doesn’t stay quiet.</p>
-            <div class="biz soft"><b>Retention, not revenue</b><span>This is what keeps the loop running — and what everything else depends on.</span></div>
+            <p>Notifications, DMs and a little heart — the triggers that get the first move out of someone, so a quiet day doesn’t stay quiet.</p>
+            <div class="biz soft"><b>Retention, not revenue</b><span>This is what keeps the loop running, and everything else depends on it.</span></div>
           </div>
         </div>
       </div>
-      <div class="notes" hidden><p>Here are the four features, and where each one is meant to earn.</p><p>First, Snap and Share Moments — the core of the product. You shoot from the camera, and your photo stacks with theirs into one split-screen moment that stays in the app as a memory. That part is free, because it’s how people get in. The paid part is taking that moment out — sharing it, or saving it to your camera roll.</p><p>Second, the widget. It’s the lightest version of company — their moment on your home screen, nothing to open. That one is paid: a two-up couple widget, or their moment blown up large on the home screen.</p><p>Third, the map. You can see where they are, their battery, what they’re doing — it’s reassurance, and it’s also an excuse to start talking. The paid part is pinning your moments onto the map, so a memory lives in a place and not just on a timeline.</p><p>And fourth, the nudges — notifications, DMs, a little heart. Those don’t make money; they’re what keeps the loop going, and everything else depends on them.</p></div>
+      <div class="notes" hidden><p>Here are the five features, and where each one is meant to earn.</p><p>First, Snap and Share — the core of the product. You shoot from the camera, and your photo stacks with theirs into one split-screen moment. Making one is free, because that’s how people get in. The paid part is taking it out — sharing it, or saving it to your camera roll.</p><p>Second, the log. Every moment the two of you made stays in one place, and after a few months that’s the record of the relationship. It’s free, and it’s the reason to come back — the fuller it gets, the more there is worth taking out.</p><p>Then the widget. It’s the lightest version of company — their moment on your home screen, nothing to open. That one is paid: a two-up couple widget, or their moment blown up large on the home screen.</p><p>The map. You can see where they are, their battery, what they’re doing — it’s reassurance, and it’s also an excuse to start talking. The paid part is pinning your moments onto the map, so a memory lives in a place and not just on a timeline.</p><p>And the nudges — notifications, DMs, a little heart. Those don’t make money; they’re what keeps the loop going, and everything else depends on them.</p></div>
     </section>
 
     <!-- 8 · where it is now -->
@@ -304,5 +326,30 @@
 <script src="editor.js?v=09081324"></script>
 <script src="lightbox.js?v=4"></script>
 <script src="comments.js?v=5"></script>
+<script>
+  // two clips in one phone: auto-switch, and click to switch
+  (function () {
+    document.querySelectorAll("[data-swap]").forEach(function (box) {
+      var vids = box.querySelectorAll("video"), dots = box.querySelectorAll(".vdots i"),
+          cap = box.querySelector("[data-vcap]"), labels = ["Making a moment", "The log"], i = 0, timer;
+      function show(n) {
+        i = n % vids.length;
+        vids.forEach(function (v, k) {
+          v.classList.toggle("on", k === i);
+          if (k === i) { v.currentTime = 0; v.play().catch(function () {}); } else { v.pause(); }
+        });
+        dots.forEach(function (d, k) { d.classList.toggle("on", k === i); });
+        if (cap) cap.textContent = labels[i] || "";
+      }
+      function cycle() { clearInterval(timer); timer = setInterval(function () { show(i + 1); }, 6500); }
+      box.addEventListener("click", function () { show(i + 1); cycle(); });
+      document.addEventListener("deck:change", function () {
+        var live = box.closest(".slide") && box.closest(".slide").classList.contains("on");
+        if (live) { show(0); cycle(); } else { clearInterval(timer); vids.forEach(function (v) { v.pause(); }); }
+      });
+      show(0); cycle();
+    });
+  })();
+</script>
 </body>
 </html>
