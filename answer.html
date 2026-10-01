@@ -928,6 +928,11 @@
   .chart.mini .grid line { stroke: rgba(255,255,255,.07); }
   .twocharts figcaption { margin-top: 10px; font-size: 13.4px; line-height: 1.5; color: var(--dim); }
   .twocharts figcaption b { color: var(--ink); font-weight: 600; }
+  .miniform { margin: 12px 0 0; font-family: var(--serif); font-size: 12.5px; letter-spacing: .01em; color: var(--dim); }
+  .miniform i { font-style: normal; color: var(--faint); padding: 0 1px; }
+  .miniform i.dn { color: #ff8da5; }
+  .miniform i.up { color: var(--core); }
+  .miniform span { display: block; margin-top: 3px; font-size: 11px; color: var(--faint); }
   .moneynote { margin-top: 24px; font-size: 16.5px; line-height: 1.55; color: var(--dim); border-left: 2px solid var(--core); padding-left: 16px; max-width: 96ch; }
   .moneynote b { color: var(--ink); font-weight: 600; }
   @media (max-width: 900px) { .twocharts { grid-template-columns: 1fr; } }
@@ -1134,19 +1139,6 @@
         <div class="eyebrow rv">The challenge</div>
         <h2 class="rv">Revenue was falling. Which part of it?</h2>
 
-        <div class="bigform rv d2">
-          <span class="tm rev">Revenue<i class="arw dn frag" data-frag="1">↓</i></span>
-          <span class="op">=</span>
-          <span class="tm">New users<i class="arw up frag" data-frag="1">↑</i></span>
-          <span class="op">×</span>
-          <span class="tm">Conversion<i class="arw fl frag" data-frag="1">—</i></span>
-          <span class="op">×</span>
-          <span class="tm ret">Retention<i class="arw dn frag" data-frag="1">↓</i></span>
-          <span class="op">×</span>
-          <span class="tm">Price<i class="arw fl frag" data-frag="1">—</i></span>
-        </div>
-        <div class="fcost">− cost to serve · every answer burns inference</div>
-
         <div class="twocharts frag" data-frag="1">
           <figure>
             <svg class="chart mini" viewBox="0 0 448 196" xmlns="http://www.w3.org/2000/svg">
@@ -1175,14 +1167,15 @@
   <text class="note warn" x="394.0" y="145.6" text-anchor="start">Paying subscribers</text>
 </svg>
             <figcaption><b>New users still edged up. Paying subscribers dropped.</b> Sep → Dec 2024.</figcaption>
+            <p class="miniform">Revenue <i class="dn">↓</i> = New users <i class="up">↑</i> × Conversion <i>—</i> × Retention <i class="dn">↓</i> × Price <i>—</i> <span>− credits burned on every answer</span></p>
           </figure>
         </div>
 
         <p class="moneynote frag" data-frag="2"><b>We were still filling the bucket. It was leaking faster than we filled it.</b> Acquisition buys you this month. <b>Retention buys you every month after.</b></p>
       </div>
-            <div class="notes" hidden><p>And with it came a bigger challenge. Once ChatGPT could read a photo for free, our revenue started falling.</p><p>Revenue here is really four things: how many new users come in, how many convert, how long they stay, and price — minus what it costs us, because every answer we generate burns credits. <i>[space]</i></p></div>
+                  <div class="notes" hidden><p>But a bigger challenge came with it. After GPT made image recognition free, our revenue started falling too. <i>[space]</i></p></div>
 
-                  <div class="notes" data-frag="1" hidden><p>When we looked at the data, the drop came from two places: retention was falling, and paying subscribers were cancelling.</p><p>New users were still coming in, and conversion and price hadn’t moved. <i>[space]</i></p></div>
+                        <div class="notes" data-frag="1" hidden><p>Revenue really comes down to four things: new users, how many of them convert, how long they stay, and price — minus the credits every answer burns.</p><p>And the charts say it plainly: our revenue drop tracks the drop in retention, and on top of that, subscribers were cancelling. <i>[space]</i></p></div>
                   <div class="notes" data-frag="2" hidden>In other words, we were still filling the bucket and it was leaking faster than we filled it. And retention is the one worth fixing first, because acquisition only buys you this month — retention buys you every month after.</div>
 
     </section>
