@@ -57,17 +57,17 @@
   .lshero p b { color: var(--ink); font-weight: 600; }
   .lshero .sig { margin-top: 18px; font-family: var(--serif); font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--faint); }
-  .fgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 13px; margin-top: 24px; text-align: left; }
+  .slide-inner.wide { width: min(1240px, calc(100% - 200px)); }
+  .fgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 22px; text-align: left; }
   .fgrid .f { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line);
     border-radius: 16px; padding: 12px 12px 13px; }
-  .fgrid .ph { height: min(220px, calc(100vh - 500px)); border-radius: 11px; border: 1px dashed var(--line);
-    background: rgba(255,255,255,.02); display: grid; place-items: center; overflow: hidden;
-    font-family: var(--serif); font-size: 10.5px; letter-spacing: .1em; color: var(--faint); }
-  .fgrid .ph img, .fgrid .ph video { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 10px; }
+  .fgrid .ph { aspect-ratio: 1206 / 2622; height: min(468px, calc(100vh - 416px)); width: auto; max-width: 100%;
+    margin: 0 auto; border-radius: 13px; border: 0; background: #000; display: grid; place-items: center; overflow: hidden; }
+  .fgrid .ph img, .fgrid .ph video { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
   .fgrid h3 { margin: 12px 0 0; font-family: var(--serif); font-weight: 500; font-size: 15.5px; color: var(--ink); }
   .fgrid .f > p { margin: 7px 0 0; font-size: 12.1px; line-height: 1.5; color: var(--dim); }
-  .fgrid .biz { margin-top: auto; padding-top: 11px; border-top: 1px solid var(--line); }
-  .fgrid .biz b { display: block; font-family: var(--serif); font-size: 10.5px; letter-spacing: .16em;
+  .fgrid .biz { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); }
+  .fgrid .biz > b { display: block; font-family: var(--serif); font-size: 10.5px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--eh-red); }
   .fgrid .biz span { display: block; margin-top: 5px; font-size: 11.9px; line-height: 1.5; color: var(--dim); }
   .fgrid .biz.soft b { color: var(--faint); }
@@ -252,39 +252,39 @@
 
     <!-- 7 · features and where each one pays -->
     <section class="slide">
-      <div class="slide-inner">
+      <div class="slide-inner wide">
         <div class="eyebrow rv" style="color:var(--eh-red)">Features and the business behind them</div>
         <h2 class="rv">Five features, and where each one earns.</h2>
         <div class="fgrid">
           <div class="f rv d2">
             <div class="ph"><video class="zoomable" muted loop playsinline autoplay preload="auto" src="assets/ls-share.mp4"></video></div>
             <h3>Snap &amp; Share</h3>
-            <p>The core. Shoot from the camera, and your photo stacks with theirs into one split-screen moment.</p>
-            <div class="biz"><b>Business</b><span>Making one is free — that’s how people get in. Paying unlocks <b>sharing it out</b> or saving it to the camera roll.</span></div>
+            <p>Shoot, and your photo stacks with theirs into one moment.</p>
+            <div class="biz"><b>Business</b><span>Free to make. Paid to share out or save.</span></div>
           </div>
           <div class="f rv d3">
             <div class="ph"><video class="zoomable" muted loop playsinline autoplay preload="auto" src="assets/ls-log.mp4"></video></div>
             <h3>The log</h3>
-            <p>Every moment the two of you made, kept in one place. Over a few months it quietly becomes the record of the relationship.</p>
-            <div class="biz"><b>Business</b><span>Free, and the reason to come back — the fuller it gets, the more there is <b>worth taking out</b>.</span></div>
+            <p>Every moment you two made, kept in one place.</p>
+            <div class="biz"><b>Business</b><span>Free — and the reason to come back.</span></div>
           </div>
           <div class="f rv d4">
             <div class="ph"><video class="zoomable" muted loop playsinline autoplay preload="auto" src="assets/ls-widget.mp4"></video></div>
             <h3>Widget</h3>
-            <p>The lightest form of company: their moment on your home screen, nothing to open, no reply owed.</p>
-            <div class="biz"><b>Business</b><span>Paid — a <b>two-up couple widget</b>, or their moment blown up large on the home screen.</span></div>
+            <p>Their moment on your home screen. Nothing to open.</p>
+            <div class="biz"><b>Business</b><span>Paid — the two-up couple widget.</span></div>
           </div>
           <div class="f rv d5">
             <div class="ph"><img class="zoomable" src="assets/ls-map.webp" alt="Memory map" /></div>
             <h3>Map</h3>
-            <p>Where they are, their battery, what they’re up to. Half reassurance, half an excuse to say something.</p>
-            <div class="biz"><b>Business</b><span>Paid — <b>pin moments to the map</b>, so they settle into a place as well as a day.</span></div>
+            <p>Where they are, and an excuse to say something.</p>
+            <div class="biz"><b>Business</b><span>Paid — pin moments to the map.</span></div>
           </div>
           <div class="f rv d5">
             <div class="ph"><video class="zoomable" muted loop playsinline autoplay preload="auto" src="assets/ls-notif.mp4"></video></div>
             <h3>The nudges</h3>
-            <p>Notifications, DMs and a little heart — the triggers that get the first move out of someone, so a quiet day doesn’t stay quiet.</p>
-            <div class="biz soft"><b>Retention, not revenue</b><span>This is what keeps the loop running, and everything else depends on it.</span></div>
+            <p>Notifications, DMs, a little heart — what gets the first move out of someone.</p>
+            <div class="biz soft"><b>Retention, not revenue</b><span>What keeps the loop running.</span></div>
           </div>
         </div>
       </div>
