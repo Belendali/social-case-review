@@ -155,8 +155,9 @@
   .status .r { display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: baseline;
     border-top: 1px solid var(--line); padding-top: 12px; }
   .status .r:first-child { border-top: 0; padding-top: 0; }
-  .status .r b { font-family: var(--serif); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+  .status .r > b { font-family: var(--serif); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
   .status .r span { font-size: 14.4px; line-height: 1.55; color: var(--ink); }
+  .status .fig { font-family: var(--serif); font-weight: 500; font-size: 21px; color: var(--eh-red); }
   @media (max-width: 1100px) { .lshero { grid-template-columns: 1fr; } .fgrid { grid-template-columns: repeat(3, 1fr); } }
   /* two clips in one phone slot: auto-switching, click to switch */
   .vswap { position: relative; cursor: pointer; }
@@ -378,16 +379,16 @@
     <section class="slide">
       <div class="slide-inner">
         <div class="eyebrow rv" style="color:var(--eh-red)">Where it is now</div>
-        <h2 class="rv">Just shipped, and the first numbers are honest.</h2>
+        <h2 class="rv">Just shipped, and already earning.</h2>
         <div class="status">
           <div class="r rv d2"><b>Shipped</b><span>The first MVP is live on the App Store.</span></div>
-          <div class="r rv d3"><b>Revenue</b><span>It’s earning — small, but real.</span></div>
-          <div class="r rv d4"><b>Acquisition</b><span>Paid acquisition is breaking even, so we can keep buying users while we learn.</span></div>
-          <div class="r rv d5"><b>Still open</b><span>Which of the four features is the one worth betting on. We’re still exploring that.</span></div>
+          <div class="r rv d3"><b>Revenue</b><span><b class="fig">About $1,000 a week.</b></span></div>
+          <div class="r rv d4"><b>Acquisition</b><span>Paid acquisition is working.</span></div>
+          <div class="r rv d5"><b>Still building</b><span>More features, and working out which one is worth betting on.</span></div>
         </div>
-        <p class="kicker rv d5" style="margin-top:28px">A small attempt of my own in social — and a coincidence that it’s what this role is about, which is why I wanted to show it.</p>
+        <p class="kicker rv d5" style="margin-top:28px">A vibe-coding experiment of my own — but it touches the same problem as TikTok social, which is why I wanted to share it.</p>
       </div>
-      <div class="notes" hidden><p>Where it is now: it’s only just shipped, so the numbers are small. The first MVP is on the App Store, it’s making some money, and paid acquisition is breaking even — which means we can keep buying users while we figure things out. What’s still open is which of those four features is the one worth betting on.</p><p>This is really just a small attempt of my own in social. It’s a bit of a coincidence that it turned out to be what this role is about — so I thought I’d share it.</p></div>
+      <div class="notes" hidden><p>Where it is now: the first MVP is live on the App Store. It’s making around a thousand dollars a week, paid acquisition is doing well, and I’m still building on it.</p><p>Honestly it’s a vibe coding experiment of my own. But it’s about the same problem as TikTok social, so I thought I’d share it here.</p></div>
     </section>
 
     <!-- 9 · wrap -->
