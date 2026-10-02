@@ -320,8 +320,8 @@
   .ptabs:has(.pstep2trig.shown) .pstep[data-k="step2"] .pswap { display: block; }
   .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"],
   .ptabs:has(.pstep2trig.shown) .pstep[data-k="step1"] { opacity: .38; border-left-color: rgba(255,255,255,.14); }
-  .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"]:hover,
-  .ptabs:has(.pstep2trig.shown) .pstep[data-k="step1"]:hover { opacity: .62; }
+  .ptabs:not(:has(.pstep2trig.shown)) .pstep[data-k="step2"]:is(:hover, .hov),
+  .ptabs:has(.pstep2trig.shown) .pstep[data-k="step1"]:is(:hover, .hov) { opacity: .62; }
   .pstep .pdata { position: static; opacity: 1; transform: none; pointer-events: auto; margin-top: 12px; }
   .ppanel.p1 { position: relative; }
   .ppair { align-items: end; }
@@ -634,13 +634,13 @@
   .ar li b { color: var(--ink); font-weight: 600; }
   .ar { transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, box-shadow .3s ease-out; }
   .ar::after { transition: opacity .35s ease-out, transform .45s cubic-bezier(.22,1,.36,1); }
-  .askread:hover .ar:not(:hover) { opacity: .55; }
+  .askread:is(:hover, .hov) .ar:not(:is(:hover, .hov)) { opacity: .55; }
   .askread .ar { transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s ease-out, box-shadow .3s ease-out, opacity .3s ease-out; }
-  .ar:hover { transform: translateY(-5px); }
-  .ar:hover::after { opacity: .13; transform: translateY(-8px); }
-  .ar-ask:hover { border-color: rgba(138,133,255,.5); box-shadow: 0 0 0 1px rgba(138,133,255,.18), 0 20px 44px rgba(0,0,0,.5); }
-  .ar-read:hover { border-color: rgba(255,214,102,.45); box-shadow: 0 0 0 1px rgba(255,214,102,.16), 0 20px 44px rgba(0,0,0,.5); }
-  .ar:hover li::before { opacity: 1; }
+  .ar:is(:hover, .hov) { transform: translateY(-5px); }
+  .ar:is(:hover, .hov)::after { opacity: .13; transform: translateY(-8px); }
+  .ar-ask:is(:hover, .hov) { border-color: rgba(138,133,255,.5); box-shadow: 0 0 0 1px rgba(138,133,255,.18), 0 20px 44px rgba(0,0,0,.5); }
+  .ar-read:is(:hover, .hov) { border-color: rgba(255,214,102,.45); box-shadow: 0 0 0 1px rgba(255,214,102,.16), 0 20px 44px rgba(0,0,0,.5); }
+  .ar:is(:hover, .hov) li::before { opacity: 1; }
   .asknote { margin-top: 16px; font-size: 15.5px; color: var(--ink); font-style: italic; }
   @media (max-width: 900px) { .askread { grid-template-columns: 1fr; } }
   /* ===== Core trade-off ===== */
@@ -728,10 +728,10 @@
   .wgqi.on { opacity: 1; pointer-events: auto; transition: opacity .4s ease-out .3s; }
   .wgqi .wgq { margin: 0; }
   .wg .wgwho { margin: 7px 0 0; font-family: var(--serif); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
-  .wgrid:hover .wg:not(:hover) { opacity: .55; }
+  .wgrid:is(:hover, .hov) .wg:not(:is(:hover, .hov)) { opacity: .55; }
   /* click a card, a line drops to the opportunity it opened */
   .wg { position: relative; cursor: pointer; }
-  .wg:hover, .wg:focus-visible { border-color: rgba(255,255,255,.28); transform: translateY(-3px); }
+  .wg:is(:hover, .hov), .wg:focus-visible { border-color: rgba(255,255,255,.28); transform: translateY(-3px); }
   .wg.on { border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.025); }
   .wgconnect { display: none; }
   .whatgood.picked .wgpair { display: grid; grid-template-columns: 248px 38px minmax(0, 1fr); align-items: stretch; column-gap: 0;
@@ -2080,7 +2080,7 @@
 <script src="deck.js?v=10012"></script>
 <script src="mirror.js?v=09081324"></script>
 <script src="editor.js?v=09081324"></script>
-<script src="lightbox.js?v=6"></script>
+<script src="lightbox.js?v=7"></script>
 <script src="comments.js?v=5"></script>
 </body>
 </html>

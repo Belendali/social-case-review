@@ -9,7 +9,7 @@
   const css = document.createElement("style");
   css.textContent = `
   .zoomable { cursor: zoom-in; transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease-out; }
-  .zoomable:hover { transform: translateY(-4px) scale(1.012); }
+  .zoomable:is(:hover, .hov) { transform: translateY(-4px) scale(1.012); }
   .lbx { position: fixed; inset: 0; z-index: 90; display: none; place-items: center; flex-direction: column; gap: 14px;
     background: rgba(6,6,10,.94); backdrop-filter: blur(10px); cursor: zoom-out; padding: 40px; }
   body.script-on .lbx { bottom: var(--script-h, 36vh); }   /* keep the script readable while zoomed */
@@ -22,13 +22,25 @@
   `;
   document.head.appendChild(css);
 
-  function open(src, label, isVideo) {
+  // the presenter's deck runs in an iframe; top-level windows mirror it
+  const mbc = ("BroadcastChannel" in window) ? new BroadcastChannel("deck-lightbox") : null;
+  const isSource = window !== window.top;
+  function open(src, label, isVideo, mirrored) {
     img.hidden = !!isVideo; vid.hidden = !isVideo;
     if (isVideo) { vid.src = src; vid.play().catch(function () {}); } else { img.src = src; }
     cap.textContent = label || "";
     box.classList.add("on");
+    if (mbc && isSource && !mirrored) mbc.postMessage({ type: "open", src: src, label: label || "", isVideo: !!isVideo });
   }
-  function close() { box.classList.remove("on"); img.src = ""; vid.pause(); vid.removeAttribute("src"); }
+  function close(mirrored) {
+    box.classList.remove("on"); img.src = ""; vid.pause(); vid.removeAttribute("src");
+    if (mbc && isSource && mirrored !== true) mbc.postMessage({ type: "close" });
+  }
+  if (mbc && !isSource) mbc.onmessage = function (e) {
+    const m = e.data || {};
+    if (m.type === "open") open(m.src, m.label, m.isVideo, true);
+    else if (m.type === "close") close(true);
+  };
 
   document.addEventListener("click", (e) => {
     const t = e.target.closest(".zoomable");
@@ -46,11 +58,11 @@
     }
     open(t.currentSrc || t.src, label, t.tagName === "VIDEO");
   });
-  box.addEventListener("click", close);
+  box.addEventListener("click", function () { close(); });
   window.addEventListener("keydown", (e) => {
     if (!box.classList.contains("on")) return;
     e.stopImmediatePropagation();
     if (e.key === "Escape" || e.key === " " || e.key === "Enter") { e.preventDefault(); close(); }
   }, true);
-  document.addEventListener("deck:change", close);
+  document.addEventListener("deck:change", function () { close(); });
 })();

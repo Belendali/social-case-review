@@ -335,7 +335,7 @@
     transition: opacity .32s ease-out, transform .38s cubic-bezier(.22,1,.36,1);
     pointer-events: none; filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
   }
-  .fcard:hover .ffront .sticker { opacity: 1; transform: translateY(0) rotate(-2deg) scale(1); }
+  .fcard:is(:hover, .hov) .ffront .sticker { opacity: 1; transform: translateY(0) rotate(-2deg) scale(1); }
   .fcard.flip .ffront .sticker { opacity: 0; }
   @media (max-width: 900px) { .fcard .sticker { width: 68px; right: 8px; bottom: 6px; } }
   .match-hint { margin-top: 14px; font-size: 11.5px; color: rgba(255,255,255,0.25); font-family: var(--serif); letter-spacing: 0.14em; text-transform: uppercase; }
@@ -343,7 +343,7 @@
   .hero-actions .more-toggle { margin-top: 26px; }
   a.more-toggle.take-home { text-decoration: none; }
   a.more-toggle.take-home .arrow { font-size: 12px; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
-  a.more-toggle.take-home:hover .arrow { transform: translate(2px, -2px); }
+  a.more-toggle.take-home:is(:hover, .hov) .arrow { transform: translate(2px, -2px); }
   .open a.more-toggle.take-home .chev { transform: none; }
   /* phone: one column, nothing wider than the screen */
   @media (max-width: 900px) {
@@ -690,7 +690,7 @@
 </script>
 <script src="mirror.js?v=09081324"></script>
 <script src="editor.js?v=09081324"></script>
-<script src="lightbox.js?v=4"></script>
+<script src="lightbox.js?v=7"></script>
 <script src="comments.js?v=5"></script>
 </body>
 </html>
