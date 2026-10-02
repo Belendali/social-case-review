@@ -53,7 +53,7 @@
   .funnel .s.dead b { color: var(--eh-red); }
   /* three stages */
   .stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 30px; text-align: left; }
-  .stages .st { position: relative; display: flex; flex-direction: column; min-height: 252px;
+  .stages .st { position: relative; display: flex; flex-direction: column; min-height: 318px;
     padding: 20px 20px 22px; border-radius: 18px; background: var(--card); border: 1px solid var(--line);
     transition: border-color .25s ease, background .25s ease; }
   .stages .st:hover { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.028); }
@@ -71,11 +71,15 @@
   .stages .hard { position: absolute; left: 20px; right: 20px; bottom: 19px;
     opacity: 0; transform: translateY(5px); transition: opacity .25s ease, transform .25s ease; }
   .stages .st:hover .hard { opacity: 1; transform: none; }
-  .stages .hard b { display: block; font-family: var(--serif); font-size: 10.5px; letter-spacing: .16em;
+  .stages .hr { display: grid; grid-template-columns: 1fr; gap: 3px; padding-top: 11px; margin-top: 11px;
+    border-top: 1px solid var(--line); }
+  .stages .hr:first-child { padding-top: 0; margin-top: 0; border-top: 0; }
+  .stages .hr b { font-family: var(--serif); font-weight: 500; font-size: 10px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--faint); }
-  .stages .hard span { display: block; margin-top: 5px; font-size: 12.6px; line-height: 1.5; color: var(--dim); }
+  .stages .hr span { font-size: 12.3px; line-height: 1.45; color: var(--dim); }
+  .stages .hr.next b { color: var(--eh-red); }
   .stages .st.focus { border-color: rgba(255,0,80,.4); }
-  .stages .st.focus .hard b { color: var(--eh-red); }
+
   /* chapter cover + wrap background */
   .bgimg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
   .bgimg i { position: absolute; inset: -4%; display: block;
@@ -240,26 +244,35 @@
             <div class="ic"><svg viewBox="0 0 20 20"><circle cx="8" cy="6.6" r="3"/><path d="M2.4 16.4c.4-3 2.8-4.8 5.6-4.8 1.2 0 2.3.3 3.2.9"/><path d="M14.4 12.6v4.6M12.1 14.9h4.6"/></svg></div>
             <h3>No friends here yet</h3>
             <p>Connect them to the friends they already have here — or help them make new ones.</p>
-            <div class="hard"><b>What makes it hard</b><span>A lot of what people watch here is private. Not everyone wants friends to see it.</span></div>
+            <div class="hard">
+              <div class="hr"><b>Already there</b><span>Contacts sync, suggested friends, invite links.</span></div>
+              <div class="hr next"><b>Could go further</b><span>The share sheet already knows who you text videos to. Those are real friends — offer to connect them here.</span></div>
+            </div>
           </div>
           <div class="st rv d3">
             <div class="n">02</div>
             <div class="ic"><svg viewBox="0 0 20 20"><path d="M2.6 5.6A1.6 1.6 0 0 1 4.2 4h7.2a1.6 1.6 0 0 1 1.6 1.6v4a1.6 1.6 0 0 1-1.6 1.6H6.6L3.6 13.6v-2.4h-.4a.6.6 0 0 1-.6-.6Z"/><path d="M15.4 7.6h.4A1.6 1.6 0 0 1 17.4 9.2v4a1.6 1.6 0 0 1-1.6 1.6h-.4v2.2l-2.6-2.2"/></svg></div>
             <h3>Friends here, but no exchange</h3>
             <p>The friends are there. Nobody sends the first thing.</p>
-            <div class="hard"><b>What makes it hard</b><span>Having friends in an app doesn’t make anyone open a conversation. The first move is the wall.</span></div>
+            <div class="hard">
+              <div class="hr"><b>Already there</b><span>Story, the Friends tab, streak pets, reactions.</span></div>
+              <div class="hr next"><b>Could go further</b><span>Make the first move cost nothing — one tap on a friend’s post that opens a thread.</span></div>
+            </div>
           </div>
           <div class="st focus rv d4">
             <div class="n">03</div>
             <div class="ic"><svg viewBox="0 0 20 20"><path d="M11.2 3.4H4.6A1.6 1.6 0 0 0 3 5v10a1.6 1.6 0 0 0 1.6 1.6h6.6"/><path d="M13.4 10h5M15.8 7.2 18.6 10l-2.8 2.8"/></svg></div>
             <h3>They send, but the reply lands elsewhere</h3>
             <p>The share goes out. The conversation happens in another app.</p>
-            <div class="hard"><b>Where I’d look</b><span>This is the one I kept noticing as a user, and the one I’d want to dig into first.</span></div>
+            <div class="hard">
+              <div class="hr"><b>Already there</b><span>Replies in thread, group chats, streaks.</span></div>
+              <div class="hr next"><b>Could go further</b><span>Bring people back to the thread, not the feed — and give the thread a reason to stay open.</span></div>
+            </div>
           </div>
         </div>
         <p class="kicker rv d5" style="margin-top:22px">Story, the Friends tab, find friends — from outside, that all looks like work on <b>01 and 02</b>.</p>
       </div>
-      <div class="notes" hidden><p>So I’d look at it as three scenarios, and each one is a different job.</p><p>First, you’re here but none of your friends are. The job is to connect you with the friends you already have on TikTok, or help you make new ones. And I think that part is genuinely hard here, because a lot of what people watch is private — they don’t necessarily want their friends to see it.</p><p>Second, your friends are here, but nothing happens between you. The hardest step is the first one — having friends in an app doesn’t make anyone send the first thing.</p><p>And third, the one I kept noticing myself: people do send things, but the conversation happens somewhere else — in iMessage, or WeChat. So the reply never comes back here.</p><p>Story, the Friends tab, find friends — from the outside, that all looks like work on the first two. The third one is the part I’d most want to dig into. And it’s actually what the little app I’m about to show you is trying to solve.</p></div>
+      <div class="notes" hidden><p>So I’d look at it as three scenarios, and each one is a different job.</p><p>First — you’re here, but none of your friends are. TikTok already does a lot for this: contacts sync, suggested friends, invite links. And maybe the share sheet is another way in, because it already knows who you send videos to, and those are usually real friends.</p><p>Second — your friends are here, but nothing happens between you. There’s Story, the Friends tab, the streak pet. The question I’d ask is how to make the first move cost nothing.</p><p>Third — you do send things to each other, but then the conversation leaves. That’s the one I kept noticing. The job there is keeping it here, and turning it into a habit.</p><p>And that third one is actually what the little app I’m about to show you is trying to solve.</p></div>
     </section>
 
     <!-- 5 · LiveStatus cover -->
