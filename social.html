@@ -53,8 +53,10 @@
   .funnel .s.dead b { color: var(--eh-red); }
   /* three stages */
   .stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 30px; text-align: left; }
-  .stages .st { position: relative; display: flex; flex-direction: column; padding: 20px 20px 22px;
-    border-radius: 18px; background: var(--card); border: 1px solid var(--line); }
+  .stages .st { position: relative; display: flex; flex-direction: column; min-height: 252px;
+    padding: 20px 20px 22px; border-radius: 18px; background: var(--card); border: 1px solid var(--line);
+    transition: border-color .25s ease, background .25s ease; }
+  .stages .st:hover { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.028); }
   .stages .st + .st::before { content: ""; position: absolute; left: -17px; top: 56px; width: 8px; height: 8px;
     border-top: 1px solid rgba(255,255,255,.22); border-right: 1px solid rgba(255,255,255,.22);
     transform: rotate(45deg); }
@@ -66,7 +68,9 @@
     letter-spacing: .14em; color: rgba(255,255,255,.16); }
   .stages h3 { margin: 15px 0 0; font-family: var(--serif); font-weight: 500; font-size: 19px; line-height: 1.25; color: var(--ink); }
   .stages p { margin: 9px 0 0; font-size: 13.4px; line-height: 1.55; color: var(--dim); }
-  .stages .hard { margin-top: auto; padding-top: 13px; }
+  .stages .hard { position: absolute; left: 20px; right: 20px; bottom: 19px;
+    opacity: 0; transform: translateY(5px); transition: opacity .25s ease, transform .25s ease; }
+  .stages .st:hover .hard { opacity: 1; transform: none; }
   .stages .hard b { display: block; font-family: var(--serif); font-size: 10.5px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--faint); }
   .stages .hard span { display: block; margin-top: 5px; font-size: 12.6px; line-height: 1.5; color: var(--dim); }
@@ -229,21 +233,20 @@
     <section class="slide">
       <div class="slide-inner wide">
         <div class="eyebrow rv">My read</div>
-        <h2 class="rv">It depends who’s in front of you.</h2>
-        <p class="lede rv d2" style="max-width:860px">Split it by the user and social stops being one job. The way I’d break it down:</p>
+        <h2 class="rv">Three scenarios, and three different jobs.</h2>
         <div class="stages">
           <div class="st rv d2">
             <div class="n">01</div>
             <div class="ic"><svg viewBox="0 0 20 20"><circle cx="8" cy="6.6" r="3"/><path d="M2.4 16.4c.4-3 2.8-4.8 5.6-4.8 1.2 0 2.3.3 3.2.9"/><path d="M14.4 12.6v4.6M12.1 14.9h4.6"/></svg></div>
             <h3>No friends here yet</h3>
-            <p>Help them find the people they already know, and get them connected.</p>
-            <div class="hard"><b>What makes it hard</b><span>A lot of what people watch on TikTok is private. Not everyone wants friends to see it.</span></div>
+            <p>Connect them to the friends they already have here — or help them make new ones.</p>
+            <div class="hard"><b>What makes it hard</b><span>A lot of what people watch here is private. Not everyone wants friends to see it.</span></div>
           </div>
           <div class="st rv d3">
             <div class="n">02</div>
             <div class="ic"><svg viewBox="0 0 20 20"><path d="M2.6 5.6A1.6 1.6 0 0 1 4.2 4h7.2a1.6 1.6 0 0 1 1.6 1.6v4a1.6 1.6 0 0 1-1.6 1.6H6.6L3.6 13.6v-2.4h-.4a.6.6 0 0 1-.6-.6Z"/><path d="M15.4 7.6h.4A1.6 1.6 0 0 1 17.4 9.2v4a1.6 1.6 0 0 1-1.6 1.6h-.4v2.2l-2.6-2.2"/></svg></div>
             <h3>Friends here, but no exchange</h3>
-            <p>The graph exists. Nobody sends the first thing.</p>
+            <p>The friends are there. Nobody sends the first thing.</p>
             <div class="hard"><b>What makes it hard</b><span>Having friends in an app doesn’t make anyone open a conversation. The first move is the wall.</span></div>
           </div>
           <div class="st focus rv d4">
@@ -256,7 +259,7 @@
         </div>
         <p class="kicker rv d5" style="margin-top:22px">Story, the Friends tab, find friends — from outside, that all looks like work on <b>01 and 02</b>.</p>
       </div>
-      <div class="notes" hidden><p>So here’s how I’d break it down — and this is just my own way of looking at it.</p><p>It really depends who’s in front of you. If you’re new, or none of your friends are here yet, the job is to help you find them and get connected. And I think that’s genuinely hard on TikTok, because a lot of what people watch here is private — they don’t necessarily want their friends to see it.</p><p>Once your friends are here, the job changes. Now you want them actually talking to each other. And the hardest step is the first one — having friends in an app doesn’t make anyone send the first thing.</p><p>And then the third one, which is the one I kept noticing myself: people do send things, but the conversation happens somewhere else — in iMessage, or WeChat. So the reply never comes back here.</p><p>Story, the Friends tab, find friends — from the outside, that all looks like work on the first two. The third one is the part I’d most want to dig into. And it’s actually what the little app I’m about to show you is trying to solve.</p></div>
+      <div class="notes" hidden><p>So I’d look at it as three scenarios, and each one is a different job.</p><p>First, you’re here but none of your friends are. The job is to connect you with the friends you already have on TikTok, or help you make new ones. And I think that part is genuinely hard here, because a lot of what people watch is private — they don’t necessarily want their friends to see it.</p><p>Second, your friends are here, but nothing happens between you. The hardest step is the first one — having friends in an app doesn’t make anyone send the first thing.</p><p>And third, the one I kept noticing myself: people do send things, but the conversation happens somewhere else — in iMessage, or WeChat. So the reply never comes back here.</p><p>Story, the Friends tab, find friends — from the outside, that all looks like work on the first two. The third one is the part I’d most want to dig into. And it’s actually what the little app I’m about to show you is trying to solve.</p></div>
     </section>
 
     <!-- 5 · LiveStatus cover -->
