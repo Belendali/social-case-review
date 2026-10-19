@@ -85,6 +85,8 @@
     50% { transform: translateY(-12px); }
   }
   h1 .sub-line { display: block; font-size: 0.76em; color: rgba(255,255,255,0.88); }
+  /* the greeting is longer than the original, so it gets its own scale and stays on one line */
+  .hub h1 { font-size: clamp(32px, 3.9vw, 55px); white-space: nowrap; }
 
   /* ---- expandable "more about me" ---- */
   .more-toggle {
@@ -353,6 +355,7 @@
     .hero-avatar { width: 150px; margin: 0 auto; }
     h1 { font-size: clamp(30px, 8.6vw, 40px); }
     h1 .sub-line { white-space: normal !important; display: block; }
+    .hub h1 { white-space: normal; }
     .journey { grid-template-columns: 1fr; grid-template-rows: auto; gap: 10px; }
     .journey > * { grid-column: auto !important; grid-row: auto !important; }
     .life { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -378,7 +381,7 @@
     <div class="hero-row">
       <div>
         <div class="eyebrow" style="opacity:1;transform:none">Talk with <b>Cici</b></div>
-        <h1 style="max-width:920px">Hi, I'm Bella.<span class="sub-line" style="white-space:nowrap">Here's what we can talk about.</span></h1>
+        <h1>Hi, I’m Bella. Nice to meet you!<span class="sub-line">Here’s what I thought we could talk about.</span></h1>
         <p class="lede" style="margin-top:24px">
           Product designer, New York. Three stories: breaking a product's growth
           plateau, building 0&nbsp;→&nbsp;1, and a small social product I designed and built myself.
