@@ -19,6 +19,15 @@
     slides.forEach((s, k) => {
       const was = s.classList.contains("on");
       s.classList.toggle("on", k === i);
+      // videos: restart from the first frame each time their slide is reached; pause when leaving
+      if (k !== i) s.querySelectorAll("video").forEach((v) => { if (!v.paused) v.pause(); });
+      if (!was && k === i) {
+        s.querySelectorAll("video").forEach((v) => {
+          try { v.currentTime = 0; } catch (e) {}
+          v.pause();
+          setTimeout(() => { if (s.classList.contains("on")) v.play().catch(() => {}); }, instant ? 0 : 350);
+        });
+      }
       // restart chart draw-on each time a slide comes back into view
       if (!was && k === i) {
         s.querySelectorAll(".chart .ln, .chart .mark").forEach((el) => {
@@ -37,6 +46,11 @@
     document.dispatchEvent(new CustomEvent("deck:change", { detail: { index: i, total: slides.length } }));
   }
   window.deckGo = go;
+  // only the active slide's videos play — autoplay on hidden slides is cancelled as soon as it starts
+  deck.querySelectorAll(".slide video").forEach((v) => v.addEventListener("play", () => {
+    const s = v.closest(".slide");
+    if (s && !s.classList.contains("on")) v.pause();
+  }));
 
   function frags(slide) {
     const list = [...slide.querySelectorAll(".frag")];
