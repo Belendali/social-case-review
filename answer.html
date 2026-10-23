@@ -685,6 +685,8 @@
   .demo .mb .dur { flex: 0 0 auto; color: var(--stay); font-size: 11px; padding-top: 1px; }
   .demo .mb .tag { margin-top: 6px; font-size: 10.5px; color: var(--faint); }
   .demo .mb .tag b { color: var(--personal); font-weight: 500; }
+  .demo .var svg .mv { animation: lbmove 2.4s ease-in-out infinite; }
+  @keyframes lbmove { 0%, 8% { cx: 30px; cy: 43px; } 50%, 58% { cx: 66px; cy: 25px; } 100% { cx: 30px; cy: 43px; } }
   .lbline { margin-top: 16px; font-size: 15.5px; color: var(--ink); font-style: italic; }
   @media (max-width: 900px) { .lbgrid { grid-template-columns: 1fr; } .demo .vars { grid-template-columns: 1fr; } }
   /* ===== Core trade-off ===== */
@@ -1951,53 +1953,53 @@
         <h2 class="rv">Two things I’d build next.</h2>
         <p class="lede rv d2" style="max-width:none">
           Photo-solving won because asking became free. The next step is the same idea at both ends of the loop —
-          an answer that adapts to the student, and a way to ask that’s even cheaper than a photo.
+          an explanation that fits the student, and a way to ask that’s even cheaper than a photo.
         </p>
 
         <div class="lbgrid rv d3">
           <div class="lb lb-p">
             <div class="lbk">01 · Personal, deeper</div>
-            <h4>Same problem, <em>three explanations</em></h4>
-            <p class="lbs">We already had the data — mistakes, which steps got expanded, where they asked why, when the test is. We used it to measure retention. <b>Next, it rewrites the explanation itself.</b></p>
+            <h4>Same problem, <em>a different lesson per level</em></h4>
+            <p class="lbs">We have the data now — mistakes, what they expand, where they ask why. But every answer still follows one script: steps first, then unfold. <b>Next: grade the student, and let the clarity, the guidance and the medium change with the level.</b></p>
             <div class="demo">
               <div class="q">Find the equation of the line through (0, −4) and (2, 0).</div>
-              <div class="seg"><span class="on">Concept first</span><span>Quick practice</span><span>Draw it</span></div>
+              <div class="seg"><span>Strong</span><span>Average</span><span class="on">Needs support</span></div>
               <div class="vars">
-                <div class="var"><i>asks “why”</i><b>1 · Find the slope</b><br /><span class="why">two points tell you how steep it is</span><br />▸ m = 4 / 2 = 2</div>
-                <div class="var"><i>just wants to practise</i>m = 2, b = −4<br /><b>y = 2x − 4 → D</b><br /><span class="chip">↻ Try a similar one</span></div>
-                <div class="var"><i>text isn’t landing</i>
-                  <svg viewBox="0 0 120 54" aria-hidden="true"><line x1="10" y1="40" x2="112" y2="40" stroke="rgba(255,255,255,.25)" stroke-width="1"/><line x1="30" y1="4" x2="30" y2="50" stroke="rgba(255,255,255,.25)" stroke-width="1"/><line x1="12" y1="52" x2="100" y2="8" stroke="#ffce21" stroke-width="2"/><circle cx="30" cy="43" r="3" fill="#ffce21"/><circle cx="66" cy="25" r="3" fill="#ffce21"/><path d="M30 43 h36 v-18" fill="none" stroke="rgba(255,206,33,.6)" stroke-dasharray="3 3"/><text x="70" y="47" fill="rgba(255,255,255,.6)" font-size="8">2 across</text><text x="72" y="16" fill="rgba(255,255,255,.6)" font-size="8">4 up</text></svg>
-                  <span class="chip">▶ 1:12 drawn</span>
+                <div class="var"><i>strong · one line</i>m = 2, b = −4<br /><b>y = 2x − 4 → D</b><br /><span class="chip">↗ Try a harder one</span></div>
+                <div class="var"><i>average · steps + why</i><b>1 · Find the slope</b><br /><span class="why">two points tell you how steep</span><br />▸ m = 4 / 2 = 2</div>
+                <div class="var"><i>needs support · watch it move</i>
+                  <svg viewBox="0 0 120 54" aria-hidden="true"><line x1="10" y1="40" x2="112" y2="40" stroke="rgba(255,255,255,.25)" stroke-width="1"/><line x1="30" y1="4" x2="30" y2="50" stroke="rgba(255,255,255,.25)" stroke-width="1"/><line x1="12" y1="52" x2="100" y2="8" stroke="#ffce21" stroke-width="2"/><circle cx="30" cy="43" r="2.5" fill="rgba(255,206,33,.5)"/><circle cx="66" cy="25" r="2.5" fill="rgba(255,206,33,.5)"/><circle class="mv" cx="30" cy="43" r="3.5" fill="#fff"/><text x="70" y="47" fill="rgba(255,255,255,.6)" font-size="8">x +1 → y +2</text></svg>
+                  <span class="chip">each step guided · graph moves with x</span>
                 </div>
               </div>
-              <div class="why-pick">Picked from how <b>this</b> student reads: expands steps · asks why twice · unit test Friday</div>
+              <div class="why-pick">Level from <b>this</b> student’s history: 3 slope mistakes · expands every step · asks why</div>
             </div>
           </div>
 
           <div class="lb lb-v">
-            <div class="lbk">02 · Voice</div>
-            <h4>Ask <em>without a problem to photograph</em></h4>
-            <p class="lbs">A photo needs a problem on paper. Two moments it misses: the teacher just said something you didn’t get, and the mistake you want to remember is <b>how you went wrong</b>, not the problem.</p>
+            <div class="lbk">02 · Voice, done properly</div>
+            <h4>Ask the <em>specific</em> thing, out loud</h4>
+            <p class="lbs">Photo won because nobody wants to type. But most follow-ups are specific — one step, one concept — and a mic icon that fails in a noisy study hall isn’t voice. <b>Next: dictation that works where students actually are.</b></p>
             <div class="demo">
               <div class="hold">
                 <div class="mic">●</div>
                 <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                <div class="say">“why do we complete the square here?”</div>
-                <div class="hint">hold to ask · in class</div>
+                <div class="say">“why is it 4 over 2 and not 2 over 4?”</div>
+                <div class="hint">study hall · noise ✓</div>
               </div>
               <div class="mb">
                 <div class="mbk">Mistake book · voice note</div>
-                <div class="note"><span class="dur">0:09</span><span>“I divided run by rise again — I keep flipping Δy and Δx.”</span></div>
-                <div class="tag">Saved as text · tagged <b>slope</b> · comes back 3 days before the unit test — and it’s the best personalisation signal we never had.</div>
+                <div class="note"><span class="dur">0:09</span><span>“I keep flipping Δy and Δx — I did it again on #3.”</span></div>
+                <div class="tag">Transcribed · tagged <b>slope</b> · back 3 days before the test. Typeless-grade recognition (or its API), tuned for maths vocabulary.</div>
               </div>
             </div>
           </div>
         </div>
 
-        <p class="lbline rv d4">Cheaper to ask, and an answer that teaches the way you learn — that’s the real distance between an answer machine and a school.</p>
+        <p class="lbline rv d4">Cheaper to ask, and a lesson that fits the student — that’s the real distance between an answer machine and a school.</p>
       </div>
-      <div class="notes" hidden><p>One more page — if I did this again, two things I’d build next.</p><p>First, personal, deeper. We already had the data: the mistake book, which steps a student expands, where they ask why, when their test is. We only used it to measure retention. Next time it rewrites the explanation itself: the same problem explained concept-first for the kid who keeps asking why, two lines and a practice question for the kid who just wants to get going, and drawn out or a one-minute video when text isn’t landing. Two years ago we could write one template; today the model can do this per student, in real time.</p><p>Second, voice. A photo needs a problem on paper. In class, when the teacher just said something you didn’t get, you hold a button and ask. And in the mistake book, what students want to record isn’t the problem — it’s how they went wrong. Nobody types that; everyone will say it in ten seconds. That note is the best personalisation signal we never had.</p><p>Cheaper to ask, and an answer that teaches the way you learn — that’s the real distance between an answer machine and a school.</p></div>
-      <div class="notes notes-zh" hidden><p>再加一页——如果重做，我接下来会做两件事。</p><p>第一，Personal 做得更深。数据我们已经有了：错题本、学生展开了哪一步、在哪问为什么、考试是什么时候。当时只用来看留存。下一步是让它重写讲解本身：同一道题，爱问为什么的孩子先讲概念；只想往下做的给两行加一道练习；文字讲不通的就画出来，或者一分钟视频。两年前我们只能写一个模板；今天模型可以按每个学生实时做。</p><p>第二，语音。拍照需要纸上有一道题。课堂上老师刚讲了一句你没听懂，按住按钮问就行。错题本里学生想记的不是题，是自己怎么错的——没人会打字，但十秒钟都愿意说。这条语音，是我们从来没拿到过的最好的个性化信号。</p><p>问起来更省力，答案按你的方式教你——这才是答题机和学校之间真正的距离。</p></div>
+      <div class="notes" hidden><p>One more page — if I did this again, two things I’d build next.</p><p>First, personal, deeper. We already have the data — the mistake book, which steps a student expands, where they ask why. But every explanation still runs on one script: steps first, then unfold, the same for everyone. Next time I’d grade the student — strong, average, needs support — and let the lesson change with the level: a strong student gets one line and a harder problem; an average one gets the steps with the why; a student who’s struggling gets every step guided, and the medium changes too. Today’s models can show a function moving as x changes, not just describe it — that multimodal, dynamic explanation is what I’d build in.</p><p>Second, voice, done properly. Photo-solving won because nobody wants to type. But most follow-ups are specific — one step, one concept — and a small mic icon that fails in a noisy study hall isn’t really voice. Tools like Typeless show how good dictation can be now; I’d build on that or its API, tune it for maths vocabulary, and make it work where students actually are — a classroom, a library. And in the mistake book, students would record how they went wrong in ten seconds instead of typing it, which becomes the best personalisation signal we never had.</p><p>Cheaper to ask, and a lesson that fits the student — that’s the real distance between an answer machine and a school.</p></div>
+      <div class="notes notes-zh" hidden><p>再加一页——如果重做，我接下来会做两件事。</p><p>第一，Personal 做得更深。数据我们已经有了——错题本、学生展开了哪一步、在哪问为什么。但现在每一道题的讲解还是同一个套路：先给步骤、再展开，对所有人都一样。下一步我会给学生分级——优秀、中等、薄弱——让讲法跟着级别变：优秀的给一行加一道更难的题；中等的给步骤和为什么；薄弱的每一步都带引导，而且媒介也变。现在的模型能把函数随 x 变化的过程真的动起来，而不只是用文字描述——这种多模态、动态的讲解，是我要做进去的。</p><p>第二，语音要做到位。拍照搜题能成，就是因为没人想打字。但大多数追问都很具体——某一步、某个概念——而一个在嘈杂自习室里识别不准的小麦克风图标，不算真正的语音。像 Typeless 这样的产品已经证明现在的听写能做到多好；我会基于它或它的 API，针对数学词汇调优，让它在学生真正待的地方——教室、图书馆——也能用。错题本里，学生十秒钟说一句自己怎么错的，不用打字，而这正是我们从来没拿到过的最好的个性化信号。</p><p>问起来更省力，讲法贴合每个学生——这才是答题机和学校之间真正的距离。</p></div>
     </section>
 
     <!-- 14 · The wrap -->
