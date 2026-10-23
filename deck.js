@@ -168,17 +168,25 @@
     deckEl.parentNode.insertBefore(stage, deckEl); stage.appendChild(deckEl);
   }
   const panel = document.createElement("div"); panel.className = "script";
-  panel.innerHTML = '<div class="script-in"><i class="script-k"></i><div class="script-t"></div></div>';
+  panel.innerHTML = '<div class="script-in"><div class="script-head"><i class="script-k"></i><button class="script-lang" type="button" title="EN / 中文"></button></div><div class="script-t"></div></div>';
   document.body.appendChild(panel);
   const k = panel.querySelector(".script-k"), t = panel.querySelector(".script-t");
   let cur = 0;
+  // script language: English by default, 中文 when the deck has .notes-zh and the presenter switches
+  let lang = (localStorage.getItem("script-lang") === "zh" && document.querySelector(".notes-zh")) ? "zh" : "en";
+  const langBtn = panel.querySelector(".script-lang");
+  const paintLang = () => { langBtn.textContent = lang === "zh" ? "中文 · EN" : "EN · 中文"; langBtn.classList.toggle("zh", lang === "zh"); langBtn.hidden = !document.querySelector(".notes-zh"); };
+  langBtn.addEventListener("click", () => { lang = lang === "zh" ? "en" : "zh"; localStorage.setItem("script-lang", lang); paintLang(); render(cur); });
+  paintLang();
   function fragLevel(slide) {
     const keys = new Set();
     [...slide.querySelectorAll(".frag.shown")].forEach((f, idx) => keys.add(f.dataset.frag !== undefined ? f.dataset.frag : "_" + idx));
     return keys.size;
   }
   function pickNotes(slide) {
-    const all = [...slide.querySelectorAll(".notes")]; if (!all.length) return null;
+    let all = [...slide.querySelectorAll(lang === "zh" ? ".notes.notes-zh" : ".notes:not(.notes-zh)")];
+    if (!all.length) all = [...slide.querySelectorAll(".notes:not(.notes-zh)")];
+    if (!all.length) return null;
     const when = all.find((n) => n.dataset.when && slide.querySelector(n.dataset.when));
     if (when && when.dataset.append === undefined) return when;
     const lvl = fragLevel(slide);

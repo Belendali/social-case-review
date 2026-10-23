@@ -278,6 +278,11 @@ body.script-on .rail { top: 32vh; }
 .script { position: fixed; left: 0; right: 0; bottom: 0; z-index: 95; height: auto; max-height: 46vh; overflow: auto; background: rgba(6,6,10,.92); backdrop-filter: blur(14px); border-top: 1px solid rgba(255,255,255,.12); transform: translateY(100%); transition: transform .3s ease-out; }
 body.script-on .script { transform: none; }
 .script-in { max-width: 1180px; margin: 0 auto; padding: 20px 40px 28px; font-family: var(--body); font-size: 19px; line-height: 1.7; color: rgba(255,255,255,.92); }
+.script-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.script-lang { font-family: var(--serif); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.45); background: none; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
+.script-lang:hover { color: #fff; border-color: rgba(255,255,255,.35); }
+.script-lang.zh { color: #ffce21; border-color: rgba(255,206,33,.45); }
+.script-lang[hidden] { display: none; }
 .script-in i.script-k, .script-in > i { display: block; font-style: normal; font-family: var(--serif); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--faint); margin-bottom: 8px; }
 .script-t i, .script-in i:not(.script-k) { font-style: normal; color: var(--accent, #8b7cff); font-family: var(--serif); font-size: 13px; letter-spacing: .06em; padding: 0 2px; }
 .script-t b { color: #fff; font-weight: 600; }
