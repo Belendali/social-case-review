@@ -10,7 +10,7 @@ const key = PLAIN ? null : await wc.subtle.deriveKey({ name: "PBKDF2", salt, ite
 const b64 = (u8) => Buffer.from(u8).toString("base64");
 mkdirSync("enc", { recursive: true });
 const loader = readFileSync("src/_loader.html", "utf8");
-const pages = ["index", "local-service-final", "intro", "answer", "wanaka", "social", "presenter"];
+const pages = ["index", "local-service-final", "intro", "lulu", "ai-work", "answer", "wanaka", "social", "presenter"];
 for (const p of pages) {
   let html = readFileSync(`src/${p}.html`, "utf8");
   if (p === "presenter") html = html.replace('<script src="qa.js"></script>', "<script>" + readFileSync("src/qa.js", "utf8") + "</script>");
