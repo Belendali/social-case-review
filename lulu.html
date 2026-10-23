@@ -533,13 +533,13 @@
     </div>
 
     <div class="agenda">
-      <a class="a1" href="answer.html" onclick="this.href='answer.html?t='+Date.now()">
+      <a class="a1" href="answer.html?from=lulu" onclick="this.href='answer.html?from=lulu&t='+Date.now()">
         <span class="no">01</span>
         <h3>Answer.AI<br /><span>Turning a product around</span></h3>
         <div class="sub">From a shared answer machine to a personalized school — retention, differentiation, results.</div>
         <div class="time">~18 min</div>
       </a>
-      <a class="a2" href="wanaka.html" onclick="this.href='wanaka.html?t='+Date.now()">
+      <a class="a2" href="wanaka.html?from=lulu" onclick="this.href='wanaka.html?from=lulu&t='+Date.now()">
         <span class="no">02</span>
         <h3>Wanaka<br /><span>0 → 1 with AI</span></h3>
         <div class="sub">How my team and I work with AI at every step of building a new product.</div>
@@ -698,5 +698,6 @@
 <script src="editor.js?v=09081324"></script>
 <script src="lightbox.js?v=7"></script>
 <script src="comments.js?v=5"></script>
+<script>sessionStorage.setItem("deck-from","lulu");</script>
 </body>
 </html>

@@ -468,5 +468,17 @@
     setInterval(sync, 900); // clips that were still loading get picked up on the next pass
   })();
 </script>
+<script>
+// Return to the cover we came from (lulu, intro, …) instead of the default hub.
+(function(){
+  const q = new URLSearchParams(location.search).get("from");
+  if (q) sessionStorage.setItem("deck-from", q);
+  const back = sessionStorage.getItem("deck-from"); if (!back) return;
+  document.querySelectorAll('a[href^="index.html"]').forEach(a => {
+    a.href = back + ".html";
+    a.setAttribute("onclick", "this.href='" + back + ".html?t='+Date.now()");
+  });
+})();
+</script>
 </body>
 </html>
